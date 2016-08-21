@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.UI", "Sisacon.UI\Sisacon.UI.csproj", "{E5F61061-FC21-40A1-81E5-1B1E4E9219DF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.Tests", "Sisacon.Tests\Sisacon.Tests.csproj", "{360F7E21-1EC6-47EC-885C-509F15907C22}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.BLL", "Sisacon.BLL\Sisacon.BLL.csproj", "{89F940B4-D992-4753-A6B9-2A4B1530D8D1}"
@@ -13,16 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.Infra", "Sisacon.In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.Domain", "Sisacon.Domain\Sisacon.Domain.csproj", "{8B5A45D1-9EC6-46CD-9AB2-3819AA2FC643}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.UI", "Sisacon.UI\Sisacon.UI.csproj", "{8122CC78-F9B2-460E-B277-6D73DF057EF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E5F61061-FC21-40A1-81E5-1B1E4E9219DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E5F61061-FC21-40A1-81E5-1B1E4E9219DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E5F61061-FC21-40A1-81E5-1B1E4E9219DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E5F61061-FC21-40A1-81E5-1B1E4E9219DF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{360F7E21-1EC6-47EC-885C-509F15907C22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{360F7E21-1EC6-47EC-885C-509F15907C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{360F7E21-1EC6-47EC-885C-509F15907C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{8B5A45D1-9EC6-46CD-9AB2-3819AA2FC643}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B5A45D1-9EC6-46CD-9AB2-3819AA2FC643}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B5A45D1-9EC6-46CD-9AB2-3819AA2FC643}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8122CC78-F9B2-460E-B277-6D73DF057EF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8122CC78-F9B2-460E-B277-6D73DF057EF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8122CC78-F9B2-460E-B277-6D73DF057EF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8122CC78-F9B2-460E-B277-6D73DF057EF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

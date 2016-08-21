@@ -528,7 +528,7 @@ body {
   padding: 0px;
   overflow-x: hidden;
   min-width: 320px;
-  background: #ffffff;
+  background: #ecf0f1;
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 1.4285em;
@@ -6733,6 +6733,7 @@ a.ui.inverted.grey.header:hover {
 --------------------*/
 
 .ui.dividing.header {
+  margin-top:0px;
   padding-bottom: 0.21428571rem;
   border-bottom: 1px solid rgba(34, 36, 38, 0.15);
 }
@@ -15453,6 +15454,7 @@ ol.ui.horizontal.list li:before,
   margin: 0em -1px -1px;
   max-width: calc(100% +  2px );
   border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  margin-bottom:20px;
 }
 
 .ui.attached.steps .step:first-child {
@@ -21561,6 +21563,7 @@ Floated Menu / Item
   color: rgba(0, 0, 0, 0.87);
   border-collapse: separate;
   border-spacing: 0px;
+  margin-top: 22px
 }
 
 .ui.table:first-child {
@@ -31981,10 +31984,11 @@ html.ios body {
   color: rgba(0, 0, 0, 0.87);
   border-collapse: separate;
   border-spacing: 0px;
+  margin-top: 22px
 }
 
 .ui.table:first-child {
-  margin-top: 0em;
+  margin-top: 22px;
 }
 
 .ui.table:last-child {

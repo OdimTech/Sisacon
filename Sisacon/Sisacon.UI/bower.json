@@ -1,0 +1,6 @@
+{
+  "name": "myproject",
+  "dependencies": {
+    "angular-ui-mask": "~1.8.7"
+  }
+}

@@ -1,7 +1,7 @@
 ﻿<div class="ui twelve wide centered column">
     <div class="ui stackable segment" ng-init="step1 = true">
-        <form class="ui stackable form" novalidate>
-            <div class="ui three top attached steps">
+        <form name="singupForm" class="ui stackable form" ng-submit="createUser()" novalidate>
+            <div class="ui two top attached steps">
                 <div class="step" ng-class="{'active' : step1}">
                     <i class="user icon"></i>
                     <div class="content">
@@ -10,17 +10,6 @@
                         </div>
                         <div class="description">
                             Defina um Usuário e uma Senha para garantir a segurança dos seus dados.
-                        </div>
-                    </div>
-                </div>
-                <div class="step" ng-class="{'active' : step2}">
-                    <i class="building outline icon"></i>
-                    <div class="content">
-                        <div class="title">
-                            Empresa
-                        </div>
-                        <div class="description">
-                            Crie uma empresa para organizar de forma eficiente suas informações.
                         </div>
                     </div>
                 </div>
@@ -39,46 +28,59 @@
             <!--Cadastro de Usuario-->
             <div class="ui stackable grid" ng-show="step1">
                 <div class="ui eight wide column">
-                    <div class="ui horizontal divider">
-                        <h4 class="ui header">Use as Redes Sociais</h4>
-                    </div>
-                    <div class="ui fluid buttons">
-                        <button class="ui big facebook button">
-                            <i class="facebook icon"></i>
-                            Facebook
-                        </button>
-                        <div class="or" data-text="Ou"></div>
-                        <button class="ui big google plus button">
-                            <i class="google plus icon"></i>
-                            Google
-                        </button>
-                    </div>
-                    <div class="ui horizontal divider">
-                        <h4 class="ui header">Ou Crie uma nova Conta</h4>
-                    </div>
-                    <div class="ui required field">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" class="ui input" required />
-                    </div>
-                    <div class="ui required field">
-                        <label for="pass">Senha</label>
-                        <input type="password" name="pass" class="ui input" required />
-                    </div>
-                    <div class="ui required field">
-                        <label for="passConfirm">Confirmar Senha</label>
-                        <input type="password" name="passConfirm" class="ui input" required />
-                    </div>
-                    <div class="ui field">
-                        <div class="ui toggle checkbox">
-                            <input type="checkbox" name="terms" />
-                            <label for="terms">Declaro que li e aceito o <a>Termo de Serviço</a> e o <a>    Termo de Privacidade.</a></label>
+                    <!--EMAIL-->
+                    <div class="ui required field" ng-class="{'error' : !singupForm.email.$valid && (singupForm.$submitted || !singupForm.email.$pristine)}">
+                        <label for="email">
+                            Email
+                        </label>
+                        <input name="email" type="email" validate-email ng-model="account.email" class="ui input" required />
+                        <div class="ui pointing red basic label" ng-show="!singupForm.email.$valid && (singupForm.$submitted || !singupForm.email.$pristine)">
+                            <div ng-show="singupForm.email.$error.required">O E-mail é Obrigatório</div>
+                            <div ng-show="singupForm.email.$error.email">O E-mail informado está em um formato Inválido</div>
+                            <span ng-show="!singupForm.email.$error.required && !singupForm.email.$error.email && !singupForm.email.$valid">{{errorMessage}}</span>
                         </div>
                     </div>
+                    <!--SENHA-->
+                    <div class="ui required field" ng-class="{'error' : !singupForm.password.$valid && (singupForm.$submitted || !singupForm.password.$pristine)}">
+                        <label for="password">Senha</label>
+                        <div class="ui action input">
+                            <input type="password" name="password" ng-model="account.password" class="ui input" required minlength="6" />
+                            <button type="button" class="ui icon button" data-title="Segurança" data-content="A senha precisa ter no mínimo 6 caractéres"
+                                    data-variation="inverted">
+                                <i class="help icon"></i>
+                            </button>
+                        </div>
+                        <div class="ui pointing basic red label" ng-show="!singupForm.password.$valid && (singupForm.$submitted || !singupForm.password.$pristine)">
+                            <div ng-show="singupForm.password.$error.required">A Senha é Obrigatória</div>
+                            <div ng-show="singupForm.password.$error.minlength">A Senha precisa ter no mínino 6 caractéres</div>
+                        </div>
+                    </div>
+                    <!--CONFIRMAÇÃO DE SENHA-->
+                    <div class="ui required field" ng-class="{'error' : !singupForm.confirmPassword.$valid && (singupForm.$submitted || !singupForm.confirmPassword.$pristine)}">
+                        <label for="confirmPassword">Confirmar Senha</label>
+                        <input type="password" name="confirmPassword" ng-model="account.confirmPassword" class="ui input" required minlength="6" />
+                        <div class="ui pointing basic red label" ng-show="!singupForm.confirmPassword.$valid && (singupForm.$submitted || !singupForm.confirmPassword.$pristine)">
+                            <div ng-show="singupForm.confirmPassword.$error.required">A Confirmação da Senha é Obrigatória</div>
+                            <div ng-show="singupForm.confirmPassword.$error.minlength">A Senha precisa ter no mínino 6 caractéres</div>
+                            <div ng-show="singupForm.confirmPassword.$validators.notEquals">As Senhas informadas não são iguais</div>
+                        </div>
+                    </div>
+
+                    <div class="ui field" >
+                        <div class="ui checkbox">
+                            <input type="checkbox" ng-click="AcceptedTerms()" name="terms" />
+                            <label for="terms">
+                                Declaro que li e aceito o <a href="#/serviceTerms">Termo de Serviço</a> e o <a href="#/privacyTerms">Termo de Privacidade.</a>
+                            </label>
+                        </div>
+                    </div>
+
                     <div class="ui field">
-                        <button name="createAccount" class="ui positive button" ng-click="step2 = true; step1 = false">
-                            Cadastre-se
+                        <button class="ui positive button" type="submit" ng-class="{'disabled' : !termsAccepted}">
+                            Confirmar
                         </button>
                     </div>
+
                 </div>
                 <div class="ui eight wide column">
                     <table class="ui table">
@@ -92,164 +94,31 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <i class="large green checkmark icon"></i>
-                                    Agilidade na emissão de Orçamentos
+                                    <i class="large green checkmark icon"></i> Agilidade na emissão de Orçamentos
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <i class="large green checkmark icon"></i>
-                                    Transparência na execução dos Pedidos
+                                    <i class="large green checkmark icon"></i> Transparência na execução dos Pedidos
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <i class="large green checkmark icon"></i>
-                                    Controle de Custos Fixos e Variáveis
+                                    <i class="large green checkmark icon"></i> Controle de Custos Fixos e Variáveis
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <i class="large green checkmark icon"></i>
-                                    Controle de Despesas
+                                    <i class="large green checkmark icon"></i> Controle de Despesas
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <i class="large green checkmark icon"></i>
-                                    Agenda de Eventos
+                                    <i class="large green checkmark icon"></i> Agenda de Eventos
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
-            <!--Cadastro de Empresa-->
-            <div class="sixteen wide column" ng-show="step2">
-                <h3 class="ui dividing blue header">
-                    Dados Empresa
-                </h3>
-                <div class="fields">
-                    <div class="four wide required field">
-                        <label for="tipoPessoa">Tipo Pessoa</label>
-                        <div class="ui selection dropdown">
-                            <input type="hidden" />
-                            <i class="dropdown icon"></i>
-                            <div class="default text">Selecione</div>
-                            <div class="menu">
-                                <div class="item" data-value="1" ng-click="show_cpf = true; show_cnpj = false">Pessoa Física</div>
-                                <div class="item" data-value="2" ng-click="show_cnpj = true; show_cpf = false">Pessoa Jurídica</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="four wide required field" ng-show="show_cnpj">
-                        <label for="cnpj">CNPJ</label>
-                        <input type="text" name="cnpj" class="ui input" ui-mask="99.999.999/9999-99" ng-model="scope.cnpj" required />
-                    </div>
-                    <div class="four wide field" ng-show="show_cpf">
-                        <label for="cpf">CPF</label>
-                        <input type="text" name="cpf" class="ui input" ui-mask="999.999.999-99" ng-model="scope.cpf" required />
-                    </div>
-                </div>
-                <div class="eight wide required field" ng-show="show_cpf">
-                    <label for="nomeEmpresa">Nome Empresa</label>
-                    <input type="text" name="nomeEmpresa" class="ui input" required />
-                </div>
-                <div class="fields" ng-show="show_cnpj">
-                    <div class="eight wide required field">
-                        <label for="razaoSocial">Razão Social</label>
-                        <input type="text" name="razaoSocial" class="ui input" required />
-                    </div>
-                    <div class="eight wide required field">
-                        <label for="nomeFantasia">Nome Fantasia</label>
-                        <input type="text" name="nomeFantasia" class="ui input" placeholder="Atelie das Lembranças" required />
-                    </div>
-                </div>
-                <h3 class="ui dividing blue header">
-                    Endereço
-                </h3>
-                <div class="two wide field">
-                    <label for="cep">CEP</label>
-                    <input type="text" name="cep" ng-model="address.cep" ng-blur="getAddress(address.cep)" class="ui input" ui-mask="99999-999" />
-                </div>
-                <div class="fields">
-                    <div class="eight wide field">
-                        <label for="rua">Rua/Av</label>
-                        <input type="text" name="rua" ng-model="address.logradouro" class="ui input" />
-                    </div>
-                    <div class="two wide field">
-                        <label for="numero">Número</label>
-                        <input type="number" name="numero" ng-model="address.numero" class="ui input" />
-                    </div>
-                    <div class="six wide field">
-                        <label for="complemento">Complemento</label>
-                        <input type="text" name="complemento" ng-model="address.complemento" class="ui input" />
-                    </div>
-                </div>
-
-                <div class="fields">
-                    <div class="eight wide field">
-                        <label for="bairro">Bairro</label>
-                        <input type="text" name="bairro" ng-model="address.bairro" class="ui input" />
-                    </div>
-                    <div class="four wide field">
-                        <label>Estado</label>
-                        <div class="ui selection dropdown">
-                            <input type="hidden" />
-                            <i class="dropdown icon"></i>
-                            <div class="default text">Selecione</div>
-                            <div class="menu">
-                                <div class="item" data-value="1">Minas Gerais</div>
-                                <div class="item" data-value="2">São Paulo</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="four wide field">
-                        <label>Cidade</label>
-                        <div class="ui selection dropdown">
-                            <input type="hidden" />
-                            <i class="dropdown icon"></i>
-                            <div class="default text">Selecione</div>
-                            <div class="menu">
-                                <div class="item" data-value="1">Belo Horizonte</div>
-                                <div class="item" data-value="2">São João Del Rei</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ui blue dividing header">
-                    Contato
-                </div>
-
-                <div class="fields">
-                    <div class="four wide field">
-                        <label for="telFixo">Telefone Fixo</label>
-                        <input type="tel" name="telFixo" class="ui input" ui-mask="(99) 9999-9999" ng-model="scope.telFixo" />
-                    </div>
-                    <div class="four wide field">
-                        <label for="telCelular">Celular</label>
-                        <input type="tel" name="telCelular" class="ui input" ui-mask="(99) 99999-9999" ng-model="scope.telCelular" />
-                    </div>
-                </div>
-
-                <div class="fields">
-                    <div class="eight wide field">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" class="ui input" />
-                    </div>
-                    <div class="eight wide field">
-                        <label for="site">Site</label>
-                        <input type="url" name="site" class="ui input" />
-                    </div>
-                </div>
-                <div class="ui blue dividing header"></div>
-                <div class="fields">
-                    <div class="sixteen wide field">
-                        <button class="ui right floated positive button">
-                            Criar Empresa
-                        </button>
-                    </div>
                 </div>
             </div>
         </form>

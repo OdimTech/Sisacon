@@ -45,12 +45,18 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Company\CompanyBLLTests.cs" />
+    <Compile Include="Files\FilesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BLL\UserBLLTests.cs" />
+    <Compile Include="UtilitiesTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sisacon.BLL\Sisacon.BLL.csproj">
@@ -61,6 +67,13 @@
       <Project>{8b5a45d1-9ec6-46cd-9ab2-3819aa2fc643}</Project>
       <Name>Sisacon.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Sisacon.Infra\Sisacon.Infra.csproj">
+      <Project>{8932FAF3-FDA5-4D83-8EE7-E9A1BFEAD51F}</Project>
+      <Name>Sisacon.Infra</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

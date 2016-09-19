@@ -1,0 +1,1 @@
+﻿angular.module('app.index.estimate', ['ngRoute', 'ui.mask']);

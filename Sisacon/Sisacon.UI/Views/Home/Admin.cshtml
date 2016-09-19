@@ -1,0 +1,84 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="pt-br" ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sisacon - Automação e Controle</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    @Styles.Render("~/bundles/style")
+
+</head>
+<body ng-controller="AdminController">
+
+    <!--BARRA LATERAL-->
+    <div id="sidebar" class="ui inverted vertical accordion menu sidebar">
+
+        <div class="item">
+            <h2 class="ui inverted orange header">
+                Menu
+            </h2>
+        </div>
+        <div class="item">
+            <a class="title">
+                <i class="dropdown icon"></i>
+                <span class="ui inverted header"><i class="bug icon"></i>Logs</span>
+            </a>
+            <div class="content">
+                <div class="item">
+                    <a class="ui fluid red button">
+                        <i class="desktop icon"></i>
+                        Painel de Erros
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--CONTEUDO A SER EMPURRADO PELA BARRA LATERAL-->
+    <div class="pusher">
+
+        <!--POPUS-->
+        <div id="accountPopUp" class="ui popup">
+            <div class="ui inverted stackable vertical accordion menu">
+                <a class="item">
+                    Minha Conta
+                </a>
+            </div>
+        </div>
+
+        <!--MENU PRICIPAL - TOP-->
+        <div class="ui inverted attached stackable icon menu">
+            <div class="header item">
+                <h4 class="ui large orange header">Sisacon</h4>
+            </div>
+            <a ng-click="openMenu()" class="item">
+                <i class="large sidebar icon"></i>
+            </a>
+            <div class="right menu">
+                <a class="item">
+                    <i class="large alarm outline icon"></i>
+                </a>
+                <a class="item">
+                    <i class="large settings icon"></i>
+                </a>
+            </div>
+        </div>
+
+        <!--CONTEUDO DINAMICO-->
+        <div class="ui stackable grid" ng-view>
+
+        </div>
+
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/design")
+</body>
+</html>

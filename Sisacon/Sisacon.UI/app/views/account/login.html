@@ -1,5 +1,5 @@
 ﻿<div class="ui four wide centered column">
-    <form class="ui form" novalidate>
+    <form class="ui form" name="loginForm" ng-submit="login()" novalidate>
         <br />
         <br />
         <div class="ui stackable segment">
@@ -7,19 +7,26 @@
                 <i class="circular line chart icon"></i>
                 Acessar Sisacon
             </h2>
-            <div class="required field">
+            <div class="ui required field" ng-class="{'error' : !loginForm.email.$valid && (loginForm.$submitted || !loginForm.email.$pristine)}">
                 <label for="email">Email</label>
-                <input type="email" name="email" class="ui input"/>
+                <input type="email" ng-model="account.email" name="email" class="ui input" required/>
+                <div class="ui pointing basic red label" ng-show="!loginForm.email.$valid && (loginForm.$submitted || !loginForm.email.$pristine)">
+                    <div ng-show="loginForm.email.$error.required">O Email é Obrigatório</div>
+                    <div ng-show="loginForm.email.$error.email">O E-mail informado não é válido</div>
+                </div>
             </div>
-            <div class="required field">
-                <label for="passworld">Senha</label>
-                <input type="password" name="passworld" class="ui input"/>
+            <div class="required field" ng-class="{'error' : !loginForm.password.$valid && (loginForm.$submitted || !loginForm.password.$pristine)}">
+                <label for="password">Senha</label>
+                <input type="password" ng-model="account.password" name="password" class="ui input" required/>
+                <div class="ui pointing basic red label" ng-show="!loginForm.password.$valid && (loginForm.$submitted || !loginForm.password.$pristine)">
+                    <div ng-show="loginForm.password.$error.required">A Senha é Obrigatória</div>
+                </div>
             </div>
             <div class="field">
                 <a href="#" >Esqueceu sua senha?</a>
             </div>
             <div class="field">
-                <button class="ui fluid positive button">
+                <button type="submit" class="ui fluid positive button">
                     Entrar
                 </button>
             </div>

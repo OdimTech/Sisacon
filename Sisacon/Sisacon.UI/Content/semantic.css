@@ -2477,7 +2477,7 @@ input::selection {
 
 .ui.blue.buttons .button,
 .ui.blue.button {
-  background-color: #2185d0;
+  background-color: #2980b9;
   color: #ffffff;
   text-shadow: none;
   background-image: none;
@@ -4089,7 +4089,7 @@ input::selection {
 
 .ui.primary.buttons .button,
 .ui.primary.button {
-  background-color: #2185d0;
+  background-color: #2980b9;
   color: #ffffff;
   text-shadow: none;
   background-image: none;
@@ -6535,7 +6535,7 @@ a.ui.inverted.teal.header:hover {
 /*--- Blue ---*/
 
 .ui.blue.header {
-  color: #2185d0 !important;
+  color: #2980b9 !important;
 }
 
 a.ui.blue.header:hover {
@@ -6543,7 +6543,7 @@ a.ui.blue.header:hover {
 }
 
 .ui.blue.dividing.header {
-  border-bottom: 2px solid #2185d0;
+  border-bottom: 2px solid #2980b9;
 }
 
 /* Inverted */
@@ -6691,6 +6691,7 @@ a.ui.inverted.grey.header:hover {
 .ui.centered.header,
 .ui.center.aligned.header {
   text-align: center;
+  margin-top:10px;
 }
 
 .ui.justified.header {
@@ -7174,7 +7175,7 @@ i.inverted.circular.teal.icon {
 /* Blue */
 
 i.blue.icon {
-  color: #2185d0 !important;
+  color: #2980b9 !important;
 }
 
 i.inverted.blue.icon {
@@ -7183,7 +7184,7 @@ i.inverted.blue.icon {
 
 i.inverted.bordered.blue.icon,
 i.inverted.circular.blue.icon {
-  background-color: #2185d0 !important;
+  background-color: #2980b9 !important;
   color: #ffffff !important;
 }
 
@@ -11798,15 +11799,15 @@ a.ui.teal.label:hover:before {
 
 .ui.blue.labels .label,
 .ui.blue.label {
-  background-color: #2185d0 !important;
-  border-color: #2185d0 !important;
+  background-color: #2980b9 !important;
+  border-color: #2980b9 !important;
   color: #ffffff !important;
 }
 
 .ui.labels .blue.label:before,
 .ui.blue.labels .label:before,
 .ui.blue.label:before {
-  background-color: #2185d0 !important;
+  background-color: #2980b9 !important;
 }
 
 .ui.blue.corner.label,
@@ -14677,11 +14678,11 @@ ol.ui.horizontal.list li:before,
 /* Blue */
 
 .ui.blue.segment:not(.inverted) {
-  border-top: 2px solid #2185d0;
+  border-top: 2px solid #2980b9;
 }
 
 .ui.inverted.blue.segment {
-  background-color: #2185d0 !important;
+  background-color: #2980b9 !important;
   color: #ffffff !important;
 }
 
@@ -16824,7 +16825,7 @@ ol.ui.horizontal.list li:before,
   -webkit-align-items: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;
-  padding: 0em;
+  padding: 15px;
 }
 
 /*----------------------
@@ -18384,7 +18385,7 @@ ol.ui.horizontal.list li:before,
 .ui.grid > .blue.row,
 .ui.grid > .blue.column,
 .ui.grid > .row > .blue.column {
-  background-color: #2185d0 !important;
+  background-color: #2980b9 !important;
   color: #ffffff;
 }
 
@@ -19286,7 +19287,7 @@ ol.ui.horizontal.list li:before,
 
 .ui.vertical.menu .item > .label {
   background: #999999;
-  color: #ffffff;
+  color: #16a085;
   margin-top: -0.15em;
   margin-bottom: -0.15em;
   padding: 0.3em 0.71428571em;
@@ -20281,8 +20282,8 @@ Floated Menu / Item
 
 .ui.menu .blue.active.item,
 .ui.blue.menu .active.item {
-  border-color: #2185d0 !important;
-  color: #2185d0 !important;
+  border-color: #2980b9 !important;
+  color: #2980b9 !important;
 }
 
 .ui.menu .violet.active.item,
@@ -20321,7 +20322,7 @@ Floated Menu / Item
 
 .ui.inverted.menu {
   border: 0px solid transparent;
-  background: #1b1c1d;
+  background: #2c3e50;
   box-shadow: none;
 }
 
@@ -20340,7 +20341,7 @@ Floated Menu / Item
 /*--- Border ---*/
 
 .ui.inverted.menu .item:before {
-  background: rgba(255, 255, 255, 0.08);
+  background: #2c3e50;
 }
 
 .ui.vertical.inverted.menu .item:before {
@@ -20533,7 +20534,7 @@ Floated Menu / Item
 /* Blue */
 
 .ui.inverted.blue.menu {
-  background-color: #2185d0;
+  background-color: #2980b9;
 }
 
 .ui.inverted.blue.menu .item:before {
@@ -21153,6 +21154,7 @@ Floated Menu / Item
 
 .ui.message > :last-child {
   margin-bottom: 0em;
+  margin-left:10px;
 }
 
 /*******************************
@@ -21230,7 +21232,6 @@ Floated Menu / Item
 }
 
 .ui.attached.icon.message {
-  display: block;
   width: auto;
 }
 
@@ -21461,7 +21462,7 @@ Floated Menu / Item
 
 .ui.blue.message {
   background-color: #dff0ff;
-  color: #2185d0;
+  color: #2980b9;
 }
 
 .ui.blue.message .header {
@@ -22221,11 +22222,11 @@ Floated Menu / Item
 /* Blue */
 
 .ui.blue.table {
-  border-top: 0.2em solid #2185d0;
+  border-top: 0.2em solid #2980b9;
 }
 
 .ui.inverted.blue.table {
-  background-color: #2185d0 !important;
+  background-color: #2980b9 !important;
   color: #ffffff !important;
 }
 
@@ -23634,7 +23635,7 @@ a.ui.card:hover,
 .ui.blue.cards > .card,
 .ui.cards > .blue.card,
 .ui.blue.card {
-  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #2185d0, 0px 1px 3px 0px #d4d4d5;
+  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #2980b9, 0px 1px 3px 0px #d4d4d5;
 }
 
 .ui.blue.cards > .card:hover,
@@ -25594,7 +25595,7 @@ a.ui.card:hover,
 .ui.blue.statistics .statistic > .value,
 .ui.statistics .blue.statistic > .value,
 .ui.blue.statistic > .value {
-  color: #2185d0;
+  color: #2980b9;
 }
 
 .ui.violet.statistics .statistic > .value,
@@ -26054,6 +26055,7 @@ a.ui.card:hover,
 .ui.accordion .active.content,
 .ui.accordion .accordion .active.content {
   display: block;
+
 }
 
 /*******************************
@@ -26656,7 +26658,7 @@ a.ui.card:hover,
 
 .ui.toggle.checkbox input:checked ~ .box:before,
 .ui.toggle.checkbox input:checked ~ label:before {
-  background-color: #2185d0;
+  background-color: #2980b9;
 }
 
 .ui.toggle.checkbox input:checked ~ .box:after,
@@ -30152,7 +30154,7 @@ a.ui.nag {
 /* Blue */
 
 .ui.blue.progress .bar {
-  background-color: #2185d0;
+  background-color: #2980b9;
 }
 
 .ui.blue.inverted.progress .bar {
@@ -31248,7 +31250,7 @@ body.pushable {
 }
 
 body.pushable > .pusher {
-  background: #ffffff;
+  background: #ecf0f1;
 }
 
 /* Pusher should inherit background from context */
@@ -32642,11 +32644,11 @@ html.ios body {
 /* Blue */
 
 .ui.blue.table {
-  border-top: 0.2em solid #2185d0;
+  border-top: 0.2em solid #2980b9;
 }
 
 .ui.inverted.blue.table {
-  background-color: #2185d0 !important;
+  background-color: #2980b9 !important;
   color: #ffffff !important;
 }
 

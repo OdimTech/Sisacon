@@ -1,4 +1,8 @@
-﻿angular.module('app.landingPage.account').controller('LoginController', ['$scope', 'accountService', 'loggedUserService', '$window', 'toastr', 'blockUI', function ($scope, accountService, loggedUserService, $window, toastr, blockUI) {
+﻿angular.module('app.landingPage.account')
+
+    .controller('LoginController', ['$scope', 'accountService', 'loggedUserService', '$window', 'toastr', 'blockUI',
+
+    function ($scope, accountService, loggedUserService, $window, toastr, blockUI) {
 
     $scope.login = function () {
 

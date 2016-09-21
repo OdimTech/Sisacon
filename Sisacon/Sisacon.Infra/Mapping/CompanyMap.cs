@@ -62,7 +62,9 @@ namespace Sisacon.Infra.Mapping
 
             HasOptional(x => x.Address);
 
-            //HasRequired(x => x.Contact);
+            HasOptional(x => x.Contact);
+
+            HasRequired(x => x.User);
         }
     }
 }

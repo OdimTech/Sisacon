@@ -23,15 +23,50 @@
     </div>
 </div>
 <div class="ui twelve wide stackable centered column">
-    <form class="ui form" novalidate ng-submit="">
+    <form class="ui form" name="companyForm" novalidate ng-submit="">
         <div class="ui small stackable attached icon teal message">
             <i class="material-icons">&#xE3F4;</i>
             <div class="header">
                 Logotipo
             </div>
         </div>
-        <div class="ui form attached stackable fluid segment">
+        <div class="ui attached stackable fluid segment"  ng-init="company.logo.eFormatImg = 1">
+            <div class="ui stackable grid">
+                <div class="ui four wide stackable column">
 
+                    <img ngf-src="company.logo.urlPathLogo || defaultLogo" class="ui medium centered bordered image" ng-class="{'circular': company.logo.eFormatImg == 1}" />
+                    <br />
+
+                    <div class="ui buttons">
+
+                        <button ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" name="file" ng-model="company.logo.urlPathLogo" class="ui left attached primary fluid button">
+                            Escolher Imagem
+                        </button>
+
+                        <button class="ui right attached icon red button" ng-click="company.logo.urlPathLogo = logoDefault" name="removeImg" data-content="Excluir imagem atual" data-variation="inverted">
+                            <i class="close icon"></i>
+                        </button>
+
+                    </div>
+                </div>
+                <div class="ui six wide stackable column">
+                    <div class="grouped fields">
+                        <label>Escolha o formato padrão para exibição</label>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input name="format" checked="checked" type="radio" ng-click="company.logo.eFormatImg = 1">
+                                <label>Circular</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input name="format" type="radio" ng-click="company.logo.eFormatImg = 2">
+                                <label>Quadrado</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="ui small  stackable attached icon teal message">
             <i class="material-icons">&#xE14F;</i>
@@ -53,13 +88,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="four wide field" ng-show="show_cnpj">
+                <div class="field">
+                    <label>&nbsp</label>
+                    <button class="ui circular icon yellow button" data-content="Caso voçê já possua um CNPJ, Selecione a opção Pessoa Jurídica, e informe-o ao lado." data-variation="inverted">
+                        <i class="info icon"></i>
+                    </button>
+                </div>
+                <div class="three wide field" ng-show="show_cnpj">
                     <label for="cnpj">CNPJ</label>
                     <input type="text" name="cnpj" class="ui input" ui-mask="99.999.999/9999-99" ng-model="scope.cnpj" />
                 </div>
-                <div class="four wide field" ng-show="show_cpf">
+                <div class="three wide field" ng-show="show_cpf">
                     <label for="cpf">CPF</label>
                     <input type="text" name="cpf" class="ui input" ui-mask="999.999.999-99" ng-model="scope.cpf" />
+                </div>
+                <div class="eight wide field">
+                    <label for="ramoAtuacao">Ramo de Atuação</label>
+                    <div class="ui selection dropdown">
+                        <input type="hidden" />
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Selecione</div>
+                        <div class="menu">
+                            <div class="item" data-value="1">Artigos para Festas</div>
+                            <div class="item" data-value="2"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="fields" ng-show="show_cpf">
@@ -78,20 +131,6 @@
                     <input type="text" name="nomeFantasia" class="ui input" />
                 </div>
             </div>
-            <div class="fields">
-                <div class="four wide stackable field">
-                    <label for="ramoAtuacao">Ramo Atuação</label>
-                    <div class="ui selection dropdown">
-                        <input type="hidden" />
-                        <i class="dropdown icon"></i>
-                        <div class="default text">Selecione</div>
-                        <div class="menu">
-                            <div class="item" data-value="1">Artigos para Festas</div>
-                            <div class="item" data-value="2"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="ui small stackable attached icon teal message">
             <i class="material-icons">&#xE55B;</i>
@@ -100,9 +139,17 @@
             </div>
         </div>
         <div class="ui form attached stackable fluid segment">
-            <div class="two wide field">
-                <label for="cep">CEP</label>
-                <input type="text" name="cep" ng-model="company.address.cep" ng-blur="getAddress(company.address.cep)" class="ui input" ui-mask="99999-999" />
+            <div class="fields">
+                <div class="two wide field">
+                    <label for="cep">CEP</label>
+                    <input type="text" name="cep" ng-model="company.address.cep" ng-blur="getAddress(company.address.cep)" class="ui input" ui-mask="99999-999" />
+                </div>
+                <div class="field">
+                    <label>&nbsp</label>
+                    <button class="ui circular icon yellow button" data-content="Informe o Cep para que possamos preencher o Endereço para voçê" data-variation="inverted">
+                        <i class="info icon"></i>
+                    </button>
+                </div>
             </div>
             <div class="fields">
                 <div class="eight wide field">
@@ -130,7 +177,7 @@
                 </div>
                 <div class="four wide field">
                     <label>Estado</label>
-                    <input type="text" name="estado" ng-model="company.address.Estado" class="ui input" />
+                    <input type="text" name="estado" ng-model="company.address.estado" class="ui input" />
                 </div>
             </div>
         </div>

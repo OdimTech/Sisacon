@@ -79,6 +79,15 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Erro ao criar Empresa..
+        /// </summary>
+        internal static string ErrInsertCompany {
+            get {
+                return ResourceManager.GetString("ErrInsertCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erro ao criar novo Usuário..
         /// </summary>
         internal static string ErrInsertUser {
@@ -112,6 +121,15 @@ namespace Sisacon.BLL {
         internal static string ProcessError {
             get {
                 return ResourceManager.GetString("ProcessError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sua nova Empresa foi criada com Sucesso!.
+        /// </summary>
+        internal static string SucInsertCompany {
+            get {
+                return ResourceManager.GetString("SucInsertCompany", resourceCulture);
             }
         }
         

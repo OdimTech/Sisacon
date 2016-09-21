@@ -1,4 +1,4 @@
-﻿angular.module('app', ['app.admin', 'app.index', 'app.landingPage', 'toastr', 'blockUI'])
+﻿angular.module('app', ['app.admin', 'app.index', 'app.landingPage', 'toastr', 'blockUI', 'ngFileUpload'])
 
     .config(function (toastrConfig) {
 

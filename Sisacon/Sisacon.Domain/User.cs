@@ -17,5 +17,6 @@ namespace Sisacon.Domain
         public DateTime RegistrationDate { get; set; }
         public DateTime? ExclusionDate { get; set; }
         public bool ShowWellcomeMessage { get; set; }
+        public virtual Company Company { get; set; }
     }
 }

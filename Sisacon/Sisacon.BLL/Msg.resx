@@ -123,6 +123,9 @@
   <data name="ErrFailedLogon" xml:space="preserve">
     <value>O E-mail ou a Senha informada está incorreta.</value>
   </data>
+  <data name="ErrInsertCompany" xml:space="preserve">
+    <value>Erro ao criar Empresa.</value>
+  </data>
   <data name="ErrInsertUser" xml:space="preserve">
     <value>Erro ao criar novo Usuário.</value>
   </data>
@@ -135,6 +138,9 @@ Entre em contato com o suporte para mais informações.</value>
   </data>
   <data name="ProcessError" xml:space="preserve">
     <value>Ops! Algo de errado aconteceu, favor tente novamente mais tarde.</value>
+  </data>
+  <data name="SucInsertCompany" xml:space="preserve">
+    <value>Sua nova Empresa foi criada com Sucesso!</value>
   </data>
   <data name="SucInsertUser" xml:space="preserve">
     <value>Usuário criado com Sucesso!</value>

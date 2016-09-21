@@ -1,8 +1,8 @@
 ﻿angular.module('app.landingPage.account')
 
-    .controller('SingUpController', ['$scope', 'viaCepService', 'accountService', 'loggedUserService', '$window', '$timeout',
+    .controller('SingUpController', ['$scope', 'viaCepService', 'accountService', 'loggedUserService', '$window', '$timeout', 'toastr',
 
-        function ($scope, viaCepService, accountService, loggedUserService, $window, toastr, $timeout) {
+        function ($scope, viaCepService, accountService, loggedUserService, $window, $timeout, toastr ) {
 
             'use strict';
 

@@ -1,5 +1,6 @@
 ﻿using Sisacon.Domain;
 using System.Data.Entity.ModelConfiguration;
+using System.Data.Entity.ModelConfiguration.Configuration;
 
 namespace Sisacon.Infra.Mapping
 {
@@ -55,6 +56,10 @@ namespace Sisacon.Infra.Mapping
                 .HasColumnName("SHOW_WELLCOME")
                 .IsRequired()
                 .HasColumnType("bit");
+
+            HasOptional(x => x.Company)
+                .WithRequired(x => x.User)
+                .Map(configurationAction: new System.Action<ForeignKeyAssociationMappingConfiguration>(x => x.MapKey("USER_ID")));
         }
     }
 }

@@ -16,8 +16,9 @@ namespace Sisacon.Domain
         public string CompanyName { get; set; }
         public string FantasyName { get; set; }
         public string SocialReasonName { get; set; }
+        public string UrlPathLogo { get; set; }
         public virtual Address Address { get; set; }
         public virtual Contact Contact { get; set; }
-        public string UrlPathLogo { get; set; }
+        public virtual User User { get; set; }
     }
 }

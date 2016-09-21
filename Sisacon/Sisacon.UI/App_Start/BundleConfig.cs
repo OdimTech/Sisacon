@@ -18,6 +18,8 @@ namespace Sisacon.UI
                 "~/bower_components/angular-ui-mask/dist/mask.js",
                 "~/Scripts/angular-toastr.tpls.js",
                 "~/Scripts/angular-block-ui.js",
+                "~/Sctipts/ng-file-upload-shim.js",
+                "~/Scripts/ng-file-upload.js",
                 //MODULES
                 "~/app/js/app.module.js",
                 "~/app/js/modules/admin/admin.module.js",

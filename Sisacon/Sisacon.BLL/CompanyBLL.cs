@@ -19,10 +19,15 @@ namespace Sisacon.BLL
             try
             {
                 response.Quantity = companyDAL.save(company);
+                response.Value = company;
 
-                if(response.Quantity > 0)
+                if (response.Quantity > 0)
                 {
-                    response.Value = company;
+                    response.Message = Msg.SucInsertCompany;
+                }
+                else
+                {
+                    response.Message = Msg.ErrInsertCompany;
                 }
             }
             catch (Exception ex)

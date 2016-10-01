@@ -19,7 +19,6 @@
                     templateUrl: '/app/views/account/login.html',
                     controller: 'LoginController'
                 });
-
     }]);
 
 })();

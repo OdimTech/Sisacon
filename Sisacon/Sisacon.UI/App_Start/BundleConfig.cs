@@ -30,6 +30,10 @@ namespace Sisacon.UI
                 "~/app/js/config/toastr.config.js",
                 "~/app/js/config/blockUI.config.js",
                 "~/app/js/config/localStorage.config.js",
+                "~/app/js/config/interceptors.config.js",
+                //INTERCEPTORS
+                "~/app/js/interceptors/timestamp.interceptor.js",
+                "~/app/js/interceptors/error.interceptor.js",
                 //SERVICES
                 "~/app/js/services/account.service.js",
                 "~/app/js/services/viaCep.service.js",

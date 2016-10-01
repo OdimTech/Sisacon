@@ -24,6 +24,14 @@
 
                     templateUrl: '/app/views/estimate/estimateDashboard.html',
                     controller: 'EstimateController'
+                })
+                .when('/errorPage', {
+
+                    templateUrl: '/app/views/errorPage.html'  
+                })
+                .otherwise({
+
+                    redirectTo: '/app/views/pageNotFound.html'
                 });
 
         }]);

@@ -139,6 +139,7 @@
   <ItemGroup>
     <Content Include="app\js\app.module.js" />
     <Content Include="app\js\config\blockUI.config.js" />
+    <Content Include="app\js\config\interceptors.config.js" />
     <Content Include="app\js\config\localStorage.config.js" />
     <Content Include="app\js\config\routes\indexRoutes.config.js" />
     <Content Include="app\js\config\routes\landingPageRoutes.config.js" />
@@ -153,6 +154,8 @@
     <Content Include="app\js\controllers\base\landingPage.controller.js" />
     <Content Include="app\js\controllers\initialDashboard.controller.js" />
     <Content Include="app\js\directives\validateEmail.directive.js" />
+    <Content Include="app\js\interceptors\error.interceptor.js" />
+    <Content Include="app\js\interceptors\timestamp.interceptor.js" />
     <Content Include="app\js\services\account.service.js" />
     <Content Include="app\js\services\company.service.js" />
     <Content Include="app\js\services\localStorage.service.js" />
@@ -163,8 +166,10 @@
     <Content Include="app\views\company\company.html" />
     <Content Include="app\views\entries\clientList.html" />
     <Content Include="app\views\entries\newClient.html" />
+    <Content Include="app\views\errorPage.html" />
     <Content Include="app\views\estimate\estimateDashboard.html" />
     <Content Include="app\views\InitialDashboard.html" />
+    <Content Include="app\views\pageNotFound.html" />
     <Content Include="bower_components\angular-local-storage\demo\demo-app.js" />
     <Content Include="bower_components\angular-local-storage\demo\demo-style.css" />
     <Content Include="bower_components\angular-local-storage\demo\demo.html" />
@@ -1019,8 +1024,6 @@
     <Content Include="bower_components\angular-local-storage\package.json" />
     <Content Include="bower_components\angular-local-storage\README.md" />
     <Content Include="package.json" />
-    <Content Include="node_modules\.bin\jshint" />
-    <Content Include="node_modules\.bin\jshint.cmd" />
     <Content Include="node_modules\jshint\bin\apply" />
     <Content Include="node_modules\jshint\bin\build" />
     <Content Include="node_modules\jshint\bin\jshint" />

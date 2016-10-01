@@ -26,15 +26,15 @@
 
                 params: { email: email }
             });
-        };
+        }
 
         function getUserById(id) {
 
-            return $http.get(apiUrl + 'api/user', {
+            return $http.get(apiUrl + 'api/user1', {
 
                 params: { id: id }
             });
-        };
+        }
 
         function createUser(user) {
 
@@ -51,7 +51,7 @@
                 async: true,
                 data: userCredentials
             });
-        };
+        }
 
         function loginUser(user) {
 
@@ -63,8 +63,8 @@
                     email: user.email
                 }
             });
-        };
-    };
+        }
+    }
 
 })();
 

@@ -31,7 +31,7 @@
                 })
                 .otherwise({
 
-                    redirectTo: '/app/views/pageNotFound.html'
+                    templateUrl: 'app/views/pageNotFound.html'
                 });
 
         }]);

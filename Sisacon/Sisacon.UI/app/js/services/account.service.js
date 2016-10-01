@@ -30,7 +30,7 @@
 
         function getUserById(id) {
 
-            return $http.get(apiUrl + 'api/user1', {
+            return $http.get(apiUrl + 'api/user', {
 
                 params: { id: id }
             });

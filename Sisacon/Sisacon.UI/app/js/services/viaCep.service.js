@@ -1,14 +1,26 @@
-﻿angular.module('app').factory('viaCepService', function ($http) {
+﻿(function () {
 
     'use strict';
 
-    var _getAddress = function (cep) {
+    angular
+        .module('app')
+        .factory('viaCepService', viaCepService);
 
-        return $http.get('http://viacep.com.br/ws/' + cep + '/json/ ');
+    function viaCepService($http) {
+
+        var service = {
+
+            getAddress: getAddress
+        };
+
+        return service;
+
+        function getAddress(cep) {
+
+            return $http.get('http://viacep.com.br/ws/' + cep + '/json/ ');
+
+        };
     };
 
-    return {
+})();
 
-        getAddress: _getAddress
-    }
-});

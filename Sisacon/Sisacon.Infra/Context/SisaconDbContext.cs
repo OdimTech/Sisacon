@@ -18,6 +18,8 @@ namespace Sisacon.Infra.Context
         public DbSet<User> User { get; set; }
         public DbSet<Company> Company { get; set; }
         public DbSet<Address> Address { get; set; }
+        public DbSet<Contact> Contact { get; set; }
+        public DbSet<OccupationArea> OccupationArea { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

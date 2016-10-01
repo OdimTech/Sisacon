@@ -79,6 +79,15 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Não foi possível encontrar as Áreas de Atuação.
+        /// </summary>
+        internal static string ErrFailedToLoadOccupation {
+            get {
+                return ResourceManager.GetString("ErrFailedToLoadOccupation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erro ao criar Empresa..
         /// </summary>
         internal static string ErrInsertCompany {

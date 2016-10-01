@@ -1,31 +1,30 @@
 namespace Sisacon.Infra.Migrations
 {
+    using Domain;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Sisacon.Infra.Context.SisaconDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Context.SisaconDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(Sisacon.Infra.Context.SisaconDbContext context)
+        protected override void Seed(Context.SisaconDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            context.OccupationArea.AddOrUpdate(
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+                x => x.Descrption,
+
+                new OccupationArea { Descrption = "Pintura" },
+                new OccupationArea { Descrption = "Marcenaria" },
+                new OccupationArea { Descrption = "Serralheria" },
+                new OccupationArea { Descrption = "Alimentos" },
+                new OccupationArea { Descrption = "Bijouterias" },
+                new OccupationArea { Descrption = "Decoração" });
         }
     }
 }

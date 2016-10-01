@@ -21,7 +21,7 @@ namespace Sisacon.UI.Controllers.account
             var user = new User();
             var filesBLL = new FilesBLL(ApplicationPath);
 
-            user.Active = true;
+            user.Active = true;//Essa propriedade deve ser false, mas até o oAuth ser implementado ficará com true
             user.Email = userCredentials["email"].ToString();
             user.eUserType = eUserType.User;
             user.ExclusionDate = null;

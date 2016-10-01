@@ -1,38 +1,42 @@
-﻿angular.module('app').directive('validateEmail', ['valuesService', 'accountService', 'blockUI', function (valuesService, accountService, blockUI) {
+﻿(function () {
 
-    return {
+    angular.module('app').directive('validateEmail', ['valuesService', 'accountService', 'blockUI', function (valuesService, accountService, blockUI) {
 
-        restrict: 'A',
-        require: ['ngModel'],
-        replace: true,
-        link: function (scope, element, attrs, ctrl) {
+        return {
 
-            element.bind('blur', function () {
+            restrict: 'A',
+            require: ['ngModel'],
+            replace: true,
+            link: function (scope, element, attrs, ctrl) {
 
-                var email = ctrl[0];
+                element.bind('blur', function () {
 
-                if (email.$valid) {
+                    var email = ctrl[0];
 
-                    blockUI.start("Validando E-mail...");
+                    if (email.$valid) {
 
-                    accountService.getUsedEmail(email.$viewValue).success(function (response) {
+                        blockUI.start("Validando E-mail...");
 
-                        blockUI.stop();
+                        accountService.getUsedEmail(email.$viewValue).success(function (response) {
 
-                        if (response.logicalTest) {
+                            blockUI.stop();
 
-                            scope.errorMessage = response.message;
-                            email.$valid = false;
-                        }
+                            if (response.logicalTest) {
 
-                    }).error(function (response) {
+                                scope.errorMessage = response.message;
+                                email.$valid = false;
+                            }
 
-                        blockUI.stop();
-                    })
-                }
-            });
-        }
-    };
-}]);
+                        }).error(function (response) {
 
+                            blockUI.stop();
+                        });
+                    }
+                });
+            }
+        };
+    }]);
+
+
+})();
 

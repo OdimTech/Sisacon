@@ -1,10 +1,10 @@
-﻿
+
 (function () {
 
     'use strict';
 
     angular
-        .module('app.entries')
+        .module('app')
         .controller('ClientController', ClientController);
 
     ClientController.$inject = [];
@@ -13,5 +13,6 @@
 
         
 
-    };
-});
+    }
+    
+})();

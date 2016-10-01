@@ -20,19 +20,22 @@ namespace Sisacon.UI
                 "~/Scripts/angular-block-ui.js",
                 "~/Sctipts/ng-file-upload-shim.js",
                 "~/Scripts/ng-file-upload.js",
-                //MODULES
+                "~/bower_components/angular-local-storage/dist/angular-local-storage.js",
+                //MODULE
                 "~/app/js/app.module.js",
-                "~/app/js/modules/admin/admin.module.js",
-                "~/app/js/modules/index/index.module.js",
-                "~/app/js/modules/landingPage/landingPage.module.js",
-                "~/app/js/modules/index/entries.module.js",
-                "~/app/js/modules/index/estimate.module.js",
-                "~/app/js/modules/landingPage/account.module.js",
+                //CONFIG-ROUTES
+                "~/app/js/config/routes/indexRoutes.config.js",
+                "~/app/js/config/routes/landingPageRoutes.config.js",
+                //CONFIG
+                "~/app/js/config/toastr.config.js",
+                "~/app/js/config/blockUI.config.js",
+                "~/app/js/config/localStorage.config.js",
                 //SERVICES
                 "~/app/js/services/account.service.js",
                 "~/app/js/services/viaCep.service.js",
                 "~/app/js/services/values.service.js",
-                "~/app/js/services/loggedUser.service.js",
+                "~/app/js/services/company.service.js",
+                "~/app/js/services/localStorage.service.js",
                 //CONTROLLERS
                 "~/app/js/controllers/base/admin.controller.js",
                 "~/app/js/controllers/base/index.controller.js",

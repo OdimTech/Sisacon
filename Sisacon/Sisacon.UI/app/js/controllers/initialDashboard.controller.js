@@ -1,31 +1,17 @@
-﻿angular.module('app.index').controller('InitialDashboardController', ['$scope', '$routeParams', 'accountService', 'loggedUserService', function ($scope, $routeParams, accountService, loggedUserService) {
+﻿(function () {
 
-    $scope.loggedUser = {};
+    'use strict';
 
-    var idUser = $routeParams.id;
+    angular
+        .module('app')
+        .controller('InitialDashboardController', InitialDashBoardController);
 
-    if(idUser > 0)
-    {
-        accountService.getUserById(idUser).success(function (response) {
+    InitialDashBoardController.$inject = ['$scope', 'accountService'];
 
-            //Carrega os dados do usuário logado, e envia para o service LoggedUser
-            $scope.loggedUser = response.value;
-            loggedUserService.setUser(response.value);
+    function InitialDashBoardController($scope, accountService) {
 
-            if($scope.loggedUser.showWellcomeMessage)
-            {
-                showWellcomeMessage();
-            }
-
-        }).error(function (response) {
-
-            console.log(response);
-        })
+     
     }
 
-    function showWellcomeMessage() {
+})();
 
-
-    }
-
-}]);

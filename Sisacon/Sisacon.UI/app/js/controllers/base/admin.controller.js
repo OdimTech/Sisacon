@@ -1,25 +1,37 @@
-﻿angular.module('app').controller('AdminController', ['$scope', function ($scope) {
+﻿(function () {
 
     'use strict';
 
-    //INIT CONTROLS
-    angular.element('#sidebar').accordion({
+    angular
+        .module('app')
+        .controller('AdminController', AdminController);
 
-        on: 'click',
-        collapsible: true,
-        exclusive: true
+    AdminController.$inject = ['$scope'];
 
-    }).accordion();
+    function AdminController($scope) {
 
-    $scope.openMenu = function () {
+        //INIT CONTROLS
+        angular.element('#sidebar').accordion({
 
-        angular.element('#sidebar').sidebar({
+            on: 'click',
+            collapsible: true,
+            exclusive: true
 
-            closable: true,
-            transition: 'overlay',
-            dimPage: true
+        }).accordion();
 
-        }).sidebar('toggle');
-    };
-}]);
+        $scope.openMenu = function () {
+
+            angular.element('#sidebar').sidebar({
+
+                closable: true,
+                transition: 'overlay',
+                dimPage: true
+
+            }).sidebar('toggle');
+        };
+    }
+
+})();
+
+
 

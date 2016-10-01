@@ -1,6 +1,15 @@
-﻿angular.module('app').controller('LandPageController', ['$scope', function ($scope) {
+﻿(function () {
 
+    angular
+        .module('app')
+        .controller('LandingPageController', LandingPageController);
+
+    LandingPageController.$inject = [];
+
+    function LandingPageController() {
+        
+    }
     
+})();
 
-}]);
 

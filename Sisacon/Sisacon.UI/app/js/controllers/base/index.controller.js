@@ -1,35 +1,61 @@
-﻿angular.module('app.index').controller('IndexController', ['$scope', 'accountService', 'loggedUserService', function ($scope, accountService, loggedUserService) {
+﻿(function () {
 
-    $scope.account = {};
+    'use strict';
 
-    $scope.openMenu = function () {
+    angular
+        .module('app')
+        .controller('IndexController', IndexController);
 
-        angular.element('#sidebar').sidebar({
+    IndexController.$inject = ['$scope', 'accountService', 'localStorageService'];
 
-            closable: true,
-            transition: 'overlay',
-            dimPage: true
+    function IndexController($scope, accountService, localStorageService) {
 
-        }).sidebar('toggle');
-    };
+        $scope.loggedUser = {};
+        getUserFromServer();
 
-    //INIT CONTROLS
-    angular.element('#account').popup({
+        //INIT CONTROLS
+        angular.element('#account').popup({
 
-        inline: true,
-        hoverable: true,
-        popup: '#accountPopUp',
-        on: 'click',
-        position: 'bottom right'
+            inline: true,
+            hoverable: true,
+            popup: '#accountPopUp',
+            on: 'click',
+            position: 'bottom right'
 
-    });
+        });
 
-    angular.element('#sidebar').accordion({
+        angular.element('#sidebar').accordion({
 
-        on: 'click',
-        collapsible: true,
-        exclusive: true
+            on: 'click',
+            collapsible: true,
+            exclusive: true
 
-    }).accordion();
+        }).accordion();
 
-}]);
+        //FUNCTIONS
+        $scope.openMenu = function () {
+
+            angular.element('#sidebar').sidebar({
+
+                closable: true,
+                transition: 'overlay',
+                dimPage: true
+
+            }).sidebar('toggle');
+        };
+
+        function getUserFromServer() {
+
+            accountService.getUserById(localStorageService.get('id')).success(function (response) {
+
+                $scope.loggedUser = response.value;
+
+            }).error(function (response) {
+
+                console.log(response);
+            });
+        }
+    }
+
+})();
+

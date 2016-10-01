@@ -1,12 +1,13 @@
 ﻿<div class="ui four wide centered column">
     <form class="ui form" name="loginForm" ng-submit="login()" novalidate>
         <br />
-        <br />
         <div class="ui stackable segment">
             <h2 class="ui center aligned icon header">
                 <i class="circular line chart icon"></i>
                 Acessar Sisacon
             </h2>
+
+            <!--EMAIL-->
             <div class="ui required field" ng-class="{'error' : !loginForm.email.$valid && (loginForm.$submitted || !loginForm.email.$pristine)}">
                 <label for="email">Email</label>
                 <input type="email" ng-model="account.email" name="email" class="ui input" required/>
@@ -15,6 +16,8 @@
                     <div ng-show="loginForm.email.$error.email">O E-mail informado não é válido</div>
                 </div>
             </div>
+
+            <!--SENHA-->
             <div class="required field" ng-class="{'error' : !loginForm.password.$valid && (loginForm.$submitted || !loginForm.password.$pristine)}">
                 <label for="password">Senha</label>
                 <input type="password" ng-model="account.password" name="password" class="ui input" required/>
@@ -22,9 +25,13 @@
                     <div ng-show="loginForm.password.$error.required">A Senha é Obrigatória</div>
                 </div>
             </div>
+
+            <!--RECUPERAR SENHA-->
             <div class="field">
                 <a href="#" >Esqueceu sua senha?</a>
             </div>
+
+            <!--LOGAR-->
             <div class="field">
                 <button type="submit" class="ui fluid positive button">
                     Entrar

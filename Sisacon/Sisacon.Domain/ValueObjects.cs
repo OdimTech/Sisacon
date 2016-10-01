@@ -7,5 +7,6 @@
         public enum eOperationType : short { Insert = 1, Update = 2, Select = 3, Delete = 4 };
         public enum ePersonType : short { Fisica = 1, Juridica = 2};
         public enum eFormatImg : short { Circular = 1, Quadrado = 2 };
+        public enum eOccupationArea : short { Pintura = 1, Marcenaria = 2, Serralheria = 3, Alimentos = 4, Bijouterias = 5, Decoração = 6 };
     }
 }

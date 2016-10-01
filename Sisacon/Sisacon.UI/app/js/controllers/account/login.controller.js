@@ -1,29 +1,37 @@
-﻿angular.module('app.landingPage.account')
+﻿(function () {
 
-    .controller('LoginController', ['$scope', 'accountService', 'loggedUserService', '$window', 'toastr', 'blockUI',
+    'use strict';
 
-    function ($scope, accountService, loggedUserService, $window, toastr, blockUI) {
+    angular
+        .module('app')
+        .controller('LoginController', LoginController);
 
-    $scope.login = function () {
+    LoginController.$inject = ['$scope', 'accountService', 'localStorageService', 'toastr', 'blockUI', '$window'];
 
-        if ($scope.loginForm.$valid) {
+    function LoginController($scope, accountService, localStorageService,toastr, blockUI, $window) {
 
-            blockUI.start('Validando Informações...');
+        $scope.login = function () {
 
-            accountService.loginUser($scope.account).success(function (response) {
+            if ($scope.loginForm.$valid) {
 
-                blockUI.stop();
+                blockUI.start('Validando Informações...');
 
-                $window.location.href = 'Index#/initialDashboard/' + response.value.id;
+                accountService.loginUser($scope.account).success(function (response) {
 
-            }).error(function (response) {
-                
-                blockUI.stop();
+                    blockUI.stop();
 
-                toastr.error(response.message);
+                    localStorageService.set('id', response.value.id);
+                    $window.location.href = 'Index#/initialDashboard';
 
-            });
-        }
+                }).error(function (response) {
+
+                    blockUI.stop();
+                    toastr.error(response.message);
+
+                });
+            }
+        };
     }
 
-}]);
+})();
+

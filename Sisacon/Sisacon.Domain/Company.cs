@@ -17,6 +17,8 @@ namespace Sisacon.Domain
         public string FantasyName { get; set; }
         public string SocialReasonName { get; set; }
         public string UrlPathLogo { get; set; }
+        public eFormatImg eFormatImg { get; set; }
+        public virtual OccupationArea OccupationArea { get; set; }
         public virtual Address Address { get; set; }
         public virtual Contact Contact { get; set; }
         public virtual User User { get; set; }

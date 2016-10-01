@@ -37,5 +37,42 @@ namespace Sisacon.BLL
 
             return response;
         }
+
+        /// <summary>
+        /// Obtem a empresa do banco a partir de um Usuário
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public ResponseMessage<Company> getCompanyByUser(int user)
+        {
+            var response = new ResponseMessage<Company>();
+
+            try
+            {
+                response.Value = companyDAL.getCompanyByUser(user);
+            }
+            catch (Exception ex)
+            {
+                return LogBLL<Company>.createLog(ex);
+            }
+
+            return response;
+        }
+
+        public ResponseMessage<Company> update(Company company)
+        {
+            var response = new ResponseMessage<Company>();
+
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                return LogBLL<Company>.createLog(ex);                
+            }
+
+            return response;
+        }
     }
 }

@@ -1,60 +1,70 @@
-﻿angular.module('app.landingPage.account').factory('accountService', function ($http, valuesService, blockUI) {
+﻿(function () {
 
     'use strict';
 
-    var apiUrl = valuesService.getApiUrl;
+    angular
+        .module('app')
+        .factory('accountService', accountService);
 
-    var _getUsedEmail = function (email) {
+    function accountService($http, valuesService) {
 
-        return $http.get(apiUrl + 'api/user', {
+        var apiUrl = valuesService.getApiUrl;
 
-            params: { email: email }
-        });
-    };
+        var service = {
 
-    var _getUserById = function (id) {
-
-        return $http.get(apiUrl + 'api/user', {
-
-            params: { id: id }
-        });
-    }
-
-    var _createUser = function (user) {
-
-        var userCredentials = {
-
-            pass: user.password,
-            email: user.email
+            getUsedEmail: getUsedEmail,
+            getUserById: getUserById,
+            createUser: createUser,
+            loginUser: loginUser
         };
 
-        return $http({
+        return service;
 
-            url: apiUrl + "api/user",
-            method: 'POST',
-            async: true,
-            data: userCredentials
-        });
-    };
+        function getUsedEmail(email) {
 
-    var _loginUser = function (user) {
+            return $http.get(apiUrl + 'api/user', {
 
-        return $http.get(apiUrl + "api/user", {
+                params: { email: email }
+            });
+        };
 
-            params: {
+        function getUserById(id) {
+
+            return $http.get(apiUrl + 'api/user', {
+
+                params: { id: id }
+            });
+        };
+
+        function createUser(user) {
+
+            var userCredentials = {
 
                 pass: user.password,
                 email: user.email
-            }
-        });
-    }
+            };
 
-    return {
+            return $http({
 
-        getUsedEmail: _getUsedEmail,
-        getUserById: _getUserById,
-        createUser: _createUser,
-        loginUser: _loginUser
-    }
+                url: apiUrl + "api/user",
+                method: 'POST',
+                async: true,
+                data: userCredentials
+            });
+        };
 
-});
+        function loginUser(user) {
+
+            return $http.get(apiUrl + "api/user", {
+
+                params: {
+
+                    pass: user.password,
+                    email: user.email
+                }
+            });
+        };
+    };
+
+})();
+

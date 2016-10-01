@@ -1,86 +1,92 @@
-﻿angular.module('app.landingPage.account')
+﻿(function () {
 
-    .controller('SingUpController', ['$scope', 'viaCepService', 'accountService', 'loggedUserService', '$window', '$timeout', 'toastr',
+    'use strict';
 
-        function ($scope, viaCepService, accountService, loggedUserService, $window, $timeout, toastr ) {
+    angular
+        .module('app')
+        .controller('SingUpController', SingUpController);
 
-            'use strict';
+    SingUpController.$inject = ['$scope', 'viaCepService', 'accountService', '$window', '$timeout', 'toastr'];
 
-            //INIT VALUES
-            $scope.account = {};
-            $scope.address = {};
-            $scope.termsAccepted = false;
+    function SingUpController($scope, viaCepService, accountService, $window, $timeout, toastr) {
 
-            //INIT CONTROLS
-            angular.element('.ui.dropdown').dropdown();
+        //INIT VALUES
+        $scope.account = {};
+        $scope.address = {};
+        $scope.termsAccepted = false;
 
-            angular.element('button').popup({
-                on: 'click',
-                position: 'top left'
-            });
+        //INIT CONTROLS
+        angular.element('.ui.dropdown').dropdown();
 
-            //METHODS
-            $scope.createUser = function () {
+        angular.element('button').popup({
+            on: 'click',
+            position: 'top left'
+        });
 
-                var password = $scope.singupForm.password.$viewValue;
-                var confirmPassword = $scope.singupForm.confirmPassword.$viewValue;
+        //METHODS
+        $scope.createUser = function () {
 
-                if ($scope.singupForm.$valid) {
+            var password = $scope.singupForm.password.$viewValue;
+            var confirmPassword = $scope.singupForm.confirmPassword.$viewValue;
 
-                    if (password !== confirmPassword) {
+            if ($scope.singupForm.$valid) {
 
-                        $scope.singupForm.confirmPassword.$validators.notEquals = function () {
+                if (password !== confirmPassword) {
 
-                            return true;
-                        };
+                    $scope.singupForm.confirmPassword.$validators.notEquals = function () {
 
-                        $scope.singupForm.confirmPassword.$valid = false;
-                        $scope.singupForm.$valid = false;
-                        return;
+                        return true;
+                    };
+
+                    $scope.singupForm.confirmPassword.$valid = false;
+                    $scope.singupForm.$valid = false;
+                    return;
+                }
+                else {
+
+                    $scope.singupForm.confirmPassword.$validators.notEquals = function () {
+
+                        return false;
+                    };
+
+                    $scope.singupForm.confirmPassword.$valid = true;
+                    $scope.singupForm.$valid = true;
+                }
+
+                accountService.createUser($scope.account).success(function (response) {
+
+                    if (response.quantity > 0) {
+
+                        toastr.success(response.message);
+
+                        $timeout(function () {
+
+                            $window.location.href = '#/login';
+
+                        }, 3000);
                     }
-                    else {
-
-                        $scope.singupForm.confirmPassword.$validators.notEquals = function () {
-
-                            return false;
-                        };
-
-                        $scope.singupForm.confirmPassword.$valid = true;
-                        $scope.singupForm.$valid = true;
-                    }
-
-                    accountService.createUser($scope.account).success(function (response) {
-
-                        if (response.quantity > 0) {
-
-                            toastr.success(response.message);
-
-                            $timeout(function () {
-
-                                $window.location.href = '#/login';
-
-                            }, 3000);
-                        }
-                    })
+                })
                     .error(function (response) {
 
                         toastr.error(response.message);
                     });
-                }
-            };
+            }
+        };
 
-            $scope.AcceptedTerms = function () {
+        $scope.AcceptedTerms = function () {
 
-                if ($scope.termsAccepted) {
+            if ($scope.termsAccepted) {
 
-                    $scope.termsAccepted = false;
-                }
-                else {
+                $scope.termsAccepted = false;
+            }
+            else {
 
-                    $scope.termsAccepted = true;
-                }
-            };
-        }
-    ]);
+                $scope.termsAccepted = true;
+            }
+        };
+
+    }
+})();
+
 
 

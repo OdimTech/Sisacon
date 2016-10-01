@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('app.estimate')
+        .module('app')
         .controller('EstimateController', EstimateController);
 
     EstimateController.$inject = [];
@@ -12,5 +12,5 @@
 
 
 
-    };
-});
+    }
+})();

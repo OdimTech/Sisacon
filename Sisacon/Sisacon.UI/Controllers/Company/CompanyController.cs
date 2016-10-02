@@ -25,25 +25,25 @@ namespace Sisacon.UI.Controllers
 
             if (company != null)
             {
-                HttpRequestMessage request = this.Request;
-                if (!request.Content.IsMimeMultipartContent())
-                {
-                    throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
-                }
+                //HttpRequestMessage request = this.Request;
+                //if (!request.Content.IsMimeMultipartContent())
+                //{
+                //    throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+                //}
 
-                string root = System.Web.HttpContext.Current.Server.MapPath("~/App_Data");
-                var provider = new MultipartFormDataStreamProvider(root);
+                //string root = System.Web.HttpContext.Current.Server.MapPath("~/App_Data");
+                //var provider = new MultipartFormDataStreamProvider(root);
 
-                var task = request.Content.ReadAsMultipartAsync(provider).
-                    ContinueWith<HttpResponseMessage>(o =>
-                    {
+                //var task = request.Content.ReadAsMultipartAsync(provider).
+                //    ContinueWith<HttpResponseMessage>(o =>
+                //    {
 
-                        return new HttpResponseMessage()
-                        {
-                            Content = new StringContent("File uploaded.")
-                        };
-                    }
-                );
+                //        return new HttpResponseMessage()
+                //        {
+                //            Content = new StringContent("File uploaded.")
+                //        };
+                //    }
+                //);
 
                 if (company.Id == 0)
                 {

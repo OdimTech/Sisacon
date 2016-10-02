@@ -13,7 +13,7 @@
         </div>
         <a class="item" ng-click="submitForm()">
             <i class="save large icon"></i>
-            Salvar
+            {{btnSaveText}}
         </a>
         <div class="right menu">
             <a class="icon item">
@@ -82,11 +82,12 @@
                 <div class="four wide required field">
                     <label for="personType">Tipo Pessoa</label>
                     <select ng-model="company.ePersonType"
-                            ng-options="item.Type as item.Desc for item in userTypes"
+                            ng-options="item.id as item.desc for item in userTypes"
                             ng-selected="company.ePersonType"
                             name="personType"
                             required></select>
                 </div>
+
                 <div class="field">
                     <label>&nbsp</label>
                     <button type="button" class="ui circular icon yellow button" data-content="Caso voçê já possua um CNPJ, Selecione a opção Pessoa Jurídica, e informe-o ao lado." data-variation="inverted">
@@ -96,13 +97,13 @@
 
                 <!--CNPJ-->
                 <div class="three wide required field"
-                     ng-show="company.ePersonType == '2'"
+                     ng-show="company.ePersonType === 2"
                      ng-class="{'error' : !companyForm.cnpj.$valid && (companyForm.$submitted || !companyForm.cnpj.$pristine)}">
 
                     <label for="cnpj">CNPJ</label>
                     <input type="text" name="cnpj" class="ui input" ui-mask="99.999.999/9999-99"
                            ng-model="company.cnpj"
-                           ng-required="company.ePersonType == '2'" />
+                           ng-required="company.ePersonType === 2" />
 
                     <div class="ui pointing red basic label" ng-show="!companyForm.cnpj.$valid && (companyForm.$submitted || !companyForm.cnpj.$pristine)">
                         <div ng-show="!companyForm.cnpj.$valid">O CNPJ é Obrigatório</div>
@@ -110,12 +111,12 @@
                 </div>
                 <!--CPF-->
                 <div class="three wide required field"
-                     ng-show="company.ePersonType == '1'"
+                     ng-show="company.ePersonType === 1"
                      ng-class="{'error' : !companyForm.cpf.$valid && (companyForm.$submitted || !companyForm.cpf.$pristine)}">
                     <label for="cpf">CPF</label>
                     <input type="text" name="cpf" class="ui input" ui-mask="999.999.999-99"
                            ng-model="company.cpf"
-                           ng-required="company.ePersonType == '1'" />
+                           ng-required="company.ePersonType === 1" />
                     <div class="ui pointing red basic label" ng-show="!companyForm.cpf.$valid && (companyForm.$submitted || !companyForm.cpf.$pristine)">
                         <div ng-show="!companyForm.cpf.$valid">O CPF é Obrigatório</div>
                     </div>
@@ -124,9 +125,9 @@
                 <div class="eight wide required field"
                      ng-class="{'error' : !companyForm.occupationArea.$valid && (companyForm.$submitted || !companyForm.occupationArea.$pristine)}">
                     <label for="occupationArea">Ramo de Atuação</label>
-                    <select ng-model="company.occupationArea"
-                            ng-options="item.id as item.descrption for item in OccupationAreas"
-                            ng-selected="company.occupationArea"
+                    <select ng-model="company.occupationArea.id"
+                            ng-options="item.id as item.description for item in OccupationAreas"
+                            ng-selected="company.occupationArea.id"
                             name="occupationArea"
                             required></select>
                     <div class="ui pointing red basic label" ng-show="!companyForm.occupationArea.$valid && (companyForm.$submitted || !companyForm.occupationArea.$pristine)">
@@ -136,20 +137,20 @@
             </div>
             <!--NOME DA EMPRESA-->
             <div class="fields"
-                 ng-show="company.ePersonType == '1'"
-                 ng-class="{'error' : !companyForm.CompanyName.$valid && (companyForm.$submitted || !companyForm.CompanyName.$pristine)}">
+                 ng-show="company.ePersonType === 1"
+                 ng-class="{'error' : !companyForm.companyName.$valid && (companyForm.$submitted || !companyForm.companyName.$pristine)}">
 
                 <div class="eight wide required field">
                     <label for="nomeEmpresa">Nome Empresa</label>
-                    <input type="text" ng-model="company.CompanyName" name="CompanyName" class="ui input" ng-required="company.ePersonType == '1'" />
+                    <input type="text" ng-model="company.companyName" name="companyName" class="ui input" ng-required="company.ePersonType === 1" />
 
-                    <div class="ui pointing red basic label" ng-show="!companyForm.CompanyName.$valid && (companyForm.$submitted || !companyForm.CompanyName.$pristine)">
-                        <div ng-show="!companyForm.CompanyName.$valid">O Nome da Empresa é Obrigatório</div>
+                    <div class="ui pointing red basic label" ng-show="!companyForm.companyName.$valid && (companyForm.$submitted || !companyForm.CompanyName.$pristine)">
+                        <div ng-show="!companyForm.companyName.$valid">O Nome da Empresa é Obrigatório</div>
                     </div>
                 </div>
             </div>
             
-            <div class="fields" ng-show="company.ePersonType == '2'">
+            <div class="fields" ng-show="company.ePersonType === 2">
 
                 <!--RAZÃO SOCIAL-->
                 <div class="eight wide field" 
@@ -157,9 +158,9 @@
 
                     <label for="socialReasonName">Razão Social</label>
                     <input type="text"
-                           ng-model="company.SocialReasonName"
+                           ng-model="company.socialReasonName"
                            name="socialReasonName" class="ui input"
-                           ng-required="company.ePersonType == '2'" />
+                           ng-required="company.ePersonType === 2" />
 
                     <div class="ui pointing red basic label" ng-show="!companyForm.socialReasonName.$valid && (companyForm.$submitted || !companyForm.socialReasonName.$pristine)">
                         <div ng-show="!companyForm.socialReasonName.$valid">A Razão Social é Obrigatória</div>
@@ -173,13 +174,13 @@
 
                     <label for="fantasyName">Nome Fantasia</label>
                     <input type="text"
-                           ng-model="company.FantasyName"
+                           ng-model="company.fantasyName"
                            name="fantasyName"
                            class="ui input"
-                           ng-required="company.ePersonType == '2'" />
+                           ng-required="company.ePersonType === 2" />
 
-                    <div class="ui pointing red basic label" ng-show="!companyForm.FantasyName.$valid && (companyForm.$submitted || !companyForm.FantasyName.$pristine)">
-                        <div ng-show="!companyForm.FantasyName.$valid">O Nome Fantasia é Obrigatório</div>
+                    <div class="ui pointing red basic label" ng-show="!companyForm.fantasyName.$valid && (companyForm.$submitted || !companyForm.fantasyName.$pristine)">
+                        <div ng-show="!companyForm.fantasyName.$valid">O Nome Fantasia é Obrigatório</div>
                     </div>
 
                 </div>
@@ -257,7 +258,7 @@
 
                 <!--CIDADE-->
                 <div class="four wide required field"
-                     ng-class="{'error' : !companyForm.city.$valid && (companyForm.$submitted || !companyForm.neighborhoodcity.$pristine)}">
+                     ng-class="{'error' : !companyForm.city.$valid && (companyForm.$submitted || !companyForm.city.$pristine)}">
 
                     <label for="city">Cidade</label>
                     <input type="text" name="city" ng-model="company.address.cidade" class="ui input" required/>

@@ -106,6 +106,15 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Erro ao atualizar os dados da sua Empresa.
+        /// </summary>
+        internal static string ErrUpdateCompany {
+            get {
+                return ResourceManager.GetString("ErrUpdateCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erro ao atualizar os dados do Usuário..
         /// </summary>
         internal static string ErrUpdateUser {
@@ -148,6 +157,15 @@ namespace Sisacon.BLL {
         internal static string SucInsertUser {
             get {
                 return ResourceManager.GetString("SucInsertUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Os dados da sua Empresa foram atualizados com Sucesso!.
+        /// </summary>
+        internal static string SucUpdateCompany {
+            get {
+                return ResourceManager.GetString("SucUpdateCompany", resourceCulture);
             }
         }
         

@@ -1,19 +1,23 @@
 (function () {
-    
+
     angular
         .module('app')
         .factory('timestampInterceptor', timestampInterceptor);
 
     function timestampInterceptor() {
-        
-        return{
+
+        return {
 
             request: function (config) {
-                
+
                 var url = config.url;
 
-                if(url.indexOf('html') > -1) return config;
-                
+                if (url.indexOf('html') > -1 ||
+                    url.indexOf('viacep') > -1) {
+
+                    return config;
+                }
+
                 var timestamp = new Date().getTime();
                 config.url = url + '?t=' + timestamp;
 

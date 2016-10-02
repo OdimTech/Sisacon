@@ -144,6 +144,7 @@
     <Content Include="app\js\config\routes\indexRoutes.config.js" />
     <Content Include="app\js\config\routes\landingPageRoutes.config.js" />
     <Content Include="app\js\config\toastr.config.js" />
+    <Content Include="app\js\config\uiMask.config.js" />
     <Content Include="app\js\controllers\base\admin.controller.js" />
     <Content Include="app\js\controllers\company\company.controller.js" />
     <Content Include="app\js\controllers\entries\client.controller.js" />

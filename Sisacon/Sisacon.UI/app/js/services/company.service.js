@@ -21,7 +21,7 @@
         function save(company) {
 
             return $http.post(apiUrl + 'api/company', company);
-        };
+        }
 
         function getCompanyByUser(idUser) {
 
@@ -32,12 +32,12 @@
                     id: idUser
                 }
             });
-        };
+        }
 
         function getOccupationArea() {
 
             return $http.get(apiUrl + 'api/company');
-        };
+        }
 
         function addLogo(file, id) {
 
@@ -50,7 +50,7 @@
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
         }
-    };
+    }
 
 })();
 

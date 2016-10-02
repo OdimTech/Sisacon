@@ -50,15 +50,13 @@ namespace Sisacon.Infra.Mapping
             Property(x => x.eFormatImg)
                 .HasColumnType("int");
 
-            HasRequired(x => x.OccupationArea)
-                .WithOptional(x => x.Company)
-                .Map(configurationAction: new System.Action<ForeignKeyAssociationMappingConfiguration>(x => x.MapKey("OccupationAreaId")));
-
             HasOptional(x => x.Address);
 
             HasOptional(x => x.Contact);
 
             HasRequired(x => x.User);
+
+            HasRequired(x => x.OccupationArea);
         }
     }
 }

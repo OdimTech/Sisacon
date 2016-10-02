@@ -50,6 +50,7 @@ namespace Sisacon.BLL
             try
             {
                 response.Value = companyDAL.getCompanyByUser(user);
+                
             }
             catch (Exception ex)
             {
@@ -65,7 +66,19 @@ namespace Sisacon.BLL
 
             try
             {
+                response.Quantity = companyDAL.update(company);
+                response.Value = company;
 
+                if (response.Quantity > 0)
+                {
+                    response.LogicalTest = true;
+                    response.Message = Msg.SucUpdateCompany;
+                }
+                else
+                {
+                    response.LogicalTest = false;
+                    response.Message = Msg.ErrUpdateCompany;
+                }
             }
             catch (Exception ex)
             {

@@ -42,10 +42,6 @@ namespace Sisacon.Infra.Mapping
             Property(x => x.ShowWellcomeMessage)
                 .IsRequired()
                 .HasColumnType("bit");
-
-            HasOptional(x => x.Company)
-                .WithRequired(x => x.User)
-                .Map(configurationAction: new System.Action<ForeignKeyAssociationMappingConfiguration>(x => x.MapKey("UserId")));
         }
     }
 }

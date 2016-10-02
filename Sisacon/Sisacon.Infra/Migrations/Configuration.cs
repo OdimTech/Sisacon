@@ -17,14 +17,14 @@ namespace Sisacon.Infra.Migrations
         {
             context.OccupationArea.AddOrUpdate(
 
-                x => x.Descrption,
+                x => x.Description,
 
-                new OccupationArea { Descrption = "Pintura" },
-                new OccupationArea { Descrption = "Marcenaria" },
-                new OccupationArea { Descrption = "Serralheria" },
-                new OccupationArea { Descrption = "Alimentos" },
-                new OccupationArea { Descrption = "Bijouterias" },
-                new OccupationArea { Descrption = "Decoração" });
+                new OccupationArea { Description = "Pintura" },
+                new OccupationArea { Description = "Marcenaria" },
+                new OccupationArea { Description = "Serralheria" },
+                new OccupationArea { Description = "Alimentos" },
+                new OccupationArea { Description = "Bijouterias" },
+                new OccupationArea { Description = "Decoração" });
         }
     }
 }

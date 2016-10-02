@@ -6,7 +6,8 @@
             'toastr',
             'blockUI',
             'ngFileUpload',
-            'LocalStorageModule']);
+            'LocalStorageModule',
+            'ui.mask']);
 
 })();
 

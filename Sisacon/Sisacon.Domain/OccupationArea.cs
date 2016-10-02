@@ -9,7 +9,6 @@ namespace Sisacon.Domain
     public class OccupationArea
     {
         public int Id { get; set; }
-        public string Descrption { get; set; }
-        public Company Company { get; set; }
+        public string Description { get; set; }
     }
 }

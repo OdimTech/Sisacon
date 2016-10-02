@@ -36,7 +36,7 @@ namespace Sisacon.BLL
             }
             catch (Exception ex)
             {
-                throw ex;
+                return LogBLL<User>.createLog(ex);
             }
 
             return response;

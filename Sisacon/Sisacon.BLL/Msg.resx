@@ -132,6 +132,9 @@
   <data name="ErrInsertUser" xml:space="preserve">
     <value>Erro ao criar novo Usuário.</value>
   </data>
+  <data name="ErrUpdateCompany" xml:space="preserve">
+    <value>Erro ao atualizar os dados da sua Empresa</value>
+  </data>
   <data name="ErrUpdateUser" xml:space="preserve">
     <value>Erro ao atualizar os dados do Usuário.</value>
   </data>
@@ -147,6 +150,9 @@ Entre em contato com o suporte para mais informações.</value>
   </data>
   <data name="SucInsertUser" xml:space="preserve">
     <value>Usuário criado com Sucesso!</value>
+  </data>
+  <data name="SucUpdateCompany" xml:space="preserve">
+    <value>Os dados da sua Empresa foram atualizados com Sucesso!</value>
   </data>
   <data name="SucUpdateUser" xml:space="preserve">
     <value>Os dados do Usuário foram atualizados com Sucesso!</value>

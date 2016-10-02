@@ -16,7 +16,7 @@ namespace Sisacon.Infra.Mapping
 
             HasKey(x => x.Id);
 
-            Property(x => x.Descrption)
+            Property(x => x.Description)
                 .HasColumnType("varchar")
                 .HasMaxLength(50);
         }

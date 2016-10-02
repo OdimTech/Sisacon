@@ -2,6 +2,7 @@
 using System.Linq;
 using Sisacon.Infra.Context;
 using System;
+using System.Data.Entity;
 
 namespace Sisacon.Infra
 {
@@ -21,6 +22,7 @@ namespace Sisacon.Infra
                 using (var context = new SisaconDbContext())
                 {
                     context.User.Attach(company.User);
+                    context.OccupationArea.Attach(company.OccupationArea);
 
                     context.Company.Add(company);
                     addedLines = context.SaveChanges();
@@ -32,6 +34,30 @@ namespace Sisacon.Infra
             }
 
             return addedLines;
+        }
+
+        public int update(Company company)
+        {
+            var addedLines = 0;
+
+            try
+            {
+                using (var context = new SisaconDbContext())
+                {
+                    context.Entry(company).State = EntityState.Modified;
+                    context.Entry(company.Address).State = EntityState.Modified;
+                    context.Entry(company.Contact).State = EntityState.Modified;
+                    context.Entry(company.OccupationArea).State = EntityState.Modified;
+
+                    addedLines = context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return addedLines; 
         }
 
         /// <summary>
@@ -50,6 +76,8 @@ namespace Sisacon.Infra
                     company = context.Company
                         .Include("Address")
                         .Include("Contact")
+                        .Include("OccupationArea")
+                        .Include("User")
                         .Where(x => x.User.Id == idUser).FirstOrDefault();
                 }
             }

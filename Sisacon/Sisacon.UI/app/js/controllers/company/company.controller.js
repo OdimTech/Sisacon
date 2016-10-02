@@ -1,18 +1,18 @@
 ﻿(function () {
-    
-    angular 
+
+    angular
         .module('app')
         .controller('CompanyController', CompanyController);
 
-    CompanyController.$inject = ['$scope', 'viaCepService', 'valuesService', 'companyService', 'toastr', 'blockUI','localStorageService'];
+    CompanyController.$inject = ['$scope', 'viaCepService', 'valuesService', 'companyService', 'toastr', 'blockUI', 'localStorageService'];
 
     function CompanyController($scope, viaCepService, valuesService, companyService, toastr, blockUI, localStorageService) {
-        
+
         //INIT CONTROLS
         angular.element('.ui.dropdown').dropdown();
 
         angular.element('button').popup({
-            on: 'click',
+            on: 'hover',
             position: 'right center'
         });
 
@@ -23,26 +23,30 @@
         $scope.userTypes = [
 
             {
-                Type: "1",
-                Desc: 'Pessoa Física'
+                id: 1,
+                desc: 'Pessoa Física'
             },
             {
-                Type: "2",
-                Desc: 'Pessoa Jurídica'
+                id: 2,
+                desc: 'Pessoa Jurídica'
             }
         ];
 
         loadCompany();
         loadOccupationAreas();
-
+        defineSaveOrUpdate();
 
         //LOAD INFORMATIONS
         function loadCompany() {
 
+            blockUI.start('Carregando Informações...');
+
             companyService.getCompanyByUser($scope.userId).success(function (response) {
 
+                blockUI.stop();
                 $scope.company = response.value;
 
+                //Caso não exista nenhuma empresa cadastrada para este usuário
                 if (!$scope.company) {
 
                     initObjectCompany();
@@ -50,6 +54,7 @@
 
             }).error(function (response) {
 
+                blockUI.stop();
                 toastr.error(response.message);
 
             });
@@ -64,6 +69,11 @@
                 user: {
 
                     id: $scope.userId
+                },
+                occupationArea: {
+
+                    id: 0,
+                    description: ''
                 },
                 address: {},
                 contact: {}
@@ -82,7 +92,20 @@
             });
         }
 
-        //METHODS
+        function defineSaveOrUpdate() {
+
+            if ($scope.company.id > 0) {
+
+                $scope.btnSaveText = 'Salvar';
+            }
+            else {
+
+                $scope.btnSaveText = 'Atualizar';
+            }
+
+        }
+
+        //$SCOPE METHODS
         $scope.submitForm = function () {
 
             $scope.companyForm.$setSubmitted();
@@ -93,6 +116,7 @@
 
             if ($scope.companyForm.$valid) {
 
+                debugger;
                 companyService.save($scope.company).success(function (response) {
 
                     toastr.success(response.message);

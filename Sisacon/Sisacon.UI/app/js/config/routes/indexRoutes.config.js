@@ -29,9 +29,13 @@
 
                     templateUrl: '/app/views/errorPage.html'  
                 })
+                .when('',{
+
+                    
+                })
                 .otherwise({
 
-                    templateUrl: 'app/views/pageNotFound.html'
+                    templateUrl: '/app/views/pageNotFound.html'
                 });
 
         }]);

@@ -7,7 +7,8 @@
             'blockUI',
             'ngFileUpload',
             'LocalStorageModule',
-            'ui.mask']);
+            'ui.mask',
+            'ui.calendar']);
 
 })();
 

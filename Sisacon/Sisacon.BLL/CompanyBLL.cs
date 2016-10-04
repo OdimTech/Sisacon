@@ -24,6 +24,8 @@ namespace Sisacon.BLL
                 if (response.Quantity > 0)
                 {
                     response.Message = Msg.SucInsertCompany;
+
+                    cancelWellcomeMessage(company.User.Id);
                 }
                 else
                 {
@@ -86,6 +88,27 @@ namespace Sisacon.BLL
             }
 
             return response;
+        }
+
+        /// <summary>
+        /// Após o cadastro da empesa ter sido realizado, a mensagem de boas vindas deve ser desabilitada
+        /// </summary>
+        public void cancelWellcomeMessage(int idUser)
+        {
+            var response = new ResponseMessage<User>();
+            var userBLL = new UserBLL();
+
+            try
+            {
+                response = userBLL.getUserById(idUser);
+                response.Value.ShowWellcomeMessage = false;
+
+                userBLL.update(response.Value);
+            }
+            catch (Exception ex)
+            {
+                LogBLL<Company>.createLog(ex);
+            }
         }
     }
 }

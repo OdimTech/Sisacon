@@ -1,32 +1,63 @@
-﻿<div class="ui sixteen wide column">
-    <div class="ui stackable segment">
-
+﻿<div class="ui sixteen wide stackable column">
+    <div class="ui stackable attached menu">
+        <div class="item">
+            <h3 class="ui header">
+                <i class="desktop icon"></i>
+                <div class="content">
+                    Bem Vindo(a)
+                    <div class="sub header" ng-if="companyName != ''">
+                        {{companyName}}
+                    </div>
+                    <div class="sub header" ng-if="!companyName">
+                        <a href="#/company">Complete seus dados</a>
+                    </div>
+                </div>
+            </h3>
+        </div>
     </div>
 </div>
 
-<div class="ui basic modal">
-    <i class="close icon"></i>
+<div class="ui stackable grid">
+
+    <div class="ui sixteen wide stackable column">
+
+        <!--AGENDA DE EVENTOS-->
+        <div class="ui stackable segment">
+
+            <div ui-calendar="uiConfig.calendar" ng-model="eventSources">
+
+            </div>
+
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+<!--MODALS-->
+<div class="ui small modal">
     <div class="header">
-        Seja Bem-vindo!
+        <p>Seja Bem Vindo(a).</p>
     </div>
     <div class="image content">
-        <div class="image">
-            <i class="archive icon"></i>
-        </div>
         <div class="description">
-            <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+            <h4>Agora falta pouco para voçê começar a desfrutar de toda comodidade que o Sisacon pode te oferecer.</h4>
+            <h4>Nós queremos te ajudar a começar ou ampliar o seu negócio, mas para isso precisamos de mais algumas<br>informações.
+            </h4>
+            <h4>Prometo que não vai demorar. </h4>
         </div>
     </div>
     <div class="actions">
-        <div class="two fluid ui inverted buttons">
-            <div class="ui cancel red basic inverted button">
-                <i class="remove icon"></i>
-                No
-            </div>
-            <div class="ui ok green basic inverted button">
-                <i class="checkmark icon"></i>
-                Yes
-            </div>
+        <div class="two ui buttons">
+            <!--<button class="ui cancel red button">
+        <i class="remove icon"></i>
+        Quero dar uma olhada antes.
+      </button>-->
+            <a class="ui ok green button" href="#/company">
+                <i class="checkmark icon"></i> Finalizar Cadastro
+            </a>
         </div>
     </div>
 </div>

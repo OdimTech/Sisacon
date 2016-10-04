@@ -13,7 +13,8 @@
                 var url = config.url;
 
                 if (url.indexOf('html') > -1 ||
-                    url.indexOf('viacep') > -1) {
+                    url.indexOf('viacep') > -1 ||
+                    url.indexOf('?') > -1) {
 
                     return config;
                 }

@@ -12,14 +12,14 @@
         angular.element('.ui.dropdown').dropdown();
 
         angular.element('button').popup({
-            on: 'hover',
+            on: 'click',
             position: 'right center'
         });
 
         //INIT VARIABLES
         $scope.defaultLogo = valuesService.getDefaultLogo;
         $scope.userId = localStorageService.get('id');
-        $scope.company = {};
+        //$scope.company = {};
         $scope.userTypes = [
 
             {
@@ -34,7 +34,6 @@
 
         loadCompany();
         loadOccupationAreas();
-        defineSaveOrUpdate();
 
         //LOAD INFORMATIONS
         function loadCompany() {
@@ -45,12 +44,14 @@
 
                 blockUI.stop();
                 $scope.company = response.value;
-
+                
                 //Caso não exista nenhuma empresa cadastrada para este usuário
                 if (!$scope.company) {
 
                     initObjectCompany();
                 }
+
+                defineSaveOrUpdate();
 
             }).error(function (response) {
 
@@ -64,8 +65,9 @@
 
             $scope.company = {
 
+                id: 0,
                 eFormatImg: 1,
-                ePersonType: '1',
+                ePersonType: 0,
                 user: {
 
                     id: $scope.userId
@@ -93,16 +95,18 @@
         }
 
         function defineSaveOrUpdate() {
+        
+            if ($scope.company) {
 
-            if ($scope.company.id > 0) {
+                if ($scope.company.id === 0) {
 
-                $scope.btnSaveText = 'Salvar';
+                    $scope.btnSaveText = 'Salvar';
+                }
+                else {
+
+                    $scope.btnSaveText = 'Atualizar';
+                }
             }
-            else {
-
-                $scope.btnSaveText = 'Atualizar';
-            }
-
         }
 
         //$SCOPE METHODS
@@ -116,7 +120,6 @@
 
             if ($scope.companyForm.$valid) {
 
-                debugger;
                 companyService.save($scope.company).success(function (response) {
 
                     toastr.success(response.message);

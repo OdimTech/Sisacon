@@ -11,7 +11,7 @@
                 containerId: 'toast-container',
                 maxOpened: 0,
                 newestOnTop: true,
-                positionClass: 'toast-top-center',
+                positionClass: 'toast-top-right',
                 preventDuplicates: false,
                 preventOpenDuplicates: false,
                 target: 'html'

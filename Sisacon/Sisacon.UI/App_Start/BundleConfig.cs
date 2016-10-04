@@ -7,7 +7,8 @@ namespace Sisacon.UI
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery")
-                .Include("~/Scripts/jquery-3.1.0.js"));
+                .Include("~/Scripts/jquery-3.1.1.js",
+                "~/node_modules/fullcalendar/node_modules/moment/moment.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/design").Include
                ("~/Scripts/semantic.js"));
@@ -21,6 +22,8 @@ namespace Sisacon.UI
                 "~/Sctipts/ng-file-upload-shim.js",
                 "~/Scripts/ng-file-upload.js",
                 "~/bower_components/angular-local-storage/dist/angular-local-storage.js",
+                "~/node_modules/angular-ui-calendar/src/calendar.js",
+                "~/node_modules/fullcalendar/dist/fullcalendar.min.js",
                 //MODULE
                 "~/app/js/app.module.js",
                 //CONFIG-ROUTES
@@ -58,7 +61,8 @@ namespace Sisacon.UI
                 ("~/Content/semantic.css",
                 "~/Content/Site.css",
                 "~/Content/angular-toastr.css",
-                "~/Content/angular-block-ui.css"));
+                "~/Content/angular-block-ui.css",
+                "~/node_modules/fullcalendar/dist/fullcalendar.css"));
 
             BundleTable.EnableOptimizations = false;
         }

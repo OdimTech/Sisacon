@@ -10,6 +10,7 @@
 
     function IndexController($scope, accountService, localStorageService) {
 
+        //INIT OBJECTS
         $scope.loggedUser = {};
         getUserFromServer();
 
@@ -50,11 +51,22 @@
 
                 $scope.loggedUser = response.value;
 
+                if ($scope.loggedUser.showWellcomeMessage) {
+
+                    $('.ui.small.modal').modal({
+
+                        blurring: true,
+                        closable: false
+
+                    }).modal('show');
+                }
+
             }).error(function (response) {
 
                 console.log(response);
             });
         }
+
     }
 
 })();

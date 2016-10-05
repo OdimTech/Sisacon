@@ -33,6 +33,17 @@
 
         }).accordion();
 
+        angular.element('.item').popup({
+            on: 'hover',
+            position: 'bottom right',
+            inline: true,
+            hoverable: true,
+            delay: {
+                show: 300,
+                hide: 800
+            }
+        });
+
         //FUNCTIONS
         $scope.openMenu = function () {
 

@@ -17,7 +17,14 @@
 
         //INIT OBJECTS
         $scope.company = {};
-        $scope.idUser = localStorageService.get('id');
+        $scope.idUser = 0;
+        var idUser = localStorageService.get('id');  
+
+        if(idUser){
+
+            $scope.idUser = idUser; 
+        }
+
         $scope.companyName = '';
 
         //debugger;
@@ -45,6 +52,7 @@
 
             blockUI.start('Carregando Informações...');
 
+            debugger;
             companyService.getCompanyByUser($scope.idUser).success(function (response) {
 
                 $scope.company = response.value;
@@ -70,7 +78,7 @@
 
         $scope.alertEventOnClick = function (date, jsEvent, view) {
             debugger;
-            alert('editar evento' + date.title);
+            console.log('editar evento' + date.title);
         };
     }
 

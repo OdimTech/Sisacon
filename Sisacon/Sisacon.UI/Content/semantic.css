@@ -12208,8 +12208,8 @@ a.ui.black.label:hover:before {
 .ui.floating.label {
   position: absolute;
   z-index: 100;
-  top: -1em;
-  left: 100%;
+  top: 4em;
+  left: 55%;
   margin: 0em 0em 0em -1.5em !important;
 }
 

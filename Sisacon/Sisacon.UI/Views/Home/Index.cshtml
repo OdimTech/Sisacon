@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     @Styles.Render("~/bundles/style")
 </head>
-<body ng-controller="IndexController">
+<body ng-controller="IndexController" ng-cloak>
     <!--BARRA LATERAL-->
     <div id="sidebar" class="ui inverted vertical accordion menu sidebar">
         <div class="item">
@@ -91,12 +91,13 @@
                 <h4 class="ui large orange header">Sisacon</h4>
             </a>
             <div class="right menu">
-                <a class="item" href="#/company">
+                <a data-content="Cadastre ou Edite as informações da sua Empresa."
+                   data-variation="inverted" class="item" href="#/company">
                     <i class="large flag icon"></i>
                 </a>
                 <a class="item">
                     <i class="large alarm outline icon"></i>
-                    <div class="floating bottom ui orange label">22</div>
+                    <div class="floating bottom ui orange label" ng-if="notification.count > 0">{{notification.count}}</div>
                 </a>
                 <a class="item">
                     <i class="large settings icon"></i>

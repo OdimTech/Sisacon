@@ -6,22 +6,32 @@
         .module('app')
         .controller('IndexController', IndexController);
 
-    IndexController.$inject = ['$scope', 'accountService', 'localStorageService'];
+    IndexController.$inject = ['$scope', '$window', '$interval', 'accountService', 'localStorageService', 'notificationService'];
 
-    function IndexController($scope, accountService, localStorageService) {
+    function IndexController($scope, $window, $interval, accountService, localStorageService, notificationService) {
 
         //INIT OBJECTS
         $scope.loggedUser = {};
         getUserFromServer();
+        $scope.notifications = getNotificationsByUserId();
+
+        //A CADA 5 MINUTOS AS NOTIFICAÇÕES SÃO ATUALIZADAS
+        $interval(getNotificationsByUserId, 300000);
 
         //INIT CONTROLS
-        angular.element('#account').popup({
+        angular.element('#btnAccount').popup({
 
-            inline: true,
-            hoverable: true,
-            popup: '#accountPopUp',
             on: 'click',
-            position: 'bottom right'
+            popup: angular.element('#accountPopup'),
+            position: 'left center'
+
+        });
+
+        angular.element('#btnNotification').popup({
+
+            on: 'click',
+            popup: angular.element('#notificationPopup'),
+            position: 'left center'
 
         });
 
@@ -32,17 +42,6 @@
             exclusive: true
 
         }).accordion();
-
-        angular.element('.item').popup({
-            on: 'hover',
-            position: 'bottom right',
-            inline: true,
-            hoverable: true,
-            delay: {
-                show: 300,
-                hide: 800
-            }
-        });
 
         //FUNCTIONS
         $scope.openMenu = function () {
@@ -58,24 +57,61 @@
 
         function getUserFromServer() {
 
-            accountService.getUserById(localStorageService.get('id')).success(function (response) {
+            var userId = localStorageService.get('id');
 
-                $scope.loggedUser = response.value;
+            if (userId) {
 
-                if ($scope.loggedUser.showWellcomeMessage) {
+                accountService.getUserById(userId).success(function (response) {
 
-                    $('.ui.small.modal').modal({
+                    $scope.loggedUser = response.value;
 
-                        blurring: true,
-                        closable: false
+                    if ($scope.loggedUser.showWellcomeMessage) {
 
-                    }).modal('show');
+                        angular.element('.ui.small.modal').modal({
+
+                            blurring: true,
+                            closable: false
+
+                        }).modal('show');
+                    }
+
+                }).error(function (response) {
+
+                    console.log(response);
+                });
+            }
+            else {
+
+                $window.location.href = 'LandingPage#/login';
+            }
+        }
+
+        function getNotificationsByUserId() {
+
+            var userId = localStorageService.get('id');
+
+            notificationService.getNotificationsByUserId(userId).success(function (response) {
+
+                $scope.notifications = response.valueList;
+
+            }).error(function (response) {
+
+                console.log(response);
+            })
+        }
+
+        $scope.updateStatusVisualized = function (id) {
+
+            notificationService.updateStatusVisualized(id).success(function (response) {
+
+                if (response.logicalTest) {
+                    getNotificationsByUserId(id);
                 }
 
             }).error(function (response) {
 
                 console.log(response);
-            });
+            })
         }
 
     }

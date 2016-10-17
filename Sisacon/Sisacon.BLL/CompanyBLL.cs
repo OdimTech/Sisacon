@@ -6,7 +6,7 @@ namespace Sisacon.BLL
 {
     public class CompanyBLL
     {
-        public CompanyDAL companyDAL { get; set; }
+        private CompanyDAL companyDAL { get; set; }
         public CompanyBLL()
         {
             companyDAL = new CompanyDAL();

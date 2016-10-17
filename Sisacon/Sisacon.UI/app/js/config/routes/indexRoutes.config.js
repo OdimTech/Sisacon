@@ -27,15 +27,12 @@
                 })
                 .when('/errorPage', {
 
-                    templateUrl: '/app/views/errorPage.html'  
-                })
-                .when('',{
-
-                    
+                    templateUrl: '/app/views/errorPage.html'
                 })
                 .otherwise({
 
-                    templateUrl: '/app/views/pageNotFound.html'
+                    templateUrl: '/app/views/InitialDashboard.html'
+                    //templateUrl: '/app/views/pageNotFound.html'
                 });
 
         }]);

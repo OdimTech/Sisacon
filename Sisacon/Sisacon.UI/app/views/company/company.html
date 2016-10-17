@@ -1,5 +1,5 @@
 ﻿<div class="ui sixteen wide stackable column">
-    <div class="ui tiny teal inverted attached stackable menu">
+    <div class="ui tiny inverted attached stackable menu">
         <div class="item">
             <h3 class="ui tiny inverted header">
                 <i class="desktop icon"></i>
@@ -12,16 +12,16 @@
             </h3>
         </div>
         <a class="item" ng-click="submitForm()">
-            <i class="save large icon"></i> {{btnSaveText}}
+            <i class="material-icons">done</i> 
+            {{btnSaveText}}
         </a>
         <div class="right menu">
-            <a class="icon item">
+            <a class="icon item" ng-click="showHelp()">
                 <i class="large inverted help icon"></i>
             </a>
         </div>
     </div>
 </div>
-
 <div class="ui stackable grid">
     <div class="ui twelve wide stackable centered column">
         <form class="ui form" name="companyForm" novalidate>
@@ -75,7 +75,7 @@
                 </div>
             </div>-->
 
-            <div class="ui small  stackable attached icon teal message">
+            <div class="ui small stackable attached icon teal message">
                 <i class="material-icons">&#xE14F;</i>
                 <div class="header">
                     Informações Comerciais
@@ -96,7 +96,7 @@
                         </div>
 
                     </div>
-                    
+
                     <div class="field">
                         <label>&nbsp</label>
                         <button type="button" class="ui circular icon yellow button" data-content="Caso voçê já possua um CNPJ, Selecione a opção Pessoa Jurídica, e informe-o ao lado."
@@ -140,7 +140,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!--NOME DA EMPRESA-->
                 <div class="fields" ng-show="company.ePersonType === 1" ng-class="{'error' : !companyForm.companyName.$valid && (companyForm.$submitted || !companyForm.companyName.$pristine)}">
 
@@ -149,7 +149,7 @@
                         <input type="text" ng-model="company.companyName" name="companyName" class="ui input" ng-required="company.ePersonType === 1"
                         />
 
-                        <div class="ui pointing red basic label" ng-show="!companyForm.companyName.$valid && (companyForm.$submitted || !companyForm.CompanyName.$pristine)">
+                        <div class="ui pointing red basic label" ng-show="!companyForm.companyName.$valid && (companyForm.$submitted || !companyForm.companyName.$pristine)">
                             <div ng-show="!companyForm.companyName.$valid">O Nome da Empresa é Obrigatório</div>
                         </div>
                     </div>
@@ -321,5 +321,28 @@
                 </div>
             </div>
         </form>
+    </div>
+</div>
+
+<!--MODALS-->
+<div class="ui long modal">
+    <div class="header">
+        <h1>Cadastro de Empresa</h1>
+    </div>
+    <div class="image content">
+        <div class="description">
+            <h4>Agora falta pouco para voçê começar a desfrutar de toda comodidade que o Sisacon pode te oferecer.</h4>
+            <h4>
+                Nós queremos te ajudar a começar ou ampliar o seu negócio, mas para isso precisamos de mais algumas<br>informações.
+            </h4>
+            <h4>Prometo que não vai demorar. </h4>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="two ui buttons">
+            <a class="ui ok green button" href="#/company">
+                <i class="checkmark icon"></i> Finalizar Cadastro
+            </a>
+        </div>
     </div>
 </div>

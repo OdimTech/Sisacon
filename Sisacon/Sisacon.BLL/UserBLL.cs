@@ -1,9 +1,8 @@
-﻿using Sisacon.BLL;
-using Sisacon.Domain;
+﻿using Sisacon.Domain;
 using Sisacon.Infra;
 using System;
-using System.Collections.Generic;
 using System.Net;
+using static Sisacon.Domain.ValueObjects;
 
 namespace Sisacon.BLL
 {
@@ -110,6 +109,8 @@ namespace Sisacon.BLL
                 {
                     response.Message = Msg.SucInsertUser;
                     response.LogicalTest = true;
+
+                    new NotificationBLL().buildNotification(Msg.NotifyCreateCompany, eNotificationClass.Green, "#/company", user);
                 }
                 else
                 {
@@ -205,5 +206,7 @@ namespace Sisacon.BLL
 
             return response;
         }
+
+
     }
 }

@@ -52,7 +52,6 @@
 
             blockUI.start('Carregando Informações...');
 
-            debugger;
             companyService.getCompanyByUser($scope.idUser).success(function (response) {
 
                 $scope.company = response.value;
@@ -77,7 +76,7 @@
         }
 
         $scope.alertEventOnClick = function (date, jsEvent, view) {
-            debugger;
+            
             console.log('editar evento' + date.title);
         };
     }

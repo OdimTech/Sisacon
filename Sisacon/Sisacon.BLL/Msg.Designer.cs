@@ -134,6 +134,15 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Complete seus dados, criando sua nova Empresa..
+        /// </summary>
+        internal static string NotifyCreateCompany {
+            get {
+                return ResourceManager.GetString("NotifyCreateCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ops! Algo de errado aconteceu, favor tente novamente mais tarde..
         /// </summary>
         internal static string ProcessError {

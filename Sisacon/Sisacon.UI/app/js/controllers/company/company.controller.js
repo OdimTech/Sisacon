@@ -19,7 +19,8 @@
         //INIT VARIABLES
         $scope.defaultLogo = valuesService.getDefaultLogo;
         $scope.userId = localStorageService.get('id');
-        //$scope.company = {};
+        $scope.company = {};
+        $scope.showHelp = showHelp;
         $scope.userTypes = [
 
             {
@@ -36,6 +37,16 @@
         loadOccupationAreas();
 
         //LOAD INFORMATIONS
+        function showHelp() {
+
+            angular.element('.ui.long.modal').modal({
+
+                blurring: false,
+                closable: true
+
+            }).modal('show');
+        };
+
         function loadCompany() {
 
             blockUI.start('Carregando Informações...');
@@ -44,7 +55,7 @@
 
                 blockUI.stop();
                 $scope.company = response.value;
-                
+
                 //Caso não exista nenhuma empresa cadastrada para este usuário
                 if (!$scope.company) {
 
@@ -95,7 +106,7 @@
         }
 
         function defineSaveOrUpdate() {
-        
+
             if ($scope.company) {
 
                 if ($scope.company.id === 0) {
@@ -110,6 +121,8 @@
         }
 
         //$SCOPE METHODS
+
+
         $scope.submitForm = function () {
 
             $scope.companyForm.$setSubmitted();
@@ -167,6 +180,8 @@
                 });
             }
         };
+
+
     }
 
 })();

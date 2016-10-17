@@ -142,6 +142,9 @@
     <value>Desculpe, mas o seu acesso ao sistema foi suspenso.
 Entre em contato com o suporte para mais informações.</value>
   </data>
+  <data name="NotifyCreateCompany" xml:space="preserve">
+    <value>Complete seus dados, criando sua nova Empresa.</value>
+  </data>
   <data name="ProcessError" xml:space="preserve">
     <value>Ops! Algo de errado aconteceu, favor tente novamente mais tarde.</value>
   </data>

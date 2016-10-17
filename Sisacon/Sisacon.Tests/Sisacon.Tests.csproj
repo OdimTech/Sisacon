@@ -52,6 +52,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BLL\NotificationBLLTests.cs" />
     <Compile Include="Company\CompanyBLLTests.cs" />
     <Compile Include="Files\FilesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

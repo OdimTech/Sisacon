@@ -19,7 +19,7 @@
                 accountService.loginUser($scope.account).success(function (response) {
 
                     blockUI.stop();
-
+                    
                     localStorageService.set('id', response.value.id);
                     $window.location.href = 'Index#/initialDashboard';
 

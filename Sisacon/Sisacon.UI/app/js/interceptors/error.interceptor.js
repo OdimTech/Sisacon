@@ -12,7 +12,7 @@
 
             responseError: function (rejection) {
 
-                if (rejection.status === 404) {
+                if (rejection.status === 404 || rejection.status === 500) {
 
                     $window.location.href = '#/errorPage';
                 }

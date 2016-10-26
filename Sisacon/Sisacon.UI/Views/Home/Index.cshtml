@@ -25,30 +25,30 @@
 				<span class="ui inverted header"><i class="edit icon"></i>Cadastros</span>
 			</a>
 			<div class="content">
+                <div class="item">
+                    <a href="#/clientList" class="ui labeled blue fluid large icon button">
+                        <i class="users icon"></i>
+                        Clientes
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="#/providerList" class="ui labeled blue fluid large icon button">
+                        <i class="truck icon"></i>
+                        Fornecedores
+                    </a>
+                </div>
 				<div class="item">
-					<button class="ui fluid blue button">
+					<button class="ui labeled blue fluid large icon button">
                         <i class="lab icon"></i>
                         Materiais
                     </button>
 				</div>
 				<div class="item">
-					<button class="ui fluid blue button">
+					<button class="ui labeled blue fluid large icon button">
                         <i class="diamond icon"></i>
                         Produtos
                     </button>
 				</div>
-				<div class="item">
-					<a href="#/clientList" class="ui fluid blue button">
-						<i class="users icon"></i> Clientes
-					</a>
-				</div>
-				<div class="item">
-					<button class="ui fluid blue button">
-                        <i class="truck icon"></i>
-                        Fornecedores
-                    </button>
-				</div>
-
 			</div>
 		</div>
 		<div class="item">
@@ -58,7 +58,7 @@
 			</a>
 			<div class="content">
 				<div class="item">
-					<a href="#/estimateDashboard" class="ui fluid grey button">
+					<a href="#/estimateDashboard" class="ui labeled blue fluid large icon button">
 						<i class="desktop icon"></i> Painel
 					</a>
 				</div>
@@ -73,8 +73,8 @@
 			<a ng-click="openMenu()" class="item">
 				<i class="large orange sidebar icon"></i>
 			</a>
-			<a class="header item" href="#/initialDashboard" data-content="Painel Inicial" data-variation="inverted">
-				<h4 class="ui large orange header">Sisacon</h4>
+			<a class="item" href="#/initialDashboard">
+				<i class="large orange home icon"></i>Painel Inicial
 			</a>
 			<div class="right menu">
 
@@ -87,15 +87,25 @@
 					<i class="large alarm outline orange icon"></i> Notificações
 					<div class="floating bottom ui orange label" ng-if="notifications.length > 0">{{notifications.length}}</div>
 				</a>
-				<!--CONFIGURAÇÕES-->
-				<a class="item">
+				<!--AGENDA-->
+				<a href="#/calendar" class="item">
+					<i class="large calendar orange icon"></i> Agenda
+				</a>
+				<a href="#/configuration" class="item">
 					<i class="large settings orange icon"></i> Configurações
 				</a>
+				<!--FEEDBACK-->
+				<a href="#/feedback" class="item">
+					<i class="large announcement orange icon"></i> Feedback
+				</a>
 				<!--USUARIO-->
-				<a id="btnAccount" class="item">
+				<a href="#/myAccount" class="item">
 					<i class="large user orange icon"></i> Minha Conta
 				</a>
-				<div class="item"></div>
+				<!--LOGOUT-->
+				<a class="item" ng-click="logout()">
+					<i class="large sign out orange icon"></i> Sair
+				</a>
 			</div>
 		</div>
 		<div style="height:1px"></div>
@@ -104,15 +114,6 @@
 		<ng-view>
 		</ng-view>
 
-	</div>
-
-	<!--POPUS-->
-	<div id="accountPopup" class="ui popup">
-		<div class="ui inverted stackable vertical accordion menu">
-			<a class="item">
-                    Minha Conta
-                </a>
-		</div>
 	</div>
 
 	<div id="notificationPopup" class="ui flowing transition hidden popup">
@@ -134,10 +135,10 @@
 					<i class="check icon"></i>
 				</a>
 			</div>
-            
+
 		</div>
 
-        <div class="ui divider"></div>
+		<div class="ui divider"></div>
 
 		<div class="ui stackable grid" ng-if="notifications.length === 0">
 			<h4 class="ui header">
@@ -148,12 +149,13 @@
 		</div>
 
 	</div>
+
 	<!--MODALS-->
-	<div class="ui small modal">
+	<div id="wellcomeModal" class="ui small modal">
 		<div class="header">
 			<p>Seja Bem Vindo(a).</p>
 		</div>
-		<div class="image content">
+		<div class="content">
 			<div class="description">
 				<h4>Agora falta pouco para voçê começar a desfrutar de toda comodidade que o Sisacon pode te oferecer.</h4>
 				<h4>

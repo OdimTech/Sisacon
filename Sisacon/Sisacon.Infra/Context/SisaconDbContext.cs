@@ -21,6 +21,7 @@ namespace Sisacon.Infra.Context
         public DbSet<Contact> Contact { get; set; }
         public DbSet<OccupationArea> OccupationArea { get; set; }
         public DbSet<Notification> Notification { get; set; }
+        public DbSet<Client> Client { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -30,6 +31,7 @@ namespace Sisacon.Infra.Context
             modelBuilder.Configurations.Add(new AddressMap());
             modelBuilder.Configurations.Add(new CompanyMap());
             modelBuilder.Configurations.Add(new NotificationMap());
+            modelBuilder.Configurations.Add(new ClientMap());
 
             base.OnModelCreating(modelBuilder);
         }

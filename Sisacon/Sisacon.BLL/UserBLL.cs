@@ -160,7 +160,7 @@ namespace Sisacon.BLL
             {
                 var emailList = getUsedEmail().ValueList;
 
-                if (emailList.Contains(email))
+                if (emailList != null && emailList.Contains(email))
                 {
                     response.LogicalTest = true;
                     response.Message = Msg.ErrEmailInUse;

@@ -6,9 +6,9 @@
         .module('app')
         .controller('IndexController', IndexController);
 
-    IndexController.$inject = ['$scope', '$window', '$interval', 'accountService', 'localStorageService', 'notificationService'];
+    IndexController.$inject = ['$rootScope', '$scope', '$window', '$interval', 'accountService', 'localStorageService', 'notificationService'];
 
-    function IndexController($scope, $window, $interval, accountService, localStorageService, notificationService) {
+    function IndexController($rootScope, $scope, $window, $interval, accountService, localStorageService, notificationService) {
 
         //INIT OBJECTS
         $scope.loggedUser = {};
@@ -19,14 +19,6 @@
         $interval(getNotificationsByUserId, 300000);
 
         //INIT CONTROLS
-        angular.element('#btnAccount').popup({
-
-            on: 'click',
-            popup: angular.element('#accountPopup'),
-            position: 'left center'
-
-        });
-
         angular.element('#btnNotification').popup({
 
             on: 'click',
@@ -55,6 +47,27 @@
             }).sidebar('toggle');
         };
 
+        $scope.logout = function () {
+
+            localStorageService.remove('id');
+            $window.location.href = 'LandingPage#/login';
+
+        }
+
+        $scope.updateStatusVisualized = function (id) {
+
+            notificationService.updateStatusVisualized(id).success(function (response) {
+
+                if (response.logicalTest) {
+                    getNotificationsByUserId(id);
+                }
+
+            }).error(function (response) {
+
+                console.log(response);
+            })
+        }
+
         function getUserFromServer() {
 
             var userId = localStorageService.get('id');
@@ -63,11 +76,11 @@
 
                 accountService.getUserById(userId).success(function (response) {
 
-                    $scope.loggedUser = response.value;
+                    $rootScope.loggedUser = response.value;
 
                     if ($scope.loggedUser.showWellcomeMessage) {
 
-                        angular.element('.ui.small.modal').modal({
+                        angular.element('wellcomeModal').modal({
 
                             blurring: true,
                             closable: false
@@ -100,19 +113,6 @@
             })
         }
 
-        $scope.updateStatusVisualized = function (id) {
-
-            notificationService.updateStatusVisualized(id).success(function (response) {
-
-                if (response.logicalTest) {
-                    getNotificationsByUserId(id);
-                }
-
-            }).error(function (response) {
-
-                console.log(response);
-            })
-        }
 
     }
 

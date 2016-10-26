@@ -8,7 +8,10 @@ namespace Sisacon.UI
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery")
                 .Include("~/Scripts/jquery-3.1.1.js",
-                "~/node_modules/fullcalendar/node_modules/moment/moment.js"));
+                "~/Scripts/moment.js",
+                "~/Scripts/moment-with-locales.js",
+                "~/Scripts/DataTables/jquery.dataTables.js",
+                "~/Scripts/DataTables/dataTables.semanticui.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/design").Include
                ("~/Scripts/semantic.js"));
@@ -24,6 +27,7 @@ namespace Sisacon.UI
                 "~/bower_components/angular-local-storage/dist/angular-local-storage.js",
                 "~/node_modules/angular-ui-calendar/src/calendar.js",
                 "~/node_modules/fullcalendar/dist/fullcalendar.min.js",
+                "~/bower_components/angular-datatables/dist/angular-datatables.js",
                 //MODULE
                 "~/app/js/app.module.js",
                 //CONFIG-ROUTES
@@ -44,6 +48,9 @@ namespace Sisacon.UI
                 "~/app/js/services/company.service.js",
                 "~/app/js/services/localStorage.service.js",
                 "~/app/js/services/notification.service.js",
+                "~/app/js/services/client.service.js",
+                "~/app/js/services/provider.service.js",
+                "~/app/js/services/utility.service.js",
                 //CONTROLLERS
                 "~/app/js/controllers/base/admin.controller.js",
                 "~/app/js/controllers/base/index.controller.js",
@@ -51,9 +58,14 @@ namespace Sisacon.UI
                 "~/app/js/controllers/account/login.controller.js",
                 "~/app/js/controllers/account/singup.controller.js",
                 "~/app/js/controllers/entries/client.controller.js",
+                "~/app/js/controllers/entries/provider.controller.js",
                 "~/app/js/controllers/estimate/estimate.controller.js",
                 "~/app/js/controllers/initialDashboard.controller.js",
                 "~/app/js/controllers/company/company.controller.js",
+                "~/app/js/controllers/menu/calendar.controller.js",
+                "~/app/js/controllers/menu/configuration.controller.js",
+                "~/app/js/controllers/menu/feedback.controller.js",
+                "~/app/js/controllers/menu/myAccount.controller.js",
                 //DIRECTIVES
                 "~/app/js/directives/validateEmail.directive.js"
                 ));
@@ -63,7 +75,8 @@ namespace Sisacon.UI
                 "~/Content/Site.css",
                 "~/Content/angular-toastr.css",
                 "~/Content/angular-block-ui.css",
-                "~/node_modules/fullcalendar/dist/fullcalendar.css"));
+                "~/node_modules/fullcalendar/dist/fullcalendar.css",
+                "~/Content/DataTables/css/dataTables.semanticui.css"));
 
             BundleTable.EnableOptimizations = false;
         }

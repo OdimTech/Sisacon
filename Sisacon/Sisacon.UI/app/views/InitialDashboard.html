@@ -1,38 +1,17 @@
 ﻿<div class="ui sixteen wide stackable column">
-    <div class="ui huge inverted attached stackable menu">
-        <div class="item">
-            <h3 class="ui inverted big header">
-                <i class="desktop icon"></i>
-                <div class="content">
-                    Bem Vindo(a)
-                    <div class="sub header" ng-if="companyName != ''">
-                        {{companyName}}
-                    </div>
-                    <div class="sub header" ng-if="!companyName">
-                        <a href="#/company"><h4>Complete seus dados</h4></a>
-                    </div>
-                </div>
-            </h3>
-        </div>
-    </div>
+
+	<div class="ui stackable grid">
+
+		<div class="ui ten wide stackable column">
+			<div class="ui segment">
+
+			</div>
+		</div>
+		<div class="ui six wide stackable column">
+			<div class="ui segment">
+
+			</div>
+		</div>
+	</div>
+
 </div>
-
-<div class="ui stackable grid">
-
-    <div class="ui sixteen wide stackable column">
-
-        <!--AGENDA DE EVENTOS-->
-        <div class="ui stackable segment">
-
-            <div ui-calendar="uiConfig.calendar" ng-model="eventSources">
-
-            </div>
-
-        </div>
-    </div>
-    
-</div>
-
-
-
-

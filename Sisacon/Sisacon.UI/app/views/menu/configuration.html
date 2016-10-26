@@ -1,0 +1,113 @@
+﻿<form name="configForm" novalidate>
+
+    <div class="ui stackable grid">
+
+        <div class="ui sixteen wide stackable column">
+
+            <div class="ui stackable segment">
+                <div class="ui stackable grid" style="padding: 0">
+
+                    <div class="ui three wide stackable column">
+                        <h3 class="ui header">
+                            <div class="content">
+                                Configurações
+                                <div class="inverted sub header">
+                                    Deixe o Sisacon do seu jeito
+                                </div>
+                            </div>
+                        </h3>
+                    </div>
+                    <div class="ui thirteen wide stackable right aligned column">
+                        <a class="ui labeled primary icon button" href="#/newClient?id=0">
+                            <i class="check icon"></i> Salvar
+                        </a>
+                        <a class="ui icon primary button" ng-click="showHelp()">
+                            <i class="help icon"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="ui ten wide centered column">
+
+            <!--TABS-->
+            <div class="ui top attached tabular menu">
+                <a class="item active" data-tab="geral">Geral</a>
+                <a class="item" data-tab="codes">Gerenciamento de Códigos</a>
+            </div>
+
+            <!--GERAL-->
+            <div class="ui bottom attached tab segment active" data-tab="geral">
+
+
+            </div>
+
+            <!--CODES-->
+            <div class="ui bottom attached tab segment" data-tab="codes">
+
+                <div class="field">
+
+                    <label>
+                        Selecione abaixo quais itens devem ter seus códigos gerados automáticamente, os itens não marcados
+                        deverão ser informados manualmente.
+                    </label>
+
+                </div>
+
+                <div class="ui divider"></div>
+
+                <div class="ui grid" style="padding:0">
+
+                    <div class="ui four wide stackable column">
+                        <div class="ui field">
+                            <div class="ui  checkbox">
+                                <input type="checkbox" name="apple">
+                                <label>Clientes</label>
+                            </div>
+                        </div>
+                        <div class="ui field">
+                            <div class="ui  checkbox">
+                                <input type="checkbox" name="orange">
+                                <label>Fornecedores</label>
+                            </div>
+                        </div>
+                        <div class="ui field">
+                            <div class="ui  checkbox">
+                                <input type="checkbox" name="pear">
+                                <label>Materiais</label>
+                            </div>
+                        </div>
+                        <div class="ui field">
+                            <div class="ui  checkbox">
+                                <input type="checkbox" name="pear">
+                                <label>Produtos</label>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="ui four wide stackable column">
+
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="apple">
+                            <label>Orçamentos</label>
+                        </div>
+                        <div class="ui  checkbox">
+                            <input type="checkbox" name="orange">
+                            <label>Pedidos</label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div><!--TAB CODES-->
+    </div><!--TEN COLUMN-->
+    </div><!--GRID-->
+
+</form><!--FORM-->

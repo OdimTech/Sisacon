@@ -1,6 +1,5 @@
 ﻿using Sisacon.Domain;
 using System.Data.Entity.ModelConfiguration;
-using System.Data.Entity.ModelConfiguration.Configuration;
 
 namespace Sisacon.Infra.Mapping
 {
@@ -11,7 +10,7 @@ namespace Sisacon.Infra.Mapping
             HasKey(x => x.Id);
 
             Property(x => x.ePersonType)
-                .IsOptional();
+                .IsRequired();
 
             Property(x => x.Cpf)
                 .HasColumnType("varchar")
@@ -29,11 +28,6 @@ namespace Sisacon.Infra.Mapping
                 .IsOptional();
 
             Property(x => x.FantasyName)
-                .HasColumnType("varchar")
-                .HasMaxLength(100)
-                .IsOptional();
-
-            Property(x => x.SocialReasonName)
                 .HasColumnType("varchar")
                 .HasMaxLength(100)
                 .IsOptional();

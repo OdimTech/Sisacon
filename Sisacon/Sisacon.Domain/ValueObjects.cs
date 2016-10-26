@@ -9,6 +9,7 @@
         public enum eFormatImg : short { Circular = 1, Quadrado = 2 };
         public enum eOccupationArea : short { Pintura = 1, Marcenaria = 2, Serralheria = 3, Alimentos = 4, Bijouterias = 5, Decoração = 6 };
         public enum eNotificationClass { Red = 1, Yellow = 2, Green = 3 };
+        public enum eSex { Feminino = 1, Masculino = 2 };
 
     }
 }

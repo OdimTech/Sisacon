@@ -8,7 +8,8 @@
             'ngFileUpload',
             'LocalStorageModule',
             'ui.mask',
-            'ui.calendar']);
+            'ui.calendar',
+            'datatables']);
 
 })();
 

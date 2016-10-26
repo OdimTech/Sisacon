@@ -50,10 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddressDAL.cs" />
+    <Compile Include="ClientDAL.cs" />
     <Compile Include="CompanyDAL.cs" />
     <Compile Include="Context\SisaconDbContext.cs" />
     <Compile Include="Files.cs" />
     <Compile Include="Mapping\AddressMap.cs" />
+    <Compile Include="Mapping\ClientMap.cs" />
     <Compile Include="Mapping\CompanyMap.cs" />
     <Compile Include="Mapping\ContactMap.cs" />
     <Compile Include="Mapping\LogMap.cs" />

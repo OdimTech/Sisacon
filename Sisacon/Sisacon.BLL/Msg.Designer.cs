@@ -61,6 +61,15 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Erro ao excluir o Cliente..
+        /// </summary>
+        internal static string ErrDeleteClient {
+            get {
+                return ResourceManager.GetString("ErrDeleteClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O E-mail informado já está em uso..
         /// </summary>
         internal static string ErrEmailInUse {
@@ -88,6 +97,15 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Erro ao salvar novo Cliente.
+        /// </summary>
+        internal static string ErrInsertClient {
+            get {
+                return ResourceManager.GetString("ErrInsertClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erro ao criar Empresa..
         /// </summary>
         internal static string ErrInsertCompany {
@@ -102,6 +120,15 @@ namespace Sisacon.BLL {
         internal static string ErrInsertUser {
             get {
                 return ResourceManager.GetString("ErrInsertUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao atualizar os dados do Cliente..
+        /// </summary>
+        internal static string ErrUpdateClient {
+            get {
+                return ResourceManager.GetString("ErrUpdateClient", resourceCulture);
             }
         }
         
@@ -152,6 +179,24 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O Cliente foi excluído com Sucesso!.
+        /// </summary>
+        internal static string SucDeleteClient {
+            get {
+                return ResourceManager.GetString("SucDeleteClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O Cliente foi salvo com Sucesso!.
+        /// </summary>
+        internal static string SucInsertClient {
+            get {
+                return ResourceManager.GetString("SucInsertClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sua nova Empresa foi criada com Sucesso!.
         /// </summary>
         internal static string SucInsertCompany {
@@ -166,6 +211,15 @@ namespace Sisacon.BLL {
         internal static string SucInsertUser {
             get {
                 return ResourceManager.GetString("SucInsertUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O dados do Cliente foram atualizados com Sucesso!.
+        /// </summary>
+        internal static string SucUpdateClient {
+            get {
+                return ResourceManager.GetString("SucUpdateClient", resourceCulture);
             }
         }
         

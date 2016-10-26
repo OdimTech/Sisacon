@@ -136,6 +136,7 @@
                 companyService.save($scope.company).success(function (response) {
 
                     toastr.success(response.message);
+                    $scope.btnSaveText = 'Atualizar';
 
                 }).error(function (response) {
 

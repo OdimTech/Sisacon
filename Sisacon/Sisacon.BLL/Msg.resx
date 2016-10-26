@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ErrDeleteClient" xml:space="preserve">
+    <value>Erro ao excluir o Cliente.</value>
+  </data>
   <data name="ErrEmailInUse" xml:space="preserve">
     <value>O E-mail informado já está em uso.</value>
   </data>
@@ -126,11 +129,17 @@
   <data name="ErrFailedToLoadOccupation" xml:space="preserve">
     <value>Não foi possível encontrar as Áreas de Atuação</value>
   </data>
+  <data name="ErrInsertClient" xml:space="preserve">
+    <value>Erro ao salvar novo Cliente</value>
+  </data>
   <data name="ErrInsertCompany" xml:space="preserve">
     <value>Erro ao criar Empresa.</value>
   </data>
   <data name="ErrInsertUser" xml:space="preserve">
     <value>Erro ao criar novo Usuário.</value>
+  </data>
+  <data name="ErrUpdateClient" xml:space="preserve">
+    <value>Erro ao atualizar os dados do Cliente.</value>
   </data>
   <data name="ErrUpdateCompany" xml:space="preserve">
     <value>Erro ao atualizar os dados da sua Empresa</value>
@@ -148,11 +157,20 @@ Entre em contato com o suporte para mais informações.</value>
   <data name="ProcessError" xml:space="preserve">
     <value>Ops! Algo de errado aconteceu, favor tente novamente mais tarde.</value>
   </data>
+  <data name="SucDeleteClient" xml:space="preserve">
+    <value>O Cliente foi excluído com Sucesso!</value>
+  </data>
+  <data name="SucInsertClient" xml:space="preserve">
+    <value>O Cliente foi salvo com Sucesso!</value>
+  </data>
   <data name="SucInsertCompany" xml:space="preserve">
     <value>Sua nova Empresa foi criada com Sucesso!</value>
   </data>
   <data name="SucInsertUser" xml:space="preserve">
     <value>Usuário criado com Sucesso!</value>
+  </data>
+  <data name="SucUpdateClient" xml:space="preserve">
+    <value>O dados do Cliente foram atualizados com Sucesso!</value>
   </data>
   <data name="SucUpdateCompany" xml:space="preserve">
     <value>Os dados da sua Empresa foram atualizados com Sucesso!</value>

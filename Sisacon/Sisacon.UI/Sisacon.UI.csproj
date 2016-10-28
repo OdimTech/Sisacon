@@ -172,6 +172,7 @@
     <Content Include="app\js\interceptors\timestamp.interceptor.js" />
     <Content Include="app\js\services\account.service.js" />
     <Content Include="app\js\services\company.service.js" />
+    <Content Include="app\js\services\configuration.service.js" />
     <Content Include="app\js\services\localStorage.service.js" />
     <Content Include="app\js\services\notification.service.js" />
     <Content Include="app\js\services\client.service.js" />
@@ -2150,8 +2151,10 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Client\ClientController.cs" />
     <Compile Include="Controllers\Company\CompanyController.cs" />
+    <Compile Include="Controllers\Configuration\ConfigurationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Notification\NotificationController.cs" />
+    <Compile Include="Controllers\ProviderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -98,19 +98,24 @@ namespace Sisacon.BLL
         public ResponseMessage<string> registrationUser(User user)
         {
             var response = new ResponseMessage<string>();
+            var configBLL = new ConfigurationBLL();
+            var notificationBLL = new NotificationBLL();
 
             try
             {
                 user.Password = Utilities.encrypt(user.Password);
-
                 response.Quantity = userDal.registerUser(user);
-                
+
                 if(response.Quantity > 0)
                 {
                     response.Message = Msg.SucInsertUser;
                     response.LogicalTest = true;
 
-                    new NotificationBLL().buildNotification(Msg.NotifyCreateCompany, eNotificationClass.Green, "#/company", user);
+                    notificationBLL.buildNotification(Msg.NotifyCreateCompany, eNotificationClass.Green, "#/company", user);
+
+                    var config = configBLL.createDefaultConfig(user);
+
+                    configBLL.save(config);
                 }
                 else
                 {

@@ -74,7 +74,6 @@ namespace Sisacon.Infra
                     context.User.Add(user);
 
                     addedLines = context.SaveChanges();
-
                 }
             }
             catch (Exception ex)

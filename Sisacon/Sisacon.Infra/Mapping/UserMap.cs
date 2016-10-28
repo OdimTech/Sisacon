@@ -1,6 +1,5 @@
 ﻿using Sisacon.Domain;
 using System.Data.Entity.ModelConfiguration;
-using System.Data.Entity.ModelConfiguration.Configuration;
 
 namespace Sisacon.Infra.Mapping
 {

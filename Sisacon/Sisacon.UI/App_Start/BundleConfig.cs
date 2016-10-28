@@ -51,6 +51,7 @@ namespace Sisacon.UI
                 "~/app/js/services/client.service.js",
                 "~/app/js/services/provider.service.js",
                 "~/app/js/services/utility.service.js",
+                "~/app/js/services/configuration.service.js",
                 //CONTROLLERS
                 "~/app/js/controllers/base/admin.controller.js",
                 "~/app/js/controllers/base/index.controller.js",

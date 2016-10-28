@@ -1,4 +1,4 @@
-﻿<form name="clientForm" novalidate>
+﻿<form name="providerForm" novalidate>
 
     <div class="ui stackable grid">
 
@@ -23,13 +23,13 @@
                         <a class="ui labeled primary icon button" href="#/providerList">
                             <i class="long arrow left icon"></i> Voltar
                         </a>
-                        <a class="ui labeled primary icon button" ng-click="vm.newClient()">
+                        <a class="ui labeled primary icon button" ng-click="vm.newvm.provider()">
                             <i class="edit icon"></i>Novo Forncedor
                         </a>
                         <a class="ui labeled primary icon button" ng-click="vm.submitForm()">
                             <i class="checkmark icon"></i> {{vm.btnSaveText}}
                         </a>
-                        <a class="ui labeled primary icon button" ng-class="{'disabled': vm.client.id == 0}" ng-click="vm.showModalRemoveClient(client)">
+                        <a class="ui labeled primary icon button" ng-class="{'disabled': vm.vm.provider.id == 0}" ng-click="vm.showModalRemovevm.provider(vm.provider)">
                             <i class="remove icon"></i>Excluir
                         </a>
                         <a class="ui icon primary button" ng-click="vm.showHelp()">
@@ -61,38 +61,38 @@
                 </div>
 
                 <!--CNPJ-->
-                <div class="three wide required field" ng-class="{'error' : !clientForm.cnpj.$valid && (clientForm.$submitted || !clientForm.cnpj.$pristine)}">
+                <div class="three wide required field" ng-class="{'error' : !providerForm.cnpj.$valid && (providerForm.$submitted || !providerForm.cnpj.$pristine)}">
 
                     <label for="cnpj">CNPJ</label>
-                    <input type="text" name="cnpj" class="ui input" ui-mask="99.999.999/9999-99" ng-model="client.cnpj" ng-required="client.ePersonType === 2" />
+                    <input type="text" name="cnpj" class="ui input" ui-mask="99.999.999/9999-99" ng-model="vm.provider.cnpj" ng-required="vm.provider.ePersonType === 2" />
 
-                    <div class="ui pointing red basic label" ng-show="!clientForm.cnpj.$valid && (clientForm.$submitted || !clientForm.cnpj.$pristine)">
-                        <div ng-show="!clientForm.cnpj.$valid">O CNPJ é Obrigatório</div>
+                    <div class="ui pointing red basic label" ng-show="!providerForm.cnpj.$valid && (providerForm.$submitted || !providerForm.cnpj.$pristine)">
+                        <div ng-show="!providerForm.cnpj.$valid">O CNPJ é Obrigatório</div>
                     </div>
                 </div>
 
                 <div class="fields">
 
                     <!--RAZÃO SOCIAL-->
-                    <div class="eight required wide field" ng-class="{'error' : !clientForm.socialReasonName.$valid && (clientForm.$submitted || !clientForm.socialReasonName.$pristine)}">
+                    <div class="eight required wide field" ng-class="{'error' : !providerForm.socialReasonName.$valid && (providerForm.$submitted || !providerForm.socialReasonName.$pristine)}">
 
                         <label for="socialReasonName">Razão Social</label>
-                        <input type="text" ng-model="client.socialReasonName" name="socialReasonName" class="ui input" required />
+                        <input type="text" ng-model="vm.provider.socialReasonName" name="socialReasonName" class="ui input" required />
 
-                        <div class="ui pointing red basic label" ng-show="!clientForm.socialReasonName.$valid && (clientForm.$submitted || !clientForm.socialReasonName.$pristine)">
-                            <div ng-show="!clientForm.socialReasonName.$valid">A Razão Social é Obrigatória</div>
+                        <div class="ui pointing red basic label" ng-show="!providerForm.socialReasonName.$valid && (providerForm.$submitted || !providerForm.socialReasonName.$pristine)">
+                            <div ng-show="!providerForm.socialReasonName.$valid">A Razão Social é Obrigatória</div>
                         </div>
 
                     </div>
 
                     <!--NOME FANTASIA-->
-                    <div class="eight required wide field" ng-class="{'error' : !clientForm.fantasyName.$valid && (clientForm.$submitted || !clientForm.fantasyName.$pristine)}">
+                    <div class="eight required wide field" ng-class="{'error' : !providerForm.fantasyName.$valid && (providerForm.$submitted || !providerForm.fantasyName.$pristine)}">
 
                         <label for="fantasyName">Nome Fantasia</label>
-                        <input type="text" ng-model="client.fantasyName" name="fantasyName" class="ui input" required />
+                        <input type="text" ng-model="vm.provider.fantasyName" name="fantasyName" class="ui input" required />
 
-                        <div class="ui pointing red basic label" ng-show="!clientForm.fantasyName.$valid && (clientForm.$submitted || !clientForm.fantasyName.$pristine)">
-                            <div ng-show="!clientForm.fantasyName.$valid">O Nome Fantasia é Obrigatório</div>
+                        <div class="ui pointing red basic label" ng-show="!providerForm.fantasyName.$valid && (providerForm.$submitted || !providerForm.fantasyName.$pristine)">
+                            <div ng-show="!providerForm.fantasyName.$valid">O Nome Fantasia é Obrigatório</div>
                         </div>
 
                     </div>
@@ -116,7 +116,7 @@
                     <!--CEP-->
                     <div class="two wide field">
                         <label for="cep">CEP</label>
-                        <input type="text" name="cep" ng-model="client.address.cep" ng-blur="getAddress(client.address.cep)" class="ui input" ui-mask="99999-999" />
+                        <input type="text" name="cep" ng-model="vm.provider.address.cep" ng-blur="getAddress(vm.provider.address.cep)" class="ui input" ui-mask="99999-999" />
                     </div>
                     <div class="field">
                         <label>&nbsp</label>
@@ -129,25 +129,25 @@
                 <div class="fields">
 
                     <!--RUA-->
-                    <div class="eight wide required field" ng-class="{'error' : !clientForm.street.$valid && (clientForm.$submitted || !clientForm.street.$pristine)}">
+                    <div class="eight wide required field" ng-class="{'error' : !providerForm.street.$valid && (providerForm.$submitted || !providerForm.street.$pristine)}">
 
                         <label for="street">Rua/Av</label>
-                        <input type="text" name="street" ng-model="client.address.logradouro" class="ui input" required />
+                        <input type="text" name="street" ng-model="vm.provider.address.logradouro" class="ui input" required />
 
-                        <div class="ui pointing red basic label" ng-show="!clientForm.street.$valid && (clientForm.$submitted || !clientForm.street.$pristine)">
-                            <div ng-show="!clientForm.street.$valid">A Rua é Obrigatória</div>
+                        <div class="ui pointing red basic label" ng-show="!providerForm.street.$valid && (providerForm.$submitted || !providerForm.street.$pristine)">
+                            <div ng-show="!providerForm.street.$valid">A Rua é Obrigatória</div>
                         </div>
 
                     </div>
 
                     <!--NUMERO-->
-                    <div class="two wide required field" ng-class="{'error' : !clientForm.number.$valid && (clientForm.$submitted || !clientForm.number.$pristine)}">
+                    <div class="two wide required field" ng-class="{'error' : !providerForm.number.$valid && (providerForm.$submitted || !providerForm.number.$pristine)}">
 
                         <label for="number">Número</label>
-                        <input type="number" name="number" ng-model="client.address.numero" class="ui input" required />
+                        <input type="number" name="number" ng-model="vm.provider.address.numero" class="ui input" required />
 
-                        <div class="ui pointing red basic label" ng-show="!clientForm.number.$valid && (clientForm.$submitted || !clientForm.number.$pristine)">
-                            <div ng-show="!clientForm.number.$valid">O Número é Obrigatória</div>
+                        <div class="ui pointing red basic label" ng-show="!providerForm.number.$valid && (providerForm.$submitted || !providerForm.number.$pristine)">
+                            <div ng-show="!providerForm.number.$valid">O Número é Obrigatória</div>
                         </div>
 
                     </div>
@@ -155,43 +155,43 @@
                     <!--COMPLEMENTO-->
                     <div class="six wide field">
                         <label for="complement">Complemento</label>
-                        <input type="text" name="complement" ng-model="client.address.complemento" class="ui input" />
+                        <input type="text" name="complement" ng-model="vm.provider.address.complemento" class="ui input" />
                     </div>
                 </div>
 
                 <div class="fields">
 
                     <!--BAIRRO-->
-                    <div class="eight wide required field" ng-class="{'error' : !clientForm.neighborhood.$valid && (clientForm.$submitted || !clientForm.neighborhood.$pristine)}">
+                    <div class="eight wide required field" ng-class="{'error' : !providerForm.neighborhood.$valid && (providerForm.$submitted || !providerForm.neighborhood.$pristine)}">
                         <label for="bairro">Bairro</label>
-                        <input type="text" name="neighborhood" ng-model="client.address.bairro" class="ui input" required />
+                        <input type="text" name="neighborhood" ng-model="vm.provider.address.bairro" class="ui input" required />
 
-                        <div class="ui pointing red basic label" ng-show="!clientForm.neighborhood.$valid && (clientForm.$submitted || !clientForm.neighborhood.$pristine)">
-                            <div ng-show="!clientForm.neighborhood.$valid">O Bairro é Obrigatória</div>
+                        <div class="ui pointing red basic label" ng-show="!providerForm.neighborhood.$valid && (providerForm.$submitted || !providerForm.neighborhood.$pristine)">
+                            <div ng-show="!providerForm.neighborhood.$valid">O Bairro é Obrigatória</div>
                         </div>
 
                     </div>
 
                     <!--CIDADE-->
-                    <div class="four wide required field" ng-class="{'error' : !clientForm.city.$valid && (clientForm.$submitted || !clientForm.city.$pristine)}">
+                    <div class="four wide required field" ng-class="{'error' : !providerForm.city.$valid && (providerForm.$submitted || !providerForm.city.$pristine)}">
 
                         <label for="city">Cidade</label>
-                        <input type="text" name="city" ng-model="client.address.cidade" class="ui input" required />
+                        <input type="text" name="city" ng-model="vm.provider.address.cidade" class="ui input" required />
 
-                        <div class="ui pointing red basic label" ng-show="!clientForm.city.$valid && (clientForm.$submitted || !clientForm.city.$pristine)">
-                            <div ng-show="!clientForm.city.$valid">A Cidade é Obrigatória</div>
+                        <div class="ui pointing red basic label" ng-show="!providerForm.city.$valid && (providerForm.$submitted || !providerForm.city.$pristine)">
+                            <div ng-show="!providerForm.city.$valid">A Cidade é Obrigatória</div>
                         </div>
 
                     </div>
 
                     <!--ESTADO-->
-                    <div class="four wide required field" ng-class="{'error' : !clientForm.state.$valid && (clientForm.$submitted || !clientForm.state.$pristine)}">
+                    <div class="four wide required field" ng-class="{'error' : !providerForm.state.$valid && (providerForm.$submitted || !providerForm.state.$pristine)}">
 
                         <label for="state">Estado</label>
-                        <input type="text" name="state" ng-model="client.address.estado" class="ui input" required />
+                        <input type="text" name="state" ng-model="vm.provider.address.estado" class="ui input" required />
 
-                        <div class="ui pointing red basic label" ng-show="!clientForm.state.$valid && (clientForm.$submitted || !clientForm.state.$pristine)">
-                            <div ng-show="!clientForm.state.$valid">O Estado é Obrigatória</div>
+                        <div class="ui pointing red basic label" ng-show="!providerForm.state.$valid && (providerForm.$submitted || !providerForm.state.$pristine)">
+                            <div ng-show="!providerForm.state.$valid">O Estado é Obrigatória</div>
                         </div>
 
                     </div>
@@ -208,13 +208,13 @@
                     <!--TELEFONE FIXO-->
                     <div class="four wide field">
                         <label for="telFixo">Telefone Fixo</label>
-                        <input type="tel" name="telFixo" class="ui input" ui-mask="(99) 9999-9999" ng-model="client.contact.landLine" />
+                        <input type="tel" name="telFixo" class="ui input" ui-mask="(99) 9999-9999" ng-model="vm.provider.contact.landLine" />
                     </div>
 
                     <!--CELULAR-->
                     <div class="four wide field">
                         <label for="telCelular">Celular</label>
-                        <input type="tel" name="telCelular" class="ui input" ui-mask="(99) 99999-9999" ng-model="client.contact.cellPhone" />
+                        <input type="tel" name="telCelular" class="ui input" ui-mask="(99) 99999-9999" ng-model="vm.provider.contact.cellPhone" />
                     </div>
                 </div>
 
@@ -224,7 +224,7 @@
                     <div class="eight wide field" >
 
                         <label for="email">Email</label>
-                        <input type="email" ng-model="client.contact.email" name="email" class="ui input" />
+                        <input type="email" ng-model="vm.provider.contact.email" name="email" class="ui input" />
                     </div>
 
                     <!--SITE-->
@@ -262,13 +262,13 @@
                         <a class="ui labeled primary icon button" href="#/providerList">
                             <i class="long arrow left icon"></i> Voltar
                         </a>
-                        <a class="ui labeled primary icon button" ng-click="vm.newClient()">
+                        <a class="ui labeled primary icon button" ng-click="vm.newvm.provider()">
                             <i class="edit icon"></i>Novo Forncedor
                         </a>
                         <a class="ui labeled primary icon button" ng-click="vm.submitForm()">
                             <i class="checkmark icon"></i> {{vm.btnSaveText}}
                         </a>
-                        <a class="ui labeled primary icon button" ng-class="{'disabled': vm.client.id == 0}" ng-click="vm.showModalRemoveClient(client)">
+                        <a class="ui labeled primary icon button" ng-class="{'disabled': vm.vm.provider.id == 0}" ng-click="vm.showModalRemovevm.provider(vm.provider)">
                             <i class="remove icon"></i>Excluir
                         </a>
                         <a class="ui primary icon button" onclick="scroll(0,0)">

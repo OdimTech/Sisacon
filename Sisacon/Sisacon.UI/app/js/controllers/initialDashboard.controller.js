@@ -6,42 +6,45 @@
         .module('app')
         .controller('InitialDashboardController', InitialDashBoardController);
 
-    InitialDashBoardController.$inject = ['$rootScope', '$scope', 'accountService', 'companyService', 'localStorageService', 'blockUI'];
+    InitialDashBoardController.$inject = ['$scope', 'accountService', 'companyService', 'localStorageService', 'blockUI'];
 
-    function InitialDashBoardController($rootScope, $scope, accountService, companyService, localStorageService, blockUI) {
+    function InitialDashBoardController($scope, accountService, companyService, localStorageService, blockUI) {
 
         //INIT OBJECTS
         $scope.company = {};
-        $scope.loggedUser = $rootScope.loggedUser;
+        $scope.loggedUser = localStorageService.get('id');
         $scope.companyName = '';
 
         getCompany();
 
         function getCompany() {
 
-            blockUI.start('Carregando Informações...');
+            if ($scope.loggedUser) {
 
-            companyService.getCompanyByUser($scope.loggedUser.id).success(function (response) {
+                blockUI.start('Carregando Informações...');
 
-                $scope.company = response.value;
-                blockUI.stop();
+                companyService.getCompanyByUser($scope.loggedUser.id).success(function (response) {
 
-                if ($scope.company) {
+                    $scope.company = response.value;
+                    blockUI.stop();
 
-                    if ($scope.company.ePersonType == 1) {
+                    if ($scope.company) {
 
-                        $scope.companyName = $scope.company.companyName;
+                        if ($scope.company.ePersonType == 1) {
+
+                            $scope.companyName = $scope.company.companyName;
+                        }
+                        else {
+
+                            $scope.companyName = $scope.company.fantasyName;
+                        }
                     }
-                    else {
 
-                        $scope.companyName = $scope.company.fantasyName;
-                    }
-                }
+                }).error(function (response) {
 
-            }).error(function (response) {
-
-                blockUI.stop();
-            });
+                    blockUI.stop();
+                });
+            }
         }
     }
 

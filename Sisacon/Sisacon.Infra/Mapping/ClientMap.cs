@@ -9,6 +9,11 @@ namespace Sisacon.Infra.Mapping
         {
             HasKey(x => x.Id);
 
+            Property(x => x.CodCliente)
+                .HasColumnType("varchar")
+                .HasMaxLength(50)
+                .IsRequired();
+
             Property(x => x.ePersonType)
                 .HasColumnType("int")
                 .IsRequired();

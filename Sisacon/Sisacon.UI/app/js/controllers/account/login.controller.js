@@ -6,9 +6,12 @@
         .module('app')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$scope', 'accountService', 'localStorageService', 'toastr', 'blockUI', '$window'];
+    LoginController.$inject = ['$scope', 'accountService', 'localStorageService', 'configurationService', 'toastr', 'blockUI', '$window'];
 
-    function LoginController($scope, accountService, localStorageService,toastr, blockUI, $window) {
+    function LoginController($scope, accountService, localStorageService, configurationService, toastr, blockUI, $window) {
+
+        $scope.config = {};
+        $scope.idUser = 0;
 
         $scope.login = function () {
 
@@ -19,9 +22,11 @@
                 accountService.loginUser($scope.account).success(function (response) {
 
                     blockUI.stop();
+            
+                    $scope.User = response.value;
+                    localStorageService.set('id', $scope.User.id);
                     
-                    localStorageService.set('id', response.value.id);
-                    $window.location.href = 'Index#/initialDashboard';
+                    loadSystem();
 
                 }).error(function (response) {
 
@@ -30,7 +35,32 @@
 
                 });
             }
-        };
+        }
+
+        function loadSystem() {
+
+            configurationService.getConfigurationByIdUser($scope.User.id).success(function (response) {
+
+                $scope.config = response.value;
+
+                if ($scope.config) {
+
+                    $window.location.href = 'Index' + $scope.config.defaultPage;
+                }
+                else {
+
+                    $window.location.href = 'Index' + '#/initialDashBoard';
+                }
+
+            }).error(function (response) {
+
+                console.log(response.message);
+
+            })
+
+            
+
+        }
     }
 
 })();

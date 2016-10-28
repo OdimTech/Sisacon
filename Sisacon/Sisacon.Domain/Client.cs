@@ -6,6 +6,7 @@ namespace Sisacon.Domain
     public class Client
     {
         public int Id { get; set; }
+        public string CodCliente { get; set; }
         public ePersonType ePersonType { get; set; }
         public string Cpf { get; set; }
         public string Cnpj { get; set; }

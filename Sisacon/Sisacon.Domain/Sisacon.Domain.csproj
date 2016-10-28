@@ -43,11 +43,13 @@
     <Compile Include="Address.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Company.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="OccupationArea.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider.cs" />
     <Compile Include="ResponseMessage.cs" />
     <Compile Include="User.cs" />
     <Compile Include="ValueObjects.cs" />

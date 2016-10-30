@@ -7,9 +7,9 @@
         .module('app')
         .controller('ClientController', ClientController);
 
-    ClientController.$inject = ['$scope', '$window', 'blockUI', '$routeParams', 'toastr', 'viaCepService', 'utilityService', 'localStorageService', 'clientService', 'valuesService', 'DTOptionsBuilder', 'DTColumnBuilder'];
+    ClientController.$inject = ['$scope', '$window', 'blockUI', '$routeParams', 'toastr', 'viaCepService', 'utilityService', 'localStorageService', 'clientService', 'valuesService', 'configurationService', 'DTOptionsBuilder', 'DTColumnBuilder'];
 
-    function ClientController($scope, $window, blockUI, $routeParams, toastr, viaCepService, utilityService, localStorageService, clientService, valuesService, DTOptionsBuilder, DTColumnBuilder) {
+    function ClientController($scope, $window, blockUI, $routeParams, toastr, viaCepService, utilityService, localStorageService, clientService, valuesService, configurationService, DTOptionsBuilder, DTColumnBuilder) {
 
         //INTIT CONTROLS
         angular.element('.ui.dropdown').dropdown();
@@ -29,8 +29,10 @@
         $scope.userTypes = [];
         $scope.nameClient = '';
         $scope.loadClient = loadClient;
+        $scope.configuration = {};
 
         //INIT OBJECTS
+        loadConfigurations();
         loadUserTypes();
         loadSex();
         loadDataTables();
@@ -46,6 +48,19 @@
         }
 
         //FUNCTIONS
+        function loadConfigurations() {
+
+            configurationService.getConfigurationByIdUser($scope.userId).success(function (response) {
+
+                $scope.configuration = response.value;
+
+            }).error(function (response) {
+
+                console.log(reponse.message);
+
+            })
+        }
+
         function loadUserTypes() {
 
             $scope.userTypes = [
@@ -85,6 +100,8 @@
                 clientService.getClientById(id).success(function (response) {
 
                     response.value.birthday = utilityService.convertDateToString(response.value.birthday);
+                    response.value.registrationDate = utilityService.convertDateToString(response.value.registrationDate);
+
                     $scope.client = response.value;
 
                 }).error(function (response) {
@@ -102,8 +119,6 @@
                 $scope.btnSaveText = 'Salvar';
                 
                 initObjectClient();
-
-
             }
         }
 
@@ -186,6 +201,7 @@
                     if (dateIsValid) {
 
                         client.birthday = utilityService.convertStringToDate(date);
+                        client.registrationDate = utilityService.convertStringToDate($scope.client.registrationDate);
                     }
                     else {
 
@@ -209,6 +225,8 @@
 
                         $scope.client = response.value;
                     }
+
+                    loadClient($scope.client.id);
                     
                 }).error(function (response) {
 

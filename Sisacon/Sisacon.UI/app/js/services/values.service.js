@@ -3,8 +3,16 @@
     angular.module('app').value('valuesService', {
 
         getApiUrl: 'http://localhost:20794/',
-        getEmailPatern: /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/,
         getDefaultLogo: '../../../Content/UserImages/Default/CompanyLogo/default_logo.gif',
+        abbrAutomaticCodes: {
+
+            client: 'CLT',
+            provider: 'FRN',
+            material: 'MAT',
+            product: 'PRD',
+            estimate: 'ORC',
+            request: 'PDD'
+        },
         dataTableLanguage: {
                         "lengthMenu": "Exibindo _MENU_ Itens por página",
                         "zeroRecords": "Nenhum resultado encontrado",

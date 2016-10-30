@@ -2154,7 +2154,7 @@
     <Compile Include="Controllers\Configuration\ConfigurationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Notification\NotificationController.cs" />
-    <Compile Include="Controllers\ProviderController.cs" />
+    <Compile Include="Controllers\Provider\ProviderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

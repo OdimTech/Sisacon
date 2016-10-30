@@ -49,15 +49,16 @@
             </div>
             <div class="ui form attached stackable fluid segment">
 
-                <div class="fields">
+                <!--CODIGO CLIENTE-->
+                <div class="fields" ng-show="client.id > 0 || !configuration.codAutoClient">
 
                     <div class="three wide field">
                         <label for="cod">Código do Cliente</label>
-                        <input type="text" name="cod" class="ui input" readonly ng-model="client.codeProvider" />
+                        <input type="text" name="cod" class="ui input" ng-required="client.id == 0 && !configuration.codAutoClient" ng-readonly="configuration.codAutoClient" ng-model="client.codCliente" />
                     </div>
-                    <div class="three wide read-only field">
+                    <div class="three wide field">
                         <label for="registration">Data de Cadastro</label>
-                        <input type="text" name="registration" ui-mask="99/99/9999" class="ui input" readonly ng-model="client.registration" />
+                        <input type="text" name="registration" ui-mask="99/99/9999" class="ui input" readonly ng-model="client.registrationDate" />
                     </div>
 
                 </div>
@@ -332,7 +333,6 @@
                 Detalhes
             </div>
             <div class="ui form attached stackable clearing fluid segment">
-                <p>Cliente desde: {{client.registrationDate | date:'dd/MM/yyyy'}}</p>
                 <p>Orçamentos solicitados: 2</p>
                 <p>Pedidos realizados: 1</p>
                 <p>Taxa de conversão: 50%</p>

@@ -70,6 +70,15 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Erro ao excluir Fornecedor.
+        /// </summary>
+        internal static string ErrDeleteProvider {
+            get {
+                return ResourceManager.GetString("ErrDeleteProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O E-mail informado já está em uso..
         /// </summary>
         internal static string ErrEmailInUse {
@@ -115,6 +124,15 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Erro ao salvar novo Fornecedor..
+        /// </summary>
+        internal static string ErrInsertProvider {
+            get {
+                return ResourceManager.GetString("ErrInsertProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erro ao criar novo Usuário..
         /// </summary>
         internal static string ErrInsertUser {
@@ -138,6 +156,15 @@ namespace Sisacon.BLL {
         internal static string ErrUpdateCompany {
             get {
                 return ResourceManager.GetString("ErrUpdateCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao atualizar os dados so Fornecedor.
+        /// </summary>
+        internal static string ErrUpdateProvider {
+            get {
+                return ResourceManager.GetString("ErrUpdateProvider", resourceCulture);
             }
         }
         
@@ -188,6 +215,15 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O Fornecedor foi excluído com Sucesso!.
+        /// </summary>
+        internal static string SucDeleteProvider {
+            get {
+                return ResourceManager.GetString("SucDeleteProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O Cliente foi salvo com Sucesso!.
         /// </summary>
         internal static string SucInsertClient {
@@ -202,6 +238,15 @@ namespace Sisacon.BLL {
         internal static string SucInsertCompany {
             get {
                 return ResourceManager.GetString("SucInsertCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fornecedor criado com Sucesso!.
+        /// </summary>
+        internal static string SucInsertProvider {
+            get {
+                return ResourceManager.GetString("SucInsertProvider", resourceCulture);
             }
         }
         
@@ -229,6 +274,15 @@ namespace Sisacon.BLL {
         internal static string SucUpdateCompany {
             get {
                 return ResourceManager.GetString("SucUpdateCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O Fornecedor foi atualizado com Sucesso!.
+        /// </summary>
+        internal static string SucUpdateProvider {
+            get {
+                return ResourceManager.GetString("SucUpdateProvider", resourceCulture);
             }
         }
         

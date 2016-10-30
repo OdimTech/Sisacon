@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace Sisacon.BLL
 {
@@ -27,6 +28,13 @@ namespace Sisacon.BLL
             return sb.ToString();
         }
 
+        public static int createRandonNumber()
+        {
+            var random = new Random();
 
+            var randomNumber = random.Next(10000, 99999);
+
+            return randomNumber;
+        }
     }
 }

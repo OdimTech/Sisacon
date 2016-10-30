@@ -29,6 +29,8 @@ namespace Sisacon.BLL
             try
             {
                 client.RegistrationDate = DateTime.Now;
+                client.CodCliente = new AutomaticCode().createAutomaticCode(client, client.User.Id);
+
                 response.Quantity = clientDAL.save(client);
 
                 if(response.Quantity > 0)
@@ -74,7 +76,6 @@ namespace Sisacon.BLL
                 else
                 {
                     response.LogicalTest = false;
-                    response.StatusCode = HttpStatusCode.BadRequest;
                     response.Message = "Cliente não encontrado";
                 }
             }
@@ -97,6 +98,7 @@ namespace Sisacon.BLL
                 var clientsF = clientList.Where(x => x.ePersonType == ePersonType.Fisica).ToList();
                 var clientsJ = clientList.Where(x => x.ePersonType == ePersonType.Juridica).ToList();
 
+                response.Value = clientList;
                 response.ValueList.Add(clientsF);
                 response.ValueList.Add(clientsJ);
 
@@ -131,7 +133,7 @@ namespace Sisacon.BLL
                     response.Message = Msg.SucUpdateClient;
                     response.LogicalTest = true;
                     response.eOperationType = eOperationType.Update;
-                    //response.Value = client;
+                    response.Value = client;
                 }
                 else
                 {

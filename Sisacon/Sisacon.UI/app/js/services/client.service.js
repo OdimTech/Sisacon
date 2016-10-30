@@ -6,7 +6,7 @@
         .module('app')
         .factory('clientService', clientService);
 
-    function clientService(valuesService, $http, $q) {
+    function clientService(valuesService, $http) {
 
         var apiUrl = valuesService.getApiUrl;
         var route = 'api/client';

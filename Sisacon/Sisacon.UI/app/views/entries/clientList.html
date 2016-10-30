@@ -39,6 +39,7 @@
 						<tr>
 							<th>Editar</th>
 							<th>Excluir</th>
+                            <th>Código</th>
 							<th>CPF</th>
 							<th>Nome do Cliente</th>
 							<th>Data de Aniversário</th>
@@ -54,6 +55,7 @@
 						<tr ng-repeat="item in clientsF">
 							<td><button class="ui yellow circular icon button" ng-click="editClient(item.id)"><i class="ui edit icon"></i></button></td>
 							<td><button class="ui red circular icon button" ng-click="showModalRemoveClient(item)"><i class="ui remove icon"></i></button></td>
+                            <td>{{item.codCliente}}</td>
 							<td>{{item.cpf}}</td>
 							<td>{{item.clientName}}</td>
 							<td>{{item.birthday | date:'dd/MM/yyyy'}}</td>
@@ -114,7 +116,7 @@
 		</div>
 	</div>
 	<div class="actions">
-		<button class="ui ok green button" ng-click="loadClient(0)">
+		<button class="ui ok green button" ng-click="removeClientFromList()">
 				<i class="checkmark icon"></i> Excluir
 		</button>
 		<button class="ui cancel red button">

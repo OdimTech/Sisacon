@@ -120,6 +120,9 @@
   <data name="ErrDeleteClient" xml:space="preserve">
     <value>Erro ao excluir o Cliente.</value>
   </data>
+  <data name="ErrDeleteProvider" xml:space="preserve">
+    <value>Erro ao excluir Fornecedor</value>
+  </data>
   <data name="ErrEmailInUse" xml:space="preserve">
     <value>O E-mail informado já está em uso.</value>
   </data>
@@ -135,6 +138,9 @@
   <data name="ErrInsertCompany" xml:space="preserve">
     <value>Erro ao criar Empresa.</value>
   </data>
+  <data name="ErrInsertProvider" xml:space="preserve">
+    <value>Erro ao salvar novo Fornecedor.</value>
+  </data>
   <data name="ErrInsertUser" xml:space="preserve">
     <value>Erro ao criar novo Usuário.</value>
   </data>
@@ -143,6 +149,9 @@
   </data>
   <data name="ErrUpdateCompany" xml:space="preserve">
     <value>Erro ao atualizar os dados da sua Empresa</value>
+  </data>
+  <data name="ErrUpdateProvider" xml:space="preserve">
+    <value>Erro ao atualizar os dados so Fornecedor</value>
   </data>
   <data name="ErrUpdateUser" xml:space="preserve">
     <value>Erro ao atualizar os dados do Usuário.</value>
@@ -160,11 +169,17 @@ Entre em contato com o suporte para mais informações.</value>
   <data name="SucDeleteClient" xml:space="preserve">
     <value>O Cliente foi excluído com Sucesso!</value>
   </data>
+  <data name="SucDeleteProvider" xml:space="preserve">
+    <value>O Fornecedor foi excluído com Sucesso!</value>
+  </data>
   <data name="SucInsertClient" xml:space="preserve">
     <value>O Cliente foi salvo com Sucesso!</value>
   </data>
   <data name="SucInsertCompany" xml:space="preserve">
     <value>Sua nova Empresa foi criada com Sucesso!</value>
+  </data>
+  <data name="SucInsertProvider" xml:space="preserve">
+    <value>Fornecedor criado com Sucesso!</value>
   </data>
   <data name="SucInsertUser" xml:space="preserve">
     <value>Usuário criado com Sucesso!</value>
@@ -174,6 +189,9 @@ Entre em contato com o suporte para mais informações.</value>
   </data>
   <data name="SucUpdateCompany" xml:space="preserve">
     <value>Os dados da sua Empresa foram atualizados com Sucesso!</value>
+  </data>
+  <data name="SucUpdateProvider" xml:space="preserve">
+    <value>O Fornecedor foi atualizado com Sucesso!</value>
   </data>
   <data name="SucUpdateUser" xml:space="preserve">
     <value>Os dados do Usuário foram atualizados com Sucesso!</value>

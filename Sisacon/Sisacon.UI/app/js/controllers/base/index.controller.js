@@ -41,7 +41,8 @@
             angular.element('#sidebar').sidebar({
 
                 closable: true,
-                transition: 'overlay',
+                transition: 'push',
+                mobileTransition: true,
                 dimPage: true
 
             }).sidebar('toggle');

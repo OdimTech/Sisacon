@@ -150,6 +150,12 @@
   <data name="ErrUpdateCompany" xml:space="preserve">
     <value>Erro ao atualizar os dados da sua Empresa</value>
   </data>
+  <data name="ErrUpdateConfig" xml:space="preserve">
+    <value>Não foi possivel atualizar as Configurações</value>
+  </data>
+  <data name="ErrUpdateCostConfig" xml:space="preserve">
+    <value>Não foi possivel atualizar as Configurações de Custo</value>
+  </data>
   <data name="ErrUpdateProvider" xml:space="preserve">
     <value>Erro ao atualizar os dados so Fornecedor</value>
   </data>
@@ -189,6 +195,12 @@ Entre em contato com o suporte para mais informações.</value>
   </data>
   <data name="SucUpdateCompany" xml:space="preserve">
     <value>Os dados da sua Empresa foram atualizados com Sucesso!</value>
+  </data>
+  <data name="SucUpdateConfig" xml:space="preserve">
+    <value>Configurações atualizadas com Sucesso!</value>
+  </data>
+  <data name="SucUpdateCostConfig" xml:space="preserve">
+    <value>Configurações de Custo Atualizadas com Sucesso!</value>
   </data>
   <data name="SucUpdateProvider" xml:space="preserve">
     <value>O Fornecedor foi atualizado com Sucesso!</value>

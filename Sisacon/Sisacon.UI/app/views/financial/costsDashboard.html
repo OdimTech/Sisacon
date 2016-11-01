@@ -1,0 +1,107 @@
+﻿<div class="ui stackable grid">
+
+    <div class="ui sixteen wide stackable column" id="top-menu">
+
+        <div class="ui stackable segment">
+            <div class="ui stackable grid" style="padding: 0">
+
+                <div class="ui four wide stackable column">
+                    <h3 class="ui header">
+                        <div class="content">
+                            Painel de Custos
+                            <div class="inverted sub header">
+                                Resumo dos Custos Mensais de Produção
+                            </div>
+                        </div>
+                    </h3>
+                </div>
+                <div class="ui twelve wide stackable right aligned column">
+
+                    <a class="ui labeled primary icon button" ng-click="vm.openModalOptions()">
+                        <i class="configure icon"></i>Opções
+                    </a>
+                    <a class="ui labeled primary icon button" href="#/costs">
+                        <i class="edit icon"></i>Novo Custo
+                    </a>
+                    <a class="ui icon primary button" ng-click="vm.showHelp()">
+                        <i class="help icon"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div><!--TOP MENU-->
+
+    <div class="ui sixteen wide stackable column" style="padding:0">
+
+        <div class="ui stackable grid" style="padding-top:0">
+
+            <div class="ui ten wide stackable column">
+
+                <div class="ui stackable segment">
+
+
+                </div>
+
+                <div class="ui stackable segment">
+
+
+                </div>
+
+            </div>
+
+            <div class="ui six wide stackable column">
+
+                <div class="ui stackable segment">
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div><!--GRID CONTENT-->
+
+</div><!--GRID PAGE-->
+<!--MODAL-->
+<div id="costOptions" class="ui long modal" ng-controller="CostConfiguration as vm">
+    <i class="close icon"></i>
+    <div class="content">
+
+        <form class="ui form" name="costConfigForm" novalidate>
+
+            <div class="ui floating  message"><!--LIMITE DE CUSTOS-->
+                <div class="header">
+                    Definir Limite de Custos
+                </div>
+                <p>
+                    Estabeleça um limite mensal de Gastos, assim voçê saberá se está gastando mais do que deveria.
+                </p>
+            </div>
+
+            <div class="four wide field">
+
+                <label>Valor máximo</label>
+                <div class="ui right labeled input">
+                    <input type="number" name="maxCost" ng-model="vm.costConfiguration.maxCost" class="ui input" />
+                    <div class="ui basic label">
+                        R$
+                    </div>
+                </div>
+            </div>
+
+            <!----------------------------------------------------------------------------------------------------------------->
+
+        </form>
+    </div>
+    <div class="actions">
+        <button class="ui ok green button" ng-click="vm.save()">
+            <i class="checkmark icon"></i> Salvar
+        </button>
+        <button class="ui cancel red button">
+            <i class="checkmark icon"></i> Cancelar
+        </button>
+    </div>
+</div>

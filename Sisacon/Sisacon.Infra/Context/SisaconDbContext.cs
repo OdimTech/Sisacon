@@ -24,6 +24,9 @@ namespace Sisacon.Infra.Context
         public DbSet<Client> Client { get; set; }
         public DbSet<Configuration> Config { get; set; }
         public DbSet<Provider> Provider { get; set; }
+        public DbSet<Cost> Cost { get; set; }
+        public DbSet<VariableCost> VariableCost { get; set; }
+        public DbSet<CostConfiguration> CostConfiguration { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -36,6 +39,9 @@ namespace Sisacon.Infra.Context
             modelBuilder.Configurations.Add(new ClientMap());
             modelBuilder.Configurations.Add(new ConfigurationMap());
             modelBuilder.Configurations.Add(new ProviderMap());
+            modelBuilder.Configurations.Add(new CostMap());
+            modelBuilder.Configurations.Add(new VariableCostMap());
+            modelBuilder.Configurations.Add(new CostConfigurationMap());
 
             base.OnModelCreating(modelBuilder);
         }

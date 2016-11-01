@@ -1,0 +1,200 @@
+﻿<div class="ui stackable grid">
+
+    <div class="ui sixteen wide stackable column" id="top-menu">
+
+        <div class="ui stackable segment">
+            <div class="ui stackable grid" style="padding: 0">
+
+                <div class="ui four wide stackable column">
+                    <h3 class="ui header">
+                        <div class="content">
+                            Custos
+                            <div class="inverted sub header">
+                                Calcule o seu Custo Mensal
+                            </div>
+                        </div>
+                    </h3>
+                </div>
+                <div class="ui twelve wide stackable right aligned column">
+
+                    <a class="ui labeled primary icon button" href="#/costsDashboard">
+                        <i class="left long arrow icon"></i>Voltar
+                    </a>
+                    <a class="ui labeled primary icon button" ng-click="">
+                        <i class="check icon"></i>Salvar
+                    </a>
+                    <a class="ui icon primary button" ng-click="vm.showHelp()">
+                        <i class="help icon"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div><!--TOP MENU-->
+
+    <div class="ui sixteen wide stackable column" style="padding:0">
+
+        <form name="costsForm" class="ui form" novalidate>
+
+            <div class="ui stackable grid" style="padding-top:0">
+
+                <div class="ui eight wide stackable column">
+
+                    <div class="ui attached stackable inverted fluid segment">
+                        <i class="orange file text icon"></i>
+                        Base de Cálculo
+                    </div>
+                    <div class="ui attached stackable fluid segment">
+                        <!--BASE DE CALCULO-->
+
+                        <div class="fields">
+
+                            <div class="ui four wide field">
+
+                                <label for="referenceMonth">Mês Referência</label>
+                                <input type="text" name="referenceMonth" class="ui input" readonly />
+
+                            </div>
+
+                            <div class="ui four wide field">
+
+                                <label for="workedHours">Horas Trabalhadas</label>
+                                <input type="number" name="workedHours" class="ui input" />
+
+                            </div>
+
+                            <div class="ui four wide field">
+
+                                <label for="salary">Salário</label>
+                                <input type="number" name="salary" class="ui input" />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="ui attached stackable inverted fluid segment">
+                        <i class="orange dollar outline icon"></i>
+                        Custos Mensais Váriáveis
+                    </div>
+                    <div class="ui attached stackable fluid segment">
+                        <!--CUSTOS FIXOS MENSAIS-->
+
+                        <div class="nine wide field">
+
+                            <label for="descCost">Descrição</label>
+                            <input type="text" name="descCost" class="ui input" />
+                        </div>
+
+                        <div class="fields">
+
+                            <div class="four wide field">
+
+                                <label for="cost">Valor</label>
+                                <input type="number" name="cost" class="ui input" />
+                            </div>
+
+                            <div class="five wide field">
+
+                                <label for="personType">Categoria</label>
+                                <select ng-model="client.ePersonType" ng-options="item.id as item.desc for item in userTypes" ng-selected="client.ePersonType"
+                                        name="personType" required></select>
+
+                            </div>
+
+                            <div class="field">
+                                <label>&nbsp</label>
+                                <button class="ui labeled primary icon button">
+                                    <i class="plus icon"></i>
+                                    Adicionar
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="ui divider"></div>
+
+                        <div class="ui middle aligned selection animated divided list">
+
+                            <div class="item" >
+                                <div class="left floated content">
+                                    <i class="large phone icon"></i>
+                                </div>
+                                <div class="right floated content">
+                                    <button class="ui red icon button">
+                                        <i class="remove icon"></i>
+                                    </button>
+                                    <button class="ui yellow icon button">
+                                        <i class="edit icon"></i>
+                                    </button>
+                                </div>
+                                <div class="content">
+                                    <div class="header">Conta de Água - 527,00</div>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="right floated content">
+                                    <button class="ui red icon button">
+                                        <i class="remove icon"></i>
+                                    </button>
+                                    <button class="ui yellow icon button">
+                                        <i class="edit icon"></i>
+                                    </button>
+                                </div>
+                                <div class="content">
+                                    <div class="header">Telefone - 135,00</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="ui attached stackable inverted fluid segment">
+                        <i class="orange laptop outline icon"></i>
+                        Depreciação de Materiais
+                    </div>
+                    <div class="ui attached stackable fluid segment">
+
+                        <div class="">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="ui eight wide stackable column">
+
+                    <div class="ui attached stackable inverted fluid segment">
+                        <i class="orange calculator outline icon"></i>
+                        Total dos Custos
+                    </div>
+                    <div class="ui attached stackable fluid segment">
+
+
+                    </div>
+
+                    <div class="ui attached stackable inverted fluid segment">
+                        <i class="orange bar chart outline icon"></i>
+                        Gráfico
+                    </div>
+                    <div class="ui attached stackable fluid segment">
+
+
+                    </div>
+
+                </div>
+
+            </div><!--GRID CONTENT-->
+
+        </form>
+
+    </div>
+
+</div><!--GRID PAGE-->

@@ -97,9 +97,7 @@ namespace Sisacon.BLL
         /// <returns>Quantidade de registros inseridos no banco de dados</returns>
         public ResponseMessage<string> registrationUser(User user)
         {
-            var response = new ResponseMessage<string>();
-            var configBLL = new ConfigurationBLL();
-            var notificationBLL = new NotificationBLL();
+            var response = new ResponseMessage<string>();       
 
             try
             {
@@ -111,11 +109,7 @@ namespace Sisacon.BLL
                     response.Message = Msg.SucInsertUser;
                     response.LogicalTest = true;
 
-                    notificationBLL.buildNotification(Msg.NotifyCreateCompany, eNotificationClass.Green, "#/company", user);
-
-                    var config = configBLL.createDefaultConfig(user);
-
-                    configBLL.save(config);
+                    initConfigsUser(user);
                 }
                 else
                 {
@@ -212,6 +206,24 @@ namespace Sisacon.BLL
             return response;
         }
 
+        private void initConfigsUser(User user)
+        {
+            var configBLL = new ConfigurationBLL();
+            var notificationBLL = new NotificationBLL();
+            var configCostBLL = new CostConfigurationBLL();
 
+            //NOTIFICAÇAO DE CRIAÇÃO DE EMPRESA
+            notificationBLL.buildNotification(Msg.NotifyCreateCompany, eNotificationClass.Green, "#/company", user);
+
+            //CONFIGURAÇÃO DE SISTEMA PADRÃO PARA UM NOVO USUARIO
+            var config = configBLL.createDefaultConfig(user);
+
+            configBLL.save(config);
+
+            //CONFIGURAÇÃO DE CUSTOS PADRÃO PARA UM NOVO USUARIO
+            var costConfig = configCostBLL.createDefaultConfig(user);
+
+            configCostBLL.save(costConfig);
+        }
     }
 }

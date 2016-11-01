@@ -160,6 +160,24 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Não foi possivel atualizar as Configurações.
+        /// </summary>
+        internal static string ErrUpdateConfig {
+            get {
+                return ResourceManager.GetString("ErrUpdateConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Não foi possivel atualizar as Configurações de Custo.
+        /// </summary>
+        internal static string ErrUpdateCostConfig {
+            get {
+                return ResourceManager.GetString("ErrUpdateCostConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erro ao atualizar os dados so Fornecedor.
         /// </summary>
         internal static string ErrUpdateProvider {
@@ -274,6 +292,24 @@ namespace Sisacon.BLL {
         internal static string SucUpdateCompany {
             get {
                 return ResourceManager.GetString("SucUpdateCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configurações atualizadas com Sucesso!.
+        /// </summary>
+        internal static string SucUpdateConfig {
+            get {
+                return ResourceManager.GetString("SucUpdateConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configurações de Custo Atualizadas com Sucesso!.
+        /// </summary>
+        internal static string SucUpdateCostConfig {
+            get {
+                return ResourceManager.GetString("SucUpdateCostConfig", resourceCulture);
             }
         }
         

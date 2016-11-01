@@ -48,10 +48,12 @@ namespace Sisacon.BLL
 
                 if(response.Quantity > 0)
                 {
+                    response.Message = Msg.SucUpdateConfig;
                     response.LogicalTest = true;
                 }
                 else
                 {
+                    response.Message = Msg.ErrUpdateConfig;
                     response.LogicalTest = false;
                 }
             }
@@ -95,6 +97,11 @@ namespace Sisacon.BLL
             return response;
         }
 
+        /// <summary>
+        /// Cria a configuração padrão para um novo usuário
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public Configuration createDefaultConfig(User user)
         {
             var config = new Configuration();
@@ -112,7 +119,7 @@ namespace Sisacon.BLL
             }
             catch(Exception ex)
             {
-                LogBLL<Configuration>.createLog(ex);
+                LogBLL<Configuration>.createLogNoResponse(ex);
             }
             return config;
         }

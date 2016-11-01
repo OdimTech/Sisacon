@@ -45,6 +45,9 @@
     <Compile Include="Company.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Contact.cs" />
+    <Compile Include="Cost.cs" />
+    <Compile Include="CostConfiguration.cs" />
+    <Compile Include="DepreciationCost.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="OccupationArea.cs" />
@@ -53,6 +56,7 @@
     <Compile Include="ResponseMessage.cs" />
     <Compile Include="User.cs" />
     <Compile Include="ValueObjects.cs" />
+    <Compile Include="VariableCost.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

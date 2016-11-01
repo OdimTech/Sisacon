@@ -28,6 +28,8 @@ namespace Sisacon.UI
                 "~/node_modules/angular-ui-calendar/src/calendar.js",
                 "~/node_modules/fullcalendar/dist/fullcalendar.min.js",
                 "~/bower_components/angular-datatables/dist/angular-datatables.js",
+                "~/bower_components/chart.js/dist/Chart.js",
+                "~/bower_components/angular-chart.js/dist/angular-chart.js",
                 //MODULE
                 "~/app/js/app.module.js",
                 //CONFIG-ROUTES
@@ -52,6 +54,7 @@ namespace Sisacon.UI
                 "~/app/js/services/provider.service.js",
                 "~/app/js/services/utility.service.js",
                 "~/app/js/services/configuration.service.js",
+                "~/app/js/services/costConfiguration.service.js",
                 //CONTROLLERS
                 "~/app/js/controllers/base/admin.controller.js",
                 "~/app/js/controllers/base/index.controller.js",
@@ -67,6 +70,8 @@ namespace Sisacon.UI
                 "~/app/js/controllers/menu/configuration.controller.js",
                 "~/app/js/controllers/menu/feedback.controller.js",
                 "~/app/js/controllers/menu/myAccount.controller.js",
+                "~/app/js/controllers/financial/costs.controller.js",
+                "~/app/js/controllers/financial/costConfiguration.controller.js",
                 //DIRECTIVES
                 "~/app/js/directives/validateEmail.directive.js"
                 ));

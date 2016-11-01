@@ -77,11 +77,11 @@
 
                 configurationService.update(vm.configuration).success(function (response) {
 
-                    toastr.success('Configurações atualizadas com sucesso');
+                    toastr.success(response.message);
 
                 }).error(function (response) {
 
-                    toastr.error('Não foi possivel atualizar as configurações');
+                    toastr.error(response.message);
 
                 })
             }

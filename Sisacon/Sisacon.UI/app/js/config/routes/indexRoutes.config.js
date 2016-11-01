@@ -85,6 +85,19 @@
                     controllerAs: 'vm'
 
                 })
+                //FINANCEIRO
+                .when('/costsDashboard', {
+
+                    templateUrl: '/app/views/financial/costsDashboard.html',
+                    controller: 'CostsController',
+                    controllerAs: 'vm'
+                })
+                .when('/costs', {
+
+                    templateUrl: '/app/views/financial/costs.html',
+                    controller: 'CostsController',
+                    controllerAs: 'vm'
+                })
                 .when('/estimateDashboard', {
 
                     templateUrl: '/app/views/estimate/estimateDashboard.html',

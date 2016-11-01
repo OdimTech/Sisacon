@@ -126,6 +126,13 @@ namespace Sisacon.BLL
             }
         }
 
+        /// <summary>
+        /// Cria uma notificação 
+        /// </summary>
+        /// <param name="message">Mensagem a ser exibida</param>
+        /// <param name="notificationClass">Classe CSS da notificação</param>
+        /// <param name="link">Link que a notificação deve redirecionar o usuário</param>
+        /// <param name="user">Usuário responsável pela notificação</param>
         public void buildNotification(string message, eNotificationClass notificationClass, string link, User user)
         {
             try

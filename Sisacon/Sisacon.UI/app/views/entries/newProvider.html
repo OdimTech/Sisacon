@@ -29,7 +29,7 @@
                         <a class="ui labeled primary icon button" ng-click="vm.submitForm()">
                             <i class="checkmark icon"></i> {{vm.btnSaveText}}
                         </a>
-                        <a class="ui labeled primary icon button" ng-class="{'disabled': vm.vm.provider.id == 0}" ng-click="vm.showModalRemoveProvider(vm.provider)">
+                        <a class="ui labeled primary icon button" ng-class="{'disabled': vm.provider.id == 0}" ng-click="vm.showModalRemoveProvider(vm.provider)">
                             <i class="remove icon"></i>Excluir
                         </a>
                         <a class="ui icon primary button" ng-click="vm.showHelp()">
@@ -43,11 +43,7 @@
 
         <div class="ui twelve wide stackable centered column" style="padding-top: 0">
 
-            <div class="ui attached stackable inverted fluid segment">
-                <i class="orange file text outline icon"></i>
-                Informações Comerciais
-            </div>
-            <div class="ui form attached stackable fluid segment">
+            <div class="ui form stackable fluid segment">
 
                 <div class="fields" ng-show="vm.provider.id > 0 || !vm.configuration.codAutoProvider">
 
@@ -108,11 +104,8 @@
                 </div>
 
             </div>
-            <div class="ui attached stackable inverted fluid segment">
-                <i class="orange map outline icon"></i>
-                Endereço
-            </div>
-            <div class="ui form attached stackable fluid segment">
+
+            <div class="ui form stackable fluid segment">
                 <div class="fields">
 
                     <!--CEP-->
@@ -200,11 +193,7 @@
                 </div>
             </div>
 
-            <div class="ui attached stackable inverted fluid segment">
-                <i class="orange mail outline icon"></i>
-                Contato
-            </div>
-            <div class="ui form attached stackable fluid segment">
+            <div class="ui form stackable fluid segment">
                 <div class="fields">
 
                     <!--TELEFONE FIXO-->
@@ -240,51 +229,6 @@
             </div>
 
         </div><!--TWELVE PAGE-->
-
-        <div class="ui sixteen wide stackable column" style="padding-top: 0">
-            <!--FOOTER MENU-->
-
-            <div class="ui stackable segment">
-                <div class="ui stackable grid" style="padding: 0">
-
-                    <div class="ui three wide stackable column">
-
-
-                        <h4 class="ui header">
-                            <div class="content">
-                                OdimTech - 2016
-                                <div class="inverted sub header">
-                                    Software Development
-                                </div>
-                            </div>
-                        </h4>
-                    </div>
-
-                    <div class="ui thirteen wide stackable right aligned column">
-                        <a class="ui labeled primary icon button" href="#/providerList">
-                            <i class="long arrow left icon"></i> Voltar
-                        </a>
-                        <a class="ui labeled primary icon button" ng-click="vm.newProvider()">
-                            <i class="edit icon"></i>Novo Forncedor
-                        </a>
-                        <a class="ui labeled primary icon button" ng-click="vm.submitForm()">
-                            <i class="checkmark icon"></i> {{vm.btnSaveText}}
-                        </a>
-                        <a class="ui labeled primary icon button" ng-class="{'disabled': vm.vm.provider.id == 0}" ng-click="vm.showModalRemoveProvider(vm.provider)">
-                            <i class="remove icon"></i>Excluir
-                        </a>
-                        <a class="ui primary icon button" onclick="scroll(0,0)">
-                            <i class="long arrow up icon"></i>
-                        </a>
-                        <a class="ui icon primary button" ng-click="vm.showHelp()">
-                            <i class="help icon"></i>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-
-        </div><!--FOOTER MENU-->
 
     </div><!--GRID PAGE-->
 

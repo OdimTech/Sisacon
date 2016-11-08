@@ -38,6 +38,10 @@ namespace Sisacon.Infra.Mapping
                 .HasColumnType("bit")
                 .IsRequired();
 
+            Property(x => x.CodAutoEquipment)
+                .HasColumnType("bit")
+                .IsRequired();
+
             HasRequired(x => x.User);
 
         }

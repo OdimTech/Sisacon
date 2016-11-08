@@ -55,7 +55,28 @@ namespace Sisacon.BLL
                     {
                         createAutomaticCode(new Provider(), idUser);
                     }
-                } 
+                }
+                //EQUIPMENT
+                else if(obj.GetType() == typeof(Equipment))
+                {
+                    var equipments = new ProviderBLL().getProvidersByUserId(idUser).Value;
+
+                    newCode = "EQP" + randomNumber.ToString();
+
+                    if(equipments == null || equipments.Count == 0)
+                    {
+                        return newCode;
+                    }
+
+                    if(validateNewCode(equipments.Select(x => x.CodProvider).ToList(), newCode))
+                    {
+                        return newCode;
+                    }
+                    else
+                    {
+                        createAutomaticCode(new Equipment(), idUser);
+                    }
+                }
 
             }
             catch(Exception ex)

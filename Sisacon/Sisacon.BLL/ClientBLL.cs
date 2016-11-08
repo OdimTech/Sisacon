@@ -29,8 +29,11 @@ namespace Sisacon.BLL
             try
             {
                 client.RegistrationDate = DateTime.Now;
-                client.CodCliente = new AutomaticCode().createAutomaticCode(client, client.User.Id);
 
+                if(client.CodCliente == string.Empty)
+                {
+                    client.CodCliente = new AutomaticCode().createAutomaticCode(client, client.User.Id);
+                }
                 response.Quantity = clientDAL.save(client);
 
                 if(response.Quantity > 0)

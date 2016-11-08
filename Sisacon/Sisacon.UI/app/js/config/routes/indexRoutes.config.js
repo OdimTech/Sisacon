@@ -85,6 +85,42 @@
                     controllerAs: 'vm'
 
                 })
+                .when('/equipmentList', {
+
+                    templateUrl: '/app/views/entries/equipmentList.html',
+                    controller: 'EquipmentController',
+                    controllerAs: 'vm'
+                })
+                .when('/newEquipment', {
+
+                    templateUrl: '/app/views/entries/newEquipment.html',
+                    controller: 'EquipmentController',
+                    controllerAs: 'vm'
+                })
+                .when('/newEquipment/id', {
+
+                    templateUrl: '/app/views/entries/newEquipment.html',
+                    controller: 'EquipmentController',
+                    controllerAs: 'vm'
+                })
+                .when('/materialList', {
+
+                    templateUrl: '/app/views/entries/materialList.html',
+                    controller: 'MaterialController',
+                    controllerAs: 'vm'
+                })
+                .when('/newMaterial', {
+
+                    templateUrl: '/app/views/entries/newMaterial.html',
+                    controller: 'MaterialController',
+                    controllerAs: 'vm'
+                })
+                .when('/newMaterial/id', {
+
+                    templateUrl: '/app/views/entries/newMaterial.html',
+                    controller: 'MaterialController',
+                    controllerAs: 'vm'
+                })
                 //FINANCEIRO
                 .when('/costsDashboard', {
 

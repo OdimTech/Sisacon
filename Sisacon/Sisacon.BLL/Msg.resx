@@ -120,6 +120,9 @@
   <data name="ErrDeleteClient" xml:space="preserve">
     <value>Erro ao excluir o Cliente.</value>
   </data>
+  <data name="ErrDeleteEquip" xml:space="preserve">
+    <value>Erro ao excluir o Equipamento</value>
+  </data>
   <data name="ErrDeleteProvider" xml:space="preserve">
     <value>Erro ao excluir Fornecedor</value>
   </data>
@@ -138,6 +141,9 @@
   <data name="ErrInsertCompany" xml:space="preserve">
     <value>Erro ao criar Empresa.</value>
   </data>
+  <data name="ErrInsertEquip" xml:space="preserve">
+    <value>Erro ao salvar novo Equipamento.</value>
+  </data>
   <data name="ErrInsertProvider" xml:space="preserve">
     <value>Erro ao salvar novo Fornecedor.</value>
   </data>
@@ -155,6 +161,9 @@
   </data>
   <data name="ErrUpdateCostConfig" xml:space="preserve">
     <value>Não foi possivel atualizar as Configurações de Custo</value>
+  </data>
+  <data name="ErrUpdateEquip" xml:space="preserve">
+    <value>Erro ao atualizar os dados do Equipamento</value>
   </data>
   <data name="ErrUpdateProvider" xml:space="preserve">
     <value>Erro ao atualizar os dados so Fornecedor</value>
@@ -175,6 +184,9 @@ Entre em contato com o suporte para mais informações.</value>
   <data name="SucDeleteClient" xml:space="preserve">
     <value>O Cliente foi excluído com Sucesso!</value>
   </data>
+  <data name="SucDeleteEquip" xml:space="preserve">
+    <value>O Equipamento foi excluído com Sucesso!</value>
+  </data>
   <data name="SucDeleteProvider" xml:space="preserve">
     <value>O Fornecedor foi excluído com Sucesso!</value>
   </data>
@@ -183,6 +195,9 @@ Entre em contato com o suporte para mais informações.</value>
   </data>
   <data name="SucInsertCompany" xml:space="preserve">
     <value>Sua nova Empresa foi criada com Sucesso!</value>
+  </data>
+  <data name="SucInsertEquip" xml:space="preserve">
+    <value>O Equipamento foi salvo com Sucesso!</value>
   </data>
   <data name="SucInsertProvider" xml:space="preserve">
     <value>Fornecedor criado com Sucesso!</value>
@@ -207,5 +222,8 @@ Entre em contato com o suporte para mais informações.</value>
   </data>
   <data name="SucUpdateUser" xml:space="preserve">
     <value>Os dados do Usuário foram atualizados com Sucesso!</value>
+  </data>
+  <data name="SucUpdEquip" xml:space="preserve">
+    <value>Os dados do Equipamento foram atualizados com Sucesso!</value>
   </data>
 </root>

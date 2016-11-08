@@ -9,8 +9,8 @@
             'LocalStorageModule',
             'ui.mask',
             'ui.calendar',
-            'datatables']);
-
+            'datatables',
+            'chart.js']);
 })();
 
 

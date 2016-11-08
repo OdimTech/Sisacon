@@ -43,11 +43,7 @@
 
         <div class="ui eleven wide stackable column" style="padding-top: 0">
 
-            <div class="ui attached stackable inverted fluid segment">
-                <i class="orange file text outline icon"></i>
-                Informações Pessoais e Comerciais
-            </div>
-            <div class="ui form attached stackable fluid segment">
+            <div class="ui form stackable fluid segment">
 
                 <!--CODIGO CLIENTE-->
                 <div class="fields" ng-show="client.id > 0 || !configuration.codAutoClient">
@@ -77,13 +73,7 @@
                         </div>
 
                     </div>
-                    <div class="field">
-                        <label>&nbsp</label>
-                        <button type="button" class="ui square icon yellow button" data-content="Caso voçê já possua um CNPJ, Selecione a opção Pessoa Jurídica, e informe-o ao lado."
-                                data-variation="inverted">
-                            <i class="info icon"></i>
-                        </button>
-                    </div>
+
 
                     <!--CNPJ-->
                     <div class="four wide required field" ng-show="client.ePersonType === 2" ng-class="{'error' : !clientForm.cnpj.$valid && (clientForm.$submitted || !clientForm.cnpj.$pristine)}">
@@ -197,11 +187,7 @@
                 </div>
             </div>
 
-            <div class="ui attached stackable inverted fluid segment">
-                <i class="orange map outline icon"></i>
-                Endereço
-            </div>
-            <div class="ui form attached stackable fluid segment">
+            <div class="ui form stackable fluid segment">
                 <div class="fields">
 
                     <!--CEP-->
@@ -289,11 +275,7 @@
                 </div>
             </div>
 
-            <div class="ui attached stackable inverted fluid segment">
-                <i class="orange mail outline icon"></i>
-                Contato
-            </div>
-            <div class="ui form attached stackable fluid segment">
+            <div class="ui form stackable fluid segment">
                 <div class="fields">
 
                     <!--TELEFONE FIXO-->
@@ -328,11 +310,7 @@
 
         <div class="ui five wide stackable column" style="padding-top: 0">
 
-            <div class="ui attached stackable inverted fluid segment">
-                <i class="orange line chart icon"></i>
-                Detalhes
-            </div>
-            <div class="ui form attached stackable clearing fluid segment">
+            <div class="ui form stackable clearing fluid segment">
                 <p>Orçamentos solicitados: 2</p>
                 <p>Pedidos realizados: 1</p>
                 <p>Taxa de conversão: 50%</p>
@@ -342,50 +320,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="ui sixteen wide stackable column" style="padding-top: 0"><!--FOOTER MENU-->
-
-            <div class="ui stackable segment">
-                <div class="ui stackable grid" style="padding: 0">
-
-                    <div class="ui three wide stackable column">
-                        
-                        
-                        <h4 class="ui header">
-                            <div class="content">
-                                OdimTech - 2016
-                                <div class="inverted sub header">
-                                    Software Development
-                                </div>
-                            </div>
-                        </h4>
-                    </div>
-
-                    <div class="ui thirteen wide stackable right aligned column">
-                        <a class="ui labeled primary icon button" href="#/clientList">
-                            <i class="long arrow left icon"></i> Voltar
-                        </a>
-                        <a class="ui labeled primary icon button" ng-click="newClient()">
-                            <i class="edit icon"></i>Novo Cliente
-                        </a>
-                        <a class="ui labeled primary icon button" ng-click="submitForm()">
-                            <i class="checkmark icon"></i> {{btnSaveText}}
-                        </a>
-                        <a class="ui labeled primary icon button" ng-class="{'disabled': client.id == 0}" ng-click="showModalRemoveClient(client)">
-                            <i class="remove icon"></i>Excluir
-                        </a>
-                        <a class="ui primary icon button" onclick="scroll(0,0)">
-                            <i class="long arrow up icon"></i>
-                        </a>
-                        <a class="ui icon primary button" ng-click="showHelp()">
-                            <i class="help icon"></i>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-
-        </div><!--FOOTER MENU-->
 
     </div><!--GRID PAGE-->
 

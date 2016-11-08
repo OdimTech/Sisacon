@@ -10,6 +10,7 @@
         public bool CodAutoProduct { get; set; }
         public bool CodAutoEstimate { get; set; }
         public bool CodAutoRequest { get; set; }
+        public bool CodAutoEquipment { get; set; }
         public virtual User User { get; set; }
     }
 }

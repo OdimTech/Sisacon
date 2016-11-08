@@ -40,6 +40,7 @@ namespace Sisacon.UI
                 "~/app/js/config/blockUI.config.js",
                 "~/app/js/config/localStorage.config.js",
                 "~/app/js/config/interceptors.config.js",
+                "~/app/js/config/angularCharts.config.js",
                 //INTERCEPTORS
                 "~/app/js/interceptors/timestamp.interceptor.js",
                 "~/app/js/interceptors/error.interceptor.js",
@@ -55,6 +56,8 @@ namespace Sisacon.UI
                 "~/app/js/services/utility.service.js",
                 "~/app/js/services/configuration.service.js",
                 "~/app/js/services/costConfiguration.service.js",
+                "~/app/js/services/equipment.service.js",
+                "~/app/js/services/material.service.js",
                 //CONTROLLERS
                 "~/app/js/controllers/base/admin.controller.js",
                 "~/app/js/controllers/base/index.controller.js",
@@ -63,6 +66,8 @@ namespace Sisacon.UI
                 "~/app/js/controllers/account/singup.controller.js",
                 "~/app/js/controllers/entries/client.controller.js",
                 "~/app/js/controllers/entries/provider.controller.js",
+                "~/app/js/controllers/entries/equipment.controller.js",
+                "~/app/js/controllers/entries/material.controller.js",
                 "~/app/js/controllers/estimate/estimate.controller.js",
                 "~/app/js/controllers/initialDashboard.controller.js",
                 "~/app/js/controllers/company/company.controller.js",

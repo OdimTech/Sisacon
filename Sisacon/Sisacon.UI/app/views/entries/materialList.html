@@ -1,0 +1,66 @@
+﻿<form name="materialListForm" novalidate>
+
+    <div class="ui stackable grid">
+
+        <div class="ui sixteen wide stackable column">
+
+            <div class="ui stackable segment">
+                <!--TOP MENU-->
+
+                <div class="ui stackable grid" style="padding: 0">
+
+                    <div class="ui three wide stackable column">
+                        <h3 class="ui header">
+                            <div class="content">
+                                Material
+                                <div class="inverted sub header">
+                                    Lista de Materiais Cadastrados
+                                </div>
+                            </div>
+                        </h3>
+                    </div>
+                    <div class="ui thirteen wide stackable right aligned column">
+                        <a class="ui labeled primary icon button" href="#/newMaterial?id=0">
+                            <i class="edit icon"></i> Novo Material
+                        </a>
+                        <a class="ui icon primary button" ng-click="showHelp()">
+                            <i class="help icon"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div><!--TOP MENU-->
+
+            <div class="ui stackable segment">
+
+                <table datatable="ng" dt-options="vm.dtOptions" class="ui striped collapsing selectable table" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Editar</th>
+                            <th>Excluir</th>
+                            <th>Código</th>
+                            <th>Descrição</th>
+                            <th>Data Aquisição</th>
+                            <th>Valor Aproximado - R$</th>
+                            <th>Vida Util - Anos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in vm.equipmentList">
+                            <td><button class="ui yellow circular icon button" ng-click="vm.editMaterial(item.id)"><i class="ui edit icon"></i></button></td>
+                            <td><button class="ui red circular icon button" ng-click="vm.showModalRemoveMaterial(item)"><i class="ui remove icon"></i></button></td>
+                            <td>{{item.codEquipment}}</td>
+                            <td>{{item.desc}}</td>
+                            <td>{{item.acquisitionDate  | date:'dd/MM/yyyy'}}</td>
+                            <td>{{item.valor}}</td>
+                            <td>{{item.lifeSpan}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div><!--SIXTEEN COLUMN-->
+
+    </div><!--GRID PAGE-->
+
+</form><!--FORM-->

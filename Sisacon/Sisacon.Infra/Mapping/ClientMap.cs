@@ -11,7 +11,7 @@ namespace Sisacon.Infra.Mapping
 
             Property(x => x.CodCliente)
                 .HasColumnType("varchar")
-                .HasMaxLength(50)
+                .HasMaxLength(10)
                 .IsRequired();
 
             Property(x => x.ePersonType)

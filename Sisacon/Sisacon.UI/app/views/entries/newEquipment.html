@@ -1,0 +1,162 @@
+﻿<form name="equipmentForm" novalidate>
+
+    <div class="ui stackable grid">
+
+        <div class="ui sixteen wide stackable column" id="top-menu">
+            <!--TOP MENU-->
+
+            <div class="ui stackable segment">
+
+                <div class="ui stackable grid" style="padding: 0">
+
+                    <div class="ui four wide stackable column">
+                        <h3 class="ui header">
+                            <div class="content">
+                                Equipamento
+                                <div class="inverted sub header">
+                                    Edite ou Cadastre um novo Equipamento
+                                </div>
+                            </div>
+                        </h3>
+                    </div>
+                    <div class="ui twelve wide stackable right aligned column">
+                        <a class="ui labeled primary icon button" href="#/equipmentList">
+                            <i class="long arrow left icon"></i> Voltar
+                        </a>
+                        <a class="ui labeled primary icon button" ng-click="vm.newEquipment()">
+                            <i class="edit icon"></i>Novo Equipamento
+                        </a>
+                        <a class="ui labeled primary icon button" ng-click="vm.submitForm()">
+                            <i class="checkmark icon"></i> {{vm.btnSaveText}}
+                        </a>
+                        <a class="ui labeled primary icon button" ng-class="{'disabled': vm.equipment.id == 0}" ng-click="vm.showModalRemoveEquipment(vm.equipment)">
+                            <i class="remove icon"></i>Excluir
+                        </a>
+                        <a class="ui icon primary button" ng-click="vm.showHelp()">
+                            <i class="help icon"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div><!--TOP MENU-->
+
+        <div class="ui ten wide stackable centered column" style="padding-top: 0">
+
+            <div class="ui form stackable fluid segment">
+
+                <div class="fields" ng-show="vm.equipment.id > 0 || !vm.configuration.codAutoEquipment">
+                    <!--CODIGO E DATA CADASTRO-->
+
+                    <div class="three wide field">
+                        <label for="cod">Código do Equipamento</label>
+                        <input type="text" name="cod" class="ui input" ng-required="vm.equipment.id == 0 && !vm.configuration.codAutoEquipment" ng-readonly="vm.configuration.codAutoEquipment" ng-model="vm.equipment.codEquipment" />
+                    </div>
+                    <div class="three wide read-only field">
+                        <label for="registration">Data de Cadastro</label>
+
+                        <input type="text" name="registration" ui-mask="99/99/9999" class="ui input" readonly ng-model="vm.equipment.registrationDate" />
+
+                    </div>
+
+                </div>
+
+                <div class="fields">
+
+                    <div class="ui eight required wide field">
+                        <!--DESCRIÇÃO-->
+
+                        <label>Descrição</label>
+                        <input type="text" name="desc" class="ui input" ng-model="vm.equipment.desc" required maxlength="100" />
+
+                    </div>
+                    <div class="five wide required field">
+                        <!--DATA DE AQUISIÇÃO-->
+
+                        <label for="acquisitionDate">Data de Aquisição</label>
+                        <div class="ui right labeled input">
+                            <input type="text" name="acquisitionDate" ui-mask="99/99/9999" class="ui input" ng-model="vm.equipment.acquisitionDate" />
+                            <div class="ui basic label">
+                                DD/MM/AAAA
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="fields">
+
+                    <div class="ui four wide required field">
+                        <!--VALOR-->
+
+                        <label>Valor Aproximado</label>
+                        <div class="ui right labeled input">
+                            <input type="number" name="valor" ng-model="vm.equipment.valor" class="ui input" />
+                            <div class="ui basic label">
+                                R$
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="four wide required field">
+                        <!--VIDA ÚTIL-->
+
+                        <label for="acquisitionDate">Vida útil - Expectativa</label>
+                        <div class="ui right labeled input">
+                            <input type="number" name="acquisitionDate" ng-model="vm.equipment.lifeSpan" class="ui input" />
+                            <div class="ui basic label">
+                                Anos
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div><!--CONTENT COLUMN-->
+
+    </div><!--GRID PAGE-->
+
+</form><!--FORM-->
+<!--REMOVER CLIENTE-->
+<div id="removeEquipmentModal" class="ui basic modal">
+    <div class="header">
+        <h1>Excluir Equipamento</h1>
+    </div>
+    <div class="image content">
+        <div class="description">
+            <h4>Deseja realmente excluir o Equipamento {{vm.nameEquipment}}? Essa ação não poderá ser desfeita.</h4>
+        </div>
+    </div>
+    <div class="actions">
+        <button class="ui ok green button" ng-click="vm.removeEquipment()">
+            <i class="checkmark icon"></i> Excluir
+        </button>
+        <button class="ui cancel red button">
+            <i class="checkmark icon"></i> Cancelar
+        </button>
+    </div>
+</div>
+
+<!--CRIAR NOVO CLIENTE - LIMPAR FORMULARIO-->
+<div id="newEquipmentModal" class="ui basic modal">
+    <div class="header">
+        <h1>Novo Equipamento</h1>
+    </div>
+    <div class="image content">
+        <div class="description">
+            <h4>Deseja descartar as alterações realizadas e cadastrar um novo Equipamento?</h4>
+        </div>
+    </div>
+    <div class="actions">
+        <button class="ui ok green button" ng-click="vm.loadEquipment(0)">
+            <i class="checkmark icon"></i> Descartar e Criar Novo
+        </button>
+        <button class="ui cancel red button">
+            <i class="checkmark icon"></i> Cancelar
+        </button>
+    </div>
+</div>

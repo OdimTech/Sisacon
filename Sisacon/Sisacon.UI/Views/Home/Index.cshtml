@@ -14,11 +14,6 @@
 <body ng-controller="IndexController" ng-cloak>
     <!--BARRA LATERAL-->
     <div id="sidebar" class="ui inverted vertical accordion menu wide sidebar">
-        <div class="item">
-            <h2 class="ui inverted orange header">
-                Menu
-            </h2>
-        </div>
 
         <div class="item">
             <!--CADASTROS-->
@@ -34,16 +29,22 @@
                     </a>
                 </div>
                 <div class="item">
+                    <a href="#/equipmentList" class="ui labeled blue fluid large icon button">
+                        <i class="print icon"></i>
+                        Equipamentos
+                    </a>
+                </div>
+                <div class="item">
                     <a href="#/providerList" class="ui labeled blue fluid large icon button">
                         <i class="truck icon"></i>
                         Fornecedores
                     </a>
                 </div>
                 <div class="item">
-                    <button class="ui labeled blue fluid large icon button">
+                    <a href="#/materialList" class="ui labeled blue fluid large icon button">
                         <i class="lab icon"></i>
                         Materiais
-                    </button>
+                    </a>
                 </div>
                 <div class="item">
                     <button class="ui labeled blue fluid large icon button">
@@ -90,7 +91,7 @@
         <!--MENU PRICIPAL - TOP-->
         <div class="ui inverted attached stackable menu">
             <a ng-click="openMenu()" class="item">
-                <i class="large orange sidebar icon"></i>
+                <i class="large orange sidebar icon"></i>Menu
             </a>
             <a class="item" href="#/initialDashboard">
                 <i class="large orange home icon"></i>Painel Inicial

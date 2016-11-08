@@ -192,6 +192,7 @@
                 var date;
                 var dateIsValid = true;
                 var client = Object.assign({}, $scope.client);
+                client.registrationDate = utilityService.convertStringToDate($scope.client.registrationDate);
 
                 if (client.ePersonType === 1) {
 
@@ -201,7 +202,6 @@
                     if (dateIsValid) {
 
                         client.birthday = utilityService.convertStringToDate(date);
-                        client.registrationDate = utilityService.convertStringToDate($scope.client.registrationDate);
                     }
                     else {
 

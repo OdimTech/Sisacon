@@ -11,7 +11,7 @@ namespace Sisacon.Infra.Mapping
 
             Property(x => x.CodProvider)
                 .HasColumnType("varchar")
-                .HasMaxLength(20)
+                .HasMaxLength(10)
                 .IsRequired();
 
             Property(x => x.Cnpj)

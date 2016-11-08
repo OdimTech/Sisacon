@@ -56,6 +56,7 @@
     <Compile Include="Context\SisaconDbContext.cs" />
     <Compile Include="CostConfigurationDAL.cs" />
     <Compile Include="CostDAL.cs" />
+    <Compile Include="EquipmentDAL.cs" />
     <Compile Include="Files.cs" />
     <Compile Include="Mapping\AddressMap.cs" />
     <Compile Include="Mapping\ClientMap.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Mapping\ContactMap.cs" />
     <Compile Include="Mapping\CostConfigurationMap.cs" />
     <Compile Include="Mapping\CostMap.cs" />
+    <Compile Include="Mapping\EquipmentMap.cs" />
     <Compile Include="Mapping\LogMap.cs" />
     <Compile Include="Mapping\NotificationMap.cs" />
     <Compile Include="Mapping\OccupationAreaMap.cs" />

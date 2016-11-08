@@ -45,6 +45,7 @@
     <Compile Include="CompanyBLL.cs" />
     <Compile Include="ConfigurationBLL.cs" />
     <Compile Include="CostConfigurationBLL.cs" />
+    <Compile Include="EquipmentBLL.cs" />
     <Compile Include="FilesBLL.cs" />
     <Compile Include="LogBLL.cs" />
     <Compile Include="Msg.Designer.cs">

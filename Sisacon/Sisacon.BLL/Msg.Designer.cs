@@ -70,6 +70,15 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Erro ao excluir o Equipamento.
+        /// </summary>
+        internal static string ErrDeleteEquip {
+            get {
+                return ResourceManager.GetString("ErrDeleteEquip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erro ao excluir Fornecedor.
         /// </summary>
         internal static string ErrDeleteProvider {
@@ -124,6 +133,15 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Erro ao salvar novo Equipamento..
+        /// </summary>
+        internal static string ErrInsertEquip {
+            get {
+                return ResourceManager.GetString("ErrInsertEquip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erro ao salvar novo Fornecedor..
         /// </summary>
         internal static string ErrInsertProvider {
@@ -174,6 +192,15 @@ namespace Sisacon.BLL {
         internal static string ErrUpdateCostConfig {
             get {
                 return ResourceManager.GetString("ErrUpdateCostConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao atualizar os dados do Equipamento.
+        /// </summary>
+        internal static string ErrUpdateEquip {
+            get {
+                return ResourceManager.GetString("ErrUpdateEquip", resourceCulture);
             }
         }
         
@@ -233,6 +260,15 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O Equipamento foi excluído com Sucesso!.
+        /// </summary>
+        internal static string SucDeleteEquip {
+            get {
+                return ResourceManager.GetString("SucDeleteEquip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O Fornecedor foi excluído com Sucesso!.
         /// </summary>
         internal static string SucDeleteProvider {
@@ -256,6 +292,15 @@ namespace Sisacon.BLL {
         internal static string SucInsertCompany {
             get {
                 return ResourceManager.GetString("SucInsertCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O Equipamento foi salvo com Sucesso!.
+        /// </summary>
+        internal static string SucInsertEquip {
+            get {
+                return ResourceManager.GetString("SucInsertEquip", resourceCulture);
             }
         }
         
@@ -328,6 +373,15 @@ namespace Sisacon.BLL {
         internal static string SucUpdateUser {
             get {
                 return ResourceManager.GetString("SucUpdateUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Os dados do Equipamento foram atualizados com Sucesso!.
+        /// </summary>
+        internal static string SucUpdEquip {
+            get {
+                return ResourceManager.GetString("SucUpdEquip", resourceCulture);
             }
         }
     }

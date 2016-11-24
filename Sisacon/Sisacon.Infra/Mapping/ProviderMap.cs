@@ -43,6 +43,7 @@ namespace Sisacon.Infra.Mapping
 
             HasRequired(x => x.User);
 
+            HasMany(x => x.ListPriceResearch).WithOptional();
         }
     }
 }

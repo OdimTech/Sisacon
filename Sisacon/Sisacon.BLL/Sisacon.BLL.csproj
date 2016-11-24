@@ -48,6 +48,8 @@
     <Compile Include="EquipmentBLL.cs" />
     <Compile Include="FilesBLL.cs" />
     <Compile Include="LogBLL.cs" />
+    <Compile Include="MaterialBLL.cs" />
+    <Compile Include="MaterialCategoryBLL.cs" />
     <Compile Include="Msg.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

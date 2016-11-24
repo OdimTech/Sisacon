@@ -22,7 +22,7 @@ namespace Sisacon.BLL
             {
                 equipment.RegistrationDate = DateTime.Now;
 
-                if(equipment.CodEquipment == string.Empty)
+                if(equipment.CodEquipment == null || equipment.CodEquipment == string.Empty)
                 {
                     equipment.CodEquipment = new AutomaticCode().createAutomaticCode(equipment, equipment.User.Id);
                 }

@@ -148,7 +148,6 @@
             if ($scope.equipmentForm.$valid) {
 
                 vm.equipment.registrationDate = utilityService.convertStringToDate(vm.equipment.registrationDate);
-                vm.equipment.acquisitionDate = utilityService.convertStringToDate(vm.equipment.acquisitionDate);
 
                 blockUI.start("Salvando Equipamento...");
 

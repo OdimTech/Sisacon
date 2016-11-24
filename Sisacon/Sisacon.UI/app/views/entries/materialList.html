@@ -33,27 +33,25 @@
 
             <div class="ui stackable segment">
 
-                <table datatable="ng" dt-options="vm.dtOptions" class="ui striped collapsing selectable table" style="width:100%">
+                <table datatable="ng" dt-options="vm.dtOptions" class="ui striped selectable table" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Editar</th>
-                            <th>Excluir</th>
+                            <th class="collapsing">Editar</th>
+                            <th class="collapsing">Excluir</th>
                             <th>Código</th>
                             <th>Descrição</th>
-                            <th>Data Aquisição</th>
-                            <th>Valor Aproximado - R$</th>
-                            <th>Vida Util - Anos</th>
+                            <th>Categoria</th>
+                            <th>Preço Atual</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in vm.equipmentList">
+                        <tr ng-repeat="item in vm.materialList">
                             <td><button class="ui yellow circular icon button" ng-click="vm.editMaterial(item.id)"><i class="ui edit icon"></i></button></td>
                             <td><button class="ui red circular icon button" ng-click="vm.showModalRemoveMaterial(item)"><i class="ui remove icon"></i></button></td>
-                            <td>{{item.codEquipment}}</td>
+                            <td>{{item.codMaterial}}</td>
                             <td>{{item.desc}}</td>
-                            <td>{{item.acquisitionDate  | date:'dd/MM/yyyy'}}</td>
-                            <td>{{item.valor}}</td>
-                            <td>{{item.lifeSpan}}</td>
+                            <td>{{item.category.description}}</td>
+                            <td>{{}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -64,3 +62,23 @@
     </div><!--GRID PAGE-->
 
 </form><!--FORM-->
+
+<!--MODALS-->
+<div id="removeMaterialModal" class="ui basic modal">
+    <div class="header">
+        <h1>Excluir Material</h1>
+    </div>
+    <div class="image content">
+        <div class="description">
+            <h4>Deseja realmente excluir o Material {{vm.nameMaterial}}? Essa ação não poderá ser desfeita.</h4>
+        </div>
+    </div>
+    <div class="actions">
+        <button class="ui ok green button" ng-click="vm.removeMaterialFromList()">
+            <i class="checkmark icon"></i> Excluir
+        </button>
+        <button class="ui cancel red button">
+            <i class="checkmark icon"></i> Cancelar
+        </button>
+    </div>
+</div>

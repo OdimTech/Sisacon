@@ -50,8 +50,11 @@
     <Compile Include="DepreciationCost.cs" />
     <Compile Include="Equipment.cs" />
     <Compile Include="Log.cs" />
+    <Compile Include="Material.cs" />
+    <Compile Include="MaterialCategory.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="OccupationArea.cs" />
+    <Compile Include="PriceResearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider.cs" />
     <Compile Include="ResponseMessage.cs" />
@@ -61,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

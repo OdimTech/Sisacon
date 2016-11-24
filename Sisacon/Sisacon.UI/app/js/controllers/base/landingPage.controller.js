@@ -4,10 +4,11 @@
         .module('app')
         .controller('LandingPageController', LandingPageController);
 
-    LandingPageController.$inject = [];
+    LandingPageController.$inject = ['$window'];
 
-    function LandingPageController() {
+    function LandingPageController($window) {
         
+        var vm = this;
     }
     
 })();

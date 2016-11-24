@@ -30,7 +30,7 @@ namespace Sisacon.BLL
             {
                 client.RegistrationDate = DateTime.Now;
 
-                if(client.CodCliente == string.Empty)
+                if(client.CodCliente == null || client.CodCliente == string.Empty)
                 {
                     client.CodCliente = new AutomaticCode().createAutomaticCode(client, client.User.Id);
                 }

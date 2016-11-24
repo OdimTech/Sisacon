@@ -16,7 +16,7 @@
         $scope.notifications = getNotificationsByUserId();
 
         //A CADA 5 MINUTOS AS NOTIFICAÇÕES SÃO ATUALIZADAS
-        $interval(getNotificationsByUserId, 300000);
+        $interval(getNotificationsByUserId, 10000);
 
         //INIT CONTROLS
         angular.element('#btnNotification').popup({
@@ -51,7 +51,7 @@
         $scope.logout = function () {
 
             localStorageService.remove('id');
-            $window.location.href = 'LandingPage#/login';
+            $window.location.href = 'Home/LandingPage#/login';
 
         }
 
@@ -77,11 +77,11 @@
 
                 accountService.getUserById(userId).success(function (response) {
 
-                    $rootScope.loggedUser = response.value;
+                    $scope.loggedUser = response.value;
 
                     if ($scope.loggedUser.showWellcomeMessage) {
 
-                        angular.element('wellcomeModal').modal({
+                        angular.element('#wellcomeModal').modal({
 
                             blurring: true,
                             closable: false

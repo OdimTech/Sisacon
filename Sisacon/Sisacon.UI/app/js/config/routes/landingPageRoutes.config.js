@@ -9,6 +9,11 @@
 
             $routeProvider
             
+                .when('/landingPage', {
+
+                    templateUrl: '/app/views/landingPage.html'
+                })
+
                 .when('/singup', {
 
                     templateUrl: '/app/views/account/singup.html',

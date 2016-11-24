@@ -2,11 +2,8 @@
     <form class="ui form" name="loginForm" ng-submit="login()" novalidate>
         <br />
         <div class="ui stackable segment">
-            <h2 class="ui center aligned icon header">
-                <i class="circular line chart icon"></i>
-                Acessar Sisacon
-            </h2>
-
+            <img class="ui centered image" src="/Content/logo.png" alt="BeloArte" />
+            <br />
             <!--EMAIL-->
             <div class="ui required field" ng-class="{'error' : !loginForm.email.$valid && (loginForm.$submitted || !loginForm.email.$pristine)}">
                 <label for="email">Email</label>
@@ -40,7 +37,7 @@
         </div>
         <div class="ui centered stackable segment">
             <label class="ui centered">Novo por aqui?</label>
-            <a class="ui centered" href="singup">Crie já sua conta.</a>
+            <a class="ui centered" href="#/singup">Crie já sua conta.</a>
         </div>
     </form>
 </div>

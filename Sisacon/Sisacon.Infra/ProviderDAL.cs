@@ -66,6 +66,7 @@ namespace Sisacon.Infra
                     providers = context.Provider
                         .Include("Address")
                         .Include("Contact")
+                        .Include("User")
                         .Where(x => x.User.Id == userId && x.ExclusionDate == null).ToList();
                 }
             }
@@ -88,6 +89,7 @@ namespace Sisacon.Infra
                     provider = context.Provider
                         .Include("Address")
                         .Include("Contact")
+                        .Include("User")
                         .Where(x => x.Id == id && x.ExclusionDate == null).FirstOrDefault();
                 }
             }

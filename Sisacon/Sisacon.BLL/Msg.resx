@@ -226,4 +226,40 @@ Entre em contato com o suporte para mais informações.</value>
   <data name="SucUpdEquip" xml:space="preserve">
     <value>Os dados do Equipamento foram atualizados com Sucesso!</value>
   </data>
+  <data name="SucInsertMaterialCategory" xml:space="preserve">
+    <value>A Categoria foi criada com Sucesso!</value>
+  </data>
+  <data name="SucUpdMaterialCategory" xml:space="preserve">
+    <value>A Categoria foi Atualizada com Sucesso!</value>
+  </data>
+  <data name="ErrDeleteMaterialCategory" xml:space="preserve">
+    <value>Erro ao Excluir Categoria</value>
+  </data>
+  <data name="ErrMaterialCategoryInUse" xml:space="preserve">
+    <value>Exclusão não permitida, esta Categoria está sendo utilizado no momento.</value>
+  </data>
+  <data name="SucDeleteMaterialCategory" xml:space="preserve">
+    <value>A Categoria foi Excluída com Sucesso!</value>
+  </data>
+  <data name="ErrDeleteMaterial" xml:space="preserve">
+    <value>Erro ao Excluir Material</value>
+  </data>
+  <data name="ErrInsertMaterial" xml:space="preserve">
+    <value>Erro ao Salvar Material</value>
+  </data>
+  <data name="ErroMaterialInUse" xml:space="preserve">
+    <value>Exclusão não permitida, este Material está sendo utilizado no momento.</value>
+  </data>
+  <data name="ErrUpdMaterial" xml:space="preserve">
+    <value>Erro ao Atualizar Material</value>
+  </data>
+  <data name="SucDeleteMaterial" xml:space="preserve">
+    <value>O Material foi Excluído com Sucesso!</value>
+  </data>
+  <data name="SucInsertMaterial" xml:space="preserve">
+    <value>O Material foi Salvo com Sucesso!</value>
+  </data>
+  <data name="SucUpdMaterial" xml:space="preserve">
+    <value>O Material foi Atualizado com Sucesso!</value>
+  </data>
 </root>

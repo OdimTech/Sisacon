@@ -115,6 +115,7 @@ namespace Sisacon.BLL
                 config.CodAutoProduct = true;
                 config.CodAutoEstimate = true;
                 config.CodAutoRequest = true;
+                config.CodAutoEquipment = true;
                 config.User = user;
             }
             catch(Exception ex)

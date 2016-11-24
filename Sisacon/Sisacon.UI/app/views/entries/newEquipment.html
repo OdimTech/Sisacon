@@ -70,17 +70,11 @@
                         <input type="text" name="desc" class="ui input" ng-model="vm.equipment.desc" required maxlength="100" />
 
                     </div>
-                    <div class="five wide required field">
+                    <div class="six wide required field">
                         <!--DATA DE AQUISIÇÃO-->
 
                         <label for="acquisitionDate">Data de Aquisição</label>
-                        <div class="ui right labeled input">
-                            <input type="text" name="acquisitionDate" ui-mask="99/99/9999" class="ui input" ng-model="vm.equipment.acquisitionDate" />
-                            <div class="ui basic label">
-                                DD/MM/AAAA
-                            </div>
-                        </div>
-
+                        <input type="date" name="acquisitionDate" class="ui input" ng-model="vm.equipment.acquisitionDate" />
                     </div>
 
                 </div>

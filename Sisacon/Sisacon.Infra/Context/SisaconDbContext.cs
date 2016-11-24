@@ -28,6 +28,9 @@ namespace Sisacon.Infra.Context
         public DbSet<VariableCost> VariableCost { get; set; }
         public DbSet<CostConfiguration> CostConfiguration { get; set; }
         public DbSet<Equipment> Equipment { get; set; }
+        public DbSet<Material> Material { get; set; }
+        public DbSet<MaterialCategory> MaterialCategory { get; set; }
+        public DbSet<PriceResearch> PriceResearch { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -44,6 +47,9 @@ namespace Sisacon.Infra.Context
             modelBuilder.Configurations.Add(new VariableCostMap());
             modelBuilder.Configurations.Add(new CostConfigurationMap());
             modelBuilder.Configurations.Add(new EquipmentMap());
+            modelBuilder.Configurations.Add(new MaterialMap());
+            modelBuilder.Configurations.Add(new MaterialCategoryMap());
+            modelBuilder.Configurations.Add(new PriceResearchMap());
 
             base.OnModelCreating(modelBuilder);
         }

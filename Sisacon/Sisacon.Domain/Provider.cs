@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Sisacon.Domain
 {
@@ -13,6 +14,7 @@ namespace Sisacon.Domain
         public virtual Address Address { get; set; }
         public virtual Contact Contact { get; set; }
         public virtual User User { get; set; }
+        public virtual List<PriceResearch> ListPriceResearch { get; set; }
         public DateTime RegistrationDate { get; set; }
         public DateTime? ExclusionDate { get; set; }
     }

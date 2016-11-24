@@ -1,53 +1,55 @@
-﻿<form name="materialForm" novalidate>
+﻿
 
-    <div class="ui stackable grid">
+<div class="ui stackable grid">
 
-        <div class="ui sixteen wide stackable column" id="top-menu">
-            <!--TOP MENU-->
+    <div class="ui sixteen wide stackable column" id="top-menu">
+        <!--TOP MENU-->
 
-            <div class="ui stackable segment">
+        <div class="ui stackable segment">
 
-                <div class="ui stackable grid" style="padding: 0">
+            <div class="ui stackable grid" style="padding: 0">
 
-                    <div class="ui four wide stackable column">
-                        <h3 class="ui header">
-                            <div class="content">
-                                Material
-                                <div class="inverted sub header">
-                                    Edite ou Cadastre um novo Material
-                                </div>
+                <div class="ui four wide stackable column">
+                    <h3 class="ui header">
+                        <div class="content">
+                            Material
+                            <div class="inverted sub header">
+                                Edite ou Cadastre um novo Material
                             </div>
-                        </h3>
-                    </div>
-                    <div class="ui twelve wide stackable right aligned column">
-                        <a class="ui labeled primary icon button" href="#/MaterialList">
-                            <i class="long arrow left icon"></i> Voltar
-                        </a>
-                        <a class="ui labeled primary icon button" ng-click="vm.newMaterial()">
-                            <i class="edit icon"></i>Novo Material
-                        </a>
-                        <a class="ui labeled primary icon button" ng-click="vm.submitForm()">
-                            <i class="checkmark icon"></i> {{vm.btnSaveText}}
-                        </a>
-                        <a class="ui labeled primary icon button" ng-class="{'disabled': vm.material.id == 0}" ng-click="vm.showModalRemoveMaterial(vm.material)">
-                            <i class="remove icon"></i>Excluir
-                        </a>
-                        <a class="ui icon orange button" ng-click="vm.showHelp()">
-                            <i class="help icon"></i>
-                        </a>
-                    </div>
-
+                        </div>
+                    </h3>
                 </div>
+                <div class="ui twelve wide stackable right aligned column">
+                    <a class="ui labeled primary icon button" href="#/materialList">
+                        <i class="long arrow left icon"></i> Voltar
+                    </a>
+                    <a class="ui labeled primary icon button" ng-click="vm.newMaterial()">
+                        <i class="edit icon"></i>Novo Material
+                    </a>
+                    <a class="ui labeled primary icon button" ng-click="vm.submitForm()">
+                        <i class="checkmark icon"></i> {{vm.btnSaveText}}
+                    </a>
+                    <a class="ui labeled primary icon button" ng-class="{'disabled': vm.material.id == 0}" ng-click="vm.showModalRemoveMaterial(vm.material)">
+                        <i class="remove icon"></i>Excluir
+                    </a>
+                    <a class="ui icon orange button" ng-click="vm.showHelp()">
+                        <i class="help icon"></i>
+                    </a>
+                </div>
+
             </div>
-        </div><!--TOP MENU-->
+        </div>
+    </div><!--TOP MENU-->
 
-        <div class="ui sixteen wide centered stackable column" style="padding:0">
+    <div class="ui sixteen wide centered stackable column" style="padding:0">
 
-            <div class="ui stackable grid" style="padding-top:0">
+        <div class="ui stackable grid" style="padding-top:0">
 
-                <div class="ui eight wide stackable column">
+            <div class="ui eight wide stackable column">
 
-                    <div class="ui form stackable fluid segment">
+                <div class="ui form stackable fluid segment">
+
+                    <form name="materialForm" novalidate>
                         <!--DETALHES DO MATERIAL-->
 
                         <div class="fields" ng-show="vm.material.id > 0 || !vm.configuration.codAutoMaterial">
@@ -79,58 +81,58 @@
                         <div class="fields">
 
                             <!--CATEGORIA-->
-                            <div class="eight wide required field" ng-class="{'error' : vm.material.category == 0 && (materialForm.$submitted || !materialForm.category.$pristine)}">
+                            <div class="eight wide required field" ng-class="{'error' : vm.material.category.id == 0 && (materialForm.$submitted || !materialForm.category.$pristine)}">
 
                                 <label for="category">Categoria</label>
-                                <select ng-model="vm.material.category" ng-options="item.id as item.desc for item in vm.categories" ng-selected="vm.material.category" name="category"></select>
-
-                                <div class="ui pointing red basic label" ng-show="vm.material.category == 0 && materialForm.$submitted">
+                                <select ng-model="vm.material.category" ng-options="item as item.description for item in vm.categories track by item.id" ng-selected="vm.material.category" name="category"></select>
+                                
+                                <div class="ui pointing red basic label" ng-show="vm.material.category.id == 0 && materialForm.$submitted">
                                     <div>A Categoria do Material é Obrigatória</div>
                                 </div>
                             </div>
+                            
                             <div class="field">
                                 <label>&nbsp</label>
-                                <button type="button" class="ui primary labeled icon button">
-                                    <i class="edit icon"></i>
+                                <button type="button" class="ui primary labeled icon button" ng-click="vm.showModalEditCategory()">
+                                    <i class="plus icon"></i>
                                     Editar Categorias
                                 </button>
                             </div>
                         </div>
 
-                    </div>
+                    </form><!--FORM-->
 
-                    <!--COTAÇÃO DE PRECOS-->
-                    <div class="ui form stackable fluid segment">
+                </div>
 
-                        <div class="five wide field" ng-class="{'error' : !materialForm.currentValue.$valid && (materialForm.$submitted || !materialForm.currentValue.$pristine)}">
+                <!--COTAÇÃO DE PRECOS-->
+                <div class="ui form stackable fluid segment" ng-show="vm.material.id > 0">
 
-                            <label for="currentValue">Preço Atual</label>
+                    <form name="priceResearchForm" novalidate>
+
+                        <div class="five wide field" ng-class="{'error' : !priceResearchForm.price.$valid && (priceResearchForm.$submitted || !priceResearchForm.price.$pristine)}">
+
+                            <label for="price">Preço Atual</label>
                             <div class="ui right labeled input">
-                                <input type="text" name="currentValue" ng-model="vm.material.currentValue" class="ui input" required />
+                                <input type="number" name="price" ng-model="vm.priceReaserch.price" class="ui input" required />
                                 <div class="ui basic label">
                                     R$
                                 </div>
                             </div>
 
-                            <div class="ui pointing red basic label" ng-show="!materialForm.currentValue.$valid && (materialForm.$submitted || !materialForm.currentValue.$pristine)">
-                                <div ng-show="!materialForm.currentValue.$valid">O Valor Atual é obrigátorio Obrigatório</div>
+                            <div class="ui pointing red basic label" ng-show="!priceResearchForm.price.$valid && (priceResearchForm.$submitted || !priceResearchForm.price.$pristine)">
+                                <div ng-show="!priceResearchForm.price.$valid">O Valor Atual é obrigátorio</div>
                             </div>
 
                         </div>
 
                         <!--DATA ANALISE PREÇO-->
-                        <div class="six wide field" ng-class="{'error' : !materialForm.datePrice.$valid && (materialForm.$submitted || !materialForm.datePrice.$pristine)}">
+                        <div class="five wide field" ng-class="{'error' : !priceResearchForm.searchDate.$valid && (priceResearchForm.$submitted || !priceResearchForm.searchDate.$pristine)}">
 
-                            <label for="datePrice">Data da Pesquisa</label>
-                            <div class="ui right labeled input">
-                                <input type="text" ui-mask="99/99/9999" name="datePrice" ng-model="vm.material.datePrice" class="ui input" required />
-                                <div class="ui basic label">
-                                    DD/MM/AAAA
-                                </div>
-                            </div>
+                            <label for="searchDate">Data da Pesquisa</label>
+                            <input type="date" name="searchDate" ng-model="vm.priceReaserch.searchDate" class="ui input" required />
 
-                            <div class="ui pointing red basic label" ng-show="!materialForm.datePrice.$valid && (materialForm.$submitted || !materialForm.datePrice.$pristine)">
-                                <div ng-show="!materialForm.datePrice.$valid">A Data é Obrigatória</div>
+                            <div class="ui pointing red basic label" ng-show="!priceResearchForm.searchDate.$valid && (priceResearchForm.$submitted || !priceResearchForm.searchDate.$pristine)">
+                                <div ng-show="!priceResearchForm.searchDate.$valid">A Data é Obrigatória</div>
                             </div>
 
                         </div>
@@ -138,55 +140,211 @@
                         <div class="fields">
 
                             <!--FORNECEDOR-->
-                            <div class="eight wide field" ng-class="{'error' : vm.material.provider == 0 && (materialForm.$submitted || !materialForm.provider.$pristine)}">
+                            <div class="eight wide field" ng-class="{'error' : vm.priceReaserch.provider.id == 0 && (priceResearchForm.$submitted || !priceResearchForm.provider.$pristine)}">
 
                                 <label for="provider">Fornecedor</label>
-                                <select ng-model="vm.material.provider" ng-options="item.id as item.fantasyName for item in vm.providers" ng-selected="vm.material.provider" name="provider"></select>
+                                <select ng-model="vm.priceReaserch.provider" ng-options="item as item.fantasyName for item in vm.providers" ng-selected="vm.priceReaserch.provider" name="provider"></select>
 
-                                <div class="ui pointing red basic label" ng-show="vm.material.provider == 0 && materialForm.$submitted">
+                                <div class="ui pointing red basic label" ng-show="vm.priceReaserch.provider.id == 0 && priceResearchForm.$submitted">
                                     <div>O Fornecedor é Obrigatório</div>
                                 </div>
                             </div>
-                            <div class="field">
+
+                            <div class="field" ng-show="vm.providers.length > 0">
                                 <label>&nbsp</label>
-                                <button type="button" class="ui primary labeled icon button">
-                                    <i class="edit icon"></i>
+                                <button type="button" class="ui primary labeled icon button" ng-click="vm.addPriceResearch()">
+                                    <i class="plus icon"></i>
                                     Adicionar Pesquisa de Preço
                                 </button>
                             </div>
+
+                            <div class="field" ng-show="vm.providers.length  == 0">
+                                <label>&nbsp</label>
+                                <a href="#/newProvider?id=0" class="ui primary labeled icon button">
+                                    <i class="plus icon"></i>
+                                    Adicionar Fornecedor
+                                </a>
+                            </div>
                         </div>
 
-                    </div>
+                        <!--LISTA DE VALORES-->
+                        <div class="field" ng-show="vm.material.listPriceResearch.length > 0">
+                            <label>Histórico de Preços</label>
 
-                </div>
+                            <div class="ui middle aligned selection animated divided list">
 
-                <div class="ui eight wide stackable column">
+                                <div class="item" ng-repeat="item in vm.material.listPriceResearch">
+                                    <div class="right floated content">
+                                        <button type="button" class="ui red icon button" ng-click="vm.removePrice(item)">
+                                            <i class="remove icon"></i>
+                                        </button>
+                                        <button class="ui yellow icon button">
+                                            <i class="edit icon"></i>
+                                        </button>
+                                    </div>
+                                    <div class="content">
+                                        <div class="description">
+                                            <strong>Preço</strong> R$ {{item.price}} <br />
+                                            <strong>Fornecedor</strong> {{item.provider.fantasyName}}<br />
+                                            <strong>Data da Pesquisa</strong> {{item.dateToView}}
+                                        </div>
+                                    </div>
 
-                    <!--GRAFICOS-->
-                    <div class="ui form stackable fluid segment">
-                        <div class="ui field">
+                                </div>
 
-                            <label>Gráfico de Histórico de Preços</label>
-                            <br />
-                            <canvas id="pie" class="chart chart-line" chart-data="vm.data"
-                                    chart-labels="vm.labels" chart-options="options"></canvas>
+                            </div>
+
                         </div>
-                    </div>
-
-                    <!--LISTA DE VALORES-->
-                    <div class="ui form stackable fluid segment">
 
 
-
-                    </div>
+                    </form><!--FORM PRICE_RESEARCH-->
 
                 </div>
-
 
             </div>
 
-        </div><!--GRID CONTENT-->
+            <div class="ui eight wide stackable column" ng-show="vm.material.id > 0">
 
-    </div><!--GRID PAGE-->
+                <!--GRAFICOS-->
+                <div class="ui form stackable fluid segment">
+                    <div class="ui field">
 
-</form><!--FORM-->
+                        <label>Gráfico de Histórico de Preços</label>
+                        <br />
+                        <canvas id="line" class="chart chart-line" chart-data="vm.data"
+                                chart-labels="vm.labels" chart-options="options"></canvas>
+                    </div>
+
+                    <div class="ui field" ng-show="vm.labels.length == 0">
+                           
+                        <label>Não há nenhuma Pesquisa de Preço para ser exibido</label>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div><!--GRID CONTENT-->
+
+</div><!--GRID PAGE-->
+<!--MODALS-->
+<!--MODAL CATEGORIAS-->
+<div id="editCategory" class="ui small modal" ng-controller="MaterialCategoryController as vm">
+    <i class="close icon"></i>
+    <div class="content">
+
+        <form novalidate name="modalCategoryForm" class="ui form">
+
+            <div class="ui floating message">
+                <div class="header">
+                    Categorias de Materiais
+                </div>
+                <p>
+                    Edite ou Crie um nova Categoria para organizar seus Materiais
+                </p>
+            </div>
+
+            <div class="fields">
+
+                <div class="eight wide required field" ng-class="{'error' : !modalCategoryForm.description.$valid && (modalCategoryForm.$submitted || !modalCategoryForm.description.$pristine)}">
+                    <!--DESCRIÇÃO-->
+                    <label>Descrição</label>
+                    <input type="text" name="description" ng-model="vm.category.description" class="ui input" required />
+
+                    <div class="ui pointing red basic label" ng-show="!modalCategoryForm.description.$valid && (modalCategoryForm.$submitted || !modalCategoryForm.description.$pristine)">
+                        <div ng-show="!modalCategoryForm.description.$valid">A Descrição é Obrigatória</div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>&nbsp</label>
+                    <button type="button" class="ui primary labeled icon button" ng-click="vm.save()">
+                        <i class="icon" ng-class="{'check' : vm.btnSaveIcon == 'check', 'plus' : vm.btnSaveIcon == 'plus'}"></i>
+                        {{vm.btnSaveText}}
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="eight wide field" ng-show="vm.categories.length > 0">
+
+                <label>Filtrar</label>
+                <input type="text" name="search" ng-model="vm.search" class="ui input" />
+
+            </div>
+
+            <div class="field">
+
+                <div class="ui middle aligned selection animated divided list" ng-show="vm.categories.length > 0">
+
+                    <div class="item" ng-repeat="item in vm.categories | filter: vm.search | orderBy: 'description'">
+                        <div class="right floated content">
+                            <button type="button" class="ui red icon button" ng-click="vm.deleteCategory(item.id)">
+                                <i class="remove icon"></i>
+                            </button>
+                            <button type="button" class="ui yellow icon button" ng-click="vm.edit(item)">
+                                <i class="edit icon"></i>
+                            </button>
+                        </div>
+                        <div class="content">
+                            <div class="description">{{item.description}}</div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+    <div class="actions">
+        <button class="ui ok green button" ng-click="">
+            <i class="checkmark icon"></i> Finalizar
+        </button>
+    </div>
+</div>
+
+<!--MODALS-->
+
+<!--REMOVER CLIENTE-->
+<div id="removeMaterialModal" class="ui basic modal">
+    <div class="header">
+        <h1>Excluir Material</h1>
+    </div>
+    <div class="image content">
+        <div class="description">
+            <h4>Deseja realmente excluir o(a) Material {{vm.nameMaterial}}? Essa ação não poderá ser desfeita.</h4>
+        </div>
+    </div>
+    <div class="actions">
+        <button class="ui ok green button" ng-click="vm.removeMaterial()">
+            <i class="checkmark icon"></i> Excluir
+        </button>
+        <button class="ui cancel red button">
+            <i class="checkmark icon"></i> Cancelar
+        </button>
+    </div>
+</div>
+
+<!--CRIAR NOVO CLIENTE - LIMPAR FORMULARIO-->
+<div id="newMaterialModal" class="ui basic modal">
+    <div class="header">
+        <h1>Novo Material</h1>
+    </div>
+    <div class="image content">
+        <div class="description">
+            <h4>Deseja descartar as alterações realizadas e cadastrar um novo Material?</h4>
+        </div>
+    </div>
+    <div class="actions">
+        <button class="ui ok green button" ng-click="vm.loadMaterial(0)">
+            <i class="checkmark icon"></i> Descartar e Criar Novo
+        </button>
+        <button class="ui cancel red button">
+            <i class="checkmark icon"></i> Cancelar
+        </button>
+    </div>
+</div>

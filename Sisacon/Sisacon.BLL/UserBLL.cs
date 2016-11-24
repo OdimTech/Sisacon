@@ -1,6 +1,7 @@
 ﻿using Sisacon.Domain;
 using Sisacon.Infra;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using static Sisacon.Domain.ValueObjects;
 
@@ -33,7 +34,7 @@ namespace Sisacon.BLL
                     response.StatusCode = HttpStatusCode.BadRequest;
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return LogBLL<User>.createLog(ex);
             }
@@ -82,7 +83,7 @@ namespace Sisacon.BLL
                     response.StatusCode = HttpStatusCode.BadRequest;
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return LogBLL<User>.createLog(ex);
             }
@@ -97,7 +98,7 @@ namespace Sisacon.BLL
         /// <returns>Quantidade de registros inseridos no banco de dados</returns>
         public ResponseMessage<string> registrationUser(User user)
         {
-            var response = new ResponseMessage<string>();       
+            var response = new ResponseMessage<string>();
 
             try
             {
@@ -118,7 +119,7 @@ namespace Sisacon.BLL
                     response.StatusCode = HttpStatusCode.BadRequest;
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return LogBLL<string>.createLog(ex);
             }
@@ -138,7 +139,7 @@ namespace Sisacon.BLL
             {
                 response.ValueList = userDal.getUsedEmail();
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return LogBLL<string>.createLog(ex);
             }
@@ -159,13 +160,13 @@ namespace Sisacon.BLL
             {
                 var emailList = getUsedEmail().ValueList;
 
-                if (emailList != null && emailList.Contains(email))
+                if(emailList != null && emailList.Contains(email))
                 {
                     response.LogicalTest = true;
                     response.Message = Msg.ErrEmailInUse;
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return LogBLL<string>.createLog(ex);
             }
@@ -198,7 +199,7 @@ namespace Sisacon.BLL
                     response.StatusCode = HttpStatusCode.BadRequest;
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return LogBLL<string>.createLog(ex);
             }
@@ -206,11 +207,16 @@ namespace Sisacon.BLL
             return response;
         }
 
+        /// <summary>
+        /// Cria as configurações padrão de um novo usuario no sistema
+        /// </summary>
+        /// <param name="user"></param>
         private void initConfigsUser(User user)
         {
             var configBLL = new ConfigurationBLL();
             var notificationBLL = new NotificationBLL();
             var configCostBLL = new CostConfigurationBLL();
+            var materialCategoryBLL = new MaterialCategoryBLL();
 
             //NOTIFICAÇAO DE CRIAÇÃO DE EMPRESA
             notificationBLL.buildNotification(Msg.NotifyCreateCompany, eNotificationClass.Green, "#/company", user);
@@ -224,6 +230,15 @@ namespace Sisacon.BLL
             var costConfig = configCostBLL.createDefaultConfig(user);
 
             configCostBLL.save(costConfig);
+
+            //CATEGORIAS DE MATERIAS INICIAIS
+            var materialCategories = new List<MaterialCategory>()
+                { new MaterialCategory { Description = "Embalagens", User = user},
+                new MaterialCategory { Description = "Tintas", User = user },
+                new MaterialCategory { Description = "Tecidos", User = user } };
+
+            materialCategoryBLL.saveList(materialCategories);
+            
         }
     }
 }

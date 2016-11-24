@@ -55,6 +55,8 @@
     <Compile Include="BLL\AutomaticCodeTests.cs" />
     <Compile Include="BLL\NotificationBLLTests.cs" />
     <Compile Include="Company\CompanyBLLTests.cs" />
+    <Compile Include="DAL\MaterialCategoryTests.cs" />
+    <Compile Include="DAL\MaterialDALTests.cs" />
     <Compile Include="Files\FilesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BLL\UserBLLTests.cs" />

@@ -11,13 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sisacon - Automação e Controle</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="~/Content/logo.ico" type="image/x-icon" />
     @Styles.Render("~/bundles/style")
 </head>
-<body>
+<body ng-controller="LandingPageController as vm">
 
     <div class="ui big top stackable menu">
-        <a href="index" class="header item">
-            <h1>Sisacon</h1>
+        <a href="#/landingPage" class="header item">
+            <img class="ui centered tiny image" src="/Content/logo.png" alt="BeloArte" />
         </a>
         <div class="right menu">
             <div class="item">

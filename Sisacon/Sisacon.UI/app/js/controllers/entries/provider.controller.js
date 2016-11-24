@@ -57,7 +57,8 @@
                 console.log(reponse.message);
 
             }
-        )}
+        )
+        }
 
         function initControls() {
 
@@ -196,20 +197,20 @@
 
         function showModalRemoveProvider(provider) {
 
-                if (provider.id) {
+            if (provider.id) {
 
-                    vm.idProviderToRemove = provider.id;
+                vm.idProviderToRemove = provider.id;
 
-                    $scope.nameProvider = provider.fantasyName;
+                $scope.nameProvider = provider.fantasyName;
 
-                    angular.element('#removeProviderModal').modal({
+                angular.element('#removeProviderModal').modal({
 
-                        blurring: false,
-                        closable: true
+                    blurring: false,
+                    closable: true
 
-                    }).modal('show');
-                }
+                }).modal('show');
             }
+        }
 
         function removeProviderFromList() {
 

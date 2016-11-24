@@ -59,7 +59,7 @@ namespace Sisacon.BLL
                 //EQUIPMENT
                 else if(obj.GetType() == typeof(Equipment))
                 {
-                    var equipments = new ProviderBLL().getProvidersByUserId(idUser).Value;
+                    var equipments = new EquipmentBLL().getEquipmentsByUserId(idUser).ValueList;
 
                     newCode = "EQP" + randomNumber.ToString();
 
@@ -68,7 +68,7 @@ namespace Sisacon.BLL
                         return newCode;
                     }
 
-                    if(validateNewCode(equipments.Select(x => x.CodProvider).ToList(), newCode))
+                    if(validateNewCode(equipments.Select(x => x.CodEquipment).ToList(), newCode))
                     {
                         return newCode;
                     }
@@ -77,7 +77,27 @@ namespace Sisacon.BLL
                         createAutomaticCode(new Equipment(), idUser);
                     }
                 }
+                //MATERIAL
+                else if(obj.GetType() == typeof(Material))
+                {
+                    var materials = new MaterialBLL().getMaterialsByUserId(idUser).ValueList;
 
+                    newCode = "MAT" + randomNumber.ToString();
+
+                    if(materials == null || materials.Count == 0)
+                    {
+                        return newCode;
+                    }
+
+                    if(validateNewCode(materials.Select(x => x.CodMaterial).ToList(), newCode))
+                    {
+                        return newCode;
+                    }
+                    else
+                    {
+                        createAutomaticCode(new Equipment(), idUser);
+                    }
+                }
             }
             catch(Exception ex)
             {

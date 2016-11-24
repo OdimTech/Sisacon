@@ -79,6 +79,24 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Erro ao Excluir Material.
+        /// </summary>
+        internal static string ErrDeleteMaterial {
+            get {
+                return ResourceManager.GetString("ErrDeleteMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao Excluir Categoria.
+        /// </summary>
+        internal static string ErrDeleteMaterialCategory {
+            get {
+                return ResourceManager.GetString("ErrDeleteMaterialCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erro ao excluir Fornecedor.
         /// </summary>
         internal static string ErrDeleteProvider {
@@ -142,6 +160,15 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Erro ao Salvar Material.
+        /// </summary>
+        internal static string ErrInsertMaterial {
+            get {
+                return ResourceManager.GetString("ErrInsertMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erro ao salvar novo Fornecedor..
         /// </summary>
         internal static string ErrInsertProvider {
@@ -156,6 +183,24 @@ namespace Sisacon.BLL {
         internal static string ErrInsertUser {
             get {
                 return ResourceManager.GetString("ErrInsertUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exclusão não permitida, esta Categoria está sendo utilizado no momento..
+        /// </summary>
+        internal static string ErrMaterialCategoryInUse {
+            get {
+                return ResourceManager.GetString("ErrMaterialCategoryInUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exclusão não permitida, este Material está sendo utilizado no momento..
+        /// </summary>
+        internal static string ErroMaterialInUse {
+            get {
+                return ResourceManager.GetString("ErroMaterialInUse", resourceCulture);
             }
         }
         
@@ -223,6 +268,15 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Erro ao Atualizar Material.
+        /// </summary>
+        internal static string ErrUpdMaterial {
+            get {
+                return ResourceManager.GetString("ErrUpdMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Desculpe, mas o seu acesso ao sistema foi suspenso.
         ///Entre em contato com o suporte para mais informações..
         /// </summary>
@@ -269,6 +323,24 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O Material foi Excluído com Sucesso!.
+        /// </summary>
+        internal static string SucDeleteMaterial {
+            get {
+                return ResourceManager.GetString("SucDeleteMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A Categoria foi Excluída com Sucesso!.
+        /// </summary>
+        internal static string SucDeleteMaterialCategory {
+            get {
+                return ResourceManager.GetString("SucDeleteMaterialCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O Fornecedor foi excluído com Sucesso!.
         /// </summary>
         internal static string SucDeleteProvider {
@@ -301,6 +373,24 @@ namespace Sisacon.BLL {
         internal static string SucInsertEquip {
             get {
                 return ResourceManager.GetString("SucInsertEquip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O Material foi Salvo com Sucesso!.
+        /// </summary>
+        internal static string SucInsertMaterial {
+            get {
+                return ResourceManager.GetString("SucInsertMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A Categoria foi criada com Sucesso!.
+        /// </summary>
+        internal static string SucInsertMaterialCategory {
+            get {
+                return ResourceManager.GetString("SucInsertMaterialCategory", resourceCulture);
             }
         }
         
@@ -382,6 +472,24 @@ namespace Sisacon.BLL {
         internal static string SucUpdEquip {
             get {
                 return ResourceManager.GetString("SucUpdEquip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O Material foi Atualizado com Sucesso!.
+        /// </summary>
+        internal static string SucUpdMaterial {
+            get {
+                return ResourceManager.GetString("SucUpdMaterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A Categoria foi Atualizada com Sucesso!.
+        /// </summary>
+        internal static string SucUpdMaterialCategory {
+            get {
+                return ResourceManager.GetString("SucUpdMaterialCategory", resourceCulture);
             }
         }
     }

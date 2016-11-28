@@ -1,6 +1,7 @@
 ﻿using Sisacon.Domain;
 using Sisacon.Infra.Context;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
@@ -16,6 +17,7 @@ namespace Sisacon.Infra
             {
                 using(var context = new SisaconDbContext())
                 {
+                    context.Material.Attach(price.Material);
                     context.PriceResearch.Add(price);
 
                     addedLines = context.SaveChanges();
@@ -68,21 +70,26 @@ namespace Sisacon.Infra
             return price;
         }
 
-        //public List<PriceResearch> getPriceByMaterial(int )
-        //{
-        //    var prices = new List<PriceResearch>();
+        public List<PriceResearch> getPriceByMaterial(int idMaterial)
+        {
+            var prices = new List<PriceResearch>();
 
-        //    try
-        //    {
-        //        using(var context = new SisaconDbContext()) 
-        //        {
-        //            prices = context.PriceResearch.Where(x => x.us)
-        //        }
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
+            try
+            {
+                using(var context = new SisaconDbContext())
+                {
+                    prices = context.PriceResearch
+                        .Where(x => x.MaterialId == idMaterial)
+                        .OrderBy(x => x.SearchDate)
+                        .ToList();
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+
+            return prices;
+        }
     }
 }

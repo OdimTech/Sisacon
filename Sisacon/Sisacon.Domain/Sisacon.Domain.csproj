@@ -48,6 +48,7 @@
     <Compile Include="Cost.cs" />
     <Compile Include="CostConfiguration.cs" />
     <Compile Include="DepreciationCost.cs" />
+    <Compile Include="EntityBase.cs" />
     <Compile Include="Equipment.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Material.cs" />

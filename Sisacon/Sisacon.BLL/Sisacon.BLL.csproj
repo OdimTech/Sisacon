@@ -47,6 +47,7 @@
     <Compile Include="CostConfigurationBLL.cs" />
     <Compile Include="EquipmentBLL.cs" />
     <Compile Include="FilesBLL.cs" />
+    <Compile Include="IBaseBLL.cs" />
     <Compile Include="LogBLL.cs" />
     <Compile Include="MaterialBLL.cs" />
     <Compile Include="MaterialCategoryBLL.cs" />
@@ -55,8 +56,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Msg.resx</DependentUpon>
     </Compile>
+    <Compile Include="MsgFormater.cs" />
     <Compile Include="NotificationBLL.cs" />
     <Compile Include="OccupationAreaBLL.cs" />
+    <Compile Include="PriceResearchBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProviderBLL.cs" />
     <Compile Include="UserBLL.cs" />

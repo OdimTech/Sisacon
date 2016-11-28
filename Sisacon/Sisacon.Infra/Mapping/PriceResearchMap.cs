@@ -21,6 +21,9 @@ namespace Sisacon.Infra.Mapping
                 .HasColumnType("DateTime")
                 .IsOptional();
 
+            HasRequired(x => x.Material)
+                .WithMany(x => x.ListPriceResearch)
+                .HasForeignKey(x => x.MaterialId);
         }
     }
 }

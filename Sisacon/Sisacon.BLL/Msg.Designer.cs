@@ -305,6 +305,15 @@ namespace Sisacon.BLL {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string SucD {
+            get {
+                return ResourceManager.GetString("SucD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O Cliente foi excluído com Sucesso!.
         /// </summary>
         internal static string SucDeleteClient {
@@ -391,6 +400,15 @@ namespace Sisacon.BLL {
         internal static string SucInsertMaterialCategory {
             get {
                 return ResourceManager.GetString("SucInsertMaterialCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A Pesquisa de Preço foi Salva com Sucesso!.
+        /// </summary>
+        internal static string SucInsertPrice {
+            get {
+                return ResourceManager.GetString("SucInsertPrice", resourceCulture);
             }
         }
         
@@ -490,6 +508,15 @@ namespace Sisacon.BLL {
         internal static string SucUpdMaterialCategory {
             get {
                 return ResourceManager.GetString("SucUpdMaterialCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A Pesquisa de Preço foi Atualizada com Sucesso!.
+        /// </summary>
+        internal static string SucUpdPrice {
+            get {
+                return ResourceManager.GetString("SucUpdPrice", resourceCulture);
             }
         }
     }

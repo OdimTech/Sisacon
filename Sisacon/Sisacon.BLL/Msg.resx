@@ -262,4 +262,13 @@ Entre em contato com o suporte para mais informações.</value>
   <data name="SucUpdMaterial" xml:space="preserve">
     <value>O Material foi Atualizado com Sucesso!</value>
   </data>
+  <data name="SucD" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SucInsertPrice" xml:space="preserve">
+    <value>A Pesquisa de Preço foi Salva com Sucesso!</value>
+  </data>
+  <data name="SucUpdPrice" xml:space="preserve">
+    <value>A Pesquisa de Preço foi Atualizada com Sucesso!</value>
+  </data>
 </root>

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("indexApp.Domain")]
+[assembly: AssemblyTitle("Sisacon.Domain")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("indexApp.Domain")]
+[assembly: AssemblyProduct("Sisacon.Domain")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8b5a45d1-9ec6-46cd-9ab2-3819aa2fc643")]
+[assembly: Guid("1ecaad5b-aa76-4cc0-976d-b9881ff11f83")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -1,13 +1,12 @@
-﻿using Sisacon.Domain;
-using Sisacon.Infra.Mapping;
+﻿using Sisacon.Domain.Entities;
 using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace Sisacon.Infra.Context
+namespace Sisacon.Repositories.Context
 {
-    class SisaconDbContext : DbContext
+    public class SisaconDbContext : DbContext
     {
-        public SisaconDbContext() : base("SisaconConnectionString")
+        public SisaconDbContext()
+            : base("SisaconConnectionString")
         {
             var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
 
@@ -16,42 +15,5 @@ namespace Sisacon.Infra.Context
         }
 
         public DbSet<User> User { get; set; }
-        public DbSet<Company> Company { get; set; }
-        public DbSet<Address> Address { get; set; }
-        public DbSet<Contact> Contact { get; set; }
-        public DbSet<OccupationArea> OccupationArea { get; set; }
-        public DbSet<Notification> Notification { get; set; }
-        public DbSet<Client> Client { get; set; }
-        public DbSet<Configuration> Config { get; set; }
-        public DbSet<Provider> Provider { get; set; }
-        public DbSet<Cost> Cost { get; set; }
-        public DbSet<VariableCost> VariableCost { get; set; }
-        public DbSet<CostConfiguration> CostConfiguration { get; set; }
-        public DbSet<Equipment> Equipment { get; set; }
-        public DbSet<Material> Material { get; set; }
-        public DbSet<MaterialCategory> MaterialCategory { get; set; }
-        public DbSet<PriceResearch> PriceResearch { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            modelBuilder.Configurations.Add(new UserMap());
-            modelBuilder.Configurations.Add(new LogMap());
-            modelBuilder.Configurations.Add(new AddressMap());
-            modelBuilder.Configurations.Add(new CompanyMap());
-            modelBuilder.Configurations.Add(new NotificationMap());
-            modelBuilder.Configurations.Add(new ClientMap());
-            modelBuilder.Configurations.Add(new ConfigurationMap());
-            modelBuilder.Configurations.Add(new ProviderMap());
-            modelBuilder.Configurations.Add(new CostMap());
-            modelBuilder.Configurations.Add(new VariableCostMap());
-            modelBuilder.Configurations.Add(new CostConfigurationMap());
-            modelBuilder.Configurations.Add(new EquipmentMap());
-            modelBuilder.Configurations.Add(new MaterialMap());
-            modelBuilder.Configurations.Add(new MaterialCategoryMap());
-            modelBuilder.Configurations.Add(new PriceResearchMap());
-
-            base.OnModelCreating(modelBuilder);
-        }
     }
 }

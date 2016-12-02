@@ -1,17 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.Tests", "Sisacon.Tests\Sisacon.Tests.csproj", "{360F7E21-1EC6-47EC-885C-509F15907C22}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.UI.WebApi", "Sisacon.UI\Sisacon.UI.WebApi.csproj", "{8122CC78-F9B2-460E-B277-6D73DF057EF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.BLL", "Sisacon.BLL\Sisacon.BLL.csproj", "{89F940B4-D992-4753-A6B9-2A4B1530D8D1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{934A24D6-1199-4670-8533-9C18E1B2CCF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.Infra", "Sisacon.Infra\Sisacon.Infra.csproj", "{8932FAF3-FDA5-4D83-8EE7-E9A1BFEAD51F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{A8792916-82AF-41BF-B6DD-AB5571C57DE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.Domain", "Sisacon.Domain\Sisacon.Domain.csproj", "{8B5A45D1-9EC6-46CD-9AB2-3819AA2FC643}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.Application", "Sisacon.Application\Sisacon.Application.csproj", "{D1CE6C3B-BDB9-4323-9707-9F88CE42C023}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.UI", "Sisacon.UI\Sisacon.UI.csproj", "{8122CC78-F9B2-460E-B277-6D73DF057EF5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{DC93613C-A116-43F1-A865-FD2910F034E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.Domain", "Sisacon.Domain\Sisacon.Domain.csproj", "{549A3C23-002A-4396-BFEA-CC2CD7DF3EAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{F1B8027B-7FCE-49B9-A978-42D0CA6B169B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.Repositories", "Sisacon.Infra\Sisacon.Repositories.csproj", "{3A082EC3-F6B0-4A1D-BD59-9BEECF70C125}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.IoC", "Sisacon.Infra.IoC\Sisacon.IoC.csproj", "{5A356C3F-9078-496E-A22F-9B86500C262C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,28 +27,35 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{360F7E21-1EC6-47EC-885C-509F15907C22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{360F7E21-1EC6-47EC-885C-509F15907C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{360F7E21-1EC6-47EC-885C-509F15907C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{360F7E21-1EC6-47EC-885C-509F15907C22}.Release|Any CPU.Build.0 = Release|Any CPU
-		{89F940B4-D992-4753-A6B9-2A4B1530D8D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89F940B4-D992-4753-A6B9-2A4B1530D8D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89F940B4-D992-4753-A6B9-2A4B1530D8D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89F940B4-D992-4753-A6B9-2A4B1530D8D1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8932FAF3-FDA5-4D83-8EE7-E9A1BFEAD51F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8932FAF3-FDA5-4D83-8EE7-E9A1BFEAD51F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8932FAF3-FDA5-4D83-8EE7-E9A1BFEAD51F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8932FAF3-FDA5-4D83-8EE7-E9A1BFEAD51F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8B5A45D1-9EC6-46CD-9AB2-3819AA2FC643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B5A45D1-9EC6-46CD-9AB2-3819AA2FC643}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B5A45D1-9EC6-46CD-9AB2-3819AA2FC643}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B5A45D1-9EC6-46CD-9AB2-3819AA2FC643}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8122CC78-F9B2-460E-B277-6D73DF057EF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8122CC78-F9B2-460E-B277-6D73DF057EF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8122CC78-F9B2-460E-B277-6D73DF057EF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8122CC78-F9B2-460E-B277-6D73DF057EF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1CE6C3B-BDB9-4323-9707-9F88CE42C023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1CE6C3B-BDB9-4323-9707-9F88CE42C023}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1CE6C3B-BDB9-4323-9707-9F88CE42C023}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1CE6C3B-BDB9-4323-9707-9F88CE42C023}.Release|Any CPU.Build.0 = Release|Any CPU
+		{549A3C23-002A-4396-BFEA-CC2CD7DF3EAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{549A3C23-002A-4396-BFEA-CC2CD7DF3EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{549A3C23-002A-4396-BFEA-CC2CD7DF3EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{549A3C23-002A-4396-BFEA-CC2CD7DF3EAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A082EC3-F6B0-4A1D-BD59-9BEECF70C125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A082EC3-F6B0-4A1D-BD59-9BEECF70C125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A082EC3-F6B0-4A1D-BD59-9BEECF70C125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A082EC3-F6B0-4A1D-BD59-9BEECF70C125}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A356C3F-9078-496E-A22F-9B86500C262C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A356C3F-9078-496E-A22F-9B86500C262C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A356C3F-9078-496E-A22F-9B86500C262C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A356C3F-9078-496E-A22F-9B86500C262C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8122CC78-F9B2-460E-B277-6D73DF057EF5} = {934A24D6-1199-4670-8533-9C18E1B2CCF3}
+		{D1CE6C3B-BDB9-4323-9707-9F88CE42C023} = {A8792916-82AF-41BF-B6DD-AB5571C57DE2}
+		{549A3C23-002A-4396-BFEA-CC2CD7DF3EAA} = {DC93613C-A116-43F1-A865-FD2910F034E6}
+		{3A082EC3-F6B0-4A1D-BD59-9BEECF70C125} = {F1B8027B-7FCE-49B9-A978-42D0CA6B169B}
+		{5A356C3F-9078-496E-A22F-9B86500C262C} = {F1B8027B-7FCE-49B9-A978-42D0CA6B169B}
 	EndGlobalSection
 EndGlobal

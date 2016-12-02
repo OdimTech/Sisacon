@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Sisacon.Infra")]
+[assembly: AssemblyTitle("Sisacon.Infra.IoC")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Sisacon.Infra")]
+[assembly: AssemblyProduct("Sisacon.Infra.IoC")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("fdcfbbf4-3e4e-49cf-b34d-fc3f0c1e2404")]
+[assembly: Guid("cef77149-455e-47ba-a50d-626813fa8af6")]
 
 // Version information for an assembly consists of the following four values:
 //

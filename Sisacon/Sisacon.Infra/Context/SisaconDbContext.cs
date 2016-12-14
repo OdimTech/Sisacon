@@ -1,5 +1,7 @@
 ﻿using Sisacon.Domain.Entities;
+using Sisacon.Infra.Mapping;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Sisacon.Repositories.Context
 {
@@ -15,5 +17,22 @@ namespace Sisacon.Repositories.Context
         }
 
         public DbSet<User> User { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
+            modelBuilder.Configurations.Add(new UserMap());
+
+            modelBuilder.Properties<string>()
+                .Configure(p => p.HasColumnType("varchar"));
+
+            modelBuilder.Properties<string>()
+                .Configure(p => p.HasMaxLength(100));
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

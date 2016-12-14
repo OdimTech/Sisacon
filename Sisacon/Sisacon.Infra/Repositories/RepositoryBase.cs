@@ -1,14 +1,13 @@
-﻿using Sisacon.Domain.Interfaces;
+﻿using Sisacon.Domain.Entities;
+using Sisacon.Domain.Interfaces;
 using Sisacon.Repositories.Context;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Sisacon.Infra.Repositories
 {
-    public class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public class RepositoryBase<T> : IRepositoryBase<T> where T : BaseEntity
     {
         protected SisaconDbContext Context { get; private set; }
 
@@ -17,30 +16,43 @@ namespace Sisacon.Infra.Repositories
             Context = new SisaconDbContext();
         }
 
-        public int save(T obj)
+        private DbSet<T> Entity { get { return Context.Set<T>(); } }
+
+        public void save(T obj)
         {
-            Context.Set<T>().Add(obj);
-            return Context.SaveChanges();
+            obj.RegistrationDate = DateTime.Now;
+            Entity.Add(obj);
         }
 
-        public int update(T obj)
+        public void update(T obj)
         {
-            throw new NotImplementedException();
+            Context.Entry(obj).State = EntityState.Modified;
         }
 
-        public int delete(int id)
+        public void delete(int id)
         {
-            throw new NotImplementedException();
+            var obj = getById(id);
+            obj.ExclusionDate = DateTime.Now;
         }
 
         public T getById(int id)
         {
-            throw new NotImplementedException();
+            
         }
 
         public IEnumerable<T> getByUserId(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<T> getAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void commit()
+        {
+            
         }
     }
 }

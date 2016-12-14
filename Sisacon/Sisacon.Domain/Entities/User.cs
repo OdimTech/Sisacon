@@ -1,21 +1,70 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Helpers;
+using Sisacon.Domain.Enuns;
+using Sisacon.Domain.ValueObjects;
+using System;
 
 namespace Sisacon.Domain.Entities
 {
-    public class User
+    public class User : BaseEntity
     {
-        public int Id { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public bool Active { get; set; }
-        ///public eUserType eUserType { get; set; }
+        #region Constants
+
+        public const int PASSWORD_MIN_LENGHT = 6;
+
+        #endregion
+
+        #region Propeties
+
+        private bool _active;
+
+        public bool Active
+        {
+            get { return _active; }
+
+            set
+            {
+                //implementar regra para inativar usuario
+                _active = value;
+            }
+        }
+
+        private string _password;
+
+        public string Password
+        {
+            get { return _password; }
+            set
+            {
+                if (ValidateStrings.validateStringMinSize(value, PASSWORD_MIN_LENGHT))
+                {
+                    _password = Security.encrypt(value);
+                }
+                else
+                {
+                    throw new Exception("A Senha precisa ter no mínimo seis caractéres");
+                }
+            }
+        }
+
+        public Email Email { get; set; }
+        public UserType.eUserType eUserType { get; set; }
         public DateTime? LastLogin { get; set; }
-        public DateTime RegistrationDate { get; set; }
-        public DateTime? ExclusionDate { get; set; }
         public bool ShowWellcomeMessage { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+
+        #endregion
+
+        #region Methods
+
+        public void isValid()
+        {
+
+        }
+
+        #endregion
     }
 }

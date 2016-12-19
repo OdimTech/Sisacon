@@ -15,6 +15,42 @@ namespace Sisacon.Domain.Services
             _repository = repository;
         }
 
+        public void attach(T obj)
+        {
+            try
+            {
+                _repository.attach(obj);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void commit()
+        {
+            try
+            {
+                _repository.commit();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void commitAsync()
+        {
+            try
+            {
+                _repository.commitAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void delete(int id)
         {
             try
@@ -27,7 +63,19 @@ namespace Sisacon.Domain.Services
             }
         }
 
-        public IEnumerable<T> getAll()
+        public void Dispose()
+        {
+            try
+            {
+                _repository.Dispose();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<T> getAll()
         {
             try
             {
@@ -51,11 +99,25 @@ namespace Sisacon.Domain.Services
             }
         }
 
-        public void save(T obj)
+        public void rollback()
         {
             try
             {
-                _repository.save(obj);
+                _repository.rollback();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void add(T obj)
+        {
+            try
+            {
+                _repository.add(obj);
+
+                _repository.commit();
             }
             catch (Exception ex)
             {

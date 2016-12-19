@@ -11,7 +11,7 @@ namespace Sisacon.Domain.Services
         private readonly IUserRepository _repository;
 
         public UserService(IUserRepository repository)
-            : base (repository)
+            : base(repository)
         {
             _repository = repository;
         }
@@ -64,6 +64,11 @@ namespace Sisacon.Domain.Services
             }
         }
 
+        /// <summary>
+        /// Verifica se o email informado pelo usuário já está em uso.
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>True se o email estiver já estiver em uso</returns>
         public bool emailInUse(string email)
         {
             var emailInUse = false;
@@ -72,7 +77,7 @@ namespace Sisacon.Domain.Services
             {
                 var emaIlList = getListEmailInUse();
 
-                if(!emaIlList.Contains(email))
+                if (!emaIlList.Contains(email))
                 {
                     emailInUse = true;
                 }

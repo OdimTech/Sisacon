@@ -15,6 +15,58 @@ namespace Sisacon.Application
             _serviceBase = serviceBase;
         }
 
+        public void add(T obj)
+        {
+            try
+            {
+                _serviceBase.add(obj);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public void attach(T obj)
+        {
+            try
+            {
+                _serviceBase.attach(obj);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public void commit()
+        {
+            try
+            {
+                _serviceBase.commit();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public void commitAsync()
+        {
+            try
+            {
+                _serviceBase.commitAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public void delete(int id)
         {
             try
@@ -27,7 +79,20 @@ namespace Sisacon.Application
             }
         }
 
-        public IEnumerable<T> getAll()
+        public void Dispose()
+        {
+            try
+            {
+                _serviceBase.Dispose();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public List<T> getAll()
         {
             try
             {
@@ -51,11 +116,24 @@ namespace Sisacon.Application
             }
         }
 
+        public void rollback()
+        {
+            try
+            {
+                _serviceBase.rollback();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public void save(T obj)
         {
             try
             {
-                _serviceBase.save(obj);
+                _serviceBase.add(obj);
             }
             catch (Exception ex)
             {

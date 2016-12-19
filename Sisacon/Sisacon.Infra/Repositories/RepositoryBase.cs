@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Sisacon.Infra.Repositories
 {
-    public class RepositoryBase<T> : IRepositoryBase<T> where T : BaseEntity
+    public class RepositoryBase<T> : IDisposable, IRepositoryBase<T> where T : BaseEntity
     {
         protected SisaconDbContext Context { get; private set; }
 
@@ -19,14 +19,12 @@ namespace Sisacon.Infra.Repositories
 
         private DbSet<T> Entity { get { return Context.Set<T>(); } }
 
-        public void save(T obj)
+        public void add(T obj)
         {
             try
             {
                 obj.RegistrationDate = DateTime.Now;
                 Entity.Add(obj);
-
-                Context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -39,8 +37,6 @@ namespace Sisacon.Infra.Repositories
             try
             {
                 Context.Entry(obj).State = EntityState.Modified;
-
-                Context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -56,12 +52,10 @@ namespace Sisacon.Infra.Repositories
                 obj.ExclusionDate = DateTime.Now;
 
                 update(obj);
-
-                Context.SaveChanges();
             }
             catch (Exception ex)
             {
-                throw ex; 
+                throw ex;
             }
         }
 
@@ -77,16 +71,76 @@ namespace Sisacon.Infra.Repositories
             }
         }
 
-        public IEnumerable<T> getAll()
+        public List<T> getAll()
         {
             try
             {
-                return Entity.Where(x => x.ExclusionDate == null);
+                return Entity.Where(x => x.ExclusionDate == null).ToList();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        public void Dispose()
+        {
+            try
+            {
+                if (Context != null)
+                {
+                    Context.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void attach(T obj)
+        {
+            try
+            {
+                Entity.Attach(obj);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void commit()
+        {
+            try
+            {
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            Context.SaveChanges();
+        }
+
+        public void commitAsync()
+        {
+            try
+            {
+                Context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void rollback()
+        {
+            Context.ChangeTracker.Entries()
+                         .ToList()
+                         .ForEach(entry => entry.State = EntityState.Unchanged);
         }
     }
 }

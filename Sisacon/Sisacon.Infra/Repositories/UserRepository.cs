@@ -12,26 +12,10 @@ namespace Sisacon.Infra.Repositories
         {
             try
             {
-                return Context.User.Where(x => 
+                return Context.User.Where(x =>
                         x.Email.Address == email &&
                         x.Active == true &&
                         x.ExclusionDate == null).FirstOrDefault();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public IEnumerable<string> getListEmailInUse()
-        {
-            try
-            {
-                return Context.User.Where(x => 
-                        x.ExclusionDate == null && 
-                        x.Active == true)
-                        .Select(x => 
-                        x.Email.Address).ToList();
             }
             catch (Exception ex)
             {
@@ -59,10 +43,26 @@ namespace Sisacon.Infra.Repositories
         {
             try
             {
-                return Context.User.Where(x => 
-                        x.Password == pass && 
-                        x.Email.Address == email && 
+                return Context.User.Where(x =>
+                        x.Password == pass &&
+                        x.Email.Address == email &&
                         x.ExclusionDate == null).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        List<string> IUserRepository.getListEmailInUse()
+        {
+            try
+            {
+                return Context.User.Where(x =>
+                        x.ExclusionDate == null &&
+                        x.Active == true)
+                        .Select(x =>
+                        x.Email.Address).ToList();
             }
             catch (Exception ex)
             {

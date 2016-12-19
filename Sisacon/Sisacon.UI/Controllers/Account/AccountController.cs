@@ -56,6 +56,8 @@ namespace Sisacon.UI.Controllers.account
         [Route("user")]
         public HttpResponseMessage ValidateEmailInUse(string email)
         {
+            _userAppService.emailInUse("");
+
             return Request.CreateResponse();
         }
 

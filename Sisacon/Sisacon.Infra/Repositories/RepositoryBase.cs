@@ -4,6 +4,7 @@ using Sisacon.Repositories.Context;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace Sisacon.Infra.Repositories
 {
@@ -20,39 +21,72 @@ namespace Sisacon.Infra.Repositories
 
         public void save(T obj)
         {
-            obj.RegistrationDate = DateTime.Now;
-            Entity.Add(obj);
+            try
+            {
+                obj.RegistrationDate = DateTime.Now;
+                Entity.Add(obj);
+
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void update(T obj)
         {
-            Context.Entry(obj).State = EntityState.Modified;
+            try
+            {
+                Context.Entry(obj).State = EntityState.Modified;
+
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void delete(int id)
         {
-            var obj = getById(id);
-            obj.ExclusionDate = DateTime.Now;
+            try
+            {
+                var obj = getById(id);
+                obj.ExclusionDate = DateTime.Now;
+
+                update(obj);
+
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex; 
+            }
         }
 
         public T getById(int id)
         {
-            
-        }
-
-        public IEnumerable<T> getByUserId(int id)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                return Entity.Where(x => x.Id == id && x.ExclusionDate == null).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public IEnumerable<T> getAll()
         {
-            throw new NotImplementedException();
-        }
-
-        public void commit()
-        {
-            
+            try
+            {
+                return Entity.Where(x => x.ExclusionDate == null);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

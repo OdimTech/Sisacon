@@ -1,15 +1,13 @@
 ﻿using System.Collections.Generic;
 
-namespace Sisacon.Domain.Interfaces
+namespace Sisacon.Application.Interfaces
 {
-    public interface IRepositoryBase<T> where T : class
+    public interface IAppServiceBase<T> where T : class
     {
         void save(T obj);
         void update(T obj);
         void delete(int id);
         T getById(int id);
         IEnumerable<T> getAll();
-        IEnumerable<T> getByUserId(int id);
-        void commit();
     }
 }

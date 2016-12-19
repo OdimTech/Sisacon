@@ -1,79 +1,77 @@
-﻿//using Newtonsoft.Json.Linq;
-//using Sisacon.BLL;
-//using Sisacon.Domain;
-//using System;
-//using System.Net.Http;
-//using System.Threading.Tasks;
-//using System.Web.Http;
-//using static Sisacon.Domain.ValueObjects;
+﻿using Sisacon.Application.Interfaces;
+using System.Net.Http;
+using System.Web.Http;
 
-//namespace Sisacon.UI.Controllers.account
-//{
-//    [RoutePrefix("api")]
-//    public class AccountController : BaseController
-//    {
-//        [HttpPost]
-//        [Route("user")]
-//        public async Task<HttpResponseMessage> RegistrationUser(JObject userCredentials)
-//        {
-//            var userBLL = new UserBLL();
-//            var user = new User();
-//            var filesBLL = new FilesBLL(ApplicationPath);
+namespace Sisacon.UI.Controllers.account
+{
+    [RoutePrefix("api")]
+    public class AccountController : ApiController
+    {
+        private readonly IUserAppService _userAppService;
 
-//            user.Active = true;//Essa propriedade deve ser false, mas até o oAuth ser implementado ficará com true
-//            user.Email = userCredentials["email"].ToString();
-//            user.eUserType = eUserType.User;
-//            user.ExclusionDate = null;
-//            user.Password = userCredentials["pass"].ToString();
-//            user.RegistrationDate = DateTime.Now;
-//            user.LastLogin = null;
-//            user.ShowWellcomeMessage = true;
+        public AccountController(IUserAppService userAppService)
+        {
+            _userAppService = userAppService;
+        }
 
-//            var response = userBLL.registrationUser(user);
+        //[HttpPost]
+        //[Route("user")]
+        //public async Task<HttpResponseMessage> RegistrationUser(JObject userCredentials)
+        //{
+        //    //var userBLL = new UserBLL();
+        //    //var user = new User();
+        //    //var filesBLL = new FilesBLL(ApplicationPath);
 
-//            if (response.LogicalTest)
-//            {
-//                await filesBLL.createUserPathAsync(user);
-//            }
+        //    //user.Active = true;//Essa propriedade deve ser false, mas até o oAuth ser implementado ficará com true
+        //    //user.Email = userCredentials["email"].ToString();
+        //    //user.eUserType = eUserType.User;
+        //    //user.ExclusionDate = null;
+        //    //user.Password = userCredentials["pass"].ToString();
+        //    //user.RegistrationDate = DateTime.Now;
+        //    //user.LastLogin = null;
+        //    //user.ShowWellcomeMessage = true;
 
-//            return Request.CreateResponse(response.StatusCode, response);
-//        }
+        //    //var response = userBLL.registrationUser(user);
 
-//        [HttpGet]
-//        [Route("user")]
-//        public HttpResponseMessage GetUserById(int id)
-//        {
-//            var userBLL = new UserBLL();
+        //    //if (response.LogicalTest)
+        //    //{
+        //    //    await filesBLL.createUserPathAsync(user);
+        //    //}
 
-//            var response = userBLL.getUserById(id);
+        //    //return Request.CreateResponse(response.StatusCode, response);
+        //}
 
-//            return Request.CreateResponse(response.StatusCode, response);
-//        }
+        //[HttpGet]
+        //[Route("user")]
+        //public HttpResponseMessage GetUserById(int id)
+        //{
+        //    //var userBLL = new UserBLL();
 
-//        [HttpGet]
-//        [Route("user")]
-//        public HttpResponseMessage ValidateEmailInUse(string email)
-//        {
-//            var userBLL = new UserBLL();
+        //    //var response = userBLL.getUserById(id);
 
-//            var response = userBLL.validateEmailInUse(email);
+        //    //return Request.CreateResponse(response.StatusCode, response);
+        //}
 
-//            return Request.CreateResponse(response.StatusCode, response);
-//        }
+        [HttpGet]
+        [Route("user")]
+        public HttpResponseMessage ValidateEmailInUse(string email)
+        {
+            return Request.CreateResponse();
+        }
 
-//        [HttpGet]
-//        [Route("user")]
-//        public HttpResponseMessage Logon(string email, string pass)
-//        {
-//            var userBLL = new UserBLL();
-//            var response = new ResponseMessage<User>();
+        //[HttpGet]
+        //[Route("user")]
+        //public HttpResponseMessage Logon(string email, string pass)
+        //{
+        //    //var userBLL = new UserBLL();
+        //    //var response = new ResponseMessage<User>();
 
-//            if (email != string.Empty && pass != string.Empty)
-//            {
-//                response = userBLL.logon(pass, email);
-//            }
+        //    //if (email != string.Empty && pass != string.Empty)
+        //    //{
+        //    //    response = userBLL.logon(pass, email);
+        //    //}
 
-//            return Request.CreateResponse(response.StatusCode, response);
-//        }
-//    }
-//}
+        //    //return Request.CreateResponse(response.StatusCode, response);
+        //}
+    }
+}

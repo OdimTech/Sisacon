@@ -27,11 +27,11 @@ namespace Sisacon.Domain.Services
             }
         }
 
-        public void commit()
+        public int commit()
         {
             try
             {
-                _repository.commit();
+                return _repository.commit();
             }
             catch (Exception ex)
             {

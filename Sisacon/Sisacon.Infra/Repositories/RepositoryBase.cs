@@ -110,18 +110,16 @@ namespace Sisacon.Infra.Repositories
             }
         }
 
-        public void commit()
+        public int commit()
         {
             try
             {
-                Context.SaveChanges();
+                return Context.SaveChanges();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
-            Context.SaveChanges();
         }
 
         public void commitAsync()

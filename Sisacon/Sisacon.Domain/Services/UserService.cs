@@ -77,7 +77,7 @@ namespace Sisacon.Domain.Services
             {
                 var emaIlList = getListEmailInUse();
 
-                if (!emaIlList.Contains(email))
+                if (emaIlList.Contains(email))
                 {
                     emailInUse = true;
                 }

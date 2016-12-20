@@ -16,9 +16,7 @@ namespace Sisacon.Infra.Mapping
                 .HasColumnName("Email")
                 .HasColumnType("varchar")
                 .IsRequired()
-                .HasMaxLength(Email.EMAIL_MAX_LENGTH)
-                .HasColumnAnnotation(IndexAnnotation.AnnotationName,
-                new IndexAnnotation(new IndexAttribute("IX_EMAIL", 1) { IsUnique = true }));
+                .HasMaxLength(Email.EMAIL_MAX_LENGTH);
 
             Property(x => x.Password)
                 .HasColumnType("varchar")

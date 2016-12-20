@@ -9,9 +9,9 @@ namespace Sisacon.Application.Interfaces
         void add(T obj);
         void update(T obj);
         void delete(int id);
-        T getById(int id);
-        List<T> getAll();
-        void commit();
+        ResponseMessage<T> getById(int id);
+        ResponseMessage<T> getAll();
+        int commit();
         void commitAsync();
         void rollback();
     }

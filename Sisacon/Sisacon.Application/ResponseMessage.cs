@@ -3,7 +3,7 @@ using System.Net;
 
 namespace Sisacon.Application
 {
-    class ResponseMessage<T> where T : class
+    public class ResponseMessage<T> where T : class
     {
         public ResponseMessage()
         {

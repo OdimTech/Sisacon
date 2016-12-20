@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 namespace Sisacon.Application.Interfaces
 {
-    public interface IUserAppService
+    public interface IUserAppService : IAppServiceBase<User>
     {
-        User getByEmail(string email);
-        List<string> getListEmailInUse();
-        User logon(string pass, string email);
+        ResponseMessage<User> createUser(User user);
+        ResponseMessage<User> getByEmail(string email);
+        ResponseMessage<string> getListEmailInUse();
+        ResponseMessage<User> logon(string pass, string email);
         void inactivateUser(int id);
-        bool emailInUse(string email);
+        ResponseMessage<User> emailInUse(string email);
     }
 }

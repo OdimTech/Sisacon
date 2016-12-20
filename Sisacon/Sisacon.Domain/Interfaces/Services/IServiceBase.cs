@@ -12,7 +12,7 @@ namespace Sisacon.Domain.Interfaces.Services
         void delete(int id);
         T getById(int id);
         List<T> getAll();
-        void commit();
+        int commit();
         void commitAsync();
         void rollback();
     }

@@ -11,37 +11,26 @@ namespace Sisacon.Application
     public class UserAppService : AppServiceBase<User>, IUserAppService
     {
         private readonly IUserService _userService;
-        private ResponseMessage<User> _response;
 
         public UserAppService(IUserService userService)
             : base(userService)
         {
             _userService = userService;
-            _response = new ResponseMessage<User>();
         }
 
-        public bool emailInUse(string email)
+        public ResponseMessage<User> createUser(User user)
         {
-            var inUse = false;
+            var response = new ResponseMessage<User>();
 
             try
             {
-                var user = new User();
-
-                user.Active = true;
-                user.Email = new Email();
-                user.Email.Address = "horrander@outlook.com";
-                user.eUserType = UserType.eUserType.Admin;
-                user.ExclusionDate = null;
-                user.Password = "asflkdjfsoe232fdfs";
-                user.RegistrationDate = DateTime.Now;
-                user.ShowWellcomeMessage = true;
-
                 _userService.add(user);
 
-                if (_userService.emailInUse(email))
+                response.Quantity = _userService.commit();
+
+                if (response.Quantity > 0)
                 {
-                    inUse = true;
+                    response.Message = "Usuário criado com sucesso.";
                 }
             }
             catch (Exception ex)
@@ -49,31 +38,58 @@ namespace Sisacon.Application
                 throw ex;
             }
 
-            return inUse;
+            return response;
         }
 
-        public User getByEmail(string email)
+        public ResponseMessage<User> emailInUse(string email)
         {
+            var response = new ResponseMessage<User>();
+
             try
             {
-                return _userService.getByEmail(email);
+                if (_userService.emailInUse(email))
+                {
+                    response.LogicalTest = true;
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+
+            return response;
         }
 
-        public List<string> getListEmailInUse()
+        public ResponseMessage<User> getByEmail(string email)
         {
+            var response = new ResponseMessage<User>();
+
             try
             {
-                return _userService.getListEmailInUse();
+                response.Value = _userService.getByEmail(email);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+
+            return response;
+        }
+
+        public ResponseMessage<string> getListEmailInUse()
+        {
+            var response = new ResponseMessage<string>();
+
+            try
+            {
+                response.ValueList = _userService.getListEmailInUse();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return response;
         }
 
         public void inactivateUser(int id)
@@ -88,16 +104,20 @@ namespace Sisacon.Application
             }
         }
 
-        public User logon(string pass, string email)
+        public ResponseMessage<User> logon(string pass, string email)
         {
+            var response = new ResponseMessage<User>();
+
             try
             {
-                return _userService.logon(pass, email);
+                response.Value = _userService.logon(pass, email);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+
+            return response;
         }
     }
 }

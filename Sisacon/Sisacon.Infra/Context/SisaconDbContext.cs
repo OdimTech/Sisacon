@@ -17,6 +17,7 @@ namespace Sisacon.Repositories.Context
         }
 
         public DbSet<User> User { get; set; }
+        public DbSet<Log> Log { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -25,6 +26,7 @@ namespace Sisacon.Repositories.Context
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
             modelBuilder.Configurations.Add(new UserMap());
+            modelBuilder.Configurations.Add(new LogMap());
 
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasColumnType("varchar"));

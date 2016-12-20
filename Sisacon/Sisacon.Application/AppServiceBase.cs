@@ -41,11 +41,11 @@ namespace Sisacon.Application
             }
         }
 
-        public void commit()
+        public int commit()
         {
             try
             {
-                _serviceBase.commit();
+                return _serviceBase.commit();
             }
             catch (Exception ex)
             {
@@ -92,28 +92,36 @@ namespace Sisacon.Application
             }
         }
 
-        public List<T> getAll()
+        public ResponseMessage<T> getAll()
         {
+            var response = new ResponseMessage<T>();
+
             try
             {
-                return _serviceBase.getAll();
+                response.ValueList = _serviceBase.getAll();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+
+            return response;
         }
 
-        public T getById(int id)
+        public ResponseMessage<T> getById(int id)
         {
+            var response = new ResponseMessage<T>();
+
             try
             {
-                return _serviceBase.getById(id);
+                response.Value = _serviceBase.getById(id);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+
+            return response;
         }
 
         public void rollback()

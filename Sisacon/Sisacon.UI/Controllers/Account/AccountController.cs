@@ -1,5 +1,11 @@
-﻿using Sisacon.Application.Interfaces;
+﻿using AutoMapper;
+using Newtonsoft.Json.Linq;
+using Sisacon.Application.Interfaces;
+using Sisacon.Domain.Entities;
+using Sisacon.Domain.Enuns;
+using Sisacon.Domain.ValueObjects;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Sisacon.UI.Controllers.account
@@ -14,66 +20,56 @@ namespace Sisacon.UI.Controllers.account
             _userAppService = userAppService;
         }
 
-        //[HttpPost]
-        //[Route("user")]
-        //public async Task<HttpResponseMessage> RegistrationUser(JObject userCredentials)
-        //{
-        //    //var userBLL = new UserBLL();
-        //    //var user = new User();
-        //    //var filesBLL = new FilesBLL(ApplicationPath);
+        [HttpPost]
+        [Route("user")]
+        public HttpResponseMessage RegistrationUser(JObject userCredentials)
+        {
+            var user = new User();
+            var email = new Email();
 
-        //    //user.Active = true;//Essa propriedade deve ser false, mas até o oAuth ser implementado ficará com true
-        //    //user.Email = userCredentials["email"].ToString();
-        //    //user.eUserType = eUserType.User;
-        //    //user.ExclusionDate = null;
-        //    //user.Password = userCredentials["pass"].ToString();
-        //    //user.RegistrationDate = DateTime.Now;
-        //    //user.LastLogin = null;
-        //    //user.ShowWellcomeMessage = true;
+            user.Active = true;//Essa propriedade deve ser false, mas até o oAuth ser implementado ficará com true
+            user.Email.Address = userCredentials["email"].ToString();
+            user.eUserType = UserType.eUserType.User;
+            user.ExclusionDate = null;
+            user.Password = userCredentials["pass"].ToString();
+            user.LastLogin = null;
+            user.ShowWellcomeMessage = true;
 
-        //    //var response = userBLL.registrationUser(user);
+            var response = _userAppService.createUser(user);
 
-        //    //if (response.LogicalTest)
-        //    //{
-        //    //    await filesBLL.createUserPathAsync(user);
-        //    //}
+            if (response.LogicalTest)
+            {
+                //await filesBLL.createUserPathAsync(user);
+            }
 
-        //    //return Request.CreateResponse(response.StatusCode, response);
-        //}
+            return Request.CreateResponse(response.StatusCode, response);
+        }
 
-        //[HttpGet]
-        //[Route("user")]
-        //public HttpResponseMessage GetUserById(int id)
-        //{
-        //    //var userBLL = new UserBLL();
+        [HttpGet]
+        [Route("user")]
+        public HttpResponseMessage GetUserById(int id)
+        {
+            var response = _userAppService.getById(id);
 
-        //    //var response = userBLL.getUserById(id);
-
-        //    //return Request.CreateResponse(response.StatusCode, response);
-        //}
+            return Request.CreateResponse(response.StatusCode, response);
+        }
 
         [HttpGet]
         [Route("user")]
         public HttpResponseMessage ValidateEmailInUse(string email)
         {
-            _userAppService.emailInUse("");
+            var response = _userAppService.emailInUse(email);
 
-            return Request.CreateResponse();
+            return Request.CreateResponse(response.StatusCode, response);
         }
 
-        //[HttpGet]
-        //[Route("user")]
-        //public HttpResponseMessage Logon(string email, string pass)
-        //{
-        //    //var userBLL = new UserBLL();
-        //    //var response = new ResponseMessage<User>();
+        [HttpGet]
+        [Route("user")]
+        public HttpResponseMessage Logon(string pass, string email)
+        {
+            var response = _userAppService.logon(pass, email);
 
-        //    //if (email != string.Empty && pass != string.Empty)
-        //    //{
-        //    //    response = userBLL.logon(pass, email);
-        //    //}
-
-        //    //return Request.CreateResponse(response.StatusCode, response);
-        //}
+            return Request.CreateResponse(response.StatusCode, response);
+        }
     }
 }

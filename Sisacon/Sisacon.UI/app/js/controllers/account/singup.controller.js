@@ -59,11 +59,7 @@
 
                         toastr.success(response.message);
 
-                        $timeout(function () {
-
-                            $window.location.href = '#/login';
-
-                        }, 3000);
+                        $window.location.href = '#/login';
                     }
                 })
                     .error(function (response) {

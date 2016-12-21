@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sisacon.Domain.Interfaces.Services;
+using System;
 
 namespace Sisacon.Domain.Entities
 {
@@ -14,34 +15,31 @@ namespace Sisacon.Domain.Entities
         public bool CodAutoEstimate { get; set; }
         public bool CodAutoRequest { get; set; }
         public bool CodAutoEquipment { get; set; }
+        public int IdUser { get; set; }
         public virtual User User { get; set; }
 
         #endregion
 
         #region Methods
 
-        public Configuration createDefaultConfig(User user)
+        public void createDefaultConfig(User user)
         {
-            var config = new Configuration();
-
             try
             {
-                config.DefaultPage = "#/initialDashBoard";
-                config.CodAutoClient = true;
-                config.CodAutoProvider = true;
-                config.CodAutoMaterial = true;
-                config.CodAutoProduct = true;
-                config.CodAutoEstimate = true;
-                config.CodAutoRequest = true;
-                config.CodAutoEquipment = true;
-                config.User = user;
+                DefaultPage = "#/initialDashBoard";
+                CodAutoClient = true;
+                CodAutoProvider = true;
+                CodAutoMaterial = true;
+                CodAutoProduct = true;
+                CodAutoEstimate = true;
+                CodAutoRequest = true;
+                CodAutoEquipment = true;
+                User = user;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
-            return config;
         }
 
         #endregion

@@ -14,6 +14,24 @@ namespace Sisacon.Domain.Services
             _repository = repository;
         }
 
+        public void createDefaultConfiguration(User user)
+        {
+            try
+            {
+                var config = new Configuration();
+
+                config.createDefaultConfig(user);
+
+                _repository.add(config);
+
+                _repository.commit();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public Configuration getByUserId(int id)
         {
             try

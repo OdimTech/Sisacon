@@ -8,6 +8,7 @@ namespace Sisacon.Application
         public ResponseMessage()
         {
             StatusCode = HttpStatusCode.OK;
+            LogicalTest = false;
         }
 
         public int Quantity { get; set; }

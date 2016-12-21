@@ -18,8 +18,8 @@ namespace Sisacon.Repositories.Context
 
         public DbSet<User> User { get; set; }
         public DbSet<Log> Log { get; set; }
-
         public DbSet<Configuration> Config { get; set; }
+        public DbSet<Notification> Notification { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -29,6 +29,7 @@ namespace Sisacon.Repositories.Context
 
             modelBuilder.Configurations.Add(new UserMap());
             modelBuilder.Configurations.Add(new LogMap());
+            modelBuilder.Configurations.Add(new ConfigurationMap());
 
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasColumnType("varchar"));

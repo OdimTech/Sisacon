@@ -7,6 +7,20 @@ namespace Sisacon.Infra.Repositories
 {
     public class ConfigurationRepository : RepositoryBase<Configuration>, IConfigurationRepository
     {
+        public override void add(Configuration config)
+        {
+            try
+            {
+                config.RegistrationDate = DateTime.Now;
+                Context.Config.Add(config);
+                Context.User.Attach(config.User);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public Configuration getByUserId(int id)
         {
             try

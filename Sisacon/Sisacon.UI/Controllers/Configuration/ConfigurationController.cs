@@ -27,23 +27,13 @@ namespace Sisacon.UI.Controllers.SystemConfiguration
 
         [HttpPost]
         [Route("config")]
-        public HttpResponseMessage save(Configuration config)
+        public HttpResponseMessage update(Configuration config)
         {
             var response = new ResponseMessage<Configuration>();
 
             if (ModelState.IsValid)
             {
-                if (config != null)
-                {
-                    if (config.Id > 0)
-                    {
-                        response = _configAppService.update(config);
-                    }
-                    else
-                    {
-                        response = configBLL.save(config);
-                    }
-                }
+                response = _configAppService.updateConfig(config);
             }
 
             return Request.CreateResponse(response.StatusCode, response);

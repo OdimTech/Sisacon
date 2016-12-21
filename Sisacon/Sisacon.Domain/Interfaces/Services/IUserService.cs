@@ -10,5 +10,6 @@ namespace Sisacon.Domain.Interfaces.Services
         bool emailInUse(string email);
         User logon(string pass, string email);
         void inactivateUser(int id);
+        bool createDefaultConfig(User user);
     }
 }

@@ -19,7 +19,7 @@ namespace Sisacon.Infra.Repositories
 
         private DbSet<T> Entity { get { return Context.Set<T>(); } }
 
-        public void add(T obj)
+        public virtual void add(T obj)
         {
             try
             {

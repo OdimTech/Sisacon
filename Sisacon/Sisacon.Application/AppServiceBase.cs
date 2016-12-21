@@ -136,25 +136,11 @@ namespace Sisacon.Application
             }
         }
 
-        public void save(T obj)
-        {
-            try
-            {
-                _serviceBase.add(obj);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public void update(T obj)
+        public virtual void update(T obj)
         {
             try
             {
                 _serviceBase.update(obj);
-
-
             }
             catch (Exception ex)
             {

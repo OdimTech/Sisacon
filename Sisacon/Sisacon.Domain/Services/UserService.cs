@@ -10,11 +10,13 @@ namespace Sisacon.Domain.Services
     public class UserService : ServiceBase<User>, IUserService
     {
         private readonly IUserRepository _repository;
+        private readonly IConfigurationService _configService;
 
-        public UserService(IUserRepository repository)
+        public UserService(IUserRepository repository, IConfigurationService configService)
             : base(repository)
         {
             _repository = repository;
+            _configService = configService;
         }
 
         public User getByEmail(string email)
@@ -89,6 +91,24 @@ namespace Sisacon.Domain.Services
             }
 
             return emailInUse;
+        }
+
+        public bool createDefaultConfig(User user)
+        {
+            var configCreated = false;
+
+            try
+            {
+                _configService.createDefaultConfiguration(user);
+
+                configCreated = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return configCreated;
         }
     }
 }

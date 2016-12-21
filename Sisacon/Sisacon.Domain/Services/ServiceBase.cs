@@ -116,8 +116,6 @@ namespace Sisacon.Domain.Services
             try
             {
                 _repository.add(obj);
-
-                _repository.commit();
             }
             catch (Exception ex)
             {

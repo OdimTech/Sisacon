@@ -30,6 +30,8 @@ namespace Sisacon.Application
 
                 if (response.Quantity > 0)
                 {
+                    _userService.createDefaultConfig(user);
+
                     response.Message = "Usuário criado com sucesso.";
                 }
             }

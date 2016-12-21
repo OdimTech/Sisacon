@@ -24,7 +24,32 @@ namespace Sisacon.Application
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
 
+            return response;
+        }
+
+        public ResponseMessage<Configuration> updateConfig(Configuration config)
+        {
+            var response = new ResponseMessage<Configuration>();
+
+            try
+            {
+                if (config.Id > 0)
+                {
+                    _configService.update(config);
+
+                    response.Quantity = _configService.commit();
+
+                    if (response.Quantity > 0)
+                    {
+                        response.Message = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
 

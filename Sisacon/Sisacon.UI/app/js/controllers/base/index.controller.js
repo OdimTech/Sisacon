@@ -96,7 +96,7 @@
             }
             else {
 
-                $window.location.href = 'LandingPage#/login';
+                $window.location.href = '/Home/LandingPage#/login';
             }
         }
 

@@ -2,7 +2,6 @@
 using Sisacon.Domain.Entities;
 using Sisacon.Domain.Interfaces.Services;
 using System;
-using System.Collections.Generic;
 
 namespace Sisacon.Application
 {
@@ -154,6 +153,8 @@ namespace Sisacon.Application
             try
             {
                 _serviceBase.update(obj);
+
+
             }
             catch (Exception ex)
             {

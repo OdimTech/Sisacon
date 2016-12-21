@@ -21,7 +21,7 @@ namespace Sisacon.Infra.Migrations
 
                 user.Email = email;
                 user.Active = true;
-                user.eUserType = UserType.eUserType.User;
+                user.eUserType = UserType.eUserType.Single;
                 user.ExclusionDate = null;
                 user.LastLogin = null;
                 user.Password = "111111";

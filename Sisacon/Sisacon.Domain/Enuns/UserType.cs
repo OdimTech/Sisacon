@@ -5,7 +5,7 @@
         public enum eUserType : short
         {
             Admin = 1,
-            User = 2
+            Single = 2
         }
     }
 }

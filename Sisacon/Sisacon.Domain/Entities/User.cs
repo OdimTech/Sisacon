@@ -1,7 +1,7 @@
 ﻿using Helpers;
-using Sisacon.Domain.Enuns;
 using Sisacon.Domain.ValueObjects;
 using System;
+using static Sisacon.Domain.Enuns.UserType;
 
 namespace Sisacon.Domain.Entities
 {
@@ -47,7 +47,7 @@ namespace Sisacon.Domain.Entities
         }
 
         public Email Email { get; set; }
-        public UserType.eUserType eUserType { get; set; }
+        public eUserType eUserType { get; set; }
         public DateTime? LastLogin { get; set; }
         public bool ShowWellcomeMessage { get; set; }
 

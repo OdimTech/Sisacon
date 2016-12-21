@@ -1,44 +1,52 @@
-﻿//using Sisacon.BLL;
-//using Sisacon.Domain;
-//using System.Net.Http;
-//using System.Web.Http;
+﻿using Sisacon.Application;
+using Sisacon.Application.Interfaces;
+using Sisacon.Domain.Entities;
+using System.Net.Http;
+using System.Web.Http;
 
-//namespace Sisacon.UI.Controllers.Configuration
-//{
-//    [RoutePrefix("api")]
-//    public class ConfigurationController : ApiController
-//    {
-//        [HttpGet]
-//        [Route("config")]  
-//        public HttpResponseMessage GetConfigurationByUserId(int idUser)
-//        {
-//            var configBLL = new ConfigurationBLL();
+namespace Sisacon.UI.Controllers.SystemConfiguration
+{
+    [RoutePrefix("api")]
+    public class ConfigurationController : ApiController
+    {
+        private readonly IConfigurationAppService _configAppService;
 
-//            var response = configBLL.getConfiguratioByIdUser(idUser);
+        public ConfigurationController(IConfigurationAppService configService)
+        {
+            _configAppService = configService;
+        }
 
-//            return Request.CreateResponse(response.StatusCode, response);
-//        }
+        [HttpGet]
+        [Route("config")]
+        public HttpResponseMessage GetConfigurationByUserId(int idUser)
+        {
+            var response = _configAppService.getByUserId(idUser);
 
-//        [HttpPost]
-//        [Route("config")]
-//        public HttpResponseMessage save(Domain.Configuration config)
-//        {
-//            var configBLL = new ConfigurationBLL();
-//            var response = new ResponseMessage<Domain.Configuration>();
+            return Request.CreateResponse(response.StatusCode, response);
+        }
 
-//            if(config != null)
-//            {
-//                if(config.Id > 0)
-//                {
-//                    response = configBLL.update(config);
-//                }
-//                else
-//                {
-//                    response = configBLL.save(config);
-//                }
-//            }
+        [HttpPost]
+        [Route("config")]
+        public HttpResponseMessage save(Configuration config)
+        {
+            var response = new ResponseMessage<Configuration>();
 
-//            return Request.CreateResponse(response.StatusCode, response);
-//        }
-//    }
-//}
+            if (ModelState.IsValid)
+            {
+                if (config != null)
+                {
+                    if (config.Id > 0)
+                    {
+                        response = _configAppService.update(config);
+                    }
+                    else
+                    {
+                        response = configBLL.save(config);
+                    }
+                }
+            }
+
+            return Request.CreateResponse(response.StatusCode, response);
+        }
+    }
+}

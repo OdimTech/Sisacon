@@ -1,4 +1,5 @@
-﻿using Sisacon.Domain.Entities;
+﻿using Helpers;
+using Sisacon.Domain.Entities;
 using Sisacon.Domain.Interfaces;
 using Sisacon.Domain.Interfaces.Services;
 using System;
@@ -56,7 +57,7 @@ namespace Sisacon.Domain.Services
         {
             try
             {
-                return _repository.logon(pass, email);
+                return _repository.logon(Security.encrypt(pass), email);
             }
             catch (Exception ex)
             {

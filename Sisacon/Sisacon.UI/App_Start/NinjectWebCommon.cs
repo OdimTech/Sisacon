@@ -6,6 +6,7 @@ namespace Sisacon.UI.App_Start
     using Application;
     using Application.Interfaces;
     using Domain.Interfaces;
+    using Domain.Interfaces.Repositories;
     using Domain.Interfaces.Services;
     using Domain.Services;
     using Infra.Repositories;
@@ -70,14 +71,17 @@ namespace Sisacon.UI.App_Start
             //APPLICATION
             kernel.Bind(typeof(IAppServiceBase<>)).To(typeof(AppServiceBase<>));
             kernel.Bind<IUserAppService>().To<UserAppService>();
+            kernel.Bind<IConfigurationAppService>().To<ConfigurationAppService>();
 
             //SERVICE
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
             kernel.Bind<IUserService>().To<UserService>();
+            kernel.Bind<IConfigurationService>().To<ConfigurationService>();
 
             //REPOSITORIES
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
             kernel.Bind<IUserRepository>().To<UserRepository>();
+            kernel.Bind<IConfigurationRepository>().To<ConfigurationRepository>();
         }
     }
 }

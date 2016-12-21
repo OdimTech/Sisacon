@@ -29,7 +29,7 @@ namespace Sisacon.UI.Controllers.account
 
             user.Active = true;//Essa propriedade deve ser false, mas até o oAuth ser implementado ficará com true
             user.Email.Address = userCredentials["email"].ToString();
-            user.eUserType = UserType.eUserType.User;
+            user.eUserType = UserType.eUserType.Single;
             user.ExclusionDate = null;
             user.Password = userCredentials["pass"].ToString();
             user.LastLogin = null;

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Sisacon.Domain.Enuns.NotificationClass;
+﻿using static Sisacon.Domain.Enuns.NotificationClass;
 
 namespace Sisacon.Domain.Entities
 {
@@ -13,7 +8,7 @@ namespace Sisacon.Domain.Entities
 
         public string Message { get; set; }
         public string TimeSinceCreation { get; set; }
-        private eNotificationClass eNotificationClass { get; set; }
+        public eNotificationClass eNotificationClass { get; set; }
         public string Link { get; set; }
         public string NotificationClassCSS
         {

@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sisacon.Domain.Interfaces.Services
+namespace Sisacon.Application.Interfaces
 {
-    public interface INofificationService : IServiceBase<Configuration>
+    public interface INotificationAppService : IAppServiceBase<Notification>
     {
+
     }
 }

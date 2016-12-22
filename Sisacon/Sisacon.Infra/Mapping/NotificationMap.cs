@@ -1,10 +1,5 @@
 ﻿using Sisacon.Domain.Entities;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sisacon.Infra.Mapping
 {
@@ -20,6 +15,10 @@ namespace Sisacon.Infra.Mapping
                 .IsRequired();
 
             Property(x => x.RegistrationDate)
+                .HasColumnType("DateTime")
+                .IsRequired();
+
+            Property(x => x.ExclusionDate)
                 .HasColumnType("DateTime")
                 .IsRequired();
 

@@ -6,16 +6,14 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Sisacon.Infra.Mapping
 {
-    public class UserMap : EntityTypeConfiguration<User>
+    public class UserMap : BaseMap<User>
     {
         public UserMap()
         {
-            HasKey(x => x.Id);
-
             Property(x => x.Email.Address)
                 .HasColumnName("Email")
                 .HasColumnType("varchar")
-                .IsRequired()
+                .IsOptional()
                 .HasMaxLength(Email.EMAIL_MAX_LENGTH);
 
             Property(x => x.Password)
@@ -31,14 +29,6 @@ namespace Sisacon.Infra.Mapping
                 .IsRequired();
 
             Property(x => x.LastLogin)
-                .IsOptional()
-                .HasColumnType("DateTime");
-
-            Property(x => x.RegistrationDate)
-                .IsRequired()
-                .HasColumnType("DateTime");
-
-            Property(x => x.ExclusionDate)
                 .IsOptional()
                 .HasColumnType("DateTime");
 

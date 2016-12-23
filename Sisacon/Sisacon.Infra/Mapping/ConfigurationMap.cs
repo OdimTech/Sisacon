@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace Sisacon.Infra.Mapping
 {
-    public class ConfigurationMap : EntityTypeConfiguration<Configuration>
+    public class ConfigurationMap : BaseMap<Configuration>
     {
         public ConfigurationMap()
         {
-            HasKey(x => x.Id);
-
             Property(x => x.DefaultPage)
                 .HasColumnType("varchar")
                 .HasMaxLength(50)

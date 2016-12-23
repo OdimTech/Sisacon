@@ -21,29 +21,29 @@
 
             if ($scope.loggedUser) {
 
-                blockUI.start('Carregando Informações...');
+                //blockUI.start('Carregando Informações...');
 
-                companyService.getCompanyByUser($scope.loggedUser.id).success(function (response) {
+                //companyService.getCompanyByUser($scope.loggedUser.id).success(function (response) {
 
-                    $scope.company = response.value;
-                    blockUI.stop();
+                //    $scope.company = response.value;
+                //    blockUI.stop();
 
-                    if ($scope.company) {
+                //    if ($scope.company) {
 
-                        if ($scope.company.ePersonType == 1) {
+                //        if ($scope.company.ePersonType == 1) {
 
-                            $scope.companyName = $scope.company.companyName;
-                        }
-                        else {
+                //            $scope.companyName = $scope.company.companyName;
+                //        }
+                //        else {
 
-                            $scope.companyName = $scope.company.fantasyName;
-                        }
-                    }
+                //            $scope.companyName = $scope.company.fantasyName;
+                //        }
+                //    }
 
-                }).error(function (response) {
+                //}).error(function (response) {
 
-                    blockUI.stop();
-                });
+                //    blockUI.stop();
+                //});
             }
         }
     }

@@ -1,9 +1,10 @@
 ﻿using Sisacon.Domain.Entities;
+using System.Collections.Generic;
 
 namespace Sisacon.Domain.Interfaces.Repositories
 {
     public interface INotificationRepository : IRepositoryBase<Notification>
     {
-        Notification getByUserId(int id);
+        List<Notification> getByUserId(int id);
     }
 }

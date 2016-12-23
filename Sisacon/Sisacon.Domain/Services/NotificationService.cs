@@ -2,6 +2,7 @@
 using Sisacon.Domain.Interfaces.Repositories;
 using Sisacon.Domain.Interfaces.Services;
 using System;
+using System.Collections.Generic;
 using static Sisacon.Domain.Enuns.NotificationClass;
 
 namespace Sisacon.Domain.Services
@@ -36,7 +37,7 @@ namespace Sisacon.Domain.Services
             return notification;
         }
 
-        public Notification getByUserId(int id)
+        public List<Notification> getByUserId(int id)
         {
             try
             {

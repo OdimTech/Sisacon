@@ -3,12 +3,10 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Sisacon.Infra.Mapping
 {
-    public class LogMap : EntityTypeConfiguration<Log>
+    public class LogMap : BaseMap<Log>
     {
         public LogMap()
         {
-            HasKey(x => x.Id);
-
             Property(x => x.Message)
                 .HasColumnType("varchar")
                 .HasMaxLength(1000)

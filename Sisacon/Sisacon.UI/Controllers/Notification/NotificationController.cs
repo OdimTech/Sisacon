@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using Sisacon.Application.Interfaces;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace Sisacon.UI.Controllers
@@ -6,14 +7,18 @@ namespace Sisacon.UI.Controllers
     [RoutePrefix("api")]
     public class NotificationController : ApiController
     {
+        private readonly INotificationAppService _notificationAppService;
+
+        public NotificationController(INotificationAppService notificationAppService)
+        {
+            _notificationAppService = notificationAppService;
+        }
+
         [HttpGet]
         [Route("notify")]
         public HttpResponseMessage GetNotificationsByUserId(int id)
         {
-            var response = new ResponseMessage<Notification>();
-            var notificationBLL = new NotificationBLL();
-
-            response = notificationBLL.getNotificationsByUserId(id);
+            var response = _notificationAppService.getByUserId(id);
 
             return Request.CreateResponse(response.StatusCode, response);
         }
@@ -22,10 +27,7 @@ namespace Sisacon.UI.Controllers
         [Route("notify")]
         public HttpResponseMessage Update(int id)
         {
-            var response = new ResponseMessage<Notification>();
-            var notificationBLL = new NotificationBLL();
-
-            response = notificationBLL.updateStatusVisualized(id);
+            var response = _notificationAppService.updateStatusVisualized(id);
 
             return Request.CreateResponse(response.StatusCode, response);
         }

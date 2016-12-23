@@ -32,7 +32,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Company.cs" />
     <Compile Include="Entities\Configuration.cs" />
+    <Compile Include="Enuns\FormatImg.cs" />
+    <Compile Include="Enuns\PersonType.cs" />
+    <Compile Include="Enuns\Sex.cs" />
+    <Compile Include="ValueObjects\Contact.cs" />
     <Compile Include="Entities\Log.cs" />
     <Compile Include="Entities\Notification.cs" />
     <Compile Include="Entities\User.cs" />
@@ -55,7 +60,9 @@
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Services\LogService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="ValueObjects\Address.cs" />
     <Compile Include="ValueObjects\Email.cs" />
+    <Compile Include="ValueObjects\OccuppationArea.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

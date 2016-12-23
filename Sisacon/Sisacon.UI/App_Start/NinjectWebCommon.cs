@@ -72,16 +72,19 @@ namespace Sisacon.UI.App_Start
             kernel.Bind(typeof(IAppServiceBase<>)).To(typeof(AppServiceBase<>));
             kernel.Bind<IUserAppService>().To<UserAppService>();
             kernel.Bind<IConfigurationAppService>().To<ConfigurationAppService>();
+            kernel.Bind<INotificationAppService>().To<NotificationAppService>();
 
             //SERVICE
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IConfigurationService>().To<ConfigurationService>();
+            kernel.Bind<INotificationService>().To<NotificationService>();
 
             //REPOSITORIES
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
             kernel.Bind<IUserRepository>().To<UserRepository>();
             kernel.Bind<IConfigurationRepository>().To<ConfigurationRepository>();
+            kernel.Bind<INotificationRepository>().To<NotificationRepository>();
         }
     }
 }

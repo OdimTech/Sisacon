@@ -3,12 +3,10 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Sisacon.Infra.Mapping
 {
-    class NotificationMap : EntityTypeConfiguration<Notification>
+    class NotificationMap : BaseMap<Notification>
     {
         public NotificationMap()
         {
-            HasKey(x => x.Id);
-
             Property(x => x.Message)
                 .HasColumnType("varchar")
                 .HasMaxLength(100)

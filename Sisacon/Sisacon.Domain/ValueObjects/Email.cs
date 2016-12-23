@@ -17,7 +17,7 @@
             get { return _address; }
             set
             {
-                if(isValid(value))
+                if (isValid(value))
                 {
                     _address = value;
                 }

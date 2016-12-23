@@ -1,6 +1,7 @@
 ﻿using Sisacon.Domain.Entities;
 using Sisacon.Domain.Interfaces.Repositories;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Sisacon.Infra.Repositories
@@ -22,20 +23,20 @@ namespace Sisacon.Infra.Repositories
             }
         }
 
-        public Notification getByUserId(int id)
+        public List<Notification> getByUserId(int id)
         {
-            var notification = new Notification();
+            var listNotification = new List<Notification>();
 
             try
             {
-                notification = Context.Notification.Where(x => x.User.Id == id).FirstOrDefault();
+                listNotification = Context.Notification.Where(x => x.User.Id == id).ToList();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
 
-            return notification;
+            return listNotification;
         }
     }
 }

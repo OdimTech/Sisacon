@@ -60,9 +60,11 @@ namespace Sisacon.Domain.Entities
 
         #region Methods
 
-        public void isValid()
+        public bool isValid()
         {
+            var valid = true;
 
+            return valid;
         }
 
         #endregion

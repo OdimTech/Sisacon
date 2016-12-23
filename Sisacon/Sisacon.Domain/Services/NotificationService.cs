@@ -2,6 +2,7 @@
 using Sisacon.Domain.Interfaces.Repositories;
 using Sisacon.Domain.Interfaces.Services;
 using System;
+using static Sisacon.Domain.Enuns.NotificationClass;
 
 namespace Sisacon.Domain.Services
 {
@@ -13,6 +14,26 @@ namespace Sisacon.Domain.Services
             : base(repository)
         {
             _repository = repository;
+        }
+
+        public Notification buildNotification(string message, eNotificationClass notificationClass, string link, User user)
+        {
+            var notification = new Notification();
+
+            try
+            {
+                notification.Message = message;
+                notification.eNotificationClass = notificationClass;
+                notification.Link = link;
+                notification.User = user;
+                notification.Visualized = false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return notification;
         }
 
         public Notification getByUserId(int id)

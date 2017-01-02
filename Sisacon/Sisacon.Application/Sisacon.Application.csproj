@@ -41,11 +41,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppServiceBase.cs" />
+    <Compile Include="CompanyAppService.cs" />
     <Compile Include="ConfigurationAppService.cs" />
+    <Compile Include="CrudMsgFormater.cs" />
     <Compile Include="Interfaces\IAppServiceBase.cs" />
+    <Compile Include="Interfaces\ICompanyAppService.cs" />
     <Compile Include="Interfaces\IConfigurationAppService.cs" />
+    <Compile Include="Interfaces\ICrudMsgFormater.cs" />
+    <Compile Include="Interfaces\ILogAppService.cs" />
     <Compile Include="Interfaces\IUserAppService.cs" />
     <Compile Include="Interfaces\INotificationAppService.cs" />
+    <Compile Include="LogAppService.cs" />
+    <Compile Include="MsgNotification.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MsgNotification.resx</DependentUpon>
+    </Compile>
     <Compile Include="NotificationAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseMessage.cs" />
@@ -56,6 +67,12 @@
       <Project>{549a3c23-002a-4396-bfea-cc2cd7df3eaa}</Project>
       <Name>Sisacon.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MsgNotification.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MsgNotification.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

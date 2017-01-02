@@ -12,14 +12,6 @@ namespace Sisacon.Infra.Mapping
                 .HasMaxLength(100)
                 .IsRequired();
 
-            Property(x => x.RegistrationDate)
-                .HasColumnType("DateTime")
-                .IsRequired();
-
-            Property(x => x.ExclusionDate)
-                .HasColumnType("DateTime")
-                .IsRequired();
-
             Property(x => x.eNotificationClass)
                 .HasColumnType("int")
                 .IsRequired();

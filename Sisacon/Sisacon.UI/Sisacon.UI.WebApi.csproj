@@ -176,6 +176,7 @@
     <Content Include="app\js\config\blockUI.config.js" />
     <Content Include="app\js\config\interceptors.config.js" />
     <Content Include="app\js\config\localStorage.config.js" />
+    <Content Include="app\js\config\routes\adminRoutes.config.js" />
     <Content Include="app\js\config\routes\indexRoutes.config.js" />
     <Content Include="app\js\config\routes\landingPageRoutes.config.js" />
     <Content Include="app\js\config\toastr.config.js" />
@@ -195,6 +196,7 @@
     <Content Include="app\js\controllers\financial\costConfiguration.controller.js" />
     <Content Include="app\js\controllers\financial\costs.controller.js" />
     <Content Include="app\js\controllers\initialDashboard.controller.js" />
+    <Content Include="app\js\controllers\log\log.controller.js" />
     <Content Include="app\js\controllers\menu\calendar.controller.js" />
     <Content Include="app\js\controllers\menu\configuration.controller.js" />
     <Content Include="app\js\controllers\menu\feedback.controller.js" />
@@ -234,6 +236,7 @@
     <Content Include="app\views\financial\costsDashboard.html" />
     <Content Include="app\views\InitialDashboard.html" />
     <Content Include="app\views\landingPage.html" />
+    <Content Include="app\views\log\logDashboard.html" />
     <Content Include="app\views\menu\calendar.html" />
     <Content Include="app\views\menu\configuration.html" />
     <Content Include="app\views\menu\feedback.html" />
@@ -2368,13 +2371,18 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AddressViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CompanyViewModel.cs" />
     <Compile Include="ViewModels\ConfigurationViewModel.cs" />
+    <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\EmailViewModel.cs" />
+    <Compile Include="ViewModels\OccupationAreaViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\views\directives_templates\" />
+    <Folder Include="app\views\menu_admin\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -2408,11 +2416,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>15810</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:20794/</IISUrl>
+          <IISUrl>http://localhost:15910/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

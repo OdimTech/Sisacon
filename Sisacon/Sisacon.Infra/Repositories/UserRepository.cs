@@ -13,7 +13,7 @@ namespace Sisacon.Infra.Repositories
             try
             {
                 return Context.User.Where(x =>
-                        x.Email.Address == email &&
+                        x.Email == email &&
                         x.Active == true &&
                         x.ExclusionDate == null).FirstOrDefault();
             }
@@ -45,7 +45,7 @@ namespace Sisacon.Infra.Repositories
             {
                 return Context.User.Where(x =>
                         x.Password == pass &&
-                        x.Email.Address == email &&
+                        x.Email == email &&
                         x.ExclusionDate == null).FirstOrDefault();
             }
             catch (Exception ex)
@@ -62,7 +62,7 @@ namespace Sisacon.Infra.Repositories
                         x.ExclusionDate == null &&
                         x.Active == true)
                         .Select(x =>
-                        x.Email.Address).ToList();
+                        x.Email).ToList();
             }
             catch (Exception ex)
             {

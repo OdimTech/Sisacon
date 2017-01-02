@@ -10,6 +10,7 @@ namespace Sisacon.Domain.Entities
         #region Constants
 
         public const int PASSWORD_MIN_LENGHT = 6;
+        public const int EMAIL_MAX_LENGTH = 254;
 
         #endregion
 
@@ -46,7 +47,7 @@ namespace Sisacon.Domain.Entities
             }
         }
 
-        public Email Email { get; set; }
+        public string Email { get; set; }
         public eUserType eUserType { get; set; }
         public DateTime? LastLogin { get; set; }
         public bool ShowWellcomeMessage { get; set; }

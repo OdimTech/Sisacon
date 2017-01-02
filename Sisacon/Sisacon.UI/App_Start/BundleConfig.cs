@@ -35,6 +35,7 @@ namespace Sisacon.UI
                 //CONFIG-ROUTES
                 "~/app/js/config/routes/indexRoutes.config.js",
                 "~/app/js/config/routes/landingPageRoutes.config.js",
+                "~/app/js/config/routes/adminRoutes.config.js",
                 //CONFIG
                 "~/app/js/config/toastr.config.js",
                 "~/app/js/config/blockUI.config.js",
@@ -60,6 +61,7 @@ namespace Sisacon.UI
                 "~/app/js/services/material.service.js",
                 "~/app/js/services/materialCategory.service.js",
                 //CONTROLLERS
+                "~/app/js/controllers/log/log.controller.js",
                 "~/app/js/controllers/base/admin.controller.js",
                 "~/app/js/controllers/base/index.controller.js",
                 "~/app/js/controllers/base/landingPage.controller.js",

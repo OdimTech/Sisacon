@@ -14,7 +14,7 @@ namespace Sisacon.Domain.ValueObjects
 
         public string LandLine { get; set; }
         public string CellPhone { get; set; }
-        public Email Email { get; set; }
+        public string Email { get; set; }
         public string UrlSite { get; set; }
 
         #endregion

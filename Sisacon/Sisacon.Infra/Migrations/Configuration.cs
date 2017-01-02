@@ -12,6 +12,7 @@ namespace Sisacon.Infra.Migrations
 
         protected override void Seed(SisaconDbContext context)
         {
+            UserSeed.seed(context);
             OccupationAreaSeed.seed(context);
         }
     }

@@ -25,10 +25,9 @@ namespace Sisacon.UI.Controllers.account
         public HttpResponseMessage RegistrationUser(JObject userCredentials)
         {
             var user = new User();
-            user.Email = new Email();
 
             user.Active = true;//Essa propriedade deve ser false, mas até o oAuth ser implementado ficará com true
-            user.Email.Address = userCredentials["email"].ToString();
+            user.Email = userCredentials["email"].ToString();
             user.eUserType = UserType.eUserType.Single;
             user.ExclusionDate = null;
             user.Password = userCredentials["pass"].ToString();

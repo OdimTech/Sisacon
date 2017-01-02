@@ -26,7 +26,14 @@
                     $scope.User = response.value;
                     localStorageService.set('id', $scope.User.id);
                     
-                    loadSystem();
+                    if (response.value.eUserType == 1)
+                    {
+                        $window.location.href = 'Admin';
+                    }
+                    else
+                    {
+                        loadSystem();
+                    }
 
                 }).error(function (response) {
 

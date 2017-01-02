@@ -11,5 +11,6 @@ namespace Sisacon.Application.Interfaces
         ResponseMessage<User> logon(string pass, string email);
         void inactivateUser(int id);
         ResponseMessage<User> emailInUse(string email);
+        void initConfigsUser(User user);
     }
 }

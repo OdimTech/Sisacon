@@ -11,6 +11,20 @@ namespace Sisacon.Infra.Repositories
 {
     public class LogRepository : RepositoryBase<Log>, ILogRepository
     {
+        public override void add(Log log)
+        {
+            try
+            {
+                log.RegistrationDate = DateTime.Now;
+                Context.Log.Add(log);
+                Context.User.Attach(log.User);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public List<Log> getByGravity(ErrorGravity.eErrorGravity errorGravity)
         {
             try

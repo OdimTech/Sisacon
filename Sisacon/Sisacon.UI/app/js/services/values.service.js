@@ -2,7 +2,7 @@
 
     angular.module('app').value('valuesService', {
 
-        getApiUrl: 'http://localhost:15810/',
+        getApiUrl: 'http://localhost:15910/',
         getDefaultLogo: '../../../Content/UserImages/Default/CompanyLogo/default_logo.gif',
         abbrAutomaticCodes: {
 

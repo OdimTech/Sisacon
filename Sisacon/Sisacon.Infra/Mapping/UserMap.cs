@@ -10,11 +10,11 @@ namespace Sisacon.Infra.Mapping
     {
         public UserMap()
         {
-            Property(x => x.Email.Address)
+            Property(x => x.Email)
                 .HasColumnName("Email")
                 .HasColumnType("varchar")
                 .IsOptional()
-                .HasMaxLength(Email.EMAIL_MAX_LENGTH);
+                .HasMaxLength(User.EMAIL_MAX_LENGTH);
 
             Property(x => x.Password)
                 .HasColumnType("varchar")

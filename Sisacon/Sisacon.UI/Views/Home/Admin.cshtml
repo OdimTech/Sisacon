@@ -15,65 +15,72 @@
     @Styles.Render("~/bundles/style")
 
 </head>
-<body ng-controller="AdminController">
+<body ng-controller="AdminController" ng-cloak>
 
     <!--BARRA LATERAL-->
-    <div id="sidebar" class="ui inverted vertical accordion menu sidebar">
+    <div id="sidebar" class="ui inverted vertical accordion menu wide sidebar">
 
         <div class="item">
-            <h2 class="ui inverted orange header">
-                Menu
-            </h2>
-        </div>
-        <div class="item">
+            <!--LOG-->
             <a class="title">
                 <i class="dropdown icon"></i>
-                <span class="ui inverted header"><i class="bug icon"></i>Logs</span>
+                <span class="ui inverted header"><i class="bug icon"></i>Logs do Sistema</span>
             </a>
             <div class="content">
                 <div class="item">
-                    <a class="ui fluid red button">
+                    <a href="#/logDashboard" class="ui labeled blue fluid large icon button">
                         <i class="desktop icon"></i>
-                        Painel de Erros
+                        Painel de Logs
                     </a>
                 </div>
             </div>
         </div>
     </div>
-    <!--CONTEUDO A SER EMPURRADO PELA BARRA LATERAL-->
-    <div class="pusher">
 
-        <!--POPUS-->
-        <div id="accountPopUp" class="ui popup">
-            <div class="ui inverted stackable vertical accordion menu">
-                <a class="item">
-                    Minha Conta
-                </a>
-            </div>
-        </div>
+    <!--CONTEUDO A SER EMPURRADO PELA BARRA LATERAL-->
+    <div class="dimmed pusher">
 
         <!--MENU PRICIPAL - TOP-->
-        <div class="ui inverted attached stackable icon menu">
-            <div class="header item">
-                <h4 class="ui large orange header">Sisacon</h4>
-            </div>
+        <div class="ui inverted attached stackable menu">
             <a ng-click="openMenu()" class="item">
-                <i class="large sidebar icon"></i>
+                <i class="large orange sidebar icon"></i>Menu
+            </a>
+            <a class="item" href="#/initialAdminDashboard">
+                <i class="large orange home icon"></i>Painel Inicial
             </a>
             <div class="right menu">
-                <a class="item">
-                    <i class="large alarm outline icon"></i>
+
+                <!--NOTIFICAÇÕES-->
+                <a id="btnNotification" class="item">
+                    <i class="large alarm outline orange icon"></i> Notificações
+                    <div class="floating bottom ui orange label" ng-if="notifications.length > 0">{{notifications.length}}</div>
                 </a>
-                <a class="item">
-                    <i class="large settings icon"></i>
+                <!--AGENDA-->
+                <a href="#/calendar" class="item">
+                    <i class="large calendar orange icon"></i> Agenda
+                </a>
+                <a href="#/configuration" class="item">
+                    <i class="large settings orange icon"></i> Configurações
+                </a>
+                <!--FEEDBACK-->
+                <a href="#/feedback" class="item">
+                    <i class="large announcement orange icon"></i> Feedback
+                </a>
+                <!--USUARIO-->
+                <a href="#/myAccount" class="item">
+                    <i class="large user orange icon"></i> Usuários
+                </a>
+                <!--LOGOUT-->
+                <a class="item" ng-click="logout()">
+                    <i class="large sign out orange icon"></i> Sair
                 </a>
             </div>
         </div>
+        <div style="height:1px"></div>
 
         <!--CONTEUDO DINAMICO-->
-        <div class="ui stackable grid" ng-view>
-
-        </div>
+        <ng-view>
+        </ng-view>
 
     </div>
 

@@ -28,6 +28,10 @@ namespace Sisacon.Domain.Services
                 notification.Link = link;
                 notification.User = user;
                 notification.Visualized = false;
+
+                _repository.add(notification);
+
+                _repository.commit();
             }
             catch (Exception ex)
             {

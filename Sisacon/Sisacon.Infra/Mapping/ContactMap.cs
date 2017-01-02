@@ -1,4 +1,5 @@
-﻿using Sisacon.Domain.ValueObjects;
+﻿using Sisacon.Domain.Entities;
+using Sisacon.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
@@ -22,9 +23,9 @@ namespace Sisacon.Infra.Mapping
                 .HasMaxLength(Contact.MAX_LENGTH_CELLPHONE)
                 .IsOptional();
 
-            Property(x => x.Email.Address)
+            Property(x => x.Email)
                 .HasColumnType("varchar")
-                .HasMaxLength(Email.EMAIL_MAX_LENGTH)
+                .HasMaxLength(User.EMAIL_MAX_LENGTH)
                 .HasColumnName("Email")
                 .IsOptional();
 

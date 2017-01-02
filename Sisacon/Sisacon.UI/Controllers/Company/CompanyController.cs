@@ -1,96 +1,82 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Net;
-//using System.Net.Http;
-//using System.Web;
-//using System.Web.Http;
+﻿using AutoMapper;
+using Sisacon.Application;
+using Sisacon.Application.Interfaces;
+using Sisacon.Domain.Entities;
+using Sisacon.UI.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web;
+using System.Web.Http;
 
-//namespace Sisacon.UI.Controllers
-//{
-//    [RoutePrefix("api")]
-//    public class CompanyController : ApiController
-//    {
-//        private readonly string workingFolder = HttpRuntime.AppDomainAppPath + @"Content\UserImages";
+namespace Sisacon.UI.Controllers
+{
+    [RoutePrefix("api")]
+    public class CompanyController : BaseController
+    {
+        //private readonly string workingFolder = HttpRuntime.AppDomainAppPath + @"Content\UserImages";
 
-//        [HttpPost]
-//        [Route("company")]
-//        public HttpResponseMessage Save(Company company)
-//        {
-//            var response = new ResponseMessage<Company>();
-//            var companyBLL = new CompanyBLL();
+        private readonly ICompanyAppService _companyAppService;
 
-//            if (company != null)
-//            {
-//                //HttpRequestMessage request = this.Request;
-//                //if (!request.Content.IsMimeMultipartContent())
-//                //{
-//                //    throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
-//                //}
+        public CompanyController(ICompanyAppService companyAppService)
+        {
+            _companyAppService = companyAppService;
+        }
 
-//                //string root = System.Web.HttpContext.Current.Server.MapPath("~/App_Data");
-//                //var provider = new MultipartFormDataStreamProvider(root);
+        [HttpPost]
+        [Route("company")]
+        public HttpResponseMessage Save(CompanyViewModel companyViewModel)
+        {
+            var response = new ResponseMessage<Company>();
 
-//                //var task = request.Content.ReadAsMultipartAsync(provider).
-//                //    ContinueWith<HttpResponseMessage>(o =>
-//                //    {
+            if(ModelState.IsValid)
+            {
+                var company = Mapper.Map<CompanyViewModel, Company>(companyViewModel);
 
-//                //        return new HttpResponseMessage()
-//                //        {
-//                //            Content = new StringContent("File uploaded.")
-//                //        };
-//                //    }
-//                //);
+                response = _companyAppService.saveOrUpdate(company);
+            }
 
-//                if (company.Id == 0)
-//                {
-//                    response = companyBLL.save(company);
-//                }
-//                else
-//                {
-//                    response = companyBLL.update(company);
-//                }
-//            }
+            return Request.CreateResponse(response.StatusCode, response);
+        }
 
-//            return Request.CreateResponse(response.StatusCode, response);
-//        }
+        //[HttpPost]
+        //[Route("company")]
+        //public HttpResponseMessage AddLogo(int idUser)
+        //{
+        //    //if (!Request.Content.IsMimeMultipartContent("form-data"))
+        //    //{
+        //    //    return Request.CreateResponse(HttpStatusCode.BadRequest);
+        //    //}
 
-//        [HttpPost]
-//        [Route("company")]
-//        public HttpResponseMessage AddLogo(int idUser)
-//        {
-//            if (!Request.Content.IsMimeMultipartContent("form-data"))
-//            {
-//                return Request.CreateResponse(HttpStatusCode.BadRequest);
-//            }
+        //    //var provider = new MultipartFormDataStreamProvider(workingFolder);
 
-//            var provider = new MultipartFormDataStreamProvider(workingFolder);
+        //    //Request.Content.ReadAsMultipartAsync(provider);
 
-//            Request.Content.ReadAsMultipartAsync(provider);
+        //    //return Request.CreateResponse(HttpStatusCode.OK);
+        //}
 
-//            return Request.CreateResponse(HttpStatusCode.OK);
-//        }
+        //[HttpGet]
+        //[Route("company")]
+        //public HttpResponseMessage GetCompanyByUser(int id)
+        //{
+        //    var companyBLL = new CompanyBLL();
 
-//        [HttpGet]
-//        [Route("company")]
-//        public HttpResponseMessage GetCompanyByUser(int id)
-//        {
-//            var companyBLL = new CompanyBLL();
+        //    var response = companyBLL.getCompanyByUser(id);
 
-//            var response = companyBLL.getCompanyByUser(id);
+        //    return Request.CreateResponse(response.StatusCode, response);
+        //}
 
-//            return Request.CreateResponse(response.StatusCode, response);
-//        }
+        //[HttpGet]
+        //[Route("company")]
+        //public HttpResponseMessage GetOccupationArea()
+        //{
+        //    var occupationAreaBLL = new OccupationAreaBLL();
 
-//        [HttpGet]
-//        [Route("company")]
-//        public HttpResponseMessage GetOccupationArea()
-//        {
-//            var occupationAreaBLL = new OccupationAreaBLL();
+        //    var response = occupationAreaBLL.getListOccupationAreas();
 
-//            var response = occupationAreaBLL.getListOccupationAreas();
-
-//            return Request.CreateResponse(response.StatusCode, response);
-//        }
-//    }
-//}
+        //    return Request.CreateResponse(response.StatusCode, response);
+        //}
+    }
+}

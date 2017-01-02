@@ -5,17 +5,27 @@ using Sisacon.Domain.Interfaces.Services;
 using Sisacon.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
+using static Sisacon.Domain.Enuns.ErrorGravity;
+using static Sisacon.Domain.Enuns.NotificationClass;
+using static Sisacon.Domain.Enuns.OperationType;
+using static Sisacon.Domain.Enuns.Sex;
 
 namespace Sisacon.Application
 {
     public class UserAppService : AppServiceBase<User>, IUserAppService
     {
         private readonly IUserService _userService;
+        private readonly ICrudMsgFormater _crudMsgFormater;
+        private readonly INotificationService _notificationService;
+        private readonly ILogAppService _logAppService;
 
-        public UserAppService(IUserService userService)
+        public UserAppService(IUserService userService, ICrudMsgFormater crudMsgFormater, INotificationService notificationService, ILogAppService logAppService)
             : base(userService)
         {
             _userService = userService;
+            _crudMsgFormater = crudMsgFormater;
+            _notificationService = notificationService;
+            _logAppService = logAppService;
         }
 
         public ResponseMessage<User> createUser(User user)
@@ -30,14 +40,22 @@ namespace Sisacon.Application
 
                 if (response.Quantity > 0)
                 {
-                    _userService.createDefaultConfig(user);
+                    response.Value = user;
 
-                    response.Message = "Usuário criado com sucesso.";
+                    initConfigsUser(user);
+
+                    response.Message = _crudMsgFormater.createClientCrudMessage(eOperationType.Insert, eSex.Masculino, "Usuário");
+                }
+                else
+                {
+                    response.Message = _crudMsgFormater.createErrorCrudMessage();
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                _logAppService.createClientLog(ex, user, eErrorGravity.Travamento);
+
+                return response.createErrorResponse();
             }
 
             return response;
@@ -56,7 +74,7 @@ namespace Sisacon.Application
             }
             catch (Exception ex)
             {
-                throw ex;
+                _logAppService.createClientLog(ex, null, eErrorGravity.Travamento);
             }
 
             return response;
@@ -72,7 +90,7 @@ namespace Sisacon.Application
             }
             catch (Exception ex)
             {
-                throw ex;
+                _logAppService.createClientLog(ex, null, eErrorGravity.Travamento);
             }
 
             return response;
@@ -88,7 +106,7 @@ namespace Sisacon.Application
             }
             catch (Exception ex)
             {
-                throw ex;
+                _logAppService.createClientLog(ex, null, eErrorGravity.Media);
             }
 
             return response;
@@ -102,7 +120,7 @@ namespace Sisacon.Application
             }
             catch (Exception ex)
             {
-                throw ex;
+                _logAppService.createClientLog(ex, null, eErrorGravity.Grande);
             }
         }
 
@@ -116,10 +134,26 @@ namespace Sisacon.Application
             }
             catch (Exception ex)
             {
-                throw ex;
+                _logAppService.createClientLog(ex, null, eErrorGravity.Grande);
             }
 
             return response;
+        }
+
+        public void initConfigsUser(User user)
+        {
+            try
+            {
+                //Cria as configurações iniciais para o usuário
+                _userService.createDefaultConfig(user);
+
+                //Cria notificação 
+                _notificationService.buildNotification(MsgNotification.CreateCompany, eNotificationClass.Green, "#/company", user);
+            }
+            catch (Exception ex) 
+            {
+                _logAppService.createClientLog(ex, user, eErrorGravity.Grande);
+            }
         }
     }
 }

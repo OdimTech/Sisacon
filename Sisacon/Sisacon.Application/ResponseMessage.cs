@@ -26,7 +26,18 @@ namespace Sisacon.Application
 
             response.LogicalTest = false;
             response.Message = "Ops! Algo de errado aconteceu. Nossa equipe de suporte já foi informada deste erro. Favor tente novamente mais tarde.";
-            response.StatusCode = System.Net.HttpStatusCode.BadRequest;
+            response.StatusCode = HttpStatusCode.BadRequest;
+
+            return response;
+        }
+
+        public ResponseMessage<T> createInvalidResponse()
+        {
+            var response = new ResponseMessage<T>();
+
+            response.LogicalTest = false;
+            response.Message = "Os dados informados estão Incorretos.";
+            response.StatusCode = HttpStatusCode.BadRequest;
 
             return response;
         }

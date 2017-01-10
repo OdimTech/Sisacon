@@ -1,4 +1,5 @@
 ﻿using Helpers;
+using Sisacon.Domain.Interfaces.Services;
 using Sisacon.Domain.ValueObjects;
 using System;
 using static Sisacon.Domain.Enuns.UserType;
@@ -55,7 +56,6 @@ namespace Sisacon.Domain.Entities
         #endregion
 
         #region Constructors
-
 
         #endregion
 

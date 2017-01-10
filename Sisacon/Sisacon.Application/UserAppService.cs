@@ -53,7 +53,7 @@ namespace Sisacon.Application
             }
             catch (Exception ex)
             {
-                _logAppService.createClientLog(ex, user, eErrorGravity.Travamento);
+                _logAppService.createClientLog(ex, user, eErrorGravity.Grande);
 
                 return response.createErrorResponse();
             }
@@ -74,7 +74,7 @@ namespace Sisacon.Application
             }
             catch (Exception ex)
             {
-                _logAppService.createClientLog(ex, null, eErrorGravity.Travamento);
+                _logAppService.createClientLog(ex, null, eErrorGravity.Grande);
             }
 
             return response;
@@ -90,7 +90,7 @@ namespace Sisacon.Application
             }
             catch (Exception ex)
             {
-                _logAppService.createClientLog(ex, null, eErrorGravity.Travamento);
+                _logAppService.createClientLog(ex, null, eErrorGravity.Grande);
             }
 
             return response;

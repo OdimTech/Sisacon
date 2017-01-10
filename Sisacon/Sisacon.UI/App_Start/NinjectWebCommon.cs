@@ -84,6 +84,7 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<INotificationService>().To<NotificationService>();
             kernel.Bind<ILogService>().To<LogService>();
             kernel.Bind<ICompanyService>().To<CompanyService>();
+            kernel.Bind<IOccupationAreaService>().To<OccupationAreaService>();
 
             //REPOSITORIES
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
@@ -91,6 +92,7 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<IConfigurationRepository>().To<ConfigurationRepository>();
             kernel.Bind<INotificationRepository>().To<NotificationRepository>();
             kernel.Bind<ICompanyRepository>().To<CompanyRepository>();
+            kernel.Bind<IOccupationAreaRepository>().To<OccupationAreaRepository>();
         }
     }
 }

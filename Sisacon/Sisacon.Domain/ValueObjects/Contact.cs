@@ -22,7 +22,7 @@ namespace Sisacon.Domain.ValueObjects
         #region Constants
 
         public const int MAX_LENGTH_LAND_LINE = 10;
-        public const int MAX_LENGTH_CELLPHONE = 10;
+        public const int MAX_LENGTH_CELLPHONE = 11;
         public const int MAX_LENGTH_URL_SITE = 250;
 
         #endregion

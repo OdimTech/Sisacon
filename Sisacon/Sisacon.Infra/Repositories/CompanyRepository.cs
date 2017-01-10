@@ -2,6 +2,7 @@
 using Sisacon.Domain.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +15,27 @@ namespace Sisacon.Infra.Repositories
         {
             try
             {
-                company.RegistrationDate = DateTime.Now;
-
                 Context.Company.Add(company);
+                Context.Address.Add(company.Address);
+                Context.Contact.Add(company.Contact);
+
+                Context.OccupationArea.Attach(company.OccupationArea);
                 Context.User.Attach(company.User);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public override void update(Company company)
+        {
+            try
+            {
+                Context.Entry(company).State = EntityState.Modified;
+                Context.Entry(company.Address).State = EntityState.Modified;
+                Context.Entry(company.Contact).State = EntityState.Modified;
+                Context.Entry(company.OccupationArea).State = EntityState.Modified;
             }
             catch (Exception ex)
             {
@@ -29,7 +47,14 @@ namespace Sisacon.Infra.Repositories
         {
             try
             {
-                return Context.Company.Where(x => x.User.Id == userId).FirstOrDefault();
+                return Context.Company.
+                    Where(x => x.User.Id == userId &&
+                    x.ExclusionDate == null)
+                    .Include("OccupationArea")
+                    .Include("Address")
+                    .Include("Contact")
+                    .Include("User")
+                    .FirstOrDefault();
             }
             catch (Exception ex)
             {

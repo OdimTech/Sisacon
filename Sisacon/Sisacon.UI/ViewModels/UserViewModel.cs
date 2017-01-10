@@ -6,17 +6,11 @@ namespace Sisacon.UI.ViewModels
 {
     public class UserViewModel : BaseViewModel
     {
-        [Required]
         public bool Active { get; set; }
-        [Required]
         public string Password { get; set; }
-        [Required]
-        public EmailViewModel Email { get; set; }
-        [Required]
+        public String Email { get; set; }
         public UserType.eUserType eUserType { get; set; }
-        [Required]
         public DateTime? LastLogin { get; set; }
-        [Required]
         public bool ShowWellcomeMessage { get; set; }
     }
 }

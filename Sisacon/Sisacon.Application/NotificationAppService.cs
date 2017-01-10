@@ -8,6 +8,7 @@ using Sisacon.Domain.Interfaces.Services;
 using Sisacon.Application.Interfaces;
 using Sisacon.Domain.Enuns;
 using static Sisacon.Domain.Enuns.NotificationClass;
+using static Sisacon.Domain.Enuns.ErrorGravity;
 
 namespace Sisacon.Application
 {
@@ -15,9 +16,12 @@ namespace Sisacon.Application
     {
         private readonly INotificationService _notificationService;
 
-        public NotificationAppService(INotificationService notificatioService) : base(notificatioService)
+        private readonly ILogAppService _logService;
+
+        public NotificationAppService(INotificationService notificatioService, ILogAppService logService) : base(notificatioService)
         {
             _notificationService = notificatioService;
+            _logService = logService;
         }
 
         public ResponseMessage<Notification> getByUserId(int id)
@@ -30,7 +34,9 @@ namespace Sisacon.Application
             }
             catch (Exception ex)
             {
-                throw ex;
+                _logService.createClientLog(ex, null, eErrorGravity.Media);
+
+                return response.createErrorResponse();
             }
 
             return response;

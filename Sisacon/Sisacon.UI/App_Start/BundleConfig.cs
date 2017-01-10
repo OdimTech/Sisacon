@@ -60,6 +60,7 @@ namespace Sisacon.UI
                 "~/app/js/services/equipment.service.js",
                 "~/app/js/services/material.service.js",
                 "~/app/js/services/materialCategory.service.js",
+                "~/app/js/services/log.service.js",
                 //CONTROLLERS
                 "~/app/js/controllers/log/log.controller.js",
                 "~/app/js/controllers/base/admin.controller.js",

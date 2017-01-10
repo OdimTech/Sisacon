@@ -29,7 +29,7 @@ namespace Sisacon.Infra.Repositories
 
             try
             {
-                listNotification = Context.Notification.Where(x => x.User.Id == id).ToList();
+                listNotification = Context.Notification.Where(x => x.User.Id == id && x.Visualized == false).ToList();
             }
             catch (Exception ex)
             {

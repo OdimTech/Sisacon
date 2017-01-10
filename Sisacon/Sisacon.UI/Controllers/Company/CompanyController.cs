@@ -31,11 +31,22 @@ namespace Sisacon.UI.Controllers
         {
             var response = new ResponseMessage<Company>();
 
-            if(ModelState.IsValid)
+            try
             {
-                var company = Mapper.Map<CompanyViewModel, Company>(companyViewModel);
+                if (ModelState.IsValid)
+                {
+                    var company = Mapper.Map<CompanyViewModel, Company>(companyViewModel);
 
-                response = _companyAppService.saveOrUpdate(company);
+                    response = _companyAppService.saveOrUpdate(company);
+                }
+                else
+                {
+                    response = response.createInvalidResponse();
+                }
+            }
+            catch
+            {
+                response = response.createErrorResponse();
             }
 
             return Request.CreateResponse(response.StatusCode, response);
@@ -57,26 +68,22 @@ namespace Sisacon.UI.Controllers
         //    //return Request.CreateResponse(HttpStatusCode.OK);
         //}
 
-        //[HttpGet]
-        //[Route("company")]
-        //public HttpResponseMessage GetCompanyByUser(int id)
-        //{
-        //    var companyBLL = new CompanyBLL();
+        [HttpGet]
+        [Route("company")]
+        public HttpResponseMessage GetCompanyByUser(int id)
+        {
+            var response = _companyAppService.getCompanyByUserId(id);
 
-        //    var response = companyBLL.getCompanyByUser(id);
+            return Request.CreateResponse(response.StatusCode, response);
+        }
 
-        //    return Request.CreateResponse(response.StatusCode, response);
-        //}
+        [HttpGet]
+        [Route("company")]
+        public HttpResponseMessage GetOccupationArea()
+        {
+            var response = _companyAppService.getOccupationAreas();
 
-        //[HttpGet]
-        //[Route("company")]
-        //public HttpResponseMessage GetOccupationArea()
-        //{
-        //    var occupationAreaBLL = new OccupationAreaBLL();
-
-        //    var response = occupationAreaBLL.getListOccupationAreas();
-
-        //    return Request.CreateResponse(response.StatusCode, response);
-        //}
+            return Request.CreateResponse(response.StatusCode, response);
+        }
     }
 }

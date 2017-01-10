@@ -12,6 +12,7 @@ namespace Sisacon.Domain.Entities
     {
         public string Message { get; set; }
         public string InnerException { get; set; }
+        public string StackTrace { get; set; }
         public int IdUser { get; set; }
         public virtual User User { get; set; }
         public eErrorGravity eErrorGravity { get; set; }

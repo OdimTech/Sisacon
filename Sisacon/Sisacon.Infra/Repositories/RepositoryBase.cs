@@ -32,7 +32,7 @@ namespace Sisacon.Infra.Repositories
             }
         }
 
-        public void update(T obj)
+        public virtual void update(T obj)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace Sisacon.Infra.Repositories
             }
         }
 
-        public void delete(int id)
+        public virtual void delete(int id)
         {
             try
             {
@@ -52,6 +52,21 @@ namespace Sisacon.Infra.Repositories
                 obj.ExclusionDate = DateTime.Now;
 
                 update(obj);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public T getById(int id, bool includeUser)
+        {
+            try
+            {
+                return Entity.
+                    Include("User").
+                    Where(x => x.Id == id && x.ExclusionDate == null).
+                    FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -76,6 +91,29 @@ namespace Sisacon.Infra.Repositories
             try
             {
                 return Entity.Where(x => x.ExclusionDate == null).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<T> getAll(bool includeUser)
+        {
+            try
+            {
+                if (includeUser)
+                {
+                    return Entity
+                        .Include("User")
+                        .Where(x => x.ExclusionDate == null)
+                        .ToList();
+                }
+                else
+                {
+                    return Entity.Where(x => x.ExclusionDate == null).ToList();
+                }
+
             }
             catch (Exception ex)
             {
@@ -139,6 +177,6 @@ namespace Sisacon.Infra.Repositories
             Context.ChangeTracker.Entries()
                          .ToList()
                          .ForEach(entry => entry.State = EntityState.Unchanged);
-        }
+        }               
     }
 }

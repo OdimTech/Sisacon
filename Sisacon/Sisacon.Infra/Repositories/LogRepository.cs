@@ -15,7 +15,6 @@ namespace Sisacon.Infra.Repositories
         {
             try
             {
-                log.RegistrationDate = DateTime.Now;
                 Context.Log.Add(log);
                 Context.User.Attach(log.User);
             }

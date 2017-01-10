@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div class="ui twelve wide stackable centered column" style="padding: 0">
+        <div class="ui ten wide stackable centered column" style="padding: 0">
 
 
             <!--LOGOTIPO
@@ -82,6 +82,19 @@
             <!--LOGOTIPO-->
 
             <div class="ui form stackable fluid segment">
+
+                <div class="field">
+
+                    <div class="ui floating message">
+                        <div class="header">
+                            Informações Comerciais
+                        </div>
+                        <p>
+
+                        </p>
+                    </div>
+
+                </div>
 
                 <div class="fields">
 
@@ -143,7 +156,7 @@
                 <!--NOME DA EMPRESA-->
                 <div class="fields" ng-show="company.ePersonType === 1" ng-class="{'error' : !companyForm.companyName.$valid && (companyForm.$submitted || !companyForm.companyName.$pristine)}">
 
-                    <div class="eight wide required field">
+                    <div class="six wide required field">
                         <label for="nomeEmpresa">Nome Empresa</label>
                         <input type="text" ng-model="company.companyName" name="companyName" class="ui input" ng-required="company.ePersonType === 1" />
 
@@ -182,6 +195,20 @@
             </div>
 
             <div class="ui form stackable fluid segment">
+
+                <div class="field">
+
+                    <div class="ui floating message">
+                        <div class="header">
+                            Endereço 
+                        </div>
+                        <p>
+
+                        </p>
+                    </div>
+
+                </div>
+
                 <div class="fields">
 
                     <!--CEP-->
@@ -270,18 +297,32 @@
             </div>
 
             <div class="ui form  stackable fluid segment">
+
+                <div class="field">
+
+                    <div class="ui floating message">
+                        <div class="header">
+                            Contato
+                        </div>
+                        <p>
+
+                        </p>
+                    </div>
+
+                </div>
+
                 <div class="fields">
 
                     <!--TELEFONE FIXO-->
                     <div class="four wide field">
                         <label for="telFixo">Telefone Fixo</label>
-                        <input type="tel" name="telFixo" class="ui input" ui-mask="(99) 9999-9999" ng-model="company.contact.landLine" maxlength="10"/>
+                        <input name="telFixo" class="ui input" ui-mask="(99) 9999-9999" ng-model="company.contact.landLine" maxlength="15"/>
                     </div>
 
                     <!--CELULAR-->
                     <div class="four wide field">
                         <label for="telCelular">Celular</label>
-                        <input type="tel" name="telCelular" class="ui input" ui-mask="(99) 99999-9999" ng-model="company.contact.cellPhone" maxlength="10"/>
+                        <input name="telCelular" class="ui input" ui-mask="(99) 99999-9999" ng-model="company.contact.cellPhone" maxlength="15"/>
                     </div>
                 </div>
 
@@ -299,10 +340,19 @@
                     </div>
 
                     <!--SITE-->
-                    <div class="eight wide field">
-                        <label for="site">Site</label>
-                        <input type="url" ng-model="company.contact.urlSite" name="site" class="ui input" maxlength="250"/>
-                    </div>
+
+                        <div class="eight wide field">
+                            <label for="site">Site</label>
+                            <input ng-model="company.contact.urlSite" name="site" class="ui input" maxlength="250" />
+                        </div>
+
+                        <div class="field">
+                            <label>&nbsp</label>
+                            <button type="button" class="ui square icon blue button" ng-click="goToSite()" title="Abrir Site">
+                                <i class="ui world icon"></i>
+                            </button>
+                        </div>
+
                 </div>
             </div>
 

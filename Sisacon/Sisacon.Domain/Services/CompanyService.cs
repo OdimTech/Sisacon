@@ -19,7 +19,7 @@ namespace Sisacon.Domain.Services
             _companyRepository = companyRepository;
         }
 
-        public Company getCompanyByUser(int userId)
+        public Company getCompanyByUserId(int userId)
         {
             var company = new Company();
 

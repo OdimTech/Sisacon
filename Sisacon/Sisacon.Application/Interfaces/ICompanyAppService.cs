@@ -1,4 +1,5 @@
 ﻿using Sisacon.Domain.Entities;
+using Sisacon.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Sisacon.Application.Interfaces
     public interface ICompanyAppService : IAppServiceBase<Company>
     {
         ResponseMessage<Company> saveOrUpdate(Company company);
-        ResponseMessage<Company> getCompanyByUser(int userId);
+        ResponseMessage<Company> getCompanyByUserId(int userId);
+        ResponseMessage<OccupationArea> getOccupationAreas();
     }
 }

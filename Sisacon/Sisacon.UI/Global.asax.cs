@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using Sisacon.UI.AutoMapper;
+using System.Web.Http;
 using System.Web.Optimization;
 using System.Web.Routing;
 
@@ -11,6 +12,8 @@ namespace Sisacon.UI
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            AutoMapperConfig.RegisterMappings();
         }
     }
 }

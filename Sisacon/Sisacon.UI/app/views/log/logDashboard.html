@@ -1,0 +1,55 @@
+﻿<form name="logListForm" novalidate>
+
+    <div class="ui stackable grid">
+
+        <div class="ui sixteen wide stackable column">
+
+            <div class="ui stackable segment">
+                <!--TOP MENU-->
+
+                <div class="ui stackable grid" style="padding: 0">
+
+                    <div class="ui three wide stackable column">
+                        <h3 class="ui header">
+                            <div class="content">
+                                Logs
+                                <div class="inverted sub header">
+                                    Lista de Logs do Sistema
+                                </div>
+                            </div>
+                        </h3>
+                    </div>
+                </div>
+            </div><!--TOP MENU-->
+
+            <div class="ui stackable segment">
+
+                <table datatable="ng" dt-options="vm.dtOptions" class="ui striped selectable table" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th class="collapsing">Visualizar</th>
+                            <th>Id Usuário</th>
+                            <th>Email</th>
+                            <th>Mensagem</th>
+                            <th>InnerException</th>
+                            <th>StackTrace</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in vm.logList">
+                            <td><button class="ui blue circular icon button" ng-click="vm.showLogDetail(item.id)"><i class="ui long arrow right icon"></i></button></td>
+                            <td>{{item.user.id}}</td>
+                            <td>{{item.user.email}}</td>
+                            <td>{{item.message}}</td>
+                            <td>{{item.innerException}}</td>
+                            <td>{{item.stackTrace}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div><!--SIXTEEN COLUMN-->
+
+    </div><!--GRID PAGE-->
+
+</form><!--FORM-->

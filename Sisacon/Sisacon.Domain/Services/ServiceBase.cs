@@ -99,6 +99,18 @@ namespace Sisacon.Domain.Services
             }
         }
 
+        public T getById(int id, bool includeUser)
+        {
+            try
+            {
+                return _repository.getById(id, includeUser);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void rollback()
         {
             try
@@ -134,5 +146,19 @@ namespace Sisacon.Domain.Services
                 throw ex;
             }
         }
+
+        public List<T> getAll(bool includeUser)
+        {
+            try
+            {
+                return _repository.getAll(includeUser);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        
     }
 }

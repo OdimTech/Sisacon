@@ -10,6 +10,8 @@ namespace Sisacon.Application.Interfaces
 {
     public interface ILogAppService : IAppServiceBase<Log>
     {
+        ResponseMessage<Log> getLogs();
+        ResponseMessage<Log> getLogById(int id);
         void createClientLog(Exception ex, User user, eErrorGravity gravity);
         void createInternalLog(Exception ex, User user, eErrorGravity gravity);
     }

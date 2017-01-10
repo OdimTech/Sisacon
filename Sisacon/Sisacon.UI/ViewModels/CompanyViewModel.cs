@@ -7,7 +7,7 @@ using static Sisacon.Domain.Enuns.PersonType;
 
 namespace Sisacon.UI.ViewModels
 {
-    public class CompanyViewModel
+    public class CompanyViewModel : BaseViewModel
     {
         public ePersonType ePersonType { get; set; }
         public string Cpf { get; set; }
@@ -19,6 +19,10 @@ namespace Sisacon.UI.ViewModels
         public eFormatImg eFormatImg { get; set; }
 
         //RELATIONSHIP
+        public int? IdOccupationArea { get; set; }
+        public int? IdAddress { get; set; }
+        public int? IdContact { get; set; }
+        public int IdUser { get; set; }
         public virtual OccupationAreaViewModel OccupationArea { get; set; }
         public virtual AddressViewModel Address { get; set; }
         public virtual ContactViewModel Contact { get; set; }

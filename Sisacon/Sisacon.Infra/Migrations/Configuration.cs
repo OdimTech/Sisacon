@@ -8,6 +8,7 @@ namespace Sisacon.Infra.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(SisaconDbContext context)

@@ -9,12 +9,14 @@ namespace Sisacon.Infra.Mapping
         {
             Property(x => x.Message)
                 .HasColumnType("varchar")
-                .HasMaxLength(1000)
                 .IsRequired();
 
             Property(x => x.InnerException)
                 .HasColumnType("varchar")
-                .HasMaxLength(500)
+                .IsRequired();
+
+            Property(x => x.StackTrace)
+                .HasColumnType("varchar")
                 .IsRequired();
 
             Property(x => x.eErrorGravity)

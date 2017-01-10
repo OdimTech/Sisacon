@@ -25,7 +25,9 @@
             
                     $scope.User = response.value;
                     localStorageService.set('id', $scope.User.id);
+                    localStorageService.set('user', $scope.User);
                     
+                    //eUserType 1 = Adminstrador do sistema
                     if (response.value.eUserType == 1)
                     {
                         $window.location.href = 'Admin';

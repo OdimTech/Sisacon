@@ -11,7 +11,9 @@ namespace Sisacon.Domain.Interfaces.Services
         void update(T obj);
         void delete(int id);
         T getById(int id);
+        T getById(int id, bool includeUser);
         List<T> getAll();
+        List<T> getAll(bool includeUser);
         int commit();
         void commitAsync();
         void rollback();

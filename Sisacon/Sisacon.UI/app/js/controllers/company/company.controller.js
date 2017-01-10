@@ -4,9 +4,9 @@
         .module('app')
         .controller('CompanyController', CompanyController);
 
-    CompanyController.$inject = ['$scope', 'viaCepService', 'valuesService', 'companyService', 'toastr', 'blockUI', 'localStorageService'];
+    CompanyController.$inject = ['$scope', 'viaCepService', 'valuesService', 'companyService', 'toastr', 'blockUI', 'localStorageService', '$window'];
 
-    function CompanyController($scope, viaCepService, valuesService, companyService, toastr, blockUI, localStorageService) {
+    function CompanyController($scope, viaCepService, valuesService, companyService, toastr, blockUI, localStorageService, $window) {
 
         //INIT CONTROLS
         angular.element('.ui.dropdown').dropdown();
@@ -19,6 +19,7 @@
         //INIT VARIABLES
         $scope.defaultLogo = valuesService.getDefaultLogo;
         $scope.userId = localStorageService.get('id');
+        $scope.user = localStorageService.get('user');
         $scope.company = {};
         $scope.showHelp = showHelp;
         $scope.userTypes = [
@@ -79,10 +80,7 @@
                 id: 0,
                 eFormatImg: 1,
                 ePersonType: 0,
-                user: {
-
-                    id: $scope.userId
-                },
+                user: $scope.user,
                 occupationArea: {
 
                     id: 0,
@@ -182,7 +180,13 @@
             }
         };
 
+        $scope.goToSite = function () {
 
+            if ($scope.company.contact.urlSite) {
+
+                $window.open($scope.company.contact.urlSite, '_blank');
+            }
+        }
     }
 
 })();

@@ -210,6 +210,7 @@
     <Content Include="app\js\services\costConfiguration.service.js" />
     <Content Include="app\js\services\equipment.service.js" />
     <Content Include="app\js\services\localStorage.service.js" />
+    <Content Include="app\js\services\log.service.js" />
     <Content Include="app\js\services\material.service.js" />
     <Content Include="app\js\services\materialCategory.service.js" />
     <Content Include="app\js\services\notification.service.js" />
@@ -237,6 +238,7 @@
     <Content Include="app\views\InitialDashboard.html" />
     <Content Include="app\views\landingPage.html" />
     <Content Include="app\views\log\logDashboard.html" />
+    <Content Include="app\views\log\logDetail.html" />
     <Content Include="app\views\menu\calendar.html" />
     <Content Include="app\views\menu\configuration.html" />
     <Content Include="app\views\menu\feedback.html" />
@@ -2358,6 +2360,7 @@
     <Compile Include="Controllers\CostConfiguration\CostConfigurationController.cs" />
     <Compile Include="Controllers\Equipment\EquipmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Log\LogController.cs" />
     <Compile Include="Controllers\MaterialCategory\MaterialCategoryController.cs" />
     <Compile Include="Controllers\Material\MaterialController.cs" />
     <Compile Include="Controllers\Notification\NotificationController.cs" />

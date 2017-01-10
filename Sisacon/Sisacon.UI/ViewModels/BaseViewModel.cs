@@ -7,7 +7,6 @@ namespace Sisacon.UI.ViewModels
     {
         [Required]
         public int Id { get; set; }
-        [Required]
         public DateTime RegistrationDate { get; set; }
         public DateTime? ExclusionDate { get; set; }
     }

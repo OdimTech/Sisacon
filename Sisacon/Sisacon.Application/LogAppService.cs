@@ -96,7 +96,8 @@ namespace Sisacon.Application
             try
             {
                 log.eErrorGravity = gravity;
-                log.InnerException = ex.InnerException != null ? ex.InnerException.Message : string.Empty;
+                log.InnerException = ex.InnerException != null ? ex.InnerException.InnerException.Message : string.Empty;
+                log.StackTrace = ex.StackTrace;
                 log.Message = ex.Message;
 
                 if (user != null && user.isValid())
@@ -139,6 +140,42 @@ namespace Sisacon.Application
             }
 
             return user;
+        }
+
+        public ResponseMessage<Log> getLogs()
+        {
+            var response = new ResponseMessage<Log>();
+
+            try
+            {
+                response.ValueList = _logService.getAll(true);
+            }
+            catch (Exception ex)
+            {
+                createClientLog(ex, createNonRegisteredUser(), eErrorGravity.Grande);
+
+                response = response.createErrorResponse();
+            }
+
+            return response;
+        }
+
+        public ResponseMessage<Log> getLogById(int id)
+        {
+            var response = new ResponseMessage<Log>();
+
+            try
+            {
+                response.Value = _logService.getById(id, true);
+            }
+            catch (Exception ex)
+            {
+                createClientLog(ex, createNonRegisteredUser(), eErrorGravity.Grande);
+
+                response = response.createErrorResponse();
+            }
+
+            return response;
         }
     }
 }

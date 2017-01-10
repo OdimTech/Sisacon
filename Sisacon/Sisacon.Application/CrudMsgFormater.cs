@@ -38,7 +38,7 @@ namespace Sisacon.Application
                     case eOperationType.Update:
                         {
                             var messageF = "A {0} foi Atualizada com Sucesso!";
-                            var messageM = "O {0} foi Atualizada com Sucesso!";
+                            var messageM = "O {0} foi Atualizado com Sucesso!";
 
                             message = createMessageBySex(messageF, messageM, eSex, entity);
                         }

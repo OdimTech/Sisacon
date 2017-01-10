@@ -1,4 +1,4 @@
-﻿using Sisacon.Domain.Entities;
+﻿using Sisacon.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Sisacon.Domain.Interfaces.Services
 {
-    public interface ICompanyService : IServiceBase<Company>
+    public interface IOccupationAreaService : IServiceBase<OccupationArea>
     {
-        Company getCompanyByUserId(int userId);
+        List<OccupationArea> getOccupationAreas();
     }
 }

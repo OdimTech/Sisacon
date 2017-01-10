@@ -14,6 +14,12 @@
                     templateUrl: '/app/views/log/logDashboard.html',
                     controller: 'LogController',
                     controllerAs: 'vm'
+                })
+                .when('/logDetail', {
+
+                    templateUrl: '/app/views/log/logDetail.html',
+                    controller: 'LogController',
+                    controllerAs: 'vm'
                 });
 
         }])

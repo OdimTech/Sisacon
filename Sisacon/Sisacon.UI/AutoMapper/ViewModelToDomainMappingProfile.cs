@@ -14,12 +14,12 @@ namespace Sisacon.UI.AutoMapper
 
         protected override void Configure()
         {
-            Mapper.Initialize(x => x.CreateMap<User, UserViewModel>());
-            Mapper.Initialize(x => x.CreateMap<Configuration, ConfigurationViewModel>());
-            Mapper.Initialize(x => x.CreateMap<Company, CompanyViewModel>());
-            Mapper.Initialize(x => x.CreateMap<Address, AddressViewModel>());
-            Mapper.Initialize(x => x.CreateMap<Contact, ContactViewModel>());
-            Mapper.Initialize(x => x.CreateMap<OccupationArea, OccupationAreaViewModel>());
+            CreateMap<User, UserViewModel>();
+            CreateMap<Configuration, ConfigurationViewModel>();
+            CreateMap<Address, AddressViewModel>();
+            CreateMap<Contact, ContactViewModel>();
+            CreateMap<OccupationArea, OccupationAreaViewModel>();
+            CreateMap<Company, CompanyViewModel>();
         }
     }
 }

@@ -6,14 +6,10 @@
                 <div class="ui stackable grid" style="padding: 0">
 
                     <div class="ui three wide stackable column">
-                        <h4 class="ui header">
-                            <div class="content">
-                                Empresa
-                                <div class="inverted sub header">
-                                    Edite ou Crie sua nova Empresa
-                                </div>
-                            </div>
-                        </h4>
+                        <div class="ui blue big label">
+                            <i class="flag icon"></i>
+                            Minha Empresa
+                        </div>
                     </div>
                     <div class="ui thirteen wide stackable right aligned column">
                         <a class="ui labeled primary icon button" ng-click="submitForm()">
@@ -81,19 +77,10 @@
             </div>-->
             <!--LOGOTIPO-->
 
-            <div class="ui form stackable fluid segment">
+            <div class="ui form stackable raised fluid segment">
 
-                <div class="field">
-
-                    <div class="ui floating message">
-                        <div class="header">
-                            Informações Comerciais
-                        </div>
-                        <p>
-
-                        </p>
-                    </div>
-
+                <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                    Informações Comerciais
                 </div>
 
                 <div class="fields">
@@ -194,19 +181,10 @@
                 </div>
             </div>
 
-            <div class="ui form stackable fluid segment">
+            <div class="ui form stackable raised fluid segment">
 
-                <div class="field">
-
-                    <div class="ui floating message">
-                        <div class="header">
-                            Endereço 
-                        </div>
-                        <p>
-
-                        </p>
-                    </div>
-
+                <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                    Endereço
                 </div>
 
                 <div class="fields">
@@ -214,7 +192,7 @@
                     <!--CEP-->
                     <div class="two wide field">
                         <label for="cep">CEP</label>
-                        <input type="text" name="cep" ng-model="company.address.cep" ng-blur="getAddress(company.address.cep)" class="ui input" ui-mask="99999-999" maxlength="9"/>
+                        <input type="text" name="cep" ng-model="company.address.cep" ng-blur="getAddress(company.address.cep)" class="ui input" ui-mask="99999-999" maxlength="9" />
                     </div>
                     <div class="field">
                         <label>&nbsp</label>
@@ -230,7 +208,7 @@
                     <div class="eight wide required field" ng-class="{'error' : !companyForm.street.$valid && (companyForm.$submitted || !companyForm.street.$pristine)}">
 
                         <label for="street">Rua/Av</label>
-                        <input type="text" name="street" ng-model="company.address.logradouro" class="ui input" required maxlength="50"/>
+                        <input type="text" name="street" ng-model="company.address.logradouro" class="ui input" required maxlength="50" />
 
                         <div class="ui pointing red basic label" ng-show="!companyForm.street.$valid && (companyForm.$submitted || !companyForm.street.$pristine)">
                             <div ng-show="!companyForm.street.$valid">A Rua é Obrigatória</div>
@@ -253,7 +231,7 @@
                     <!--COMPLEMENTO-->
                     <div class="six wide field">
                         <label for="complement">Complemento</label>
-                        <input type="text" name="complement" ng-model="company.address.complemento" class="ui input" maxlength="8"/>
+                        <input type="text" name="complement" ng-model="company.address.complemento" class="ui input" maxlength="8" />
                     </div>
                 </div>
 
@@ -262,7 +240,7 @@
                     <!--BAIRRO-->
                     <div class="eight wide required field" ng-class="{'error' : !companyForm.neighborhood.$valid && (companyForm.$submitted || !companyForm.neighborhood.$pristine)}">
                         <label for="bairro">Bairro</label>
-                        <input type="text" name="neighborhood" ng-model="company.address.bairro" class="ui input" required maxlength="50"/>
+                        <input type="text" name="neighborhood" ng-model="company.address.bairro" class="ui input" required maxlength="50" />
 
                         <div class="ui pointing red basic label" ng-show="!companyForm.neighborhood.$valid && (companyForm.$submitted || !companyForm.neighborhood.$pristine)">
                             <div ng-show="!companyForm.neighborhood.$valid">O Bairro é Obrigatória</div>
@@ -274,7 +252,7 @@
                     <div class="four wide required field" ng-class="{'error' : !companyForm.city.$valid && (companyForm.$submitted || !companyForm.city.$pristine)}">
 
                         <label for="city">Cidade</label>
-                        <input type="text" name="city" ng-model="company.address.cidade" class="ui input" required maxlength="30"/>
+                        <input type="text" name="city" ng-model="company.address.cidade" class="ui input" required maxlength="30" />
 
                         <div class="ui pointing red basic label" ng-show="!companyForm.city.$valid && (companyForm.$submitted || !companyForm.city.$pristine)">
                             <div ng-show="!companyForm.city.$valid">A Cidade é Obrigatória</div>
@@ -286,7 +264,7 @@
                     <div class="four wide required field" ng-class="{'error' : !companyForm.state.$valid && (companyForm.$submitted || !companyForm.state.$pristine)}">
 
                         <label for="state">Estado</label>
-                        <input type="text" name="state" ng-model="company.address.estado" class="ui input" required maxlength="20"/>
+                        <input type="text" name="state" ng-model="company.address.estado" class="ui input" required maxlength="20" />
 
                         <div class="ui pointing red basic label" ng-show="!companyForm.state.$valid && (companyForm.$submitted || !companyForm.state.$pristine)">
                             <div ng-show="!companyForm.state.$valid">O Estado é Obrigatória</div>
@@ -296,19 +274,10 @@
                 </div>
             </div>
 
-            <div class="ui form  stackable fluid segment">
+            <div class="ui form  stackable raised fluid segment">
 
-                <div class="field">
-
-                    <div class="ui floating message">
-                        <div class="header">
-                            Contato
-                        </div>
-                        <p>
-
-                        </p>
-                    </div>
-
+                <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                    Contato
                 </div>
 
                 <div class="fields">
@@ -316,13 +285,13 @@
                     <!--TELEFONE FIXO-->
                     <div class="four wide field">
                         <label for="telFixo">Telefone Fixo</label>
-                        <input name="telFixo" class="ui input" ui-mask="(99) 9999-9999" ng-model="company.contact.landLine" maxlength="15"/>
+                        <input name="telFixo" class="ui input" ui-mask="(99) 9999-9999" ng-model="company.contact.landLine" maxlength="15" />
                     </div>
 
                     <!--CELULAR-->
                     <div class="four wide field">
                         <label for="telCelular">Celular</label>
-                        <input name="telCelular" class="ui input" ui-mask="(99) 99999-9999" ng-model="company.contact.cellPhone" maxlength="15"/>
+                        <input name="telCelular" class="ui input" ui-mask="(99) 99999-9999" ng-model="company.contact.cellPhone" maxlength="15" />
                     </div>
                 </div>
 
@@ -341,17 +310,17 @@
 
                     <!--SITE-->
 
-                        <div class="eight wide field">
-                            <label for="site">Site</label>
-                            <input ng-model="company.contact.urlSite" name="site" class="ui input" maxlength="250" />
-                        </div>
+                    <div class="eight wide field">
+                        <label for="site">Site</label>
+                        <input ng-model="company.contact.urlSite" name="site" class="ui input" maxlength="250" />
+                    </div>
 
-                        <div class="field">
-                            <label>&nbsp</label>
-                            <button type="button" class="ui square icon blue button" ng-click="goToSite()" title="Abrir Site">
-                                <i class="ui world icon"></i>
-                            </button>
-                        </div>
+                    <div class="field">
+                        <label>&nbsp</label>
+                        <button type="button" class="ui square icon blue button" ng-click="goToSite()" title="Abrir Site">
+                            <i class="ui world icon"></i>
+                        </button>
+                    </div>
 
                 </div>
             </div>

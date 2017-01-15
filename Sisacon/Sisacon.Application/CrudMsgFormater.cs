@@ -15,7 +15,7 @@ namespace Sisacon.Application
         /// <summary>
         /// Cria a mensagem que será exibida no toastr para o cliente nas operaçõs de CRUD
         /// </summary>
-        /// <param name="operationType">Tipo de operaçã - INSERT, DELETE, UPDATE</param>
+        /// <param name="operationType">Tipo de operação - INSERT, DELETE, UPDATE</param>
         /// <param name="sex">Sexo da mensagem</param>
         /// <param name="entity">Entidade que está sendo manipulada Ex: Material, Fornecedor</param>
         /// <returns></returns>

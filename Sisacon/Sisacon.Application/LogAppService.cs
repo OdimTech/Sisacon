@@ -78,7 +78,7 @@ namespace Sisacon.Application
             }
             catch
             {
-
+                createLogEventViewer(ex, user);
             }
         }
 
@@ -111,7 +111,7 @@ namespace Sisacon.Application
             }
             catch
             {
-
+                createLogEventViewer(ex, user);
             }
 
             return log;

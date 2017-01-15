@@ -2,20 +2,17 @@
 
     <div class="ui stackable grid">
 
+        <!--MENU-->
         <div class="ui sixteen wide stackable column" id="top-menu">
 
             <div class="ui stackable segment">
                 <div class="ui stackable grid" style="padding: 0">
 
                     <div class="ui three wide stackable column">
-                        <h3 class="ui header">
-                            <div class="content">
-                                Cliente
-                                <div class="inverted sub header">
-                                    Edite ou Cadastre um novo Cliente
-                                </div>
-                            </div>
-                        </h3>
+                        <div class="ui blue big label">
+                            <i class="user icon"></i>
+                            Cliente
+                        </div>
                     </div>
                     <div class="ui thirteen wide stackable right aligned column">
 
@@ -25,7 +22,7 @@
                         <a class="ui labeled primary icon button" ng-click="newClient()">
                             <i class="edit icon"></i>Novo Cliente
                         </a>
-                        <a class="ui labeled primary icon button" ng-class="{'disabled': client.id == 0}" ng-click="showModalRemoveClient(client)">
+                        <a class="ui labeled red icon button" ng-class="{'disabled': client.id == 0}" ng-click="showModalRemoveClient(client)">
                             <i class="remove icon"></i>Excluir
                         </a>
                         <a class="ui labeled primary icon button" ng-click="submitForm()">
@@ -41,9 +38,14 @@
 
         </div>
 
-        <div class="ui eleven wide stackable column" style="padding-top: 0">
+        <div class="ui ten wide stackable centered column" style="padding-top: 0">
 
+            <!--INFORMAÇÕES COMERCIAIS-->
             <div class="ui form stackable fluid segment">
+
+                <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                    Informações Comerciais
+                </div>
 
                 <!--CODIGO CLIENTE-->
                 <div class="fields" ng-show="client.id > 0 || !configuration.codAutoClient">
@@ -169,6 +171,15 @@
                     </div>
                 </div>
 
+            </div>
+
+            <!--CONFIGURAÇÕES-->
+            <div class="ui form stackable fluid segment">
+
+                <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                    Configurações
+                </div>
+
                 <div class="field">
                     <div class="ui checkbox">
                         <input type="checkbox" ng-model="client.sendAutomaticMsg" name="chkMarketingMsg" />
@@ -185,9 +196,16 @@
                         </label>
                     </div>
                 </div>
+
             </div>
 
+            <!--ENDEREÇO-->
             <div class="ui form stackable fluid segment">
+
+                <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                    Endereço
+                </div>
+
                 <div class="fields">
 
                     <!--CEP-->
@@ -275,7 +293,13 @@
                 </div>
             </div>
 
+            <!--CONTATO-->
             <div class="ui form stackable fluid segment">
+
+                <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                    Contato
+                </div>
+
                 <div class="fields">
 
                     <!--TELEFONE FIXO-->
@@ -308,9 +332,14 @@
             </div>
         </div>
 
-        <div class="ui five wide stackable column" style="padding-top: 0">
+        <!--<div class="ui five wide stackable column" style="padding-top: 0">
 
             <div class="ui form stackable clearing fluid segment">
+
+                <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                    Histórico
+                </div>
+
                 <p>Orçamentos solicitados: 2</p>
                 <p>Pedidos realizados: 1</p>
                 <p>Taxa de conversão: 50%</p>
@@ -319,7 +348,7 @@
                     <textarea type="text" ng-model="client.note" name="obs" rows="5" class="ui input" />
                 </div>
             </div>
-        </div>
+        </div>-->
 
     </div><!--GRID PAGE-->
 

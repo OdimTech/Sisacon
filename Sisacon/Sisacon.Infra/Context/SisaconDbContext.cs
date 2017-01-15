@@ -27,6 +27,7 @@ namespace Sisacon.Repositories.Context
         public DbSet<Contact> Contact { get; set; }
         public DbSet<OccupationArea> OccupationArea { get; set; }
         public DbSet<Company> Company { get; set; }
+        public DbSet<Client> Client { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -42,6 +43,7 @@ namespace Sisacon.Repositories.Context
             modelBuilder.Configurations.Add(new ContactMap());
             modelBuilder.Configurations.Add(new NotificationMap());
             modelBuilder.Configurations.Add(new OccupationAreaMap());
+            modelBuilder.Configurations.Add(new ClientMap());
 
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasColumnType("varchar"));

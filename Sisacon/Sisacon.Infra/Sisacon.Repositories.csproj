@@ -52,6 +52,7 @@
     <Compile Include="Context\SisaconDbContext.cs" />
     <Compile Include="Mapping\AddressMap.cs" />
     <Compile Include="Mapping\BaseMap.cs" />
+    <Compile Include="Mapping\ClientMap.cs" />
     <Compile Include="Mapping\CompanyMap.cs" />
     <Compile Include="Mapping\ConfigurationMap.cs" />
     <Compile Include="Mapping\ContactMap.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Migrations\OccupationAreaSeed.cs" />
     <Compile Include="Migrations\UserSeed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ClientRepository.cs" />
     <Compile Include="Repositories\CompanyRepository.cs" />
     <Compile Include="Repositories\ConfigurationRepository.cs" />
     <Compile Include="Repositories\LogRepository.cs" />

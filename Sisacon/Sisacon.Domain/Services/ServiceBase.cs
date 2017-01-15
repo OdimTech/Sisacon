@@ -63,6 +63,18 @@ namespace Sisacon.Domain.Services
             }
         }
 
+        public void delete(T obj)
+        {
+            try
+            {
+                _repository.delete(obj);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void Dispose()
         {
             try

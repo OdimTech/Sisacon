@@ -59,6 +59,20 @@ namespace Sisacon.Infra.Repositories
             }
         }
 
+        public virtual void delete(T obj)
+        {
+            try
+            {
+                obj.ExclusionDate = DateTime.Now;
+
+                update(obj);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public T getById(int id, bool includeUser)
         {
             try
@@ -74,7 +88,7 @@ namespace Sisacon.Infra.Repositories
             }
         }
 
-        public T getById(int id)
+        public virtual T getById(int id)
         {
             try
             {
@@ -177,6 +191,8 @@ namespace Sisacon.Infra.Repositories
             Context.ChangeTracker.Entries()
                          .ToList()
                          .ForEach(entry => entry.State = EntityState.Unchanged);
-        }               
+        }
+
+        
     }
 }

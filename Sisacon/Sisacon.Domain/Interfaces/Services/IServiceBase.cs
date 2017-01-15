@@ -10,6 +10,7 @@ namespace Sisacon.Domain.Interfaces.Services
         void add(T obj);
         void update(T obj);
         void delete(int id);
+        void delete(T obj);
         T getById(int id);
         T getById(int id, bool includeUser);
         List<T> getAll();

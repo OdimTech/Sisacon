@@ -117,7 +117,7 @@
                 }
 
                 $scope.btnSaveText = 'Salvar';
-                
+
                 initObjectClient();
             }
         }
@@ -227,7 +227,7 @@
                     }
 
                     loadClient($scope.client.id);
-                    
+
                 }).error(function (response) {
 
                     blockUI.stop();
@@ -254,7 +254,7 @@
 
                     $scope.nameClient = client.clientName;
                 }
-                else{
+                else {
 
                     $scope.nameClient = client.fantasyName;
                 }
@@ -274,12 +274,9 @@
 
                 clientService.deleteClient($scope.idClientToRemove).success(function (response) {
 
-                    if (response.logicalTest) {
-                        
-                        toastr.success(response.message);
+                    toastr.success(response.message);
 
-                        loadClientList();
-                    }
+                    loadClientList();
 
                 }).error(function (response) {
 
@@ -294,12 +291,9 @@
 
                 clientService.deleteClient($scope.idClientToRemove).success(function (response) {
 
-                    if (response.logicalTest) {
-                        
-                        toastr.success(response.message);
+                    toastr.success(response.message);
 
-                        $window.location.href = "#/clientList";
-                    }
+                    $window.location.href = "#/clientList";
 
                 }).error(function (response) {
 

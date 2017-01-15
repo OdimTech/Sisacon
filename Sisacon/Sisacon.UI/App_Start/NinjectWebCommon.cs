@@ -76,6 +76,7 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<ICrudMsgFormater>().To<CrudMsgFormater>();
             kernel.Bind<ILogAppService>().To<LogAppService>();
             kernel.Bind<ICompanyAppService>().To<CompanyAppService>();
+            kernel.Bind<IClientAppService>().To<ClientAppService>();
 
             //SERVICE
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
@@ -85,6 +86,7 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<ILogService>().To<LogService>();
             kernel.Bind<ICompanyService>().To<CompanyService>();
             kernel.Bind<IOccupationAreaService>().To<OccupationAreaService>();
+            kernel.Bind<IClientService>().To<ClientService>();
 
             //REPOSITORIES
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
@@ -93,6 +95,7 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<INotificationRepository>().To<NotificationRepository>();
             kernel.Bind<ICompanyRepository>().To<CompanyRepository>();
             kernel.Bind<IOccupationAreaRepository>().To<OccupationAreaRepository>();
+            kernel.Bind<IClientRepository>().To<ClientRepository>();
         }
     }
 }

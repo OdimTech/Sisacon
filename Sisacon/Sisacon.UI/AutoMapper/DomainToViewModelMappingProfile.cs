@@ -20,6 +20,7 @@ namespace Sisacon.UI.AutoMapper
             CreateMap<ContactViewModel, Contact>();
             CreateMap<OccupationAreaViewModel, OccupationArea>();
             CreateMap<CompanyViewModel, Company>();
+            CreateMap<ClientViewModel, Client>();
         }
     }
 }

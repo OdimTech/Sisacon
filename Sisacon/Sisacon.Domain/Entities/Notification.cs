@@ -12,7 +12,7 @@ namespace Sisacon.Domain.Entities
         {
             get
             {
-                return calcTimeSinceCreation(RegistrationDate);
+                return calcTimeSinceCreation(RegistrationDate.Value);
             }
         }
         public eNotificationClass eNotificationClass { get; set; }

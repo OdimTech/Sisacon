@@ -41,10 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppServiceBase.cs" />
+    <Compile Include="ClientAppService.cs" />
     <Compile Include="CompanyAppService.cs" />
     <Compile Include="ConfigurationAppService.cs" />
     <Compile Include="CrudMsgFormater.cs" />
     <Compile Include="Interfaces\IAppServiceBase.cs" />
+    <Compile Include="Interfaces\IClientAppService.cs" />
     <Compile Include="Interfaces\ICompanyAppService.cs" />
     <Compile Include="Interfaces\IConfigurationAppService.cs" />
     <Compile Include="Interfaces\ICrudMsgFormater.cs" />

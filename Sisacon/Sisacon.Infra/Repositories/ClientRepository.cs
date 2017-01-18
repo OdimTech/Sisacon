@@ -41,7 +41,7 @@ namespace Sisacon.Infra.Repositories
             }
         }
 
-        public override Client getById(int id)
+        public override Client getById(int id, bool includeUser)
         {
             try
             {

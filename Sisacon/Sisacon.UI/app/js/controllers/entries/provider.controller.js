@@ -14,15 +14,18 @@
 
         //VARIABLES
         vm.userId = localStorageService.get('id');
+        vm.user = localStorageService.get('user');
         vm.provider = {};
         vm.providerList = [];
         vm.nameProvider = '';
         vm.configuration = {};
+        vm.banks = [];
         //METHODS
         vm.loadConfiguration = loadConfiguration;
         vm.initControls = initControls
         vm.loadDataTables = loadDataTables;
         vm.loadProvider = loadProvider;
+        vm.loadBanks = loadBanks;
         vm.removeProvider = removeProvider;
         vm.initObjectProvider = initObjectProvider;
         vm.newProvider = newProvider;
@@ -35,6 +38,7 @@
         vm.initControls();
         vm.loadDataTables();
         vm.loadConfiguration();
+        vm.loadBanks();
 
         //CASO EXISTA ALGUM VALOR NA URL, TRATA-SE DE EDIÇÃO, CASO NÃO TENHA É LISTAGEM 
         if ($routeParams.id) {
@@ -88,7 +92,7 @@
 
             providerService.getProviderByUserId(vm.userId).success(function (response) {
 
-                vm.providerList = response.value;
+                vm.providerList = response.valueList;
 
                 blockUI.stop();
 
@@ -130,17 +134,20 @@
             }
         }
 
+        function loadBanks() {
+
+            vm.banks = valuesService.banks;
+        }
+
         function initObjectProvider() {
 
             vm.provider = {
 
                 id: 0,
-                user: {
-
-                    id: vm.userId
-                },
+                user: vm.user,
                 address: {},
-                contact: {}
+                contact: {},
+                accountDetails: {}
             }
         }
 
@@ -177,6 +184,9 @@
                     toastr.success(response.message);
 
                     vm.provider = response.value;
+
+                    response.value.registrationDate = utilityService.convertDateToString(response.value.registrationDate);
+
                     vm.btnSaveText = "Atualizar"
 
                 }).error(function (response) {
@@ -218,14 +228,11 @@
 
                 providerService.deleteProvider(vm.idProviderToRemove).success(function (response) {
 
-                    if (response.logicalTest) {
+                    toastr.success(response.message);
 
-                        toastr.success(response.message);
+                    vm.idproviderToRemove = 0;
 
-                        vm.idproviderToRemove = 0;
-
-                        loadProviderList();
-                    }
+                    loadProviderList();
 
                 }).error(function (response) {
 
@@ -240,14 +247,11 @@
 
                 providerService.deleteProvider(vm.idProviderToRemove).success(function (response) {
 
-                    if (response.logicalTest) {
+                    toastr.success(response.message);
 
-                        toastr.success(response.message);
+                    vm.idproviderToRemove = 0;
 
-                        vm.idproviderToRemove = 0;
-
-                        $window.location.href = "#/providerList";
-                    }
+                    $window.location.href = "#/providerList";
 
                 }).error(function (response) {
 

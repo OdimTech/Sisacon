@@ -123,6 +123,22 @@ namespace Sisacon.Application
             return response;
         }
 
+        public ResponseMessage<T> getById(int id, bool includeUser)
+        {
+            var response = new ResponseMessage<T>();
+
+            try
+            {
+                response.Value = _serviceBase.getById(id, includeUser);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return response;
+        }
+
         public void rollback()
         {
             try

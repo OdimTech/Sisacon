@@ -1,70 +1,78 @@
-﻿//using Sisacon.BLL;
-//using Sisacon.Domain;
-//using System.Collections.Generic;
-//using System.Net.Http;
-//using System.Web.Http;
+﻿using AutoMapper;
+using Ninject.Activation;
+using Sisacon.Application;
+using Sisacon.Application.Interfaces;
+using Sisacon.Domain;
+using Sisacon.UI.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Web.Http;
 
-//namespace Sisacon.UI.Controllers
-//{
-//    [RoutePrefix("api")]
-//    public class ProviderController : ApiController
-//    {
-//        [HttpPost]
-//        [Route("provider")]
-//        public HttpResponseMessage Save(Provider provider)
-//        {
-//            var response = new ResponseMessage<Provider>();
-//            var providerBLL = new ProviderBLL();
+namespace Sisacon.UI.Controllers
+{
+    [RoutePrefix("api")]
+    public class ProviderController : ApiController
+    {
+        private readonly IProviderAppService _providerService;
 
-//            if(provider != null)
-//            {
-//                if(provider.Id == 0)
-//                {
-//                    response = providerBLL.save(provider);
-//                }
-//                else
-//                {
-//                    response = providerBLL.update(provider);
-//                }
-//            }
+        public ProviderController(IProviderAppService providerService)
+        {
+            _providerService = providerService;
+        }
 
-//            return Request.CreateResponse(response.StatusCode, response);
-//        }
+        [HttpPost]
+        [Route("provider")]
+        public HttpResponseMessage Save(ProviderViewModel providerViewModel)
+        {
+            var response = new ResponseMessage<Domain.Entities.Provider>();
 
-//        [HttpGet]
-//        [Route("provider")]
-//        public HttpResponseMessage GetProvidersByUserId(int userId)
-//        {
-//            var response = new ResponseMessage<List<Provider>>();
-//            var providerBLL = new ProviderBLL();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var provider = Mapper.Map<ProviderViewModel, Domain.Entities.Provider>(providerViewModel);
 
-//            response = providerBLL.getProvidersByUserId(userId);
+                    response = _providerService.saveOrUpdate(provider);
+                }
+                else
+                {
+                    response = response.createInvalidResponse();
+                }
+            }
+            catch
+            {
+                response = response.createErrorResponse();
+            }
 
-//            return Request.CreateResponse(response.StatusCode, response);
-//        }
+            return Request.CreateResponse(response.StatusCode, response);
+        }
 
-//        [HttpGet]
-//        [Route("provider")]
-//        public HttpResponseMessage GetProviderById(int id)
-//        {
-//            var response = new ResponseMessage<Provider>();
-//            var providerBLL = new ProviderBLL();
+        [HttpGet]
+        [Route("provider")]
+        public HttpResponseMessage GetProvidersByUserId(int userId)
+        {
+            var response = _providerService.getProviderByUserId(userId);
 
-//            response = providerBLL.getProviderById(id);
+            return Request.CreateResponse(response.StatusCode, response);
+        }
 
-//            return Request.CreateResponse(response.StatusCode, response);
-//        }
+        [HttpGet]
+        [Route("provider")]
+        public HttpResponseMessage GetProviderById(int id)
+        {
+            var response = _providerService.getById(id, true);
 
-//        [HttpDelete]
-//        [Route("provider")]
-//        public HttpResponseMessage Delete(int id)
-//        {
-//            var response = new ResponseMessage<Provider>();
-//            var providerBLL = new ProviderBLL();
+            return Request.CreateResponse(response.StatusCode, response);
+        }
 
-//            response = providerBLL.delete(id);
+        [HttpDelete]
+        [Route("provider")]
+        public HttpResponseMessage Delete(int id)
+        {
+            var response = _providerService.deleteProvider(id);
 
-//            return Request.CreateResponse(response.StatusCode, response);
-//        }
-//    }
-//}
+            return Request.CreateResponse(response.StatusCode, response);
+        }
+    }
+}

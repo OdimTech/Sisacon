@@ -28,6 +28,9 @@ namespace Sisacon.Repositories.Context
         public DbSet<OccupationArea> OccupationArea { get; set; }
         public DbSet<Company> Company { get; set; }
         public DbSet<Client> Client { get; set; }
+        public DbSet<Equipment> Equipment { get; set; }
+        public DbSet<Provider> Provider { get; set; }
+        public DbSet<BankDetails> BankDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -44,6 +47,9 @@ namespace Sisacon.Repositories.Context
             modelBuilder.Configurations.Add(new NotificationMap());
             modelBuilder.Configurations.Add(new OccupationAreaMap());
             modelBuilder.Configurations.Add(new ClientMap());
+            modelBuilder.Configurations.Add(new EquipmentMap());
+            modelBuilder.Configurations.Add(new ProviderMap());
+            modelBuilder.Configurations.Add(new BankDetailsMap());
 
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasColumnType("varchar"));

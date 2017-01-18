@@ -73,7 +73,7 @@ namespace Sisacon.Infra.Repositories
             }
         }
 
-        public T getById(int id, bool includeUser)
+        public virtual T getById(int id, bool includeUser)
         {
             try
             {

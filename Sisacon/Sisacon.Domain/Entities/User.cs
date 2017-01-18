@@ -65,6 +65,19 @@ namespace Sisacon.Domain.Entities
         {
             var valid = true;
 
+            if (Active == false)
+            {
+                valid = false;
+            }
+            else if (string.IsNullOrEmpty(Password))
+            {
+                valid = false;
+            }
+            else if (string.IsNullOrEmpty(Email))
+            {
+                valid = false;
+            }
+
             return valid;
         }
 

@@ -12,7 +12,7 @@ namespace Helpers
         {
             var random = new Random();
 
-            return random.Next(100000).ToString();
+            return random.Next(10000, 99999).ToString();
         }
     }
 }

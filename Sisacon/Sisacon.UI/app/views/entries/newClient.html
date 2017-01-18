@@ -9,11 +9,19 @@
                 <div class="ui stackable grid" style="padding: 0">
 
                     <div class="ui three wide stackable column">
-                        <div class="ui blue big label">
-                            <i class="user icon"></i>
-                            Cliente
-                        </div>
+
+                        <h3 class="ui header">
+                            <i class="bordered users icon"></i>
+                            <div class="content">
+                                Cliente
+                                <div class="inverted sub header">
+                                    Menu - Cadastros - Clientes
+                                </div>
+                            </div>
+                        </h3>
+
                     </div>
+
                     <div class="ui thirteen wide stackable right aligned column">
 
                         <a class="ui labeled primary icon button" href="#/clientList">
@@ -22,13 +30,13 @@
                         <a class="ui labeled primary icon button" ng-click="newClient()">
                             <i class="edit icon"></i>Novo Cliente
                         </a>
-                        <a class="ui labeled red icon button" ng-class="{'disabled': client.id == 0}" ng-click="showModalRemoveClient(client)">
+                        <a class="ui labeled primary icon button" ng-class="{'disabled': client.id == 0}" ng-click="showModalRemoveClient(client)">
                             <i class="remove icon"></i>Excluir
                         </a>
                         <a class="ui labeled primary icon button" ng-click="submitForm()">
                             <i class="checkmark icon"></i> {{btnSaveText}}
                         </a>
-                        <a class="ui icon primary button" ng-click="showHelp()">
+                        <a class="ui icon orange button" ng-click="showHelp()">
                             <i class="help icon"></i>
                         </a>
                     </div>
@@ -112,7 +120,7 @@
                     <!--NOME DO CLIENTE-->
                     <div class="eight wide required field" ng-class="{'error' : !clientForm.clientName.$valid && (clientForm.$submitted || !clientForm.clientName.$pristine)}">
                         <label for="nomeEmpresa">Nome do Cliente</label>
-                        <input type="text" ng-model="client.clientName" name="clientName" class="ui input" ng-required="client.ePersonType === 1" />
+                        <input type="text" ng-model="client.clientName" name="clientName" class="ui input" ng-required="client.ePersonType === 1" maxlength="50"/>
 
                         <div class="ui pointing red basic label" ng-show="!clientForm.clientName.$valid && (clientForm.$submitted || !clientForm.clientName.$pristine)">
                             <div ng-show="!clientForm.clientName.$valid">O Nome do Cliente é Obrigatório</div>
@@ -150,7 +158,7 @@
                     <div class="eight wide field" ng-class="{'error' : !clientForm.socialReasonName.$valid && (clientForm.$submitted || !clientForm.socialReasonName.$pristine)}">
 
                         <label for="socialReasonName">Razão Social</label>
-                        <input type="text" ng-model="client.socialReasonName" name="socialReasonName" class="ui input" ng-required="client.ePersonType === 2" />
+                        <input type="text" ng-model="client.socialReasonName" name="socialReasonName" class="ui input" ng-required="client.ePersonType === 2" maxlength="50"/>
 
                         <div class="ui pointing red basic label" ng-show="!clientForm.socialReasonName.$valid && (clientForm.$submitted || !clientForm.socialReasonName.$pristine)">
                             <div ng-show="!clientForm.socialReasonName.$valid">A Razão Social é Obrigatória</div>
@@ -162,7 +170,7 @@
                     <div class="eight wide field" ng-class="{'error' : !clientForm.fantasyName.$valid && (clientForm.$submitted || !clientForm.fantasyName.$pristine)}">
 
                         <label for="fantasyName">Nome Fantasia</label>
-                        <input type="text" ng-model="client.fantasyName" name="fantasyName" class="ui input" ng-required="client.ePersonType === 2" />
+                        <input type="text" ng-model="client.fantasyName" name="fantasyName" class="ui input" ng-required="client.ePersonType === 2" maxlength="50"/>
 
                         <div class="ui pointing red basic label" ng-show="!clientForm.fantasyName.$valid && (clientForm.$submitted || !clientForm.fantasyName.$pristine)">
                             <div ng-show="!clientForm.fantasyName.$valid">O Nome Fantasia é Obrigatório</div>
@@ -345,7 +353,7 @@
                 <p>Taxa de conversão: 50%</p>
                 <div class="sixteen wide field">
                     <label for="obs">Observação</label>
-                    <textarea type="text" ng-model="client.note" name="obs" rows="5" class="ui input" />
+                    <textarea type="text" ng-model="client.note" name="obs" rows="5" class="ui input" maxlength="250"/>
                 </div>
             </div>
         </div>-->

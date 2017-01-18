@@ -77,6 +77,8 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<ILogAppService>().To<LogAppService>();
             kernel.Bind<ICompanyAppService>().To<CompanyAppService>();
             kernel.Bind<IClientAppService>().To<ClientAppService>();
+            kernel.Bind<IEquipmentAppService>().To<EquipmentAppService>();
+            kernel.Bind<IProviderAppService>().To<ProviderAppService>();
 
             //SERVICE
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
@@ -87,15 +89,21 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<ICompanyService>().To<CompanyService>();
             kernel.Bind<IOccupationAreaService>().To<OccupationAreaService>();
             kernel.Bind<IClientService>().To<ClientService>();
+            kernel.Bind<IEquipmentService>().To<EquipmentService>();
+            kernel.Bind<IProviderService>().To<ProviderService>();
 
             //REPOSITORIES
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
             kernel.Bind<IUserRepository>().To<UserRepository>();
             kernel.Bind<IConfigurationRepository>().To<ConfigurationRepository>();
             kernel.Bind<INotificationRepository>().To<NotificationRepository>();
+            kernel.Bind<ILogRepository>().To<LogRepository>();
             kernel.Bind<ICompanyRepository>().To<CompanyRepository>();
             kernel.Bind<IOccupationAreaRepository>().To<OccupationAreaRepository>();
             kernel.Bind<IClientRepository>().To<ClientRepository>();
+            kernel.Bind<IEquipmentRepository>().To<EquipmentRepositoy>();
+            kernel.Bind<IProviderRepository>().To<ProviderRepository>();
+
         }
     }
 }

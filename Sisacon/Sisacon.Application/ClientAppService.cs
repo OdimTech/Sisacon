@@ -99,7 +99,7 @@ namespace Sisacon.Application
             {
                 var client = _clientService.getById(clientId);
 
-                if(client.validatePendencesBeforeDelete())
+                if(client != null && client.validatePendencesBeforeDelete())
                 {
                     _clientService.delete(client);
 

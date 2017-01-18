@@ -10,14 +10,17 @@
                 <div class="ui stackable grid" style="padding: 0">
 
                     <div class="ui four wide stackable column">
+
                         <h3 class="ui header">
+                            <i class="bordered truck icon"></i>
                             <div class="content">
                                 Fornecedor
                                 <div class="inverted sub header">
-                                    Edite ou Cadastre um novo Fornecedor
+                                    Menu - Cadastros - Fornecedor
                                 </div>
                             </div>
                         </h3>
+
                     </div>
                     <div class="ui twelve wide stackable right aligned column">
                         <a class="ui labeled primary icon button" href="#/providerList">
@@ -32,7 +35,7 @@
                         <a class="ui labeled primary icon button" ng-class="{'disabled': vm.provider.id == 0}" ng-click="vm.showModalRemoveProvider(vm.provider)">
                             <i class="remove icon"></i>Excluir
                         </a>
-                        <a class="ui icon primary button" ng-click="vm.showHelp()">
+                        <a class="ui icon orange button" ng-click="vm.showHelp()">
                             <i class="help icon"></i>
                         </a>
                     </div>
@@ -41,9 +44,13 @@
             </div>
         </div><!--TOP MENU-->
 
-        <div class="ui twelve wide stackable centered column" style="padding-top: 0">
+        <div class="ui ten wide stackable centered column" style="padding-top: 0">
 
-            <div class="ui form stackable fluid segment">
+            <div class="ui form stackable raised fluid segment">
+
+                <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                    Informações Comerciais
+                </div>
 
                 <div class="fields" ng-show="vm.provider.id > 0 || !vm.configuration.codAutoProvider">
 
@@ -106,7 +113,53 @@
 
             </div>
 
-            <div class="ui form stackable fluid segment">
+            <div class="ui form stackable raised fluid segment">
+                
+                <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                    Dados Bancários
+                </div>
+                   
+                <div class="six wide required field">
+
+                    <label for="bank">Banco</label>
+                    <select ng-model="vm.accountDetails.bank" ng-options="item.id as item.desc for item in vm.banks" ng-selected="vm.accountDetails.bank" name="bank"></select>
+
+                </div>
+
+
+                <div class="fields">
+
+                    <div class="three wide field">
+
+                        <label for="agency">Agência</label>
+                        <input type="text" name="agency" class="ui input" />
+
+                    </div>
+
+                    <div class="three wide field">
+
+                        <label for="numberAccount">Número da Conta</label>
+                        <input type="text" name="numberAccount" class="ui input" />
+
+                    </div>
+
+                    <div class="four wide field">
+
+                        <label for="accountType">Tipo da Conta</label>
+                        <input type="text" name="accountType" class="ui input" />
+
+                    </div>   
+
+                </div>
+
+            </div>
+
+            <div class="ui form stackable raised fluid segment">
+
+                <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                    Endereço
+                </div>
+
                 <div class="fields">
 
                     <!--CEP-->
@@ -194,7 +247,12 @@
                 </div>
             </div>
 
-            <div class="ui form stackable fluid segment">
+            <div class="ui form stackable raised fluid segment">
+
+                <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                    Contato
+                </div>
+
                 <div class="fields">
 
                     <!--TELEFONE FIXO-->
@@ -244,7 +302,7 @@
     </div>
     <div class="image content">
         <div class="description">
-            <h4>Deseja realmente excluir o Fornecedor {{vm.nameProvider}}? Essa ação não poderá ser desfeita.</h4>
+            <h4>Deseja realmente excluir o Fornecedor {{nameProvider}}? Essa ação não poderá ser desfeita.</h4>
         </div>
     </div>
     <div class="actions">

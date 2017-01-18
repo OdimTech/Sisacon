@@ -4,7 +4,7 @@
 
     EquipmentController.$inject = ['$scope', '$window', 'blockUI', '$routeParams', 'toastr', 'utilityService', 'localStorageService', 'equipmentService', 'valuesService', 'configurationService', 'DTOptionsBuilder', 'DTColumnBuilder'];
 
-    function EquipmentController($scope, $window, blockUI, $routeParams, toastr, utilityService, localStorageService, equipmentService, valuesService, configurationService,DTOptionsBuilder, DTColumnBuilder) {
+    function EquipmentController($scope, $window, blockUI, $routeParams, toastr, utilityService, localStorageService, equipmentService, valuesService, configurationService, DTOptionsBuilder, DTColumnBuilder) {
 
         var vm = this;
 
@@ -13,7 +13,7 @@
         vm.equipment = {};
         vm.equipmentList = [];
         vm.nameEquipment = '';
-        
+
         //METHODS
         vm.loadConfiguration = loadConfiguration;
         vm.loadDataTables = loadDataTables;
@@ -148,6 +148,7 @@
             if ($scope.equipmentForm.$valid) {
 
                 vm.equipment.registrationDate = utilityService.convertStringToDate(vm.equipment.registrationDate);
+                vm.equipment.acquisitionDate = utilityService.convertStringToDate(vm.equipment.acquisitionDate);
 
                 blockUI.start("Salvando Equipamento...");
 
@@ -155,6 +156,9 @@
 
                     blockUI.stop();
                     toastr.success(response.message);
+
+                    response.value.registrationDate = utilityService.convertDateToString(response.value.registrationDate);
+                    response.value.acquisitionDate = utilityService.convertDateToString(response.value.acquisitionDate);
 
                     vm.equipment = response.value;
                     vm.btnSaveText = "Atualizar"
@@ -181,14 +185,11 @@
 
                 equipmentService.deleteEquipment(vm.idEquipmentToRemove).success(function (response) {
 
-                    if (response.logicalTest) {
+                    toastr.success(response.message);
 
-                        toastr.success(response.message);
+                    vm.idequipmentToRemove = 0;
 
-                        vm.idequipmentToRemove = 0;
-
-                        $window.location.href = "#/equipmentList";
-                    }
+                    $window.location.href = "#/equipmentList";
 
                 }).error(function (response) {
 
@@ -220,14 +221,11 @@
 
                 equipmentService.deleteEquipment(vm.idEquipmentToRemove).success(function (response) {
 
-                    if (response.quantity) {
+                    toastr.success(response.message);
 
-                        toastr.success(response.message);
+                    vm.idequipmentToRemove = 0;
 
-                        vm.idequipmentToRemove = 0;
-
-                        loadEquipmentList();
-                    }
+                    loadEquipmentList();
 
                 }).error(function (response) {
 
@@ -242,14 +240,11 @@
 
                 equipmentService.deleteEquipment(vm.idEquipmentToRemove).success(function (response) {
 
-                    if (response.quantity) {
+                    toastr.success(response.message);
 
-                        toastr.success(response.message);
+                    vm.idequipmentToRemove = 0;
 
-                        vm.idequipmentToRemove = 0;
-
-                        $window.location.href = "#/equipmentList";
-                    }
+                    $window.location.href = "#/equipmentList";
 
                 }).error(function (response) {
 

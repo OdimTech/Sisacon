@@ -2,7 +2,7 @@
 
     <div class="ui stackable grid">
 
-        <div class="ui sixteen wide stackable column" id="top-menu">
+            <div class="ui sixteen wide stackable column" id="top-menu">
             <!--TOP MENU-->
 
             <div class="ui stackable segment">
@@ -10,14 +10,17 @@
                 <div class="ui stackable grid" style="padding: 0">
 
                     <div class="ui four wide stackable column">
+
                         <h3 class="ui header">
+                            <i class="bordered print icon"></i>
                             <div class="content">
                                 Equipamento
                                 <div class="inverted sub header">
-                                    Edite ou Cadastre um novo Equipamento
+                                    Menu - Cadastros - Equipamentos
                                 </div>
                             </div>
                         </h3>
+
                     </div>
                     <div class="ui twelve wide stackable right aligned column">
                         <a class="ui labeled primary icon button" href="#/equipmentList">
@@ -26,13 +29,13 @@
                         <a class="ui labeled primary icon button" ng-click="vm.newEquipment()">
                             <i class="edit icon"></i>Novo Equipamento
                         </a>
-                        <a class="ui labeled primary icon button" ng-click="vm.submitForm()">
-                            <i class="checkmark icon"></i> {{vm.btnSaveText}}
-                        </a>
                         <a class="ui labeled primary icon button" ng-class="{'disabled': vm.equipment.id == 0}" ng-click="vm.showModalRemoveEquipment(vm.equipment)">
                             <i class="remove icon"></i>Excluir
                         </a>
-                        <a class="ui icon primary button" ng-click="vm.showHelp()">
+                        <a class="ui labeled primary icon button" ng-click="vm.submitForm()">
+                            <i class="checkmark icon"></i> {{vm.btnSaveText}}
+                        </a>
+                        <a class="ui icon orange button" title="Dicas" ng-click="vm.showHelp()">
                             <i class="help icon"></i>
                         </a>
                     </div>
@@ -43,14 +46,18 @@
 
         <div class="ui ten wide stackable centered column" style="padding-top: 0">
 
-            <div class="ui form stackable fluid segment">
+            <div class="ui form stackable raised fluid segment">
+
+                <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                    Detalhes do Equipamento
+                </div>
 
                 <div class="fields" ng-show="vm.equipment.id > 0 || !vm.configuration.codAutoEquipment">
                     <!--CODIGO E DATA CADASTRO-->
 
                     <div class="three wide field">
                         <label for="cod">Código do Equipamento</label>
-                        <input type="text" name="cod" class="ui input" ng-required="vm.equipment.id == 0 && !vm.configuration.codAutoEquipment" ng-readonly="vm.configuration.codAutoEquipment" ng-model="vm.equipment.codEquipment" />
+                        <input type="text" name="cod" class="ui input" ng-required="vm.equipment.id == 0 && !vm.configuration.codAutoEquipment" ng-readonly="vm.configuration.codAutoEquipment" ng-model="vm.equipment.codEquipment" maxlength="10"/>
                     </div>
                     <div class="three wide read-only field">
                         <label for="registration">Data de Cadastro</label>
@@ -63,45 +70,63 @@
 
                 <div class="fields">
 
-                    <div class="ui eight required wide field">
+                    <div class="ui eight required wide field" ng-class="{'error' : !equipmentForm.desc.$valid && (equipmentForm.$submitted || !equipmentForm.desc.$pristine)}">
                         <!--DESCRIÇÃO-->
 
                         <label>Descrição</label>
                         <input type="text" name="desc" class="ui input" ng-model="vm.equipment.desc" required maxlength="100" />
 
+                        <div class="ui pointing red basic label" ng-show="!equipmentForm.desc.$valid && (equipmentForm.$submitted || !equipmentForm.desc.$pristine)">
+                            <div ng-show="!equipmentForm.desc.$valid">A Descrição é Obrigatória</div>
+                        </div>
+
                     </div>
-                    <div class="six wide required field">
+
+                    <div class="ui four required wide field" ng-class="{'error' : !equipmentForm.acquisitionDate.$valid && (equipmentForm.$submitted || !equipmentForm.acquisitionDate.$pristine)}">
                         <!--DATA DE AQUISIÇÃO-->
 
                         <label for="acquisitionDate">Data de Aquisição</label>
-                        <input type="date" name="acquisitionDate" class="ui input" ng-model="vm.equipment.acquisitionDate" />
+                        <input type="text" name="acquisitionDate" class="ui input" ui-mask="99/99/9999" ng-model="vm.equipment.acquisitionDate" required/>
+
+                        <div class="ui pointing red basic label" ng-show="!equipmentForm.acquisitionDate.$valid && (equipmentForm.$submitted || !equipmentForm.acquisitionDate.$pristine)">
+                            <div ng-show="!equipmentForm.acquisitionDate.$valid">A Data de Aquisição é Obrigatória</div>
+                        </div>
+
                     </div>
 
                 </div>
 
                 <div class="fields">
 
-                    <div class="ui four wide required field">
+                    <div class="ui four wide required field" ng-class="{'error' : !equipmentForm.valor.$valid && (equipmentForm.$submitted || !equipmentForm.valor.$pristine)}">
                         <!--VALOR-->
 
                         <label>Valor Aproximado</label>
-                        <div class="ui right labeled input">
-                            <input type="number" name="valor" ng-model="vm.equipment.valor" class="ui input" />
-                            <div class="ui basic label">
+                        <div class="ui right labeled input" >
+                            <input type="number" name="valor" ng-model="vm.equipment.valor" class="ui input" required/>
+                            <div class="ui basic label" >
                                 R$
                             </div>
                         </div>
 
+                        <div class="ui pointing red basic label" ng-show="!equipmentForm.valor.$valid && (equipmentForm.$submitted || !equipmentForm.valor.$pristine)">
+                            <div ng-show="!equipmentForm.valor.$valid">O Valor é Obrigatório</div>
+                        </div>
+
                     </div>
-                    <div class="four wide required field">
+                    <div class="four wide required field" ng-class="{'error' : !equipmentForm.lifeSpan.$valid && (equipmentForm.$submitted || !equipmentForm.lifeSpan.$pristine)}">
                         <!--VIDA ÚTIL-->
 
                         <label for="acquisitionDate">Vida útil - Expectativa</label>
                         <div class="ui right labeled input">
-                            <input type="number" name="acquisitionDate" ng-model="vm.equipment.lifeSpan" class="ui input" />
+                            <input type="number" name="lifeSpan" ng-model="vm.equipment.lifeSpan" class="ui input" required/>
                             <div class="ui basic label">
                                 Anos
                             </div>
+                        </div>
+
+                        <div class="ui pointing red basic label" ng-show="!equipmentForm.lifeSpan.$valid && (equipmentForm.$submitted || !equipmentForm.lifeSpan.$pristine)">
+                            <div ng-show="!equipmentForm.valor.$valid">A Vida Útil é Obrigatória</div>
                         </div>
 
                     </div>
@@ -122,7 +147,7 @@
     </div>
     <div class="image content">
         <div class="description">
-            <h4>Deseja realmente excluir o Equipamento {{vm.nameEquipment}}? Essa ação não poderá ser desfeita.</h4>
+            <h4>Deseja realmente excluir o Equipamento {{vm.equipment.desc}}? Essa ação não poderá ser desfeita.</h4>
         </div>
     </div>
     <div class="actions">

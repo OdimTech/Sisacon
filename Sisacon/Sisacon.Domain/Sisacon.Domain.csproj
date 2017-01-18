@@ -36,19 +36,27 @@
     <Compile Include="Entities\Company.cs" />
     <Compile Include="Entities\Configuration.cs" />
     <Compile Include="Entities\Equipment.cs" />
+    <Compile Include="Entities\Provider.cs" />
     <Compile Include="Enuns\FormatImg.cs" />
     <Compile Include="Enuns\OperationType.cs" />
     <Compile Include="Enuns\PersonType.cs" />
     <Compile Include="Enuns\Sex.cs" />
+    <Compile Include="Enuns\AccountType.cs" />
     <Compile Include="Interfaces\Repositories\IClientRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICompanyRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IEquipmentRepository.cs" />
     <Compile Include="Interfaces\Repositories\IOccupationAreaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IProviderRepository.cs" />
     <Compile Include="Interfaces\Services\IClientService.cs" />
     <Compile Include="Interfaces\Services\ICompanyService.cs" />
+    <Compile Include="Interfaces\Services\IEquipmentService.cs" />
     <Compile Include="Interfaces\Services\IOccupationAreaService.cs" />
+    <Compile Include="Interfaces\Services\IProviderService.cs" />
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\CompanyService.cs" />
+    <Compile Include="Services\EquipmentService.cs" />
     <Compile Include="Services\OccupationAreaService.cs" />
+    <Compile Include="Services\ProviderService.cs" />
     <Compile Include="ValueObjects\Contact.cs" />
     <Compile Include="Entities\Log.cs" />
     <Compile Include="Entities\Notification.cs" />
@@ -73,6 +81,7 @@
     <Compile Include="Services\LogService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="ValueObjects\Address.cs" />
+    <Compile Include="ValueObjects\BankDetails.cs" />
     <Compile Include="ValueObjects\OccuppationArea.cs" />
   </ItemGroup>
   <ItemGroup>

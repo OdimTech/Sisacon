@@ -34,10 +34,10 @@ namespace Sisacon.UI.ViewModels
         public int? IdAddress { get; set; }
         public int? IdContact { get; set; }
         public int IdUser { get; set; }
-        public virtual Address Address { get; set; }
-        public virtual Contact Contact { get; set; }
+        public  Address Address { get; set; }
+        public Contact Contact { get; set; }
         [Required]
-        public virtual User User { get; set; }
+        public User User { get; set; }
         [Required]
         public bool SendAutomaticMsg { get; set; }
         [Required]

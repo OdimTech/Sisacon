@@ -9,6 +9,7 @@ namespace Sisacon.Application.Interfaces
         void update(T obj);
         void delete(int id);
         ResponseMessage<T> getById(int id);
+        ResponseMessage<T> getById(int id, bool includeUser);
         ResponseMessage<T> getAll();
         int commit();
         void commitAsync();

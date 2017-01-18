@@ -9,20 +9,23 @@
                 <div class="ui stackable grid" style="padding: 0">
 
                     <div class="ui three wide stackable column">
+
                         <h3 class="ui header">
+                            <i class="bordered truck icon"></i>
                             <div class="content">
-                                Fornecedores
+                                Lista de Fornecedores
                                 <div class="inverted sub header">
-                                    Lista de Fornecedores Cadastrados
+                                    Menu - Cadastros - Fornecedor
                                 </div>
                             </div>
                         </h3>
+
                     </div>
                     <div class="ui thirteen wide stackable right aligned column">
                         <a class="ui labeled primary icon button" href="#/newProvider?id=0">
                             <i class="edit icon"></i> Novo Fornecedor
                         </a>
-                        <a class="ui icon primary button" ng-click="showHelp()">
+                        <a class="ui icon orange button" ng-click="showHelp()">
                             <i class="help icon"></i>
                         </a>
                     </div>
@@ -79,7 +82,7 @@
     </div>
     <div class="image content">
         <div class="description">
-            <h4>Deseja realmente excluir o Fornecedor {{vm.nameProvider}}? Essa ação não poderá ser desfeita.</h4>
+            <h4>Deseja realmente excluir o Fornecedor {{nameProvider}}? Essa ação não poderá ser desfeita.</h4>
         </div>
     </div>
     <div class="actions">

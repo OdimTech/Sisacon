@@ -51,14 +51,17 @@
   <ItemGroup>
     <Compile Include="Context\SisaconDbContext.cs" />
     <Compile Include="Mapping\AddressMap.cs" />
+    <Compile Include="Mapping\BankDetailsMap.cs" />
     <Compile Include="Mapping\BaseMap.cs" />
     <Compile Include="Mapping\ClientMap.cs" />
     <Compile Include="Mapping\CompanyMap.cs" />
     <Compile Include="Mapping\ConfigurationMap.cs" />
     <Compile Include="Mapping\ContactMap.cs" />
+    <Compile Include="Mapping\EquipmentMap.cs" />
     <Compile Include="Mapping\LogMap.cs" />
     <Compile Include="Mapping\NotificationMap.cs" />
     <Compile Include="Mapping\OcuppationAreaMap.cs" />
+    <Compile Include="Mapping\ProviderMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\OccupationAreaSeed.cs" />
@@ -67,9 +70,11 @@
     <Compile Include="Repositories\ClientRepository.cs" />
     <Compile Include="Repositories\CompanyRepository.cs" />
     <Compile Include="Repositories\ConfigurationRepository.cs" />
+    <Compile Include="Repositories\EquipmentRepositoy.cs" />
     <Compile Include="Repositories\LogRepository.cs" />
     <Compile Include="Repositories\NotificationRepository.cs" />
     <Compile Include="Repositories\OccupationAreaRepository.cs" />
+    <Compile Include="Repositories\ProviderRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>

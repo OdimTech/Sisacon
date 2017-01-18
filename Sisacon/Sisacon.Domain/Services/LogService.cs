@@ -7,14 +7,18 @@ using System.Text;
 using System.Threading.Tasks;
 using Sisacon.Domain.Interfaces;
 using Sisacon.Domain.Enuns;
+using Sisacon.Domain.Interfaces.Repositories;
 
 namespace Sisacon.Domain.Services
 {
     public class LogService : ServiceBase<Log>, ILogService
     {
-        public LogService(IRepositoryBase<Log> repository)
+        private readonly ILogRepository _logRepository;
+
+        public LogService(ILogRepository repository)
             : base(repository)
         {
+            _logRepository = repository;
         }
 
         public List<Log> getByGravity(ErrorGravity.eErrorGravity errorGravity)

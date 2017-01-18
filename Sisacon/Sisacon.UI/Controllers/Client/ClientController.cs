@@ -52,7 +52,7 @@ namespace Sisacon.UI.Controllers
         [Route("client")]
         public HttpResponseMessage GetClientById(int id)
         {
-            var response = _clientService.getById(id);
+            var response = _clientService.getById(id, true);
 
             return Request.CreateResponse(response.StatusCode, response);
         }

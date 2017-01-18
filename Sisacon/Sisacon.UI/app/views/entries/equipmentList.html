@@ -9,21 +9,24 @@
 
                 <div class="ui stackable grid" style="padding: 0">
 
-                    <div class="ui three wide stackable column">
+                    <div class="ui four wide stackable column">
+
                         <h3 class="ui header">
+                            <i class="bordered print icon"></i>
                             <div class="content">
                                 Equipamentos
                                 <div class="inverted sub header">
-                                    Lista de Equipamentos Cadastrados
+                                    Menu - Cadastros - Equipamentos
                                 </div>
                             </div>
                         </h3>
+
                     </div>
-                    <div class="ui thirteen wide stackable right aligned column">
+                    <div class="ui twelve wide stackable right aligned column">
                         <a class="ui labeled primary icon button" href="#/newEquipment?id=0">
                             <i class="edit icon"></i> Novo Equipamento
                         </a>
-                        <a class="ui icon primary button" ng-click="showHelp()">
+                        <a class="ui icon orange button" title="Dicas" ng-click="showHelp()">
                             <i class="help icon"></i>
                         </a>
                     </div>
@@ -72,7 +75,7 @@
     </div>
     <div class="image content">
         <div class="description">
-            <h4>Deseja realmente excluir o Equipamento {{vm.nameEquipment}}? Essa ação não poderá ser desfeita.</h4>
+            <h4>Deseja realmente excluir o Equipamento {{nameEquipment}}? Essa ação não poderá ser desfeita.</h4>
         </div>
     </div>
     <div class="actions">

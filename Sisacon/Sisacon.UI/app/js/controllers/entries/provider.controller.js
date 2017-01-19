@@ -164,7 +164,7 @@
                 user: vm.user,
                 address: {},
                 contact: {},
-                accountDetails: {}
+                bankDetails: {}
             }
         }
 

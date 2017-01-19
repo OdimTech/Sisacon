@@ -123,7 +123,7 @@
                 <div class="four wide field">
 
                     <label for="accountType">Tipo de Conta</label>
-                    <select ng-model="vm.accountDetails.accountType" ng-options="item.id as item.desc for item in vm.accountType" ng-selected="vm.accountDetails.accountType" name="accountType"></select>
+                    <select ng-model="vm.provider.bankDetails.tipoConta" ng-options="item.id as item.desc for item in vm.accountType" ng-selected="vm.accountDetails.accountType" name="accountType"></select>
 
                 </div>
                    
@@ -131,7 +131,7 @@
                 <div class="six wide field">
 
                     <label for="bank">Banco</label>
-                    <select ng-model="vm.accountDetails.bank" ng-options="item.id as item.desc for item in vm.banks" ng-selected="vm.accountDetails.bank" name="bank"></select>
+                    <select ng-model="vm.provider.bankDetails.bank" ng-options="item.id as item.desc for item in vm.banks" ng-selected="vm.accountDetails.bank" name="bank"></select>
 
                 </div>
 
@@ -141,7 +141,7 @@
                     <div class="three wide field">
 
                         <label for="agency">Agência</label>
-                        <input type="text" ng-model="vm.accountDetails.agency" name="agency" class="ui input" />
+                        <input type="text" ng-model="vm.provider.bankDetails.agency" name="agency" class="ui input" />
 
                     </div>
                     
@@ -149,7 +149,7 @@
                     <div class="three wide field">
 
                         <label for="numberAccount">Número da Conta</label>
-                        <input type="text" ng-model="vm.accountDetails.numberAccount" name="numberAccount" class="ui input" />
+                        <input type="text" ng-model="vm.provider.bankDetails.accountNumber" name="numberAccount" class="ui input" />
 
                     </div>
 

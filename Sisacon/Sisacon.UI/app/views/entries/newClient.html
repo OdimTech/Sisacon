@@ -8,7 +8,7 @@
             <div class="ui stackable segment">
                 <div class="ui stackable grid" style="padding: 0">
 
-                    <div class="ui three wide stackable column">
+                    <div class="ui four wide stackable column">
 
                         <h3 class="ui header">
                             <i class="bordered users icon"></i>
@@ -22,7 +22,7 @@
 
                     </div>
 
-                    <div class="ui thirteen wide stackable right aligned column">
+                    <div class="ui twelve wide stackable right aligned column">
 
                         <a class="ui labeled primary icon button" href="#/clientList">
                             <i class="long arrow left icon"></i> Voltar
@@ -128,7 +128,7 @@
                     </div>
 
                     <!--DATA DE NASCIMENTO-->
-                    <div class="three wide required field" ng-class="{'error' : !clientForm.birthday.$valid && (clientForm.$submitted || !clientForm.birthday.$pristine)}">
+                    <div class="four wide required field" ng-class="{'error' : !clientForm.birthday.$valid && (clientForm.$submitted || !clientForm.birthday.$pristine)}">
 
                         <label for="birthday">Data de Nascimento</label>
                         <input type="text" ng-model="client.birthday" name="birthday" ui-mask="99/99/9999" class="ui input" ng-required="client.ePersonType === 1" />
@@ -139,7 +139,7 @@
                     </div>
 
                     <!--SEXO-->
-                    <div class="three wide required field" ng-class="{'error' : client.eSex == 0 && (clientForm.$submitted || !clientForm.sex.$pristine)}">
+                    <div class="four wide required field" ng-class="{'error' : client.eSex == 0 && (clientForm.$submitted || !clientForm.sex.$pristine)}">
 
                         <label for="sex">Gênero</label>
                         <select ng-model="client.eSex" ng-options="item.id as item.desc for item in sexClient" ng-selected="client.eSex" name="sex"
@@ -217,7 +217,7 @@
                 <div class="fields">
 
                     <!--CEP-->
-                    <div class="two wide field">
+                    <div class="three wide field">
                         <label for="cep">CEP</label>
                         <input type="text" name="cep" ng-model="client.address.cep" ng-blur="getAddress(client.address.cep)" class="ui input" ui-mask="99999-999" />
                     </div>

@@ -55,11 +55,11 @@
                 <div class="fields" ng-show="vm.equipment.id > 0 || !vm.configuration.codAutoEquipment">
                     <!--CODIGO E DATA CADASTRO-->
 
-                    <div class="three wide field">
+                    <div class="four wide field">
                         <label for="cod">Código do Equipamento</label>
                         <input type="text" name="cod" class="ui input" ng-required="vm.equipment.id == 0 && !vm.configuration.codAutoEquipment" ng-readonly="vm.configuration.codAutoEquipment" ng-model="vm.equipment.codEquipment" maxlength="10"/>
                     </div>
-                    <div class="three wide read-only field">
+                    <div class="four wide read-only field">
                         <label for="registration">Data de Cadastro</label>
 
                         <input type="text" name="registration" ui-mask="99/99/9999" class="ui input" readonly ng-model="vm.equipment.registrationDate" />

@@ -29,9 +29,11 @@ namespace Sisacon.Domain.Entities
         public string Note { get; set; }
         public int? IdAddress { get; set; }
         public int? IdContact { get; set; }
+        public int? IdBankDetails { get; set; }
         public int IdUser { get; set; }
         public virtual Address Address { get; set; }
         public virtual Contact Contact { get; set; }
+        public virtual BankDetails BankDetails { get; set; }
         public virtual User User { get; set; }
 
         #endregion

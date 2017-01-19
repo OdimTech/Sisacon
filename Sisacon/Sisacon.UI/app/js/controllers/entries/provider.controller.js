@@ -26,6 +26,7 @@
         vm.loadDataTables = loadDataTables;
         vm.loadProvider = loadProvider;
         vm.loadBanks = loadBanks;
+        vm.loadAccountType = loadAccountType;
         vm.removeProvider = removeProvider;
         vm.initObjectProvider = initObjectProvider;
         vm.newProvider = newProvider;
@@ -39,6 +40,7 @@
         vm.loadDataTables();
         vm.loadConfiguration();
         vm.loadBanks();
+        vm.loadAccountType();
 
         //CASO EXISTA ALGUM VALOR NA URL, TRATA-SE DE EDIÇÃO, CASO NÃO TENHA É LISTAGEM 
         if ($routeParams.id) {
@@ -137,6 +139,21 @@
         function loadBanks() {
 
             vm.banks = valuesService.banks;
+        }
+
+        function loadAccountType() {
+
+            vm.accountType = [
+
+                {
+                    id: 1,
+                    desc: 'Corrente'
+                },
+                {
+                    id: 2,
+                    desc: 'Poupança'
+                }
+            ];
         }
 
         function initObjectProvider() {

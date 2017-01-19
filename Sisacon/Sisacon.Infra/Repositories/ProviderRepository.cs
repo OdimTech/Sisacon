@@ -18,6 +18,7 @@ namespace Sisacon.Infra.Repositories
                 Context.Provider.Add(provider);
                 Context.Address.Add(provider.Address);
                 Context.Contact.Add(provider.Contact);
+                Context.BankDetails.Add(provider.BankDetails);
 
                 Context.User.Attach(provider.User);
             }
@@ -34,6 +35,7 @@ namespace Sisacon.Infra.Repositories
                 Context.Entry(provider).State = EntityState.Modified;
                 Context.Entry(provider.Address).State = EntityState.Modified;
                 Context.Entry(provider.Contact).State = EntityState.Modified;
+                Context.Entry(provider.BankDetails).State = EntityState.Modified;
             }
             catch (Exception ex)
             {
@@ -49,6 +51,7 @@ namespace Sisacon.Infra.Repositories
                     Provider.
                     Include("Address").
                     Include("Contact").
+                    Include("BankDetails").
                     Include("User").
                     Where(x => x.Id == id && x.ExclusionDate == null).
                     FirstOrDefault();
@@ -67,6 +70,7 @@ namespace Sisacon.Infra.Repositories
                     Provider.
                     Include("Address").
                     Include("Contact").
+                    Include("BankDetails").
                     Include("User").
                     Where(x => x.IdUser == userId && x.ExclusionDate == null).
                     ToList();

@@ -23,6 +23,7 @@ namespace Sisacon.UI.AutoMapper
             CreateMap<Client, ClientViewModel>();
             CreateMap<Equipment, EquipmentViewModel>();
             CreateMap<Provider, ProviderViewModel>();
+            CreateMap<BankDetails, BankDetailsViewModel>();
         }
     }
 }

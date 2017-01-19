@@ -47,6 +47,10 @@ namespace Sisacon.Infra.Mapping
                 .WithMany()
                 .HasForeignKey(x => x.IdContact);
 
+            HasOptional(x => x.BankDetails)
+                .WithMany()
+                .HasForeignKey(x => x.IdBankDetails);
+
             HasRequired(x => x.User)
                 .WithMany()
                 .HasForeignKey(x => x.IdUser);

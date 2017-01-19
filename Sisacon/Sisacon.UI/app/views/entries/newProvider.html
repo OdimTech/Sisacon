@@ -118,37 +118,40 @@
                 <div class="ui blue ribbon large label" style="margin-bottom: 20px">
                     Dados Bancários
                 </div>
+
+                <!--TIPO DE CONTA-->
+                <div class="four wide field">
+
+                    <label for="accountType">Tipo de Conta</label>
+                    <select ng-model="vm.accountDetails.accountType" ng-options="item.id as item.desc for item in vm.accountType" ng-selected="vm.accountDetails.accountType" name="accountType"></select>
+
+                </div>
                    
-                <div class="six wide required field">
+                <!--BANCO-->
+                <div class="six wide field">
 
                     <label for="bank">Banco</label>
                     <select ng-model="vm.accountDetails.bank" ng-options="item.id as item.desc for item in vm.banks" ng-selected="vm.accountDetails.bank" name="bank"></select>
 
                 </div>
 
-
                 <div class="fields">
 
+                    <!--AGENCIA-->
                     <div class="three wide field">
 
                         <label for="agency">Agência</label>
-                        <input type="text" name="agency" class="ui input" />
+                        <input type="text" ng-model="vm.accountDetails.agency" name="agency" class="ui input" />
 
                     </div>
-
+                    
+                    <!--NUMERO DA CONTA-->
                     <div class="three wide field">
 
                         <label for="numberAccount">Número da Conta</label>
-                        <input type="text" name="numberAccount" class="ui input" />
+                        <input type="text" ng-model="vm.accountDetails.numberAccount" name="numberAccount" class="ui input" />
 
                     </div>
-
-                    <div class="four wide field">
-
-                        <label for="accountType">Tipo da Conta</label>
-                        <input type="text" name="accountType" class="ui input" />
-
-                    </div>   
 
                 </div>
 
@@ -167,6 +170,7 @@
                         <label for="cep">CEP</label>
                         <input type="text" name="cep" ng-model="vm.provider.address.cep" ng-blur="vm.getAddress(vm.provider.address.cep)" class="ui input" ui-mask="99999-999" />
                     </div>
+
                     <div class="field">
                         <label>&nbsp</label>
                         <button type="button" class="ui square icon yellow button" data-content="Informe o Cep para que possamos preencher o Endereço para voçê"
@@ -174,6 +178,7 @@
                             <i class="info icon"></i>
                         </button>
                     </div>
+
                 </div>
                 <div class="fields">
 

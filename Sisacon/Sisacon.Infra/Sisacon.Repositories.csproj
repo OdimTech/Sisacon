@@ -59,6 +59,7 @@
     <Compile Include="Mapping\ContactMap.cs" />
     <Compile Include="Mapping\EquipmentMap.cs" />
     <Compile Include="Mapping\LogMap.cs" />
+    <Compile Include="Mapping\MaterialCategoryMap.cs" />
     <Compile Include="Mapping\NotificationMap.cs" />
     <Compile Include="Mapping\OcuppationAreaMap.cs" />
     <Compile Include="Mapping\ProviderMap.cs" />

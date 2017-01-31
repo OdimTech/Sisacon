@@ -25,6 +25,7 @@ namespace Sisacon.UI.ViewModels
         public string Note { get; set; }
         public int? IdAddress { get; set; }
         public int? IdContact { get; set; }
+        public int? IdBankDetails { get; set; }
         public int IdUser { get; set; }
         public virtual AddressViewModel Address { get; set; }
         public virtual ContactViewModel Contact { get; set; }

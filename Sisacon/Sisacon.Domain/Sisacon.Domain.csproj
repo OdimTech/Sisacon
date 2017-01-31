@@ -36,6 +36,10 @@
     <Compile Include="Entities\Company.cs" />
     <Compile Include="Entities\Configuration.cs" />
     <Compile Include="Entities\Equipment.cs" />
+    <Compile Include="Entities\Material.cs" />
+    <Compile Include="Interfaces\Repositories\IMaterialCategoryRepository.cs" />
+    <Compile Include="Interfaces\Services\IMaterialCategoryService.cs" />
+    <Compile Include="ValueObjects\MaterialCategory.cs" />
     <Compile Include="Entities\Provider.cs" />
     <Compile Include="Enuns\FormatImg.cs" />
     <Compile Include="Enuns\OperationType.cs" />
@@ -83,6 +87,7 @@
     <Compile Include="ValueObjects\Address.cs" />
     <Compile Include="ValueObjects\BankDetails.cs" />
     <Compile Include="ValueObjects\OccuppationArea.cs" />
+    <Compile Include="ValueObjects\PriceResearch.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -123,16 +123,15 @@
                 <div class="four wide field">
 
                     <label for="accountType">Tipo de Conta</label>
-                    <select ng-model="vm.provider.bankDetails.tipoConta" ng-options="item.id as item.desc for item in vm.accountType" ng-selected="vm.accountDetails.accountType" name="accountType"></select>
-
+                    <select ng-model="vm.provider.bankDetails.eTipoConta" ng-options="item.id as item.desc for item in vm.accountType" ng-selected="vm.provider.bankDetails.eTipoConta" name="accountType"></select>
                 </div>
                    
                 <!--BANCO-->
                 <div class="six wide field">
 
                     <label for="bank">Banco</label>
-                    <select ng-model="vm.provider.bankDetails.bank" ng-options="item.id as item.desc for item in vm.banks" ng-selected="vm.accountDetails.bank" name="bank"></select>
-
+                    <select ng-model="vm.provider.bankDetails.bank" ng-options="item.id as item.desc for item in vm.banks" ng-selected="vm.provider.bankDetails.bank" name="bank"></select>
+                    
                 </div>
 
                 <div class="fields">

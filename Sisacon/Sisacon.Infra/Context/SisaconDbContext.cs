@@ -31,6 +31,9 @@ namespace Sisacon.Repositories.Context
         public DbSet<Equipment> Equipment { get; set; }
         public DbSet<Provider> Provider { get; set; }
         public DbSet<BankDetails> BankDetails { get; set; }
+        public DbSet<Material> Material { get; set; }
+        public DbSet<MaterialCategory> MaterialCategory { get; set; }
+        public DbSet<PriceResearch> PriceResearch { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -50,6 +53,9 @@ namespace Sisacon.Repositories.Context
             modelBuilder.Configurations.Add(new EquipmentMap());
             modelBuilder.Configurations.Add(new ProviderMap());
             modelBuilder.Configurations.Add(new BankDetailsMap());
+            modelBuilder.Configurations.Add(new MaterialMap());
+            modelBuilder.Configurations.Add(new MaterialCategoryMap());
+            modelBuilder.Configurations.Add(new PriceResearchMap());
 
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasColumnType("varchar"));

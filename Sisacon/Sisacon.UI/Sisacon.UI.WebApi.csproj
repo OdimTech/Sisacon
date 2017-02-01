@@ -2383,6 +2383,7 @@
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\EmailViewModel.cs" />
     <Compile Include="ViewModels\EquipmentViewModel.cs" />
+    <Compile Include="ViewModels\MaterialCategoryViewModel.cs" />
     <Compile Include="ViewModels\OccupationAreaViewModel.cs" />
     <Compile Include="ViewModels\ProviderViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />

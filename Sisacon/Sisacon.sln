@@ -12,9 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.Application", "Sisacon.Application\Sisacon.Application.csproj", "{D1CE6C3B-BDB9-4323-9707-9F88CE42C023}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{DC93613C-A116-43F1-A865-FD2910F034E6}"
-	ProjectSection(SolutionItems) = preProject
-		Sisacon.Application\UserAppService.cs = Sisacon.Application\UserAppService.cs
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.Domain", "Sisacon.Domain\Sisacon.Domain.csproj", "{549A3C23-002A-4396-BFEA-CC2CD7DF3EAA}"
 EndProject

@@ -53,10 +53,12 @@
     <Compile Include="Interfaces\ICrudMsgFormater.cs" />
     <Compile Include="Interfaces\IEquipmentAppService.cs" />
     <Compile Include="Interfaces\ILogAppService.cs" />
+    <Compile Include="Interfaces\IMaterialCategoryAppService.cs" />
     <Compile Include="Interfaces\IProviderAppService.cs" />
     <Compile Include="Interfaces\IUserAppService.cs" />
     <Compile Include="Interfaces\INotificationAppService.cs" />
     <Compile Include="LogAppService.cs" />
+    <Compile Include="MaterialCategoryAppService.cs" />
     <Compile Include="MsgNotification.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

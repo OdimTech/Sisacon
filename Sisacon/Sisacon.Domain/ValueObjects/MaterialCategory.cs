@@ -25,6 +25,18 @@ namespace Sisacon.Domain.ValueObjects
 
         #region Methods
 
+        public bool isValid()
+        {
+            var valid = true;
+
+            if(string.IsNullOrEmpty(Description))
+            {
+                valid = false;
+            }
+
+            return valid;
+        }
+
         public bool validateBeforeDelete()
         {
             var isValid = true;

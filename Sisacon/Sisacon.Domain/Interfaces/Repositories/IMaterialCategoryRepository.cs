@@ -9,6 +9,6 @@ namespace Sisacon.Domain.Interfaces.Repositories
 {
     public interface IMaterialCategoryRepository : IRepositoryBase<MaterialCategory>
     {
-        List<MaterialCategory> getByUserId(int idUser);
+        List<MaterialCategory> getByUserId(int userId);
     } 
 }

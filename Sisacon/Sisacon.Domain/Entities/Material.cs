@@ -9,6 +9,12 @@ namespace Sisacon.Domain.Entities
 {
     public class Material : BaseEntity
     {
+        #region Constants
+
+        public const int MAX_LENGTH_DESC = 50;
+
+        #endregion
+
         #region Propeties
 
         public string CodMaterial { get; set; }

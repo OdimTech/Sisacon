@@ -5,6 +5,8 @@ namespace Sisacon.Application
 {
     public class ResponseMessage<T> where T : class
     {
+        #region Propeties
+
         public ResponseMessage()
         {
             StatusCode = HttpStatusCode.OK;
@@ -19,6 +21,10 @@ namespace Sisacon.Application
         public bool LogicalTest { get; set; }
         public bool UpdateNotifications { get; set; }
         public HttpStatusCode StatusCode { get; set; }
+
+        #endregion
+
+        #region Methods
 
         public ResponseMessage<T> createErrorResponse()
         {
@@ -41,5 +47,7 @@ namespace Sisacon.Application
 
             return response;
         }
+
+        #endregion
     }
 }

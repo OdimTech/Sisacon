@@ -80,6 +80,7 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<IEquipmentAppService>().To<EquipmentAppService>();
             kernel.Bind<IProviderAppService>().To<ProviderAppService>();
             kernel.Bind<IMaterialCategoryAppService>().To<MaterialCategoryAppService>();
+            kernel.Bind<IMaterialAppService>().To<MaterialAppService>();
 
             //SERVICE
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
@@ -93,6 +94,7 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<IEquipmentService>().To<EquipmentService>();
             kernel.Bind<IProviderService>().To<ProviderService>();
             kernel.Bind<IMaterialCategoryService>().To<MaterialCategoryService>();
+            kernel.Bind<IMaterialService>().To<MaterialService>();
 
             //REPOSITORIES
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
@@ -106,6 +108,7 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<IEquipmentRepository>().To<EquipmentRepositoy>();
             kernel.Bind<IProviderRepository>().To<ProviderRepository>();
             kernel.Bind<IMaterialCategoryRepository>().To<MaterialCategoryRepository>();
+            kernel.Bind<IMaterialRepository>().To<MaterialRepository>();
 
         }
     }

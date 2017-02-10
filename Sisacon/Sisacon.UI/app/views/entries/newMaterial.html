@@ -11,10 +11,11 @@
 
                 <div class="ui four wide stackable column">
                     <h3 class="ui header">
+                        <i class="bordered lab icon"></i>
                         <div class="content">
                             Material
                             <div class="inverted sub header">
-                                Edite ou Cadastre um novo Material
+                                Menu - Cadastros - Materiais
                             </div>
                         </div>
                     </h3>
@@ -47,7 +48,11 @@
 
             <div class="ui eight wide stackable column">
 
-                <div class="ui form stackable fluid segment">
+                <div class="ui form stackable fluid raised segment">
+
+                    <!--<div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                        Detalhes do Material
+                    </div>-->
 
                     <form name="materialForm" novalidate>
                         <!--DETALHES DO MATERIAL-->
@@ -70,7 +75,7 @@
                         <div class="twelve wide required field" ng-class="{'error' : !materialForm.desc.$valid && (materialForm.$submitted || !materialForm.desc.$pristine)}">
 
                             <label for="desc">Descrição</label>
-                            <input type="text" name="desc" ng-model="vm.material.desc" class="ui input" required />
+                            <input type="text" name="desc" ng-model="vm.material.description" class="ui input" required />
 
                             <div class="ui pointing red basic label" ng-show="!materialForm.desc.$valid && (materialForm.$submitted || !materialForm.desc.$pristine)">
                                 <div ng-show="!materialForm.desc.$valid">A Descrição Obrigatória</div>
@@ -242,7 +247,7 @@
                     Categorias de Materiais
                 </div>
                 <p>
-                    Edite ou Crie um nova Categoria para organizar seus Materiais
+                    Edite ou Crie uma nova Categoria para organizar seus Materiais
                 </p>
             </div>
 

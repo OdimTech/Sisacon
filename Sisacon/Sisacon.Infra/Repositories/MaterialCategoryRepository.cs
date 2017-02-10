@@ -30,8 +30,8 @@ namespace Sisacon.Infra.Repositories
             try
             {
                 return Context.
-                    MaterialCategory
-                    .Where(x => x.User.Id == userId && x.ExclusionDate == null).
+                    MaterialCategory.
+                    Where(x => x.User.Id == userId && x.ExclusionDate == null).
                     ToList();
             }
             catch (Exception ex)

@@ -9,21 +9,28 @@
 
                 <div class="ui stackable grid" style="padding: 0">
 
-                    <div class="ui three wide stackable column">
-                        <h3 class="ui header">
-                            <div class="content">
-                                Material
-                                <div class="inverted sub header">
-                                    Lista de Materiais Cadastrados
+                    <div class="ui four wide stackable column">
+
+                        <div class="fields">
+
+                            <h3 class="ui header">
+                                <i class="bordered lab icon"></i>
+                                <div class="content">
+                                    Materiais
+                                    <div class="inverted sub header">
+                                        Menu - Cadastros - Materiais
+                                    </div>
                                 </div>
-                            </div>
-                        </h3>
+                            </h3>
+
+                        </div>
+
                     </div>
-                    <div class="ui thirteen wide stackable right aligned column">
+                    <div class="ui twelve wide stackable right aligned column">
                         <a class="ui labeled primary icon button" href="#/newMaterial?id=0">
                             <i class="edit icon"></i> Novo Material
                         </a>
-                        <a class="ui icon primary button" ng-click="showHelp()">
+                        <a class="ui icon orange button" ng-click="showHelp()">
                             <i class="help icon"></i>
                         </a>
                     </div>
@@ -62,7 +69,6 @@
     </div><!--GRID PAGE-->
 
 </form><!--FORM-->
-
 <!--MODALS-->
 <div id="removeMaterialModal" class="ui basic modal">
     <div class="header">

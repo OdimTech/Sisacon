@@ -25,7 +25,9 @@ namespace Sisacon.Infra.Mapping
                 .WithMany()
                 .HasForeignKey(x => x.CategoryId);
 
-            HasRequired(x => x.User);
+            HasRequired(x => x.User)
+                .WithMany()
+                .HasForeignKey(x => x.UserId);
 
             HasMany(x => x.ListPriceResearch)
                 .WithOptional();

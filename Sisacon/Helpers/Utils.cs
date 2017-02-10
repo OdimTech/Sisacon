@@ -8,7 +8,7 @@ namespace Helpers
 {
     public static class Utils
     {
-        public static string gereneteRandonNumber()
+        public static string gereneteRandomCode()
         {
             var random = new Random();
 

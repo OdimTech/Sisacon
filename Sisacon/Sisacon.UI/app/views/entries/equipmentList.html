@@ -42,7 +42,10 @@
                             <th>Editar</th>
                             <th>Excluir</th>
                             <th>Código</th>
+                            <th>Número de Série</th>
                             <th>Descrição</th>
+                            <th>Modelo</th>
+                            <th>Fabricante</th>
                             <th>Data Aquisição</th>
                             <th>Valor Aproximado - R$</th>
                             <th>Vida Util - Anos</th>
@@ -53,7 +56,10 @@
                             <td><button class="ui yellow circular icon button" ng-click="vm.editEquipment(item.id)"><i class="ui edit icon"></i></button></td>
                             <td><button class="ui red circular icon button" ng-click="vm.showModalRemoveEquipment(item)"><i class="ui remove icon"></i></button></td>
                             <td>{{item.codEquipment}}</td>
+                            <td>{{item.serialNumber}}</td>
                             <td>{{item.desc}}</td>
+                            <td>{{item.model}}</td>
+                            <td>{{item.manufacturer}}</td>
                             <td>{{item.acquisitionDate  | date:'dd/MM/yyyy'}}</td>
                             <td>{{item.valor}}</td>
                             <td>{{item.lifeSpan}}</td>

@@ -1,4 +1,5 @@
-﻿using Sisacon.Domain.ValueObjects;
+﻿using Helpers;
+using Sisacon.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,40 @@ namespace Sisacon.Domain.Entities
         public string CodMaterial { get; set; }
         public string Description { get; set; }
         public int CategoryId { get; set; }
+        public int UserId { get; set; }
         public virtual MaterialCategory Category { get; set; }
         public virtual List<PriceResearch> ListPriceResearch { get; set; }
         public virtual User User { get; set; }
+
+        #endregion
+
+        #region Methods
+
+        public bool isValid()
+        {
+            var valid = true;
+
+            if (string.IsNullOrEmpty(Description))
+            {
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        public bool validateBeforeDelete()
+        {
+            var isValid = true;
+
+            //implementar quando necessario
+
+            return isValid;
+        }
+
+        public void genereteCode()
+        {
+            CodMaterial = string.Format("MAT{0}", Utils.gereneteRandomCode());
+        }
 
         #endregion
     }

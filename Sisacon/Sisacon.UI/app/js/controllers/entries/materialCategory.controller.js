@@ -12,6 +12,7 @@
 
         //VARIABLES
         vm.userId = localStorageService.get('id');
+        vm.user = localStorageService.get('user');
         vm.categories = [];
         vm.category = {};
         vm.btnSaveText = 'Adicionar Categoria';
@@ -32,10 +33,7 @@
 
             vm.category = {
 
-                user: {
-
-                    id : vm.userId
-                }
+                user: vm.user
             }
         }
 
@@ -66,21 +64,14 @@
 
                     blockUI.stop();
 
-                    if(response.quantity > 0)
-                    {
-                        toastr.success(response.message);
-                        loadCategories();
+                    toastr.success(response.message);
+                    loadCategories();
 
-                        $scope.modalCategoryForm.$setPristine();
-                        vm.initObjectCategory();
+                    $scope.modalCategoryForm.$setPristine();
+                    vm.initObjectCategory();
 
-                        vm.btnSaveText = 'Adicionar Categoria';
-                        vm.btnSaveIcon = 'plus';
-                    }
-                    else {
-
-                        toastr.error(response.message);
-                    }
+                    vm.btnSaveText = 'Adicionar Categoria';
+                    vm.btnSaveIcon = 'plus';
 
                 }).error(function (response) {
 
@@ -93,7 +84,7 @@
         function edit(categoryToEdit) {
 
             vm.category = categoryToEdit;
-            
+
             //Remove o item a ser editado da lista
             var index = vm.categories.indexOf(categoryToEdit);
             vm.categories.splice(index, 1);
@@ -105,22 +96,15 @@
         function deleteCategory(categoryId) {
 
             if (categoryId) {
-                
+
                 blockUI.start('Excluindo Categoria...');
 
                 materialCategoryService.deleteCategory(categoryId).success(function (response) {
 
                     blockUI.stop();
 
-                    if (response.quantity > 0) {
-
-                        toastr.success(response.message);
-                        loadCategories();
-                    }
-                    else {
-
-                        toastr.error(response.message);
-                    }
+                    toastr.success(response.message);
+                    loadCategories();
 
                 }).error(function (response) {
 

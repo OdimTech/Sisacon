@@ -76,6 +76,7 @@
     <Compile Include="Repositories\EquipmentRepositoy.cs" />
     <Compile Include="Repositories\LogRepository.cs" />
     <Compile Include="Repositories\MaterialCategoryRepository.cs" />
+    <Compile Include="Repositories\MaterialRepository.cs" />
     <Compile Include="Repositories\NotificationRepository.cs" />
     <Compile Include="Repositories\OccupationAreaRepository.cs" />
     <Compile Include="Repositories\ProviderRepository.cs" />

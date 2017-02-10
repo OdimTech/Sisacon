@@ -38,8 +38,11 @@
     <Compile Include="Entities\Equipment.cs" />
     <Compile Include="Entities\Material.cs" />
     <Compile Include="Interfaces\Repositories\IMaterialCategoryRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IMaterialRepository.cs" />
     <Compile Include="Interfaces\Services\IMaterialCategoryService.cs" />
+    <Compile Include="Interfaces\Services\IMaterialService.cs" />
     <Compile Include="Services\MaterialCategoryService.cs" />
+    <Compile Include="Services\MaterialService.cs" />
     <Compile Include="ValueObjects\MaterialCategory.cs" />
     <Compile Include="Entities\Provider.cs" />
     <Compile Include="Enuns\FormatImg.cs" />

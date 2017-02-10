@@ -2,7 +2,7 @@
 
     <div class="ui stackable grid">
 
-            <div class="ui sixteen wide stackable column" id="top-menu">
+        <div class="ui sixteen wide stackable column" id="top-menu">
             <!--TOP MENU-->
 
             <div class="ui stackable segment">
@@ -57,7 +57,7 @@
 
                     <div class="four wide field">
                         <label for="cod">Código do Equipamento</label>
-                        <input type="text" name="cod" class="ui input" ng-required="vm.equipment.id == 0 && !vm.configuration.codAutoEquipment" ng-readonly="vm.configuration.codAutoEquipment" ng-model="vm.equipment.codEquipment" maxlength="10"/>
+                        <input type="text" name="cod" class="ui input" ng-required="vm.equipment.id == 0 && !vm.configuration.codAutoEquipment" ng-readonly="vm.configuration.codAutoEquipment" ng-model="vm.equipment.codEquipment" maxlength="10" />
                     </div>
                     <div class="four wide read-only field">
                         <label for="registration">Data de Cadastro</label>
@@ -65,6 +65,13 @@
                         <input type="text" name="registration" ui-mask="99/99/9999" class="ui input" readonly ng-model="vm.equipment.registrationDate" />
 
                     </div>
+
+                </div>
+
+                <div class="six wide field">
+
+                    <label for="model">Número de Série</label>
+                    <input type="text" name="model" ng-model="vm.equipment.serialNumber" class="ui input" />
 
                 </div>
 
@@ -86,11 +93,29 @@
                         <!--DATA DE AQUISIÇÃO-->
 
                         <label for="acquisitionDate">Data de Aquisição</label>
-                        <input type="text" name="acquisitionDate" class="ui input" ui-mask="99/99/9999" ng-model="vm.equipment.acquisitionDate" required/>
+                        <input type="text" name="acquisitionDate" class="ui input" ui-mask="99/99/9999" ng-model="vm.equipment.acquisitionDate" required />
 
                         <div class="ui pointing red basic label" ng-show="!equipmentForm.acquisitionDate.$valid && (equipmentForm.$submitted || !equipmentForm.acquisitionDate.$pristine)">
                             <div ng-show="!equipmentForm.acquisitionDate.$valid">A Data de Aquisição é Obrigatória</div>
                         </div>
+
+                    </div>
+
+                </div>
+
+                <div class="fields">
+                       
+                    <div class="six wide field">
+                           
+                        <label for="model">Modelo</label>
+                        <input type="text" name="model" ng-model="vm.equipment.model" class="ui input" />
+
+                    </div>
+
+                    <div class="six wide field">
+
+                        <label for="manufacturer">Fabricante</label>
+                        <input type="text" name="manufacturer" ng-model="vm.equipment.manufacturer"  class="ui input" />
 
                     </div>
 
@@ -102,9 +127,9 @@
                         <!--VALOR-->
 
                         <label>Valor Aproximado</label>
-                        <div class="ui right labeled input" >
-                            <input type="number" name="valor" ng-model="vm.equipment.valor" class="ui input" required/>
-                            <div class="ui basic label" >
+                        <div class="ui right labeled input">
+                            <input type="number" name="valor" ng-model="vm.equipment.valor" class="ui input" required />
+                            <div class="ui basic label">
                                 R$
                             </div>
                         </div>
@@ -117,9 +142,9 @@
                     <div class="four wide required field" ng-class="{'error' : !equipmentForm.lifeSpan.$valid && (equipmentForm.$submitted || !equipmentForm.lifeSpan.$pristine)}">
                         <!--VIDA ÚTIL-->
 
-                        <label for="acquisitionDate">Vida útil - Expectativa</label>
+                        <label for="acquisitionDate">Vida Útil Prevista</label>
                         <div class="ui right labeled input">
-                            <input type="number" name="lifeSpan" ng-model="vm.equipment.lifeSpan" class="ui input" required/>
+                            <input type="number" name="lifeSpan" ng-model="vm.equipment.lifeSpan" class="ui input" required />
                             <div class="ui basic label">
                                 Anos
                             </div>
@@ -128,6 +153,32 @@
                         <div class="ui pointing red basic label" ng-show="!equipmentForm.lifeSpan.$valid && (equipmentForm.$submitted || !equipmentForm.lifeSpan.$pristine)">
                             <div ng-show="!equipmentForm.valor.$valid">A Vida Útil é Obrigatória</div>
                         </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="ui form stackable raised fluid segment">
+
+                <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                    Assistência Técnica
+                </div>
+
+                <div class="fields">
+
+                    <div class="eight wide field">
+
+                        <label for="nameTechnicalAssistance">Nome</label>
+                        <input type="text" ng-model="vm.equipment.nameTechnicalAssistance" name="nameTechnicalAssistance" />
+
+                    </div>
+
+                    <div class="four wide field">
+
+                        <label for="phoneTechnicalAssistance">Telefone</label>
+                        <input type="text" name="phoneTechnicalAssistance"  ui-mask="(99) 9999-9999" ng-model="vm.equipment.phoneTechnicalAssistance"/>
 
                     </div>
 

@@ -12,6 +12,7 @@
 
         //VARIABLES
         vm.userId = localStorageService.get('id');
+        vm.user = localStorageService.get('user');
         vm.material = {};
         vm.materialList = [];
         vm.priceReaserch = {};
@@ -63,9 +64,7 @@
 
             vm.material = {
 
-                user: {
-                    id: vm.userId
-                },
+                user: vm.user,
                 listPriceResearch: [],
                 category: {
                     id: 0
@@ -235,15 +234,15 @@
 
                     blockUI.stop();
 
-                    if (response.quantity > 0) {
+                    vm.material = response.value;
 
-                        vm.material = response.value;
+                    toastr.success(response.message);
 
-                        toastr.success(response.message);
+                    if (vm.material) {
 
                         loadMaterial(vm.material.id);
-
                     }
+
                 }).error(function (response) {
 
                     blockUI.stop();

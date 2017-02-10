@@ -54,7 +54,7 @@ namespace Sisacon.Domain.Entities
 
         public void genereteCode()
         {
-            CodProvider = string.Format("FRN{0}", Utils.gereneteRandonNumber());
+            CodProvider = string.Format("FRN{0}", Utils.gereneteRandomCode());
         }
 
         #endregion

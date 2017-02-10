@@ -69,7 +69,7 @@ namespace Sisacon.Domain.Entities
 
         public void genereteCode()
         {
-            CodCliente = string.Format("CLT{0}", Utils.gereneteRandonNumber());
+            CodCliente = string.Format("CLT{0}", Utils.gereneteRandomCode());
         }
 
         public bool validatePendencesBeforeDelete()

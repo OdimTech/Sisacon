@@ -1,9 +1,4 @@
 ﻿using Sisacon.Domain.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sisacon.Infra.Mapping
 {
@@ -18,6 +13,10 @@ namespace Sisacon.Infra.Mapping
             Property(x => x.SearchDate)
                 .HasColumnType("DateTime")
                 .IsRequired();
+
+            HasRequired(x => x.Provider)
+                .WithMany()
+                .HasForeignKey(x => x.ProviderId);
 
             HasRequired(x => x.Material)
                 .WithMany(x => x.ListPriceResearch)

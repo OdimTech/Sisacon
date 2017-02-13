@@ -11,6 +11,8 @@ namespace Sisacon.UI.ViewModels
         public string CodMaterial { get; set; }
         [MaxLength(50)]
         public string Description { get; set; }
+        [MaxLength(250)]
+        public string Note { get; set; }
         public int CategoryId { get; set; }
         [Required]
         public virtual MaterialCategory Category { get; set; }

@@ -193,6 +193,6 @@ namespace Sisacon.Infra.Repositories
                          .ForEach(entry => entry.State = EntityState.Unchanged);
         }
 
-        
+
     }
 }

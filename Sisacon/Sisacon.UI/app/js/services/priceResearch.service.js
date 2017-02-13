@@ -7,14 +7,13 @@
     function priceResearchService($http, valuesService) {
 
         var apiUrl = valuesService.getApiUrl;
-        var route = 'api/provider';
+        var route = 'api/priceResearch';
 
         var service = {
 
             save: save,
-            update: update,
-            getPriceById: getPriceById,
-            getPriceByUserId: getPriceByUserId
+            deletePrice: deletePrice,
+            getPriceById: getPriceById
         }
 
         return service;
@@ -24,13 +23,27 @@
             return $http.post(apiUrl + route, price);
         }
 
-        function update(params) {
-            
+        function deletePrice(idPrice) {
+
+            return $http.delete(apiUrl + route, {
+
+                params: {
+
+                    id: idPrice
+                }
+            })
+
         }
 
-        function getPriceById() {
+        function getPriceById(idPrice) {
 
-            
+            return $http.get(apiUrl + route, {
+
+                params: {
+
+                    idPriceResearch: idPrice
+                }
+            })
         }
     }
 

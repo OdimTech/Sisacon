@@ -1,9 +1,4 @@
 ﻿using Sisacon.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sisacon.Infra.Mapping
 {
@@ -20,6 +15,11 @@ namespace Sisacon.Infra.Mapping
                 .HasColumnType("varchar")
                 .HasMaxLength(Material.MAX_LENGTH_DESC)
                 .IsRequired();
+
+            Property(x => x.Note)
+                .HasColumnType("varchar")
+                .HasMaxLength(Material.MAX_LENGTH_NOTE)
+                .IsOptional();
 
             HasRequired(x => x.Category)
                 .WithMany()

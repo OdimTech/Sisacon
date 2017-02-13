@@ -26,6 +26,7 @@ namespace Sisacon.UI.AutoMapper
             CreateMap<BankDetails, BankDetailsViewModel>();
             CreateMap<MaterialCategory, MaterialCategoryViewModel>();
             CreateMap<Material, MaterialViewModel>();
+            CreateMap<PriceResearch, PriceResearchViewModel>();
         }
     }
 }

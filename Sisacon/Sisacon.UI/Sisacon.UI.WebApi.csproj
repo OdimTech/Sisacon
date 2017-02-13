@@ -2364,6 +2364,7 @@
     <Compile Include="Controllers\MaterialCategory\MaterialCategoryController.cs" />
     <Compile Include="Controllers\Material\MaterialController.cs" />
     <Compile Include="Controllers\Notification\NotificationController.cs" />
+    <Compile Include="Controllers\PriceResearch\PriceResearchController.cs" />
     <Compile Include="Controllers\Provider\ProviderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2386,6 +2387,7 @@
     <Compile Include="ViewModels\MaterialCategoryViewModel.cs" />
     <Compile Include="ViewModels\MaterialViewModel.cs" />
     <Compile Include="ViewModels\OccupationAreaViewModel.cs" />
+    <Compile Include="ViewModels\PriceResearchViewModel.cs" />
     <Compile Include="ViewModels\ProviderViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>

@@ -1,10 +1,6 @@
 ﻿using Helpers;
 using Sisacon.Domain.ValueObjects;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sisacon.Domain.Entities
 {
@@ -13,6 +9,7 @@ namespace Sisacon.Domain.Entities
         #region Constants
 
         public const int MAX_LENGTH_DESC = 50;
+        public const int MAX_LENGTH_NOTE = 250;
 
         #endregion
 
@@ -20,6 +17,7 @@ namespace Sisacon.Domain.Entities
 
         public string CodMaterial { get; set; }
         public string Description { get; set; }
+        public string Note { get; set; }
         public int CategoryId { get; set; }
         public int UserId { get; set; }
         public virtual MaterialCategory Category { get; set; }

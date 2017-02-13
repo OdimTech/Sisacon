@@ -131,6 +131,12 @@ namespace Sisacon.Application
             try
             {
                 response.Value = _userService.logon(pass, email);
+
+                if(response.Value == null)
+                {
+                    response.Message = "Usuário ou Senha incorreto, Caso tenha esquecido sua senha, clique em Esqueci Minha Senha para obter uma nova";
+                }
+
             }
             catch (Exception ex)
             {

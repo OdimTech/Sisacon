@@ -4,9 +4,9 @@
 
     angular.module('app').controller('MaterialController', MaterialController);
 
-    MaterialController.$inject = ['$scope', '$window', '$routeParams', 'configurationService', 'materialService', 'providerService', 'materialCategoryService', 'utilityService', 'localStorageService', 'blockUI', 'toastr'];
+    MaterialController.$inject = ['$scope', '$window', '$routeParams', 'configurationService', 'materialService', 'providerService', 'materialCategoryService', 'priceResearchService', 'utilityService', 'localStorageService', 'blockUI', 'toastr'];
 
-    function MaterialController($scope, $window, $routeParams, configurationService, materialService, providerService, materialCategoryService, utilityService, localStorageService, blockUI, toastr) {
+    function MaterialController($scope, $window, $routeParams, configurationService, materialService, providerService, materialCategoryService, priceResearchService, utilityService, localStorageService, blockUI, toastr) {
 
         var vm = this;
 
@@ -40,6 +40,10 @@
         vm.showModalRemoveMaterial = showModalRemoveMaterial;
         vm.removeMaterialFromList = removeMaterialFromList;
         vm.removeMaterial = removeMaterial;
+        vm.showModalPriceChart = showModalPriceChart;
+        vm.showModalEditPrice = showModalEditPrice;
+        vm.showModalHistoryChart = showModalHistoryChart;
+        vm.addDataToGraphic = addDataToGraphic;
 
         initialize();
 
@@ -48,7 +52,6 @@
             vm.loadConfiguration();
             vm.loadProviders();
             vm.loadCategories();
-            initObjectPriceResearch();
 
             if ($routeParams.id) {
 
@@ -58,12 +61,15 @@
 
                 loadMaterialList();
             }
+
+            initObjectPriceResearch();
         }
 
         function initObjectMaterial() {
 
             vm.material = {
 
+                id: 0,
                 user: vm.user,
                 listPriceResearch: [],
                 category: {
@@ -77,8 +83,9 @@
 
             vm.priceReaserch = {
 
-                material: {
-
+                id: 0,
+                material: vm.material,
+                provider: {
                     id: 0
                 },
                 dateToView: ''
@@ -100,7 +107,7 @@
 
             if (id > 0) {
 
-                blockUI.start('Carregando Material');
+                blockUI.start('Carregando Material...');
 
                 materialService.getMaterialById(id).success(function (response) {
 
@@ -109,9 +116,22 @@
                     vm.btnSaveText = 'Atualizar';
                     vm.material = response.value;
 
-                    if (vm.material.listPriceResearch == null) {
+                    //Caso não haja nenhuma pesquisa de preço, preparo o obj para ser salvo
+                    if (vm.material.listPriceResearch.length == 0) {
 
-                        vm.material.listPriceResearch = [];
+                        vm.priceReaserch.material = vm.material;
+                    }
+                    else {
+
+                        //Exibe o ultimo preço salvo
+                        var lastPriceIndex = vm.material.listPriceResearch.length - 1;
+
+                        vm.priceReaserch = vm.material.listPriceResearch[lastPriceIndex];
+
+                        vm.material.listPriceResearch.forEach(function (item) {
+
+                            vm.addDataToGraphic(item);
+                        })
                     }
 
                     blockUI.stop();
@@ -144,7 +164,7 @@
 
                 providerService.getProviderByUserId(vm.userId).success(function (response) {
 
-                    vm.providers = response.value;
+                    vm.providers = response.valueList;
                 })
             }
         }
@@ -220,6 +240,22 @@
 
         }
 
+        function showModalEditPrice() {
+
+            $scope.priceResearchForm.$setSubmitted();
+
+            if ($scope.priceResearchForm.$valid) {
+
+                angular.element('#editMaterialPrice').modal({
+
+                    blurring: false,
+                    closable: true,
+                    autofocus: true
+
+                }).modal('show');
+            }
+        }
+
         function submitForm() {
 
             $scope.materialForm.$setSubmitted();
@@ -259,6 +295,27 @@
             }
         }
 
+        function showModalPriceChart() {
+
+            angular.element('#showPriceResearchChart').modal({
+
+                blurring: false,
+                closable: true
+
+            }).modal('show');
+
+        }
+
+        function showModalHistoryChart() {
+
+            angular.element('#showHistoryChart').modal({
+
+                blurring: false,
+                closable: true
+
+            }).modal('show');
+        }
+
         function showModalRemoveMaterial(material) {
 
             if (material.id) {
@@ -286,14 +343,11 @@
 
                     blockUI.stop();
 
-                    if (response.quantity) {
+                    toastr.success(response.message);
 
-                        toastr.success(response.message);
+                    vm.idMaterialToRemove = 0;
 
-                        vm.idMaterialToRemove = 0;
-
-                        loadMaterialList();
-                    }
+                    loadMaterialList();
 
                 }).error(function (response) {
 
@@ -313,14 +367,11 @@
 
                     blockUI.stop();
 
-                    if (response.quantity) {
+                    toastr.success(response.message);
 
-                        toastr.success(response.message);
+                    vm.idMaterialToRemove = 0;
 
-                        vm.idMaterialToRemove = 0;
-
-                        $window.location.href = "#/materialList";
-                    }
+                    $window.location.href = "#/materialList";
 
                 }).error(function (response) {
 
@@ -336,32 +387,39 @@
 
             if ($scope.priceResearchForm.$valid) {
 
-                var priceReaserch = Object.assign({}, vm.priceReaserch);
+                blockUI.start('Alterando Preço Atual...');
 
-                priceReaserch.searchDate = utilityService.convertStringToDate(priceReaserch.searchDate);
+                vm.priceReaserch.material = vm.material;
 
-                priceReaserch.dateToView = utilityService.convertDateToString(priceReaserch.searchDate);
+                vm.priceReaserch.id = 0;
+                vm.priceReaserch.material.listPriceResearch = null;
 
-                addDataToGraphic(priceReaserch);
+                priceResearchService.save(vm.priceReaserch).success(function (response) {
 
-                vm.material.listPriceResearch.push(priceReaserch);
+                    blockUI.stop();
+                    toastr.success(response.message);
+
+                    vm.priceReaserch = response.value;
+
+                    addDataToGraphic(vm.priceReaserch);
+
+                }).error(function (response) {
+
+                    blockUI.stop();
+
+                    toastr.error(response.message);
+                })
             }
         }
 
         function addDataToGraphic(priceReaserch) {
 
+            priceReaserch.dateToView = utilityService.convertDateToString(priceReaserch.searchDate);
+
             //Adiciona as datas no grafico
             vm.labels.push(priceReaserch.dateToView);
 
-            //Adiciona o valor do material no grafico
-            var data = Object.assign([], vm.data[0]);
-
-            data.push(vm.priceReaserch.price);
-
-            vm.data = [];
-
-            vm.data.push(data);
-
+            vm.data[0].push(priceReaserch.price);
         }
 
         function removeDataFromGraphic(priceReaserch) {

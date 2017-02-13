@@ -4,6 +4,7 @@ using Sisacon.Application.Interfaces;
 using Sisacon.Domain;
 using Sisacon.Domain.Entities;
 using Sisacon.UI.ViewModels;
+using System;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -25,11 +26,22 @@ namespace Sisacon.UI.Controllers
         {
             var response = new ResponseMessage<Material>();
 
-            if(ModelState.IsValid)
+            try
             {
-                var material = Mapper.Map<MaterialViewModel, Material>(materialViewModel);
+                if (ModelState.IsValid)
+                {
+                    var material = Mapper.Map<MaterialViewModel, Material>(materialViewModel);
 
-                response = _materialAppService.saveOrUpdate(material);
+                    response = _materialAppService.saveOrUpdate(material);
+                }
+                else
+                {
+                    response = response.createInvalidResponse();
+                }
+            }
+            catch
+            {
+                response = response.createErrorResponse();
             }
 
             return Request.CreateResponse(response.StatusCode, response);
@@ -39,24 +51,33 @@ namespace Sisacon.UI.Controllers
         [Route("material")]
         public HttpResponseMessage Delete(int id)
         {
+            var response = new ResponseMessage<Material>();
 
-            return Request.CreateResponse(System.Net.HttpStatusCode.OK, "");
+            response = _materialAppService.deleteMaterial(id);
+
+            return Request.CreateResponse(response.StatusCode, response);
         }
 
         [HttpGet]
         [Route("material")]
         public HttpResponseMessage GetMaterialById(int id)
         {
+            var response = new ResponseMessage<Material>();
 
-            return Request.CreateResponse(System.Net.HttpStatusCode.OK, "");
+            response = _materialAppService.getById(id, true);
+
+            return Request.CreateResponse(response.StatusCode, response);
         }
 
         [HttpGet]
         [Route("material")]
         public HttpResponseMessage GetMaterialByUserId(int userId)
         {
+            var response = new ResponseMessage<Material>();
 
-            return Request.CreateResponse(System.Net.HttpStatusCode.OK, "");
+            response = _materialAppService.getMaterialByUserId(userId);
+
+            return Request.CreateResponse(response.StatusCode, response);
         }
 
         [HttpGet]

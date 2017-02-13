@@ -2,6 +2,7 @@
 using Sisacon.Domain.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Sisacon.Infra.Repositories
@@ -23,6 +24,39 @@ namespace Sisacon.Infra.Repositories
             }
         }
 
+        public override void update(Material material)
+        {
+            try
+            {
+                material.Category = null;
+                material.ListPriceResearch = null;
+
+                Context.Entry(material).State = EntityState.Modified;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public override Material getById(int id, bool includeUser)
+        {
+            try
+            {
+                return Context.
+                    Material.
+                    Include("User").
+                    Include("Category").
+                    Include("ListPriceResearch").
+                    Include("ListPriceResearch.Provider").
+                    Where(x => x.Id == id && x.ExclusionDate == null).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public List<Material> getByUserId(int userId)
         {
             try
@@ -31,7 +65,7 @@ namespace Sisacon.Infra.Repositories
                     Material.
                     Include("User").
                     Include("Category").
-                    Include("PriceResearch").
+                    Include("ListPriceResearch").
                     Where(x => x.User.Id == userId && x.ExclusionDate == null).ToList();
             }
             catch (Exception ex)

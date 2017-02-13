@@ -1,19 +1,20 @@
 ﻿using Sisacon.Domain.Entities;
 using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace Sisacon.Domain.ValueObjects
+namespace Sisacon.UI.ViewModels
 {
-    public class PriceResearch : BaseEntity
+    public class PriceResearchViewModel : BaseViewModel
     {
-        #region Propeties
-
+        [Required()]
         public decimal Price { get; set; }
-        public int MaterialId { get; set; }
         public int ProviderId { get; set; }
+        public int MaterialId { get; set; }
+        [Required()]
         public virtual Material Material { get; set; }
+        [Required()]
         public virtual Provider Provider { get; set; }
+        [Required()]
         public DateTime SearchDate { get; set; }
-
-        #endregion
     }
 }

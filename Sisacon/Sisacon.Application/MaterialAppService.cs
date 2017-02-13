@@ -3,9 +3,6 @@ using Sisacon.Domain.Entities;
 using Sisacon.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static Sisacon.Domain.Enuns.ErrorGravity;
 using static Sisacon.Domain.Enuns.OperationType;
 using static Sisacon.Domain.Enuns.Sex;
@@ -18,7 +15,7 @@ namespace Sisacon.Application
         private readonly ILogAppService _logAppService;
         private readonly ICrudMsgFormater _crudMsgFormater;
 
-        public MaterialAppService(IMaterialService materialService, ILogAppService logAppService, ICrudMsgFormater crudMsgFormater): base(materialService)
+        public MaterialAppService(IMaterialService materialService, ILogAppService logAppService, ICrudMsgFormater crudMsgFormater) : base(materialService)
         {
             _materialService = materialService;
             _logAppService = logAppService;
@@ -33,9 +30,9 @@ namespace Sisacon.Application
             {
                 var material = _materialService.getById(MaterialId);
 
-                if(material != null)
+                if (material != null)
                 {
-                    if(material.validateBeforeDelete())
+                    if (material.validateBeforeDelete())
                     {
                         _materialService.delete(material);
 
@@ -43,7 +40,7 @@ namespace Sisacon.Application
                     }
                 }
 
-                if(_materialService.commit() == 0)
+                if (_materialService.commit() == 0)
                 {
                     response.Message = _crudMsgFormater.createErrorCrudMessage();
                 }
@@ -83,10 +80,12 @@ namespace Sisacon.Application
 
             try
             {
-                if(material.isValid())
+                if (material.isValid())
                 {
-                    if(material.Id > 0)
+                    if (material.Id > 0)
                     {
+                        material.CategoryId = material.Category.Id;
+
                         _materialService.update(material);
 
                         response.Message = _crudMsgFormater.createClientCrudMessage(eOperationType.Update, eSex.Masculino, "Material");

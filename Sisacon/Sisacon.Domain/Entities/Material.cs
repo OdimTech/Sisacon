@@ -23,6 +23,20 @@ namespace Sisacon.Domain.Entities
         public virtual MaterialCategory Category { get; set; }
         public virtual List<PriceResearch> ListPriceResearch { get; set; }
         public virtual User User { get; set; }
+        public decimal CurrentPrice
+        {
+            get
+            {
+                decimal price = 0;
+
+                if(ListPriceResearch != null && ListPriceResearch.Count > 0)
+                {
+                    price = ListPriceResearch[0].Price;
+                }
+
+                return price;
+            }
+        }
 
         #endregion
 

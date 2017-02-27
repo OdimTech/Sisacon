@@ -2,16 +2,22 @@
 using Sisacon.Domain.Entities;
 using Sisacon.Domain.Interfaces.Services;
 using System;
+using static Sisacon.Domain.Enuns.OperationType;
+using static Sisacon.Domain.Enuns.Sex;
 
 namespace Sisacon.Application
 {
     public class ConfigurationAppService : AppServiceBase<Configuration>, IConfigurationAppService
     {
         private readonly IConfigurationService _configService;
+        private readonly ILogAppService _logAppService;
+        private readonly ICrudMsgFormater _crudMsgFormater;
 
-        public ConfigurationAppService(IConfigurationService serviceBase) : base(serviceBase)
+        public ConfigurationAppService(IConfigurationService serviceBase, ILogAppService logAppService, ICrudMsgFormater crudMsgFormater) : base(serviceBase)
         {
             _configService = serviceBase;
+            _logAppService = logAppService;
+            _crudMsgFormater = crudMsgFormater;
         }
 
         public ResponseMessage<Configuration> getByUserId(int id)
@@ -40,11 +46,14 @@ namespace Sisacon.Application
                 {
                     _configService.update(config);
 
-                    response.Quantity = _configService.commit();
-
-                    if (response.Quantity > 0)
+                    if( _configService.commit() == 0)
                     {
-                        response.Message = "";
+                        response.Message = _crudMsgFormater.createErrorCrudMessage();
+                    }
+                    else
+                    {
+                        response.Message = _crudMsgFormater.createClientCrudMessage(eOperationType.Update, eSex.Feminino, "Configuração");
+                        response.Value = config;
                     }
                 }
             }

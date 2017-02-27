@@ -6,45 +6,21 @@
         .module('app')
         .controller('InitialDashboardController', InitialDashBoardController);
 
-    InitialDashBoardController.$inject = ['$scope', 'accountService', 'companyService', 'localStorageService', 'blockUI'];
+    InitialDashBoardController.$inject = ['$scope', 'accountService', 'localStorageService','utilityService', 'blockUI'];
 
-    function InitialDashBoardController($scope, accountService, companyService, localStorageService, blockUI) {
+    function InitialDashBoardController($scope, accountService, localStorageService,utilityService, blockUI) {
 
         //INIT OBJECTS
         $scope.company = {};
-        $scope.loggedUser = localStorageService.get('id');
+        $scope.loggedUser = localStorageService.get('user');
         $scope.companyName = '';
 
-        getCompany();
+        initialize();
 
-        function getCompany() {
+        function initialize() {
 
-            if ($scope.loggedUser) {
+            $scope.loggedUser.lastLogin = utilityService.convertDateToString($scope.loggedUser.lastLogin);
 
-                //blockUI.start('Carregando Informações...');
-
-                //companyService.getCompanyByUser($scope.loggedUser.id).success(function (response) {
-
-                //    $scope.company = response.value;
-                //    blockUI.stop();
-
-                //    if ($scope.company) {
-
-                //        if ($scope.company.ePersonType == 1) {
-
-                //            $scope.companyName = $scope.company.companyName;
-                //        }
-                //        else {
-
-                //            $scope.companyName = $scope.company.fantasyName;
-                //        }
-                //    }
-
-                //}).error(function (response) {
-
-                //    blockUI.stop();
-                //});
-            }
         }
     }
 

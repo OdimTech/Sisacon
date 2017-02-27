@@ -4,9 +4,9 @@
 
     angular.module('app').controller('MaterialController', MaterialController);
 
-    MaterialController.$inject = ['$scope', '$window', '$routeParams', 'configurationService', 'materialService', 'providerService', 'materialCategoryService', 'priceResearchService', 'utilityService', 'localStorageService', 'blockUI', 'toastr'];
+    MaterialController.$inject = ['$scope', '$window', '$routeParams', 'configurationService', 'materialService', 'providerService', 'materialCategoryService', 'priceResearchService', 'utilityService', 'localStorageService', 'valuesService', 'blockUI', 'toastr', 'DTOptionsBuilder', 'DTColumnBuilder'];
 
-    function MaterialController($scope, $window, $routeParams, configurationService, materialService, providerService, materialCategoryService, priceResearchService, utilityService, localStorageService, blockUI, toastr) {
+    function MaterialController($scope, $window, $routeParams, configurationService, materialService, providerService, materialCategoryService, priceResearchService, utilityService, localStorageService, valuesService, blockUI, toastr, DTOptionsBuilder, DTColumnBuilder) {
 
         var vm = this;
 
@@ -25,6 +25,7 @@
         vm.idMaterialToRemove = '';
 
         //METHODS
+        vm.showHelp = showHelp;
         vm.loadConfiguration = loadConfiguration;
         vm.loadMaterial = loadMaterial;
         vm.loadCategories = loadCategories;
@@ -34,7 +35,6 @@
         vm.newMaterial = newMaterial;
         vm.showModalEditCategory = showModalEditCategory;
         vm.addPriceResearch = addPriceResearch;
-        vm.removePrice = removePrice;
         vm.submitForm = submitForm;
         vm.editMaterial = editMaterial;
         vm.showModalRemoveMaterial = showModalRemoveMaterial;
@@ -43,15 +43,30 @@
         vm.showModalPriceChart = showModalPriceChart;
         vm.showModalEditPrice = showModalEditPrice;
         vm.showModalHistoryChart = showModalHistoryChart;
+        vm.showModalRemoveHistory = showModalRemoveHistory;
         vm.addDataToGraphic = addDataToGraphic;
+        vm.setUrlNewMaterial = setUrlNewMaterial;
+        vm.removePriceHistory = removePriceHistory;
 
         initialize();
+
+        function showHelp() {
+
+            angular.element('#showHelpModal').modal({
+
+                blurring: false,
+                closable: true,
+                autofocus: true
+
+            }).modal('show');
+        }
 
         function initialize() {
 
             vm.loadConfiguration();
             vm.loadProviders();
             vm.loadCategories();
+            vm.loadDataTables();
 
             if ($routeParams.id) {
 
@@ -115,6 +130,10 @@
 
                     vm.btnSaveText = 'Atualizar';
                     vm.material = response.value;
+
+                    //Retorna as variaveis para o valor original, para criar um novo gráfico sem os valores antigos
+                    vm.data = [[]];
+                    vm.labels = [];
 
                     //Caso não haja nenhuma pesquisa de preço, preparo o obj para ser salvo
                     if (vm.material.listPriceResearch.length == 0) {
@@ -220,8 +239,13 @@
             }
             else {
 
-                loadMaterial(0);
+                vm.setUrlNewMaterial();
             }
+        }
+
+        function setUrlNewMaterial() {
+
+            $window.location.href = "#/newMaterial?id=0";
         }
 
         function showModalEditCategory() {
@@ -333,6 +357,43 @@
             }
         }
 
+        function showModalRemoveHistory(price) {
+
+            if (price.id) {
+
+                vm.idPriceHistoryToRemove = price.id;
+
+                angular.element('#removePriceHistoryModal').modal({
+
+                    blurring: false,
+                    closable: true
+
+                }).modal('show');
+            }
+        }
+
+        function removePriceHistory() {
+
+            if (vm.idPriceHistoryToRemove) {
+
+                blockUI.start('Excluindo Histórico');
+
+                priceResearchService.deletePrice(vm.idPriceHistoryToRemove).success(function (response) {
+
+                    blockUI.stop();
+                    toastr.success(response.message);
+
+                    vm.idPriceHistoryToRemove = 0;
+                    vm.loadMaterial(vm.material.id);
+
+                }).error(function (response) {
+
+                    blockUI.stop();
+                    toastr.error(response.message);
+                })
+            }
+        }
+
         function removeMaterialFromList() {
 
             if (vm.idMaterialToRemove) {
@@ -389,6 +450,7 @@
 
                 blockUI.start('Alterando Preço Atual...');
 
+                vm.material.registrationDate = utilityService.convertStringToDate(vm.material.registrationDate);
                 vm.priceReaserch.material = vm.material;
 
                 vm.priceReaserch.id = 0;
@@ -399,9 +461,7 @@
                     blockUI.stop();
                     toastr.success(response.message);
 
-                    vm.priceReaserch = response.value;
-
-                    addDataToGraphic(vm.priceReaserch);
+                    vm.loadMaterial(vm.material.id);
 
                 }).error(function (response) {
 
@@ -432,18 +492,6 @@
 
                 vm.labels.splice(indexLabel);
                 vm.data.splice(indexPrice);
-            }
-        }
-
-        function removePrice(priceReaserch) {
-
-            if (priceReaserch) {
-
-                var index = vm.material.listPriceResearch.indexOf(priceReaserch);
-
-                vm.material.listPriceResearch.splice(index, 1);
-
-                removeDataFromGraphic(priceReaserch);
             }
         }
     }

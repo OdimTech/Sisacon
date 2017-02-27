@@ -3,7 +3,9 @@
     angular.module('app').value('valuesService', {
 
         getApiUrl: 'http://localhost:15910/',
+
         getDefaultLogo: '../../../Content/UserImages/Default/CompanyLogo/default_logo.gif',
+
         dataTableLanguage: {
             "lengthMenu": "Exibindo _MENU_ Itens por página",
             "zeroRecords": "Nenhum resultado encontrado",
@@ -31,7 +33,17 @@
             { id: '7', desc: '104 – Caixa Econômica Federal' },
             { id: '8', desc: '389 – Banco Mercantil do Brasil S.A.' },
             { id: '9', desc: '748 – Banco Cooperativo Sicredi S.A.' }
-        ]
+        ],
+
+        calendarText: {
+                days: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+                months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                today: 'Hoje',
+                now: 'Agora',
+                am: 'AM',
+                pm: 'PM'
+            }
 
     });
 

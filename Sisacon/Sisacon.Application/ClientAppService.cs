@@ -79,6 +79,10 @@ namespace Sisacon.Application
                     {
                         response.Message = _crudMsgFormater.createErrorCrudMessage();
                     }
+                    else
+                    {
+                        response.Value = client;
+                    }
                 }
             }
             catch (Exception ex)

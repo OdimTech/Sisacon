@@ -19,5 +19,6 @@ namespace Sisacon.UI.ViewModels
         public virtual List<PriceResearch> ListPriceResearch { get; set; }
         [Required]
         public virtual User User { get; set; }
+        public decimal CurrentPrice { get; set; }
     }
 }

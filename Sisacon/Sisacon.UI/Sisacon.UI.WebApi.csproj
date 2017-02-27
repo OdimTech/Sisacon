@@ -1888,6 +1888,12 @@
     <Content Include="node_modules\jshint\src\state.js" />
     <Content Include="node_modules\jshint\src\style.js" />
     <Content Include="node_modules\jshint\src\vars.js" />
+    <Content Include="node_modules\semantic-ui-calendar\dist\calendar.css" />
+    <Content Include="node_modules\semantic-ui-calendar\dist\calendar.js" />
+    <Content Include="node_modules\semantic-ui-calendar\dist\calendar.min.css" />
+    <Content Include="node_modules\semantic-ui-calendar\dist\calendar.min.js" />
+    <Content Include="node_modules\semantic-ui-calendar\gulpfile.js" />
+    <Content Include="node_modules\semantic-ui-calendar\src\definitions\modules\calendar.js" />
     <Content Include="packages.config" />
     <Content Include="Scripts\angular-block-ui.js" />
     <Content Include="Scripts\angular-block-ui.min.js" />
@@ -2219,6 +2225,16 @@
     <Content Include="bower_components\chart.js\README.md" />
     <Content Include="bower_components\chart.js\scripts\release.sh" />
     <Content Include="bower_components\chart.js\thankyou.md" />
+    <Content Include="node_modules\semantic-ui-calendar\.npmignore" />
+    <Content Include="node_modules\semantic-ui-calendar\bower.json" />
+    <Content Include="node_modules\semantic-ui-calendar\LICENSE" />
+    <Content Include="node_modules\semantic-ui-calendar\package.json" />
+    <Content Include="node_modules\semantic-ui-calendar\README.md" />
+    <Content Include="node_modules\semantic-ui-calendar\src\definitions\modules\calendar.less" />
+    <Content Include="node_modules\semantic-ui-calendar\src\theme.config" />
+    <Content Include="node_modules\semantic-ui-calendar\src\theme.less" />
+    <Content Include="node_modules\semantic-ui-calendar\src\themes\default\modules\calendar.overrides" />
+    <Content Include="node_modules\semantic-ui-calendar\src\themes\default\modules\calendar.variables" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -2402,6 +2418,10 @@
     <TypeScriptCompile Include="node_modules\fullcalendar\node_modules\moment\moment.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{61bfeae2-eb48-4f14-b399-4c3173a35aa7}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sisacon.Application\Sisacon.Application.csproj">
       <Project>{d1ce6c3b-bdb9-4323-9707-9f88ce42c023}</Project>
       <Name>Sisacon.Application</Name>
@@ -2411,7 +2431,7 @@
       <Name>Sisacon.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Sisacon.Infra\Sisacon.Repositories.csproj">
-      <Project>{3A082EC3-F6B0-4A1D-BD59-9BEECF70C125}</Project>
+      <Project>{3a082ec3-f6b0-4a1d-bd59-9beecf70c125}</Project>
       <Name>Sisacon.Repositories</Name>
     </ProjectReference>
   </ItemGroup>

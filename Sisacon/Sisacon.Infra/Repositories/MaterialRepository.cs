@@ -43,13 +43,18 @@ namespace Sisacon.Infra.Repositories
         {
             try
             {
-                return Context.
+                var material = Context.
                     Material.
                     Include("User").
                     Include("Category").
-                    Include("ListPriceResearch").
-                    Include("ListPriceResearch.Provider").
                     Where(x => x.Id == id && x.ExclusionDate == null).FirstOrDefault();
+
+                material.ListPriceResearch = Context.
+                    PriceResearch.
+                    Include("Provider").
+                    Where(x => x.ExclusionDate == null && x.MaterialId == material.Id).ToList();
+
+                return material;
             }
             catch (Exception ex)
             {

@@ -110,5 +110,21 @@ namespace Sisacon.Domain.Services
 
             return configCreated;
         }
+
+        public void updateLastLoginDate(User user)
+        {
+            try
+            {
+                user.LastLogin = DateTime.Now;
+
+                _repository.update(user);
+
+                _repository.commit();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

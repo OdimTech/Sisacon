@@ -1,4 +1,5 @@
 ﻿using Sisacon.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace Sisacon.Domain.Interfaces.Services
@@ -11,5 +12,6 @@ namespace Sisacon.Domain.Interfaces.Services
         User logon(string pass, string email);
         void inactivateUser(int id);
         bool createDefaultConfig(User user);
+        void updateLastLoginDate(User user);
     }
 }

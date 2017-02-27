@@ -23,8 +23,6 @@
 
                     blockUI.stop();
 
-
-
                     if (response.value) {
 
                         $scope.User = response.value;

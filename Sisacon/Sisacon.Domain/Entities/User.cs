@@ -30,24 +30,7 @@ namespace Sisacon.Domain.Entities
             }
         }
 
-        private string _password;
-
-        public string Password
-        {
-            get { return _password; }
-            set
-            {
-                if (ValidateStrings.validateStringMinSize(value, PASSWORD_MIN_LENGHT))
-                {
-                    _password = Security.encrypt(value);
-                }
-                else
-                {
-                    throw new Exception("A Senha precisa ter no mínimo seis caractéres");
-                }
-            }
-        }
-
+        public string Password { get; set; }
         public string Email { get; set; }
         public eUserType eUserType { get; set; }
         public DateTime? LastLogin { get; set; }

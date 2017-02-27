@@ -21,6 +21,8 @@ namespace Sisacon.Infra.Mapping
                 .HasMaxLength(Material.MAX_LENGTH_NOTE)
                 .IsOptional();
 
+            Ignore(x => x.CurrentPrice);
+
             HasRequired(x => x.Category)
                 .WithMany()
                 .HasForeignKey(x => x.CategoryId);

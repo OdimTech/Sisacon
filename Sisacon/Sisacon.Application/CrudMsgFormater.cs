@@ -21,7 +21,7 @@ namespace Sisacon.Application
         /// <returns></returns>
         public string createClientCrudMessage(eOperationType eOperationType, eSex eSex, string entity)
         {
-            string message = string.Empty;
+            var message = string.Empty;
 
             try
             {

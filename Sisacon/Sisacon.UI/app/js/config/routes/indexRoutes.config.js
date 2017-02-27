@@ -5,7 +5,12 @@
     angular
         .module('app')
 
-        .config(['$routeProvider', function ($routeProvider) {
+        .config(['$routeProvider','$locationProvider', function ($routeProvider, $locationProvider) {
+
+            $locationProvider.html5Mode({
+                enable:true,
+                requireBse: false
+            });
 
             $routeProvider
 

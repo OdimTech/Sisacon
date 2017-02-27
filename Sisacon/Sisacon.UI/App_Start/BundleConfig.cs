@@ -13,8 +13,9 @@ namespace Sisacon.UI
                 "~/Scripts/DataTables/jquery.dataTables.js",
                 "~/Scripts/DataTables/dataTables.semanticui.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/design").Include
-               ("~/Scripts/semantic.js"));
+            bundles.Add(new ScriptBundle("~/bundles/design")
+                .Include("~/Scripts/semantic.js", 
+                "~/node_modules/semantic-ui-calendar/dist/calendar.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include
                ("~/Scripts/angular.js",
@@ -93,7 +94,8 @@ namespace Sisacon.UI
                 "~/Content/angular-toastr.css",
                 "~/Content/angular-block-ui.css",
                 "~/node_modules/fullcalendar/dist/fullcalendar.css",
-                "~/Content/DataTables/css/dataTables.semanticui.css"));
+                "~/Content/DataTables/css/dataTables.semanticui.css",
+                "~/node_modules/semantic-ui-calendar/dist/calendar.css"));
 
             BundleTable.EnableOptimizations = false;
         }

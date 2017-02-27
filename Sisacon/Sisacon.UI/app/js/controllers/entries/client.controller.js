@@ -12,6 +12,18 @@
     function ClientController($scope, $window, blockUI, $routeParams, toastr, viaCepService, utilityService, localStorageService, clientService, valuesService, configurationService, DTOptionsBuilder, DTColumnBuilder) {
 
         //INTIT CONTROLS
+        angular.element('#birthdayCalendar').calendar({
+
+            type: 'date',
+            text: valuesService.calendarText,
+            today: true,
+            onChange: function (date, text) {
+
+                $scope.client.birthday = $scope.clientForm.birthday;
+                console.log($scope.client.birthday);
+            },
+        });
+
         angular.element('.ui.dropdown').dropdown();
 
         angular.element('button').popup({
@@ -151,8 +163,9 @@
 
                     id: $scope.userId
                 },
+                birthday: '',
                 sendAutomaticMsg: true,
-                addBirthdayToCalendar: false,
+                addBirthdayToCalendar: true,
                 address: {},
                 contact: {}
             }
@@ -206,6 +219,7 @@
                     else {
 
                         $scope.clientForm.birthday.$valid = false;
+                        toastr.error("Os Campos destacados em vermelho não foram preenchidos corretamente.")
                         return;
                     }
                 }
@@ -221,18 +235,17 @@
                     blockUI.stop();
                     toastr.success(response.message);
 
-                    if (response.eOperationType == 1) {
-
-                        $scope.client = response.value;
-                    }
-
-                    loadClient($scope.client.id);
+                    loadClient(response.value.id);
 
                 }).error(function (response) {
 
                     blockUI.stop();
                     toastr.error(response.message);
                 })
+            }
+            else {
+
+                toastr.error("Os Campos destacados em vermelho não foram preenchidos corretamente.");
             }
         }
 

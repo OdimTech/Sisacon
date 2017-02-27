@@ -60,11 +60,13 @@
 
                     <div class="three wide field">
                         <label for="cod">Código do Cliente</label>
-                        <input type="text" name="cod" class="ui input" ng-required="client.id == 0 && !configuration.codAutoClient" ng-readonly="configuration.codAutoClient" ng-model="client.codCliente" />
+                        <input type="text" name="cod" class="ui input" ng-required="client.id == 0 && !configuration.codAutoClient" ng-readonly="configuration.codAutoClient"
+                            ng-model="client.codCliente" />
                     </div>
                     <div class="three wide field">
                         <label for="registration">Data de Cadastro</label>
-                        <input type="text" name="registration" ui-mask="99/99/9999" class="ui input" readonly ng-model="client.registrationDate" />
+                        <input type="text" name="registration" ui-mask="99/99/9999" class="ui input" readonly ng-model="client.registrationDate"
+                        />
                     </div>
 
                 </div>
@@ -76,11 +78,11 @@
 
                         <label for="personType">Tipo Pessoa</label>
                         <select ng-model="client.ePersonType" ng-options="item.id as item.desc for item in userTypes" ng-selected="client.ePersonType"
-                                name="personType" required></select>
+                            name="personType" required></select>
 
-                        <div class="ui pointing red basic label" ng-show="client.ePersonType == 0 && clientForm.$submitted">
-                            <div>O Tipo Pessoa é Obrigatório</div>
-                        </div>
+                            <div class="ui pointing red basic label" ng-show="client.ePersonType == 0 && clientForm.$submitted">
+                                <div>O Tipo Pessoa é Obrigatório</div>
+                            </div>
 
                     </div>
 
@@ -89,7 +91,8 @@
                     <div class="four wide required field" ng-show="client.ePersonType === 2" ng-class="{'error' : !clientForm.cnpj.$valid && (clientForm.$submitted || !clientForm.cnpj.$pristine)}">
 
                         <label for="cnpj">CNPJ</label>
-                        <input type="text" name="cnpj" class="ui input" ui-mask="99.999.999/9999-99" ng-model="client.cnpj" ng-required="client.ePersonType === 2" />
+                        <input type="text" name="cnpj" class="ui input" ui-mask="99.999.999/9999-99" ng-model="client.cnpj" ng-required="client.ePersonType === 2"
+                        />
 
                         <div class="ui pointing red basic label" ng-show="!clientForm.cnpj.$valid && (clientForm.$submitted || !clientForm.cnpj.$pristine)">
                             <div ng-show="!clientForm.cnpj.$valid">O CNPJ é Obrigatório</div>
@@ -99,7 +102,8 @@
                     <div class="three wide required field" ng-show="client.ePersonType === 1" ng-class="{'error' : !clientForm.cpf.$valid && (clientForm.$submitted || !clientForm.cpf.$pristine)}">
 
                         <label for="cpf">CPF</label>
-                        <input type="text" name="cpf" class="ui input" ui-mask="999.999.999-99" ng-model="client.cpf" ng-required="client.ePersonType === 1" />
+                        <input type="text" name="cpf" class="ui input" ui-mask="999.999.999-99" ng-model="client.cpf" ng-required="client.ePersonType === 1"
+                        />
 
                         <div class="ui pointing red basic label" ng-show="!clientForm.cpf.$valid && (clientForm.$submitted || !clientForm.cpf.$pristine)">
                             <div ng-show="!clientForm.cpf.$valid">O CPF é Obrigatório</div>
@@ -120,7 +124,8 @@
                     <!--NOME DO CLIENTE-->
                     <div class="eight wide required field" ng-class="{'error' : !clientForm.clientName.$valid && (clientForm.$submitted || !clientForm.clientName.$pristine)}">
                         <label for="nomeEmpresa">Nome do Cliente</label>
-                        <input type="text" ng-model="client.clientName" name="clientName" class="ui input" ng-required="client.ePersonType === 1" maxlength="50"/>
+                        <input type="text" ng-model="client.clientName" name="clientName" class="ui input" ng-required="client.ePersonType === 1"
+                            maxlength="50" />
 
                         <div class="ui pointing red basic label" ng-show="!clientForm.clientName.$valid && (clientForm.$submitted || !clientForm.clientName.$pristine)">
                             <div ng-show="!clientForm.clientName.$valid">O Nome do Cliente é Obrigatório</div>
@@ -131,8 +136,16 @@
                     <div class="four wide required field" ng-class="{'error' : !clientForm.birthday.$valid && (clientForm.$submitted || !clientForm.birthday.$pristine)}">
 
                         <label for="birthday">Data de Nascimento</label>
-                        <input type="text" ng-model="client.birthday" name="birthday" ui-mask="99/99/9999" class="ui input" ng-required="client.ePersonType === 1" />
+                        <input type="text" ng-model="client.birthday" name="birthday" ui-mask="99/99/9999" class="ui input" ng-required="client.ePersonType === 1"
+                        />
 
+                        <!--<div class="ui calendar" id="birthdayCalendar">
+                            <div class="ui input left icon">
+                                <i class="calendar icon"></i>
+                                <input name="birthday" id="birthday" ng-model="client.birthday" type="text" ng-required="client.ePersonType === 1">
+                            </div>
+                        </div>
+                        {{client.birthday}}-->
                         <div class="ui pointing red basic label" ng-show="!clientForm.birthday.$valid && (clientForm.$submitted || !clientForm.birthday.$pristine)">
                             <div ng-show="!clientForm.birthday.$valid">Data não informada ou</br>em formato inválido</div>
                         </div>
@@ -143,11 +156,11 @@
 
                         <label for="sex">Gênero</label>
                         <select ng-model="client.eSex" ng-options="item.id as item.desc for item in sexClient" ng-selected="client.eSex" name="sex"
-                                ng-required="client.ePersonType === 1"></select>
+                            ng-required="client.ePersonType === 1"></select>
 
-                        <div class="ui pointing red basic label" ng-show="client.eSex == 0 && clientForm.$submitted">
-                            <div>o género do Cliente é Obrigatório</div>
-                        </div>
+                            <div class="ui pointing red basic label" ng-show="client.eSex == 0 && clientForm.$submitted">
+                                <div>o género do Cliente é Obrigatório</div>
+                            </div>
                     </div>
 
                 </div>
@@ -158,7 +171,8 @@
                     <div class="eight wide field" ng-class="{'error' : !clientForm.socialReasonName.$valid && (clientForm.$submitted || !clientForm.socialReasonName.$pristine)}">
 
                         <label for="socialReasonName">Razão Social</label>
-                        <input type="text" ng-model="client.socialReasonName" name="socialReasonName" class="ui input" ng-required="client.ePersonType === 2" maxlength="50"/>
+                        <input type="text" ng-model="client.socialReasonName" name="socialReasonName" class="ui input" ng-required="client.ePersonType === 2"
+                            maxlength="50" />
 
                         <div class="ui pointing red basic label" ng-show="!clientForm.socialReasonName.$valid && (clientForm.$submitted || !clientForm.socialReasonName.$pristine)">
                             <div ng-show="!clientForm.socialReasonName.$valid">A Razão Social é Obrigatória</div>
@@ -170,7 +184,8 @@
                     <div class="eight wide field" ng-class="{'error' : !clientForm.fantasyName.$valid && (clientForm.$submitted || !clientForm.fantasyName.$pristine)}">
 
                         <label for="fantasyName">Nome Fantasia</label>
-                        <input type="text" ng-model="client.fantasyName" name="fantasyName" class="ui input" ng-required="client.ePersonType === 2" maxlength="50"/>
+                        <input type="text" ng-model="client.fantasyName" name="fantasyName" class="ui input" ng-required="client.ePersonType === 2"
+                            maxlength="50" />
 
                         <div class="ui pointing red basic label" ng-show="!clientForm.fantasyName.$valid && (clientForm.$submitted || !clientForm.fantasyName.$pristine)">
                             <div ng-show="!clientForm.fantasyName.$valid">O Nome Fantasia é Obrigatório</div>
@@ -219,14 +234,15 @@
                     <!--CEP-->
                     <div class="three wide field">
                         <label for="cep">CEP</label>
-                        <input type="text" name="cep" ng-model="client.address.cep" ng-blur="getAddress(client.address.cep)" class="ui input" ui-mask="99999-999" />
+                        <input type="text" name="cep" ng-model="client.address.cep" ng-blur="getAddress(client.address.cep)" class="ui input" ui-mask="99999-999"
+                        />
                     </div>
                     <div class="field">
                         <label>&nbsp</label>
                         <button type="button" class="ui square icon yellow button" data-content="Informe o Cep para que possamos preencher o Endereço para voçê"
-                                data-variation="inverted">
+                            data-variation="inverted">
                             <i class="info icon"></i>
-                        </button>
+                            </button>
                     </div>
                 </div>
                 <div class="fields">
@@ -358,7 +374,8 @@
             </div>
         </div>-->
 
-    </div><!--GRID PAGE-->
+    </div>
+    <!--GRID PAGE-->
 
 </form>
 

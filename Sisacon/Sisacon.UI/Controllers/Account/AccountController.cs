@@ -30,7 +30,7 @@ namespace Sisacon.UI.Controllers.account
             user.Email = userCredentials["email"].ToString();
             user.eUserType = UserType.eUserType.Single;
             user.ExclusionDate = null;
-            user.Password = userCredentials["pass"].ToString();
+            user.Password = Helpers.Security.encrypt(userCredentials["pass"].ToString());
             user.LastLogin = null;
             user.ShowWellcomeMessage = true;
 

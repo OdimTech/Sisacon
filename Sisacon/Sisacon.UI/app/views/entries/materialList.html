@@ -30,46 +30,58 @@
                         <a class="ui labeled primary icon button" href="#/newMaterial?id=0">
                             <i class="edit icon"></i> Novo Material
                         </a>
-                        <a class="ui icon orange button" ng-click="showHelp()">
-                            <i class="help icon"></i>
-                        </a>
                     </div>
 
                 </div>
-            </div><!--TOP MENU-->
+            </div>
+            <!--TOP MENU-->
 
             <div class="ui stackable segment">
 
                 <table datatable="ng" dt-options="vm.dtOptions" class="ui striped selectable table" style="width:100%">
                     <thead>
                         <tr>
-                            <th class="collapsing">Editar</th>
-                            <th class="collapsing">Excluir</th>
                             <th>Código</th>
                             <th>Descrição</th>
                             <th>Categoria</th>
                             <th>Preço Atual</th>
+                            <th class="collapsing">Editar</th>
+                            <th class="collapsing">Excluir</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="item in vm.materialList">
-                            <td><button class="ui yellow circular icon button" ng-click="vm.editMaterial(item.id)"><i class="ui edit icon"></i></button></td>
-                            <td><button class="ui red circular icon button" ng-click="vm.showModalRemoveMaterial(item)"><i class="ui remove icon"></i></button></td>
                             <td>{{item.codMaterial}}</td>
                             <td>{{item.description}}</td>
                             <td>{{item.category.description}}</td>
-                            <td>{{}}</td>
+                            <td>{{item.currentPrice | currency:"R$ "}}</td>
+                            <td>
+                                <button class="ui primary square icon button" ng-click="vm.editMaterial(item.id)" title="Editar Material">
+                                    <i class="ui edit icon"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="ui red square icon button" ng-click="vm.showModalRemoveMaterial(item)" title="Excluir Material">
+                                    <i class="ui remove icon"></i>
+                                    </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-        </div><!--SIXTEEN COLUMN-->
+        </div>
+        <!--SIXTEEN COLUMN-->
 
-    </div><!--GRID PAGE-->
+    </div>
+    <!--GRID PAGE-->
 
-</form><!--FORM-->
+</form>
+<!--FORM-->
+
 <!--MODALS-->
+
+<!--EXCLUIR MATERIAL DA LISTA-->
 <div id="removeMaterialModal" class="ui basic modal">
     <div class="header">
         <h1>Excluir Material</h1>
@@ -88,3 +100,4 @@
         </button>
     </div>
 </div>
+

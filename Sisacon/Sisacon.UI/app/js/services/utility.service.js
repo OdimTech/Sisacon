@@ -1,19 +1,20 @@
 (function () {
-    
+
     'use strict';
 
     angular
         .module('app')
         .factory('utilityService', utilityService);
 
-    function utilityService() {
-        
+    function utilityService(valuesService) {
+
         var service = {
 
             validateDate: validateDate,
-            convertStringToDate:convertStringToDate,
+            convertStringToDate: convertStringToDate,
             createNewDate: createNewDate,
-            convertDateToString: convertDateToString
+            convertDateToString: convertDateToString,
+            getMonthText: getMonthText
         };
 
         return service;
@@ -36,17 +37,34 @@
         function convertStringToDate(strDate) {
 
             moment.locale('pt-BR');
-            
+
             var date = moment(strDate, "DD-MM-YYYY");
 
             return date;
         }
 
         function createNewDate() {
-            
+
             var date = moment().format();
 
             return date;
+        }
+
+        function getMonthText(numberMonth) {
+
+            var month = '';
+            var listMonths = valuesService.monthsObjList;
+
+
+            listMonths.forEach(function (item) {
+                
+                if(item.id == numberMonth){
+
+                    month = item.text;
+                }
+            })
+
+            return month;
         }
     }
 

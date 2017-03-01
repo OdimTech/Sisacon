@@ -566,7 +566,7 @@ h3 {
 }
 
 h4 {
-  font-size: 1.2rem;
+  font-size: 1.071rem;
 }
 
 h5 {
@@ -28719,7 +28719,7 @@ select.ui.dropdown {
 .ui.modal > .content {
   display: block;
   width: 100%;
-  font-size: 1.1em;
+  font-size: 1em;
   line-height: 1.4;
   padding: 1.5rem;
   background: #ffffff;

@@ -7,8 +7,9 @@
 
                 <div class="ui four wide stackable column">
                     <h3 class="ui header">
+                        <i class="money bordered icon"></i>
                         <div class="content">
-                            Custos
+                            Custos Fixos
                             <div class="inverted sub header">
                                 Calcule o seu Custo Mensal
                             </div>
@@ -23,7 +24,7 @@
                     <a class="ui labeled primary icon button" ng-click="">
                         <i class="check icon"></i>Salvar
                     </a>
-                    <a class="ui icon primary button" ng-click="vm.showHelp()">
+                    <a class="ui icon orange button" ng-click="vm.showHelp()">
                         <i class="help icon"></i>
                     </a>
                 </div>
@@ -31,28 +32,35 @@
             </div>
         </div>
 
-    </div><!--TOP MENU-->
+    </div>
+    <!--TOP MENU-->
 
-    <div class="ui ten wide centered stackable column" style="padding:0">
+    <div class="ui sixteen wide stackable column" style="padding:0;padding-left: 14px">
 
-        <form name="costsForm" class="ui form" novalidate>
+        <div class="ui stackable grid">
 
-            <div class="ui stackable grid" style="padding-top:0">
+            <div class="ui ten wide stackable column" style="padding-top:0">
 
-                <div class="ui eight centered wide stackable column">
+                <form name="costsForm" class="ui form" novalidate>
 
-                    <div class="ui stackable fluid segment">
+                    <div class="ui stackable raised fluid segment">
                         <!--BASE DE CALCULO-->
+
+                        <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                            Base de Cálculo
+                        </div>
 
                         <div class="fields">
 
+                            <!--MES DE REFERENCIA-->
                             <div class="ui four wide field">
 
                                 <label for="referenceMonth">Mês Referência</label>
-                                <input type="text" name="referenceMonth" class="ui input" readonly />
+                                <input type="text" name="referenceMonth" ng-model="vm.cost.referenceMonth" class="ui input" readonly />
 
                             </div>
 
+                            <!--QUANTIDADE DE HORAS TRABALHADAS POR MES-->
                             <div class="ui four wide field">
 
                                 <label for="workedHours">Horas Trabalhadas</label>
@@ -60,6 +68,15 @@
 
                             </div>
 
+                            <div class="field">
+                                <label>&nbsp</label>
+                                <button type="button" class="ui square icon yellow button" data-content="Quantidade de horas por mês que você se dedica ao seu negócio."
+                                    data-variation="inverted">
+                                    <i class="info icon"></i>
+                                    </button>
+                            </div>
+
+                            <!--SALARIO-->
                             <div class="ui four wide field">
 
                                 <label for="salary">Salário</label>
@@ -67,12 +84,23 @@
 
                             </div>
 
+                            <div class="field">
+                                <label>&nbsp</label>
+                                <button type="button" class="ui square icon yellow button" data-content="Quanto você espera receber por mês." data-variation="inverted">
+                                    <i class="info icon"></i>
+                                </button>
+                            </div>
+
                         </div>
 
                     </div>
 
-                    <div class="ui stackable fluid segment">
+                    <div class="ui stackable raised fluid segment">
                         <!--CUSTOS FIXOS MENSAIS-->
+
+                        <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                            Detalhes
+                        </div>
 
                         <div class="nine wide field">
 
@@ -85,71 +113,95 @@
                             <div class="four wide field">
 
                                 <label for="cost">Valor</label>
-                                <input type="number" name="cost" class="ui input" />
+                                <div class="ui right labeled input">
+
+                                    <input type="number" name="cost" class="ui input" />
+                                    <div class="ui basic label">
+                                        R$
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div class="five wide field">
 
                                 <label for="personType">Categoria</label>
-                                <select ng-model="client.ePersonType" ng-options="item.id as item.desc for item in userTypes" ng-selected="client.ePersonType"
-                                        name="personType" required></select>
+                                <select ng-model="vm.cost.category" ng-options="item.id as item.description for item in vm.categories track by item.id" ng-selected="vm.cost.category"
+                                    name="personType" required></select>
+
+                                    <div class="ui pointing red basic label" ng-show="vm.cost.category.id == 0 && costsForm.$submitted">
+                                        <div>A Categoria do Custo é Obrigatória</div>
+                                    </div>
 
                             </div>
 
                             <div class="field">
                                 <label>&nbsp</label>
-                                <button class="ui labeled primary icon button">
+                                <button class="ui labeled primary icon button" ng-click="vm.openModalCategory()">
                                     <i class="plus icon"></i>
-                                    Adicionar
+                                    Adicionar Categoria
                                 </button>
 
                             </div>
 
                         </div>
 
-                        <div class="ui divider"></div>
+                        <div class="field" ng-show="vm.categories.length == 0">
 
-                        <div class="ui middle aligned selection animated divided list">
+                            <div class="ui yellow message">
 
-                            <div class="item" >
-                                <div class="left floated content">
-                                    <i class="large phone icon"></i>
+                                <div class="header">
+                                    Você não possui Categorias cadastradas
                                 </div>
-                                <div class="right floated content">
-                                    <button class="ui red icon button">
-                                        <i class="remove icon"></i>
-                                    </button>
-                                    <button class="ui yellow icon button">
-                                        <i class="edit icon"></i>
-                                    </button>
-                                </div>
-                                <div class="content">
-                                    <div class="header">Conta de Água - 527,00</div>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="left floated content">
-                                    <i class="large phone icon"></i>
-                                </div>
-                                <div class="right floated content">
-                                    <button class="ui red icon button">
-                                        <i class="remove icon"></i>
-                                    </button>
-                                    <button class="ui yellow icon button">
-                                        <i class="edit icon"></i>
-                                    </button>
-                                </div>
-                                <div class="content">
-                                    <div class="header">Telefone - 135,00</div>
-                                </div>
+                                Crie Categorias para organizar melhor os seus Custos
                             </div>
 
                         </div>
 
                     </div>
 
-                    <div class="ui stackable fluid segment">
+                    <div class="ui stackable raised fluid segment">
+
+                        <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                            Lista de Gastos
+                        </div>
+
+                        <table datatable="ng" dt-options="vm.dtOptions" class="ui striped selectable table" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Descrição</th>
+                                    <th>Valor</th>
+                                    <th>Categoria</th>
+                                    <th class="collapsing">Editar</th>
+                                    <th class="collapsing">Excluir</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in vm.cost">
+                                    <td>{{item.description}}</td>
+                                    <td>{{item.valor | currency:"R$ "}}</td>
+                                    <td>{{item.category}}</td>
+                                    <td>
+                                        <button class="ui primary square icon button" ng-click="vm.editMaterial(item.id)" title="Editar Material">
+                                    <i class="ui edit icon"></i>
+                                </button>
+                                    </td>
+                                    <td>
+                                        <button class="ui red square icon button" ng-click="vm.showModalRemoveMaterial(item)" title="Excluir Material">
+                                    <i class="ui remove icon"></i>
+                                    </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="ui stackable raised fluid segment">
+
+                        <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                            Desvalorização de Equipamentos
+                        </div>
 
                         <div class="">
 
@@ -158,26 +210,100 @@
 
                     </div>
 
+                </form>
+
+            </div>
+
+            <div class="ui six wide stackable column" style="padding-top:0">
+
+                <div class="ui stackable fluid raised segment">
+
+                    <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                        Total de Gastos
+                    </div>
+
                 </div>
 
-                <!--<div class="ui eight wide stackable column">
+            </div>
 
-                    <div class="ui stackable fluid segment">
+        </div>
 
+    </div>
 
+</div>
+<!--GRID PAGE-->
+
+<!--MODALS-->
+
+<!--MODAL CATEGORIAS-->
+<div id="editCategory" class="ui small modal" ng-controller="CostCategoryController as vm">
+    <i class="close icon"></i>
+    <div class="content">
+
+        <form novalidate name="modalCategoryForm" class="ui form" style="margin-bottom: 0">
+
+            <div class="ui floating message">
+                <div class="header">
+                    Categorias de Custos
+                </div>
+                <p>
+                    Edite ou Crie uma nova Categoria para organizar seus Custos
+                </p>
+            </div>
+
+            <div class="fields">
+
+                <div class="eight wide required field" ng-class="{'error' : !modalCategoryForm.description.$valid && (modalCategoryForm.$submitted || !modalCategoryForm.description.$pristine)}">
+                    <!--DESCRIÇÃO-->
+                    <label>Descrição</label>
+                    <input type="text" name="description" maxlength="50" ng-model="vm.category.description" class="ui input" required />
+
+                    <div class="ui pointing red basic label" ng-show="!modalCategoryForm.description.$valid && (modalCategoryForm.$submitted || !modalCategoryForm.description.$pristine)">
+                        <div ng-show="!modalCategoryForm.description.$valid">A Descrição é Obrigatória</div>
                     </div>
+                </div>
+                <div class="field">
+                    <label>&nbsp</label>
+                    <button type="button" class="ui primary labeled icon button" ng-click="vm.save()">
+                        <i class="icon" ng-class="{'check' : vm.btnSaveIcon == 'check', 'plus' : vm.btnSaveIcon == 'plus'}"></i>
+                        {{vm.btnSaveText}}
+                    </button>
+                </div>
 
-                    <div class="ui stackable fluid segment">
-
-
-                    </div>
-
-                </div>-->
-
-            </div><!--GRID CONTENT-->
+            </div>
 
         </form>
 
     </div>
 
-</div><!--GRID PAGE-->
+    <table datatable="ng" dt-options="vm.dtOptions" class="ui striped selectable table" style="width:100%">
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th class="collapsing right aligned">Editar</th>
+                <th class="collapsing right aligned">Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in vm.categories | filter: vm.search | orderBy: 'description'">
+                <td>{{item.description}}</td>
+                <td class="right aligned">
+                    <button class="ui primary square icon button" ng-click="vm.edit(item)" title="Editar Categoria">
+                        <i class="ui edit icon"></i>
+                    </button>
+                </td>
+                <td class="right aligned">
+                    <button class="ui red square icon button" ng-click="vm.deleteCategory(item.id)" title="Excluir Categoria">
+                        <i class="ui remove icon"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="actions">
+        <button class="ui ok green button" ng-click="">
+            <i class="checkmark icon"></i> Finalizar
+        </button>
+    </div>
+</div>

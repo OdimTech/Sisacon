@@ -63,6 +63,7 @@ namespace Sisacon.UI
                 "~/app/js/services/materialCategory.service.js",
                 "~/app/js/services/log.service.js",
                 "~/app/js/services/priceResearch.service.js",
+                "~/app/js/services/costCategory.service.js",
                 //CONTROLLERS
                 "~/app/js/controllers/log/log.controller.js",
                 "~/app/js/controllers/base/admin.controller.js",
@@ -84,6 +85,7 @@ namespace Sisacon.UI
                 "~/app/js/controllers/menu/myAccount.controller.js",
                 "~/app/js/controllers/financial/costs.controller.js",
                 "~/app/js/controllers/financial/costConfiguration.controller.js",
+                "~/app/js/controllers/financial/costCategory.controller.js",
                 //DIRECTIVES
                 "~/app/js/directives/validateEmail.directive.js"
                 ));

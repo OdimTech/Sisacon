@@ -6,6 +6,7 @@ using Sisacon.Domain.Interfaces.Services;
 using static Sisacon.Domain.Enuns.ErrorGravity;
 using static Sisacon.Domain.Enuns.Sex;
 using static Sisacon.Domain.Enuns.OperationType;
+using System.Net;
 
 namespace Sisacon.Application
 {
@@ -32,11 +33,16 @@ namespace Sisacon.Application
 
                 if(materialCategory != null)
                 {
-                    if(materialCategory.validateBeforeDelete())
+                    if(materialCategory.validateBeforeDelete(materialCategory.User))
                     {
                         _materialCategoryService.delete(materialCategory);
 
                         response.Message = _crudMsgFormater.createClientCrudMessage(eOperationType.Delete, eSex.Feminino, "Categoria");
+                    }
+                    else
+                    {
+                        response.Message = "Não é possível excluir esta Categoria, pois ela está sendo utilizada no momento.";
+                        response.StatusCode = HttpStatusCode.BadRequest;
                     }
                 }
 

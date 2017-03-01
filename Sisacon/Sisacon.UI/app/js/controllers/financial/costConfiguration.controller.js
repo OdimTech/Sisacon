@@ -19,7 +19,7 @@
         vm.save = save;
         vm.loadConfiguration = loadConfiguration;
 
-        loadConfiguration();
+        //loadConfiguration();
 
         function save() {
 

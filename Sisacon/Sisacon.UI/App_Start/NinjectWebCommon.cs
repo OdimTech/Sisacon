@@ -9,6 +9,7 @@ namespace Sisacon.UI.App_Start
     using Domain.Interfaces.Repositories;
     using Domain.Interfaces.Services;
     using Domain.Services;
+    using Domain.ValueObjects;
     using Infra.Repositories;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using Ninject;
@@ -82,6 +83,7 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<IMaterialCategoryAppService>().To<MaterialCategoryAppService>();
             kernel.Bind<IMaterialAppService>().To<MaterialAppService>();
             kernel.Bind<IPriceResearchAppService>().To<PriceResearchAppService>();
+            kernel.Bind<ICostCategoryAppService>().To<CostCategoryAppService>();
 
             //SERVICE
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
@@ -97,6 +99,7 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<IMaterialCategoryService>().To<MaterialCategoryService>();
             kernel.Bind<IMaterialService>().To<MaterialService>();
             kernel.Bind<IPriceResearchService>().To<PriceResearchService>();
+            kernel.Bind<ICostCategoryService>().To<CostCategoryService>();
 
             //REPOSITORIES
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
@@ -112,7 +115,7 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<IMaterialCategoryRepository>().To<MaterialCategoryRepository>();
             kernel.Bind<IMaterialRepository>().To<MaterialRepository>();
             kernel.Bind<IPriceResearchRepository>().To<PriceResearchRepository>();
-
+            kernel.Bind<ICostCategoryRepository>().To<CostCategoryRepository>();
         }
     }
 }

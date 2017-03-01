@@ -1,12 +1,14 @@
-﻿(function () {
+(function () {
 
     'use strict';
 
-    angular.module('app').controller('MaterialCategoryController', MaterialCategoryController);
+    angular
+        .module('app')
+        .controller('CostCategoryController', CostCategoryController);
 
-    MaterialCategoryController.$inject = ['$scope', 'blockUI', 'toastr', 'localStorageService', 'materialCategoryService', 'valuesService','DTOptionsBuilder', 'DTColumnBuilder'];
+    CostCategoryController.$inject = ['$scope', 'blockUI', 'toastr', 'localStorageService', 'costCategoryService', 'valuesService', 'DTOptionsBuilder', 'DTColumnBuilder'];
 
-    function MaterialCategoryController($scope, blockUI, toastr, localStorageService, materialCategoryService, valuesService,DTOptionsBuilder, DTColumnBuilder) {
+    function CostCategoryController($scope, blockUI, toastr, localStorageService, costCategoryService, valuesService, DTOptionsBuilder, DTColumnBuilder) {
 
         var vm = this;
 
@@ -35,6 +37,7 @@
 
             vm.category = {
 
+                id: 0,
                 user: vm.user
             }
         }
@@ -43,13 +46,13 @@
 
             if (vm.userId) {
 
-                materialCategoryService.getCategoriesByUserId(vm.userId).success(function (response) {
+                costCategoryService.getCategoriesByUserId(vm.userId).success(function (response) {
 
                     vm.categories = response.valueList;
 
                 }).error(function (response) {
 
-                    toastr.error('Não foi possível carregar as Categorias');
+                    toastr.error(response.message);
                 })
             }
         }
@@ -71,7 +74,7 @@
 
                 blockUI.start('Salvando Informações...');
 
-                materialCategoryService.save(vm.category).success(function (response) {
+                costCategoryService.save(vm.category).success(function (response) {
 
                     blockUI.stop();
 
@@ -110,7 +113,7 @@
 
                 blockUI.start('Excluindo Categoria...');
 
-                materialCategoryService.deleteCategory(categoryId).success(function (response) {
+                costCategoryService.deleteCategory(categoryId).success(function (response) {
 
                     blockUI.stop();
 

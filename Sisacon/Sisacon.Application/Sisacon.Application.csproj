@@ -44,12 +44,14 @@
     <Compile Include="ClientAppService.cs" />
     <Compile Include="CompanyAppService.cs" />
     <Compile Include="ConfigurationAppService.cs" />
+    <Compile Include="CostCategoryAppService.cs" />
     <Compile Include="CrudMsgFormater.cs" />
     <Compile Include="EquipmentAppService.cs" />
     <Compile Include="Interfaces\IAppServiceBase.cs" />
     <Compile Include="Interfaces\IClientAppService.cs" />
     <Compile Include="Interfaces\ICompanyAppService.cs" />
     <Compile Include="Interfaces\IConfigurationAppService.cs" />
+    <Compile Include="Interfaces\ICostCategoryAppService.cs" />
     <Compile Include="Interfaces\ICrudMsgFormater.cs" />
     <Compile Include="Interfaces\IEquipmentAppService.cs" />
     <Compile Include="Interfaces\ILogAppService.cs" />

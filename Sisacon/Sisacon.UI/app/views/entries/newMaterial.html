@@ -19,6 +19,7 @@
                     </h3>
                 </div>
                 <div class="ui twelve wide stackable right aligned column">
+
                     <a class="ui labeled primary icon button" href="#/materialList">
                         <i class="long arrow left icon"></i> Voltar
                     </a>
@@ -226,11 +227,11 @@
 <!--MODALS-->
 
 <!--MODAL AJUDA-->
-<div id="showHelpModal" class="ui large modal">
+<div id="showHelpModal" class="ui large modal" style="font-size: 1.1em">
 
     <i class="close icon"></i>
 
-    <div class="large header">
+    <div class="header">
         <i class="bordered lab icon"></i> Material
         <div class="sub-header">
 
@@ -358,18 +359,18 @@
             <table datatable="ng" dt-options="vm.dtOptions" class="ui striped selectable table" style="width:100%">
                 <thead>
                     <tr>
-                        <th class="collapsing">Excluir</th>
                         <th>Preço</th>
                         <th>Fornecedor</th>
                         <th>Data</th>
+                        <th class="collapsing">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="item in vm.material.listPriceResearch | orderBy:'-'">
-                        <td><button class="ui red circular icon button" ng-click="vm.showModalRemoveHistory(item)"><i class="ui remove icon"></i></button></td>
                         <td>{{item.price | currency:"R$ "}}</td>
                         <td>{{item.provider.fantasyName}}</td>
                         <td>{{item.searchDate | date:'dd/MM/yyyy'}}</td>
+                        <td><button class="ui red square icon button" ng-click="vm.showModalRemoveHistory(item)"><i class="ui remove icon"></i></button></td>
                     </tr>
                 </tbody>
             </table>
@@ -385,7 +386,7 @@
     <i class="close icon"></i>
     <div class="content">
 
-        <form novalidate name="modalCategoryForm" class="ui form">
+        <form novalidate name="modalCategoryForm" class="ui form" style="margin-bottom: 0">
 
             <div class="ui floating message">
                 <div class="header">
@@ -417,39 +418,35 @@
 
             </div>
 
-            <div class="eight wide field" ng-show="vm.categories.length > 0">
-
-                <label>Filtrar</label>
-                <input type="text" name="search" ng-model="vm.search" class="ui input" />
-
-            </div>
-
-            <div class="field">
-
-                <div class="ui middle aligned selection animated divided list" ng-show="vm.categories.length > 0">
-
-                    <div class="item" ng-repeat="item in vm.categories | filter: vm.search | orderBy: 'description'">
-                        <div class="right floated content">
-                            <button type="button" class="ui yellow icon button" ng-click="vm.edit(item)">
-                                <i class="edit icon"></i>
-                            </button>
-                            <button type="button" class="ui red icon button" ng-click="vm.deleteCategory(item.id)">
-                                <i class="remove icon"></i>
-                            </button>
-                        </div>
-                        <div class="content">
-                            <div class="description">{{item.description}}</div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
         </form>
 
     </div>
+
+    <table datatable="ng" dt-options="vm.dtOptions" class="ui striped selectable table" style="width:100%">
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th class="collapsing right aligned">Editar</th>
+                <th class="collapsing right aligned">Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in vm.categories | filter: vm.search | orderBy: 'description'">
+                <td>{{item.description}}</td>
+                <td class="right aligned">
+                    <button class="ui primary square icon button" ng-click="vm.edit(item)" title="Editar Categoria">
+                        <i class="ui edit icon"></i>
+                    </button>
+                </td>
+                <td class="right aligned">
+                    <button class="ui red square icon button" ng-click="vm.deleteCategory(item.id)" title="Excluir Categoria">
+                        <i class="ui remove icon"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
     <div class="actions">
         <button class="ui ok green button" ng-click="">
             <i class="checkmark icon"></i> Finalizar

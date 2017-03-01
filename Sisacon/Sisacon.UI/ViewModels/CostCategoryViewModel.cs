@@ -1,9 +1,13 @@
 ﻿using Sisacon.Domain.Entities;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 
 namespace Sisacon.UI.ViewModels
 {
-    public class MaterialCategoryViewModel : BaseViewModel
+    public class CostCategoryViewModel : BaseViewModel
     {
         [Required]
         [MaxLength(50)]

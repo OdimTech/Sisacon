@@ -6,7 +6,9 @@
             <div class="ui stackable grid" style="padding: 0">
 
                 <div class="ui four wide stackable column">
+
                     <h3 class="ui header">
+                        <i class="bordered bar chart icon"></i>
                         <div class="content">
                             Painel de Custos
                             <div class="inverted sub header">
@@ -14,47 +16,54 @@
                             </div>
                         </div>
                     </h3>
+
                 </div>
                 <div class="ui twelve wide stackable right aligned column">
 
                     <a class="ui labeled primary icon button" ng-click="vm.openModalOptions()">
-                        <i class="configure icon"></i>Opções
+                        <i class="configure icon"></i>Configurações de Custo
                     </a>
                     <a class="ui labeled primary icon button" href="#/costs">
                         <i class="edit icon"></i>Novo Custo
                     </a>
-                    <a class="ui icon primary button" ng-click="vm.showHelp()">
-                        <i class="help icon"></i>
-                    </a>
                 </div>
 
             </div>
         </div>
 
-    </div><!--TOP MENU-->
+    </div>
+    <!--TOP MENU-->
 
-    <div class="ui sixteen wide stackable column" style="padding:0">
+    <div class="ui sixteen wide stackable centered column" style="padding:0;padding-left: 14px">
 
         <div class="ui stackable grid" style="padding-top:0">
 
-            <div class="ui ten wide stackable column">
+            <div class="ui eight wide stackable column">
 
-                <div class="ui stackable segment">
+                <div class="ui stackable raised segment">
 
+                    <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                        Gráfico de Custos por Mês
+                    </div>
 
                 </div>
 
-                <div class="ui stackable segment">
+                <div class="ui stackable raised segment">
 
-
+                    <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                        Gráfico de Custos por Categoria
+                    </div>
                 </div>
 
             </div>
 
-            <div class="ui six wide stackable column">
+            <div class="ui eight wide stackable column">
 
-                <div class="ui stackable segment">
+                <div class="ui stackable raised segment">
 
+                    <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                        Histórico de Custos de Produção
+                    </div>
 
                 </div>
 
@@ -62,17 +71,26 @@
 
         </div>
 
-    </div><!--GRID CONTENT-->
+    </div>
+    <!--GRID CONTENT-->
 
-</div><!--GRID PAGE-->
+</div>
+<!--GRID PAGE-->
 <!--MODAL-->
 <div id="costOptions" class="ui long modal" ng-controller="CostConfiguration as vm">
     <i class="close icon"></i>
+
+    <div class="header">
+        <i class="configure bordered icon"></i>
+        Configurações de Custo
+    </div>
+
     <div class="content">
 
         <form class="ui form" name="costConfigForm" novalidate>
 
-            <div class="ui floating  message"><!--LIMITE DE CUSTOS-->
+            <div class="ui floating  message">
+                <!--LIMITE DE CUSTOS-->
                 <div class="header">
                     Definir Limite de Custos
                 </div>
@@ -90,9 +108,39 @@
                         R$
                     </div>
                 </div>
+
             </div>
 
-            <!----------------------------------------------------------------------------------------------------------------->
+            <div class="field">
+
+                <div class="ui checkbox">
+                    <input type="checkbox">
+                    <label>Impedir que um Custo seja criado se ultrapassar o limite.</label>
+                </div>
+
+            </div>
+
+            <div class="ui divider"></div>
+
+            <!--INCLUIR DESVALORIZAÇÃO DE EQUIPAMENTOS NOS CUSTOS MENSAIS-->
+            <div class="ui floating  message">
+
+                <div class="header">
+                    Incluir Desvalorização de Equipamentos nos Custos Mensais
+                </div>
+                <p>
+                    Equipamentos se desvalorizam com o tempo, ao incluir essa depreciação nos Custos Mensais, você garante um retorno financeiro para a compra de novos Equipamentos.
+                </p>
+            </div>
+
+            <div class="field">
+
+                <div class="ui checkbox">
+                    <input type="checkbox">
+                    <label>Incluir Desvalorização de Equipamentos nos Custos Mensais.</label>
+                </div>
+
+            </div>
 
         </form>
     </div>
@@ -101,7 +149,7 @@
             <i class="checkmark icon"></i> Salvar
         </button>
         <button class="ui cancel red button">
-            <i class="checkmark icon"></i> Cancelar
+            <i class="exit icon"></i> Cancelar
         </button>
     </div>
 </div>

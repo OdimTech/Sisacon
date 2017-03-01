@@ -204,7 +204,8 @@
             vm.dtOptions = DTOptionsBuilder
                 .newOptions()
                 .withPaginationType('full_numbers')
-                .withLanguage(valuesService.dataTableLanguage);
+                .withLanguage(valuesService.dataTableLanguage)
+                .withDisplayLength(10);
 
         }
 

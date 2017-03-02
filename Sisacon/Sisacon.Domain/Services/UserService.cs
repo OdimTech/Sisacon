@@ -11,12 +11,14 @@ namespace Sisacon.Domain.Services
     {
         private readonly IUserRepository _repository;
         private readonly IConfigurationService _configService;
+        private readonly ICostConfigurationService _costConfigurationService;
 
-        public UserService(IUserRepository repository, IConfigurationService configService)
+        public UserService(IUserRepository repository, IConfigurationService configService, ICostConfigurationService costConfigurationService)
             : base(repository)
         {
             _repository = repository;
             _configService = configService;
+            _costConfigurationService = costConfigurationService;
         }
 
         public User getByEmail(string email)
@@ -99,7 +101,11 @@ namespace Sisacon.Domain.Services
 
             try
             {
+                //CRIA CONFIGURAÇÃO DE SISTEMA PADRÃO
                 _configService.createDefaultConfiguration(user);
+
+                //CRIA CONFIGURAÇÃO DE CUSTO MENSAL PADRÃO
+                _costConfigurationService.createDefaultCostConfiguration(user);
 
                 configCreated = true;
             }

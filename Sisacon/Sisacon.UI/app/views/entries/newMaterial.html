@@ -35,14 +35,14 @@
                     <a class="ui labeled primary icon button" ng-class="{'disabled': vm.material.listPriceResearch.length == 0}" ng-click="vm.showModalHistoryChart()"
                         ng-show="vm.material.id > 0">
                         <i class="history icon"></i>Historico de Preços
-                        </a>
-                        <a class="ui labeled primary icon button" ng-class="{'disabled': vm.material.listPriceResearch.length == 0}" ng-click="vm.showModalPriceChart()"
-                            ng-show="vm.material.id > 0">
-                            <i class="area chart icon"></i>Gráfico de Preços
-                            </a>
-                            <a class="ui icon orange button" ng-click="vm.showHelp()">
-                                <i class="help icon"></i>
-                            </a>
+                    </a>
+                    <a class="ui labeled primary icon button" ng-class="{'disabled': vm.material.listPriceResearch.length == 0}" ng-click="vm.showModalPriceChart()"
+                        ng-show="vm.material.id > 0">
+                        <i class="area chart icon"></i>Gráfico de Preços
+                    </a>
+                    <a class="ui icon orange button" ng-click="vm.showHelp()">
+                        <i class="help icon"></i>
+                    </a>
                 </div>
 
             </div>
@@ -102,9 +102,9 @@
                                 <select ng-model="vm.material.category" ng-options="item as item.description for item in vm.categories track by item.id"
                                     ng-selected="vm.material.category" name="category"></select>
 
-                                    <div class="ui pointing red basic label" ng-show="vm.material.category.id == 0 && materialForm.$submitted">
-                                        <div>A Categoria do Material é Obrigatória</div>
-                                    </div>
+                                <div class="ui pointing red basic label" ng-show="vm.material.category.id == 0 && materialForm.$submitted">
+                                    <div>A Categoria do Material é Obrigatória</div>
+                                </div>
                             </div>
 
                             <div class="field">
@@ -175,9 +175,9 @@
                                 <select ng-model="vm.priceReaserch.provider" ng-options="item as item.fantasyName for item in vm.providers track by item.id"
                                     ng-selected="vm.priceReaserch.provider" name="provider" required></select>
 
-                                    <div class="ui pointing red basic label" ng-show="vm.priceReaserch.provider.id == 0 && priceResearchForm.$submitted">
-                                        <div>O Fornecedor é Obrigatório</div>
-                                    </div>
+                                <div class="ui pointing red basic label" ng-show="vm.priceReaserch.provider.id == 0 && priceResearchForm.$submitted">
+                                    <div>O Fornecedor é Obrigatório</div>
+                                </div>
                             </div>
 
                             <div class="field">

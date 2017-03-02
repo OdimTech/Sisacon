@@ -58,6 +58,7 @@
     <Compile Include="Mapping\ConfigurationMap.cs" />
     <Compile Include="Mapping\ContactMap.cs" />
     <Compile Include="Mapping\CostCategoryMap.cs" />
+    <Compile Include="Mapping\CostConfigurationMap.cs" />
     <Compile Include="Mapping\EquipmentMap.cs" />
     <Compile Include="Mapping\LogMap.cs" />
     <Compile Include="Mapping\MaterialCategoryMap.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Repositories\CompanyRepository.cs" />
     <Compile Include="Repositories\ConfigurationRepository.cs" />
     <Compile Include="Repositories\CostCategoryRepository.cs" />
+    <Compile Include="Repositories\CostConfigurationRepository.cs" />
     <Compile Include="Repositories\EquipmentRepositoy.cs" />
     <Compile Include="Repositories\LogRepository.cs" />
     <Compile Include="Repositories\MaterialCategoryRepository.cs" />

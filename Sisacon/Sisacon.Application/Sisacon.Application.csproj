@@ -45,8 +45,10 @@
     <Compile Include="CompanyAppService.cs" />
     <Compile Include="ConfigurationAppService.cs" />
     <Compile Include="CostCategoryAppService.cs" />
+    <Compile Include="CostConfigurationAppService.cs" />
     <Compile Include="CrudMsgFormater.cs" />
     <Compile Include="EquipmentAppService.cs" />
+    <Compile Include="Interfaces\ICostConfigurationAppService.cs" />
     <Compile Include="Interfaces\IAppServiceBase.cs" />
     <Compile Include="Interfaces\IClientAppService.cs" />
     <Compile Include="Interfaces\ICompanyAppService.cs" />

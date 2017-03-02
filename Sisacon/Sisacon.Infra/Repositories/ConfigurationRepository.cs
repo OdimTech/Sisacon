@@ -11,7 +11,6 @@ namespace Sisacon.Infra.Repositories
         {
             try
             {
-                config.RegistrationDate = DateTime.Now;
                 Context.Config.Add(config);
                 Context.User.Attach(config.User);
             }
@@ -25,7 +24,7 @@ namespace Sisacon.Infra.Repositories
         {
             try
             {
-                return Context.Config.Where(x => x.User.Id == id).FirstOrDefault();
+                return Context.Config.Where(x => x.User.Id == id && x.ExclusionDate == null).FirstOrDefault();
             }
             catch (Exception ex)
             {

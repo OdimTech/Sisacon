@@ -10,6 +10,6 @@ namespace Sisacon.Application.Interfaces
     public interface ICostConfigurationAppService : IAppServiceBase<CostConfiguration>
     {
         ResponseMessage<CostConfiguration> updateConfig(CostConfiguration config);
-        ResponseMessage<CostConfiguration> getByUserId(int id);
+        ResponseMessage<CostConfiguration> getCostConfigurationByUserId(int id);
     }
 }

@@ -36,6 +36,8 @@ namespace Sisacon.Repositories.Context
         public DbSet<PriceResearch> PriceResearch { get; set; }
         public DbSet<CostCategory> CostCategory { get; set; }
         public DbSet<CostConfiguration> CostConfiguration { get; set; }
+        public DbSet<Cost> Cost { get; set; }
+        public DbSet<FixedCost> FixedCost { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -60,6 +62,8 @@ namespace Sisacon.Repositories.Context
             modelBuilder.Configurations.Add(new PriceResearchMap());
             modelBuilder.Configurations.Add(new CostCategoryMap());
             modelBuilder.Configurations.Add(new CostConfigurationMap());
+            modelBuilder.Configurations.Add(new CostMap());
+            modelBuilder.Configurations.Add(new FixedCostMap());
 
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasColumnType("varchar"));

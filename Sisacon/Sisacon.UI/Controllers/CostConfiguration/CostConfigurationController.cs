@@ -1,39 +1,49 @@
-﻿using System.Net.Http;
+﻿using AutoMapper;
+using Sisacon.Application;
+using Sisacon.Application.Interfaces;
+using Sisacon.Domain.Entities;
+using Sisacon.UI.ViewModels;
+using System.Net.Http;
 using System.Web.Http;
 
-namespace Sisacon.UI.Controllers.CostConfiguration
+namespace Sisacon.UI.Controllers
 {
     [RoutePrefix("api")]
-    public class CostConfigurationController : ApiController
+    public class CostConfigurationController : BaseController
     {
+        private readonly ICostConfigurationAppService _costConfigurationAppService;
+
+        public CostConfigurationController(ICostConfigurationAppService costConfigurationAppService)
+        {
+            _costConfigurationAppService = costConfigurationAppService;
+        }
+
         [HttpGet]
         [Route("costConfig")]
         public HttpResponseMessage GetConfigurationByUserId(int userId)
         {
-            
+            var response = new ResponseMessage<CostConfiguration>();
 
-            var response = costConfigBLL.getCostsConfigurationByUserId(userId);
+            response = _costConfigurationAppService.getCostConfigurationByUserId(userId);
 
             return Request.CreateResponse(response.StatusCode, response);
         }
 
         [HttpPost]
         [Route("costConfig")]
-        public HttpResponseMessage Save(Domain.CostConfiguration costConfig)
+        public HttpResponseMessage Save(CostConfigurationViewModel costConfigViewModel)
         {
-            var costConfigBLL = new CostConfigurationBLL();
-            var response = new ResponseMessage<Domain.CostConfiguration>();
+            var response = new ResponseMessage<CostConfiguration>();
 
-            if (costConfig != null)
+            if (ModelState.IsValid)
             {
-                if (costConfig.Id == 0)
-                {
-                    response = costConfigBLL.save(costConfig);
-                }
-                else
-                {
-                    response = costConfigBLL.update(costConfig);
-                }
+                var costConfiguration = Mapper.Map<CostConfigurationViewModel, CostConfiguration>(costConfigViewModel);
+
+                response = _costConfigurationAppService.updateConfig(costConfiguration);
+            }
+            else
+            {
+                response = response.createInvalidResponse();
             }
 
             return Request.CreateResponse(response.StatusCode, response);

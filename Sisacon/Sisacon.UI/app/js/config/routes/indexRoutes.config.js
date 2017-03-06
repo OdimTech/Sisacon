@@ -5,10 +5,10 @@
     angular
         .module('app')
 
-        .config(['$routeProvider','$locationProvider', function ($routeProvider, $locationProvider) {
+        .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
             $locationProvider.html5Mode({
-                enable:true,
+                enable: true,
                 requireBse: false
             });
 
@@ -134,6 +134,12 @@
                     controllerAs: 'vm'
                 })
                 .when('/costs', {
+
+                    templateUrl: '/app/views/financial/costs.html',
+                    controller: 'CostsController',
+                    controllerAs: 'vm'
+                })
+                .when('/costs/id', {
 
                     templateUrl: '/app/views/financial/costs.html',
                     controller: 'CostsController',

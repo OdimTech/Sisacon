@@ -156,7 +156,7 @@ namespace Sisacon.Application
                 //Cria as configurações iniciais para o usuário
                 _userService.createDefaultConfig(user);
 
-                //Cria notificação 
+                //Cria notificação de cadastro de nova empresa
                 _notificationService.buildNotification(MsgNotification.CreateCompany, eNotificationClass.Green, "#/company", user);
             }
             catch (Exception ex) 

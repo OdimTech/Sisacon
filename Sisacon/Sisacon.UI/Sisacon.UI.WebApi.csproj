@@ -2377,6 +2377,7 @@
     <Compile Include="Controllers\Configuration\ConfigurationController.cs" />
     <Compile Include="Controllers\CostCategory\CostCategoryController.cs" />
     <Compile Include="Controllers\CostConfiguration\CostConfigurationController.cs" />
+    <Compile Include="Controllers\Cost\CostController.cs" />
     <Compile Include="Controllers\Equipment\EquipmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Log\LogController.cs" />
@@ -2402,6 +2403,8 @@
     <Compile Include="ViewModels\ConfigurationViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\CostCategoryViewModel.cs" />
+    <Compile Include="ViewModels\CostConfigurationViewModel.cs" />
+    <Compile Include="ViewModels\CostViewModel.cs" />
     <Compile Include="ViewModels\EmailViewModel.cs" />
     <Compile Include="ViewModels\EquipmentViewModel.cs" />
     <Compile Include="ViewModels\MaterialCategoryViewModel.cs" />

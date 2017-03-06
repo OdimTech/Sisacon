@@ -63,7 +63,7 @@
                 console.log(reponse.message);
 
             }
-        )
+                )
         }
 
         function initControls() {

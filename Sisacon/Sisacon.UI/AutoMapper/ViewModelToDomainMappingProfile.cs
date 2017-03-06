@@ -28,6 +28,8 @@ namespace Sisacon.UI.AutoMapper
             CreateMap<Material, MaterialViewModel>();
             CreateMap<PriceResearch, PriceResearchViewModel>();
             CreateMap<CostCategory, CostCategoryViewModel>();
+            CreateMap<CostConfiguration, CostCategoryViewModel>();
+            CreateMap<Cost, CostViewModel>();
         }
     }
 }

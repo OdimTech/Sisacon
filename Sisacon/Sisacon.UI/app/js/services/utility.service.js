@@ -53,9 +53,11 @@
         function getMonthText(numberMonth) {
 
             var month = '';
+
+            // OBTEM A LISTA DOS MESES
             var listMonths = valuesService.monthsObjList;
 
-
+            // PERCORRE A LISTA DE MESES E COMPARA SE O NUMERO DO MES É IGUAL AO PASSADO COMO PARAMETRO
             listMonths.forEach(function (item) {
                 
                 if(item.id == numberMonth){

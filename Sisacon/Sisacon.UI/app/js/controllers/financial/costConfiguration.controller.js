@@ -14,17 +14,31 @@
 
         //VARIABLES
         vm.userId = localStorageService.get('id');
+        vm.user = localStorageService.get('user');
         vm.costConfiguration = {};
+
         //METHODS
         vm.save = save;
         vm.loadConfiguration = loadConfiguration;
 
-        //loadConfiguration();
+        vm.loadConfiguration();
+
+        function loadConfiguration() {
+
+            costConfigurationService.getCostConfigurationByUserId(vm.userId).success(function (response) {
+
+                vm.costConfiguration = response.value;
+
+            }).error(function (response) {
+
+                toastr.error(response.message);
+            })
+        }
 
         function save() {
 
-            if ($scope.costConfigForm.$valid)
-            {
+            if ($scope.costConfigForm.$valid) {
+
                 costConfigurationService.save(vm.costConfiguration).success(function (response) {
 
                     toastr.success(response.message);
@@ -35,19 +49,6 @@
 
                 })
             }
-        }
-
-        function loadConfiguration() {
-
-            costConfigurationService.getCostConfigurationByUserId(vm.userId).success(function (response) {
-
-                vm.costConfiguration = response.value;
-
-            }).error(function (response) {
-
-                toastr.error('Não foi possivel carregar as Configurações de Custo, tente novamente mais tarde.')
-            })
-
         }
     }
 

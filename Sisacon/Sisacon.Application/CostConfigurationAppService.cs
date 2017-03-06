@@ -22,7 +22,7 @@ namespace Sisacon.Application
             _crudMsgFormater = crudMsgFormater;
         }
 
-        public ResponseMessage<CostConfiguration> getByUserId(int userId)
+        public ResponseMessage<CostConfiguration> getCostConfigurationByUserId(int userId)
         {
             var response = new ResponseMessage<CostConfiguration>();
 

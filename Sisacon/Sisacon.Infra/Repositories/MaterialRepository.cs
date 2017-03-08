@@ -52,7 +52,7 @@ namespace Sisacon.Infra.Repositories
                 material.ListPriceResearch = Context.
                     PriceResearch.
                     Include("Provider").
-                    Where(x => x.ExclusionDate == null && x.MaterialId == material.Id).ToList();
+                    Where(x => x.ExclusionDate == null && x.MaterialId == material.Id).OrderBy(x => x.RegistrationDate).ToList();
 
                 return material;
             }

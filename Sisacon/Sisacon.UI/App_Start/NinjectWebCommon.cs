@@ -86,6 +86,7 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<ICostCategoryAppService>().To<CostCategoryAppService>();
             kernel.Bind<ICostConfigurationAppService>().To<CostConfigurationAppService>();
             kernel.Bind<ICostAppService>().To<CostAppService>();
+            kernel.Bind<IFixedCostAppService>().To<FixedCostAppService>();
 
             //SERVICE
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
@@ -104,6 +105,7 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<ICostCategoryService>().To<CostCategoryService>();
             kernel.Bind<ICostConfigurationService>().To<CostConfigurationService>();
             kernel.Bind<ICostService>().To<CostService>();
+            kernel.Bind<IFixedCostService>().To<FixedCostService>();
 
             //REPOSITORIES
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
@@ -122,6 +124,7 @@ namespace Sisacon.UI.App_Start
             kernel.Bind<ICostCategoryRepository>().To<CostCategoryRepository>();
             kernel.Bind<ICostConfigurationRepository>().To<CostConfigurationRepository>();
             kernel.Bind<ICostRepository>().To<CostRepository>();
+            kernel.Bind<IFixedCostRepository>().To<FixedCostRepository>();
         }
     }
 }

@@ -1,29 +1,21 @@
 ﻿using Sisacon.Domain.Entities;
+using Sisacon.Domain.ValueObjects;
+using System.ComponentModel.DataAnnotations;
 
-namespace Sisacon.Domain.ValueObjects
+namespace Sisacon.UI.ViewModels
 {
-    public class FixedCost : BaseEntity
-    { 
-        #region Constants
-
-        public const int MAX_LENGTH_DESCRIPTION = 50;
-
-        #endregion
-
-        #region Propeties
-
+    public class FixedCostViewModel : BaseViewModel
+    {
+        [Required]
+        [MaxLength(50)]
         public string Description { get; set; }
+        [Required]
         public decimal Value { get; set; }
         public int CostCategoryId { get; set; }
         public int CostId { get; set; }
+        [Required]
         public virtual CostCategory CostCategory { get; set; }
+        [Required]
         public virtual Cost Cost { get; set; }
-
-        #endregion
-
-        #region Methods
-
-
-        #endregion
     }
 }

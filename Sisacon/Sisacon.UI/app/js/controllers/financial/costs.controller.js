@@ -3,9 +3,9 @@
     angular.module('app')
         .controller('CostsController', CostsController);
 
-    CostsController.$inject = ['$scope', '$window', 'blockUI', '$routeParams', 'toastr', 'utilityService', 'costCategoryService', 'localStorageService', 'costConfigurationService', 'equipmentService', 'valuesService', 'costService', 'DTOptionsBuilder', 'DTColumnBuilder'];
+    CostsController.$inject = ['$scope', '$window', 'blockUI', '$routeParams', 'toastr', 'utilityService', 'costCategoryService', 'localStorageService', 'costConfigurationService', 'equipmentService', 'valuesService', 'costService', 'fixedCostService', 'DTOptionsBuilder', 'DTColumnBuilder'];
 
-    function CostsController($scope, $window, blockUI, $routeParams, toastr, utilityService, costCategoryService, localStorageService, costConfigurationService, equipmentService, valuesService, costService, DTOptionsBuilder, DTColumnBuilder) {
+    function CostsController($scope, $window, blockUI, $routeParams, toastr, utilityService, costCategoryService, localStorageService, costConfigurationService, equipmentService, valuesService, costService, fixedCostService, DTOptionsBuilder, DTColumnBuilder) {
 
         var vm = this;
 
@@ -14,6 +14,7 @@
         vm.user = localStorageService.get('user');
         vm.costConfiguration = {};
         vm.cost = {};
+        vm.fixedCost = {};
         vm.listCost = [];
         vm.categories = [];
         vm.listEquipments = [];
@@ -35,6 +36,8 @@
         vm.loadCost = loadCost;
         vm.submitForm = submitForm;
         vm.editCost = editCost;
+        vm.saveFixedCost = saveFixedCost;
+        vm.initObjFixedCost = initObjFixedCost;
 
         vm.initialize();
 
@@ -74,12 +77,26 @@
                 closed: false,
                 current: true,
                 referenceMonthText: '',
-                user: vm.user
+                user: vm.user,
+                fixedCost: []
             }
+
+            vm.initObjFixedCost();
 
             var monthNumber = new Date().getMonth();
 
             vm.cost.referenceMonthText = utilityService.getMonthText(monthNumber) + ' de ' + new Date().getFullYear();
+        }
+
+        function initObjFixedCost() {
+
+            vm.fixedCost = {
+
+                description: '',
+                value: 0,
+                cost: vm.cost,
+                costCategory: {}
+            }
         }
 
         function initControls() {
@@ -100,6 +117,7 @@
 
                 vm.cost = response.value;
                 vm.btnSaveText = 'Atualizar';
+                vm.initObjFixedCost();
 
             }).error(function (response) {
 
@@ -249,6 +267,31 @@
             if (costId) {
 
                 $window.location.href = '#/costs?id=' + costId;
+            }
+        }
+
+        function saveFixedCost(params) {
+
+            $scope.FixedCostForm.$setSubmitted();
+
+            if ($scope.FixedCostForm.$valid) {
+
+                blockUI.start('Salvando Gasto Mensal');
+
+                fixedCostService.save(vm.fixedCost).success(function (response) {
+
+                    blockUI.stop();
+
+                    toastr.success(response.message);
+
+                    loadCost(vm.cost.id);
+
+                }).error(function (response) {
+
+                    blockUI.stop();
+
+                    toastr.error(response.message);
+                })
             }
         }
 

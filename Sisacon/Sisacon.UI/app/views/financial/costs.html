@@ -132,13 +132,12 @@
                             <div class="nine wide field">
 
                                 <label for="descCost">Descrição</label>
-                                <input type="text" name="descCost" class="ui input" />
+                                <input type="text" name="descCost" ng-model="vm.fixedCost.description" class="ui input" />
                             </div>
 
                             <div class="field">
                                 <label>&nbsp</label>
-                                <button type="button" class="ui square icon yellow button" data-content="Exemplo de Gasto Mensal: Água, Luz, Aluguel, Impostos"
-                                    data-variation="inverted">
+                                <button type="button" class="ui square icon yellow button" data-content="Exemplo de Gasto Mensal: Água, Luz, Aluguel, Impostos"                                data-variation="inverted">
                                     <i class="info icon"></i>
                                 </button>
                             </div>
@@ -152,7 +151,7 @@
                                 <label for="cost">Valor</label>
                                 <div class="ui right labeled input">
 
-                                    <input type="number" name="cost" class="ui input" />
+                                    <input type="number" name="cost" ng-model="vm.fixedCost.value" class="ui input" />
                                     <div class="ui basic label">
                                         R$
                                     </div>
@@ -163,10 +162,10 @@
                             <div class="five wide field">
 
                                 <label for="personType">Categoria</label>
-                                <select ng-model="vm.cost.category" ng-options="item.id as item.description for item in vm.categories track by item.id" ng-selected="vm.cost.category"
+                                <select ng-model="vm.fixedCost.costCategory" ng-options="item as item.description for item in vm.categories track by item.id" ng-selected="vm.fixedCost.costCategory"
                                     name="personType" required></select>
 
-                                <div class="ui pointing red basic label" ng-show="vm.cost.category.id == 0 && costsForm.$submitted">
+                                <div class="ui pointing red basic label" ng-show="vm.fixedCost.costCategory.id == 0 && costsForm.$submitted">
                                     <div>A Categoria do Custo é Obrigatória</div>
                                 </div>
 
@@ -197,7 +196,7 @@
 
                         <div >
 
-                            <button class="ui labeled positive icon button" ng-click="">
+                            <button class="ui labeled positive icon button"  ng-click="vm.saveFixedCost()">
                                 <i class="plus icon"></i>
                                 Adicionar Gasto Mensal
                             </button>

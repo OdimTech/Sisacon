@@ -50,7 +50,7 @@
 
         function loadCompany() {
 
-            blockUI.start('Carregando Informações...');
+            blockUI.start('Carregando Empresa...');
 
             companyService.getCompanyByUser($scope.userId).success(function (response) {
 

@@ -81,6 +81,7 @@
     <Compile Include="Repositories\CostConfigurationRepository.cs" />
     <Compile Include="Repositories\CostRepository.cs" />
     <Compile Include="Repositories\EquipmentRepositoy.cs" />
+    <Compile Include="Repositories\FixedCostRepository.cs" />
     <Compile Include="Repositories\LogRepository.cs" />
     <Compile Include="Repositories\MaterialCategoryRepository.cs" />
     <Compile Include="Repositories\MaterialRepository.cs" />

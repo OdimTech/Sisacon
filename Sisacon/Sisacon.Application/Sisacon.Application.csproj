@@ -49,6 +49,7 @@
     <Compile Include="CostConfigurationAppService.cs" />
     <Compile Include="CrudMsgFormater.cs" />
     <Compile Include="EquipmentAppService.cs" />
+    <Compile Include="FixedCostAppService.cs" />
     <Compile Include="Interfaces\ICostAppService.cs" />
     <Compile Include="Interfaces\ICostConfigurationAppService.cs" />
     <Compile Include="Interfaces\IAppServiceBase.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Interfaces\ICostCategoryAppService.cs" />
     <Compile Include="Interfaces\ICrudMsgFormater.cs" />
     <Compile Include="Interfaces\IEquipmentAppService.cs" />
+    <Compile Include="Interfaces\IFixedCostAppService.cs" />
     <Compile Include="Interfaces\ILogAppService.cs" />
     <Compile Include="Interfaces\IMaterialAppService.cs" />
     <Compile Include="Interfaces\IMaterialCategoryAppService.cs" />

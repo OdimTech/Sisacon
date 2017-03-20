@@ -81,5 +81,16 @@ namespace Sisacon.UI.Controllers
 
             return Request.CreateResponse(response.StatusCode, response);
         }
+
+        [HttpGet]
+        [Route("cost/validateNewCost")]
+        public HttpResponseMessage ValidateNewCost(int userId)
+        {
+            var response = new ResponseMessage<Cost>();
+
+            response = _costAppService.validateNewCost(userId);
+
+            return Request.CreateResponse(response.StatusCode, response);
+        }
     }
 }

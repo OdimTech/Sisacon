@@ -19,12 +19,17 @@
         vm.categories = [];
         vm.listEquipments = [];
         vm.btnSaveText = 'Salvar';
+        vm.categoryLabels = [];
+        vm.periodLabels = [];
+        vm.categoryData = [];
+        vm.periodData = [];
 
         //METHODS
         vm.initialize = initialize;
         vm.initControls = initControls;
         vm.openModalOptions = openModalOptions;
         vm.openModalCategory = openModalCategory;
+        vm.openModalFixedCost = openModalFixedCost;
         vm.loadDataTables = loadDataTables;
         vm.loadCategories = loadCategories;
         vm.loadConfiguration = loadConfiguration;
@@ -38,6 +43,9 @@
         vm.editCost = editCost;
         vm.saveFixedCost = saveFixedCost;
         vm.initObjFixedCost = initObjFixedCost;
+        vm.calcTotalFixedCost = calcTotalFixedCost;
+        vm.loadDataGraphic = loadDataGraphic;
+        vm.loadLabelsGraphic = loadLabelsGraphic;
 
         vm.initialize();
 
@@ -46,6 +54,7 @@
             vm.initControls();
             vm.loadDataTables();
             vm.loadConfiguration();
+            vm.loadCategories();
 
             // EDIÇÃO
             if ($routeParams.id) {
@@ -58,9 +67,8 @@
 
                     vm.initObjects();
                 }
-
-                vm.loadCategories();
             }
+            //LISTAGEM
             else {
 
                 vm.loadListCost();
@@ -135,6 +143,58 @@
 
                 vm.listCost = response.valueList;
 
+                vm.loadDataGraphic();
+                vm.loadLabelsGraphic();
+
+            })
+        }
+
+        function loadDataGraphic() {
+
+            var totalPerCategory = 0;
+            var totalperPeriod = 0;
+            vm.categoryLabels = [];
+            vm.periodLabels = [];
+            vm.categoryData = [];
+            vm.periodData = [];
+
+            //GRAFICO POR CATEGORIA
+            //OBTEM O TOTAL DOS GASTOS DE ACORDO COM A CATEGORIA, PRA ISSO PERCORRE TODOS OS CUSTOS FIXOS DE TODOS OS CUSTOS E OS AGRUPA POR CATEGORIA
+            vm.categories.forEach(function (category) {
+
+                vm.listCost.forEach(function (cost) {
+
+                    cost.listFixedCost.forEach(function (fixedCost) {
+
+                        if (fixedCost.costCategoryId == category.id) {
+
+                            totalPerCategory += fixedCost.value;
+                        }
+                    })
+                })
+
+                vm.categoryData.push(totalPerCategory);
+                totalPerCategory = 0;
+            })
+
+            vm.listCost.forEach(function (cost) {
+
+                vm.periodData.push(cost.totalCost);
+            })
+        }
+
+        function loadLabelsGraphic() {
+
+            //GRAFICO POR CATEGORIA
+            vm.categories.forEach(function (item) {
+
+                vm.categoryLabels.push(item.description);
+            })
+
+            //GRAFICO POR PERIODO
+            vm.listCost.forEach(function (cost) {
+
+                vm.periodLabels.push(cost.referenceMonthText);
             })
         }
 
@@ -182,7 +242,28 @@
 
             if (vm.listCost.length > 0) {
 
-                $window.location.href = '#/costs?id=0';
+                blockUI.start("Validando Novo Custo...");
+
+                costService.validateNewCost(vm.userId).success(function (response) {
+
+                    blockUI.stop();
+
+                    //False: Já existe um custo para o mes atual 
+                    if (!response.logicalTest) {
+
+                        toastr.error(response.message);
+                    }
+                    else {
+
+                        $window.location.href = '#/costs?id=0';
+                    }
+
+                }).error(function (response) {
+
+                    blockUI.stop();
+
+                    toastr.error(response.message);
+                })
             }
             else {
 
@@ -224,6 +305,21 @@
             }
         }
 
+        function calcTotalFixedCost() {
+
+            if (vm.cost.listFixedCost) {
+
+                var totalFixedCost = 0;
+
+                vm.cost.listFixedCost.forEach(function (item) {
+
+                    totalFixedCost += item.value;
+                })
+            }
+
+            return totalFixedCost;
+        }
+
         function submitForm() {
 
             if (!vm.cost.current) {
@@ -232,7 +328,7 @@
             }
             else if (vm.costConfiguration.preventCostOverLimit && vm.cost.totalCost > vm.costConfiguration.maxValue) {
 
-
+                alert('vc gastou muito');
             }
             else {
 
@@ -240,7 +336,7 @@
 
                 if ($scope.costsForm.$valid) {
 
-                    blockUI.start("Salvaldo Base de Cálculo...");
+                    blockUI.start("Salvaldo Valores...");
 
                     vm.cost.totalDevaluationOfEquipment = vm.calcTotalDevaluation();
 
@@ -251,6 +347,7 @@
                         toastr.success(response.message);
 
                         vm.cost = response.value;
+                        vm.initObjFixedCost();
 
                     }).error(function (response) {
 
@@ -300,7 +397,12 @@
             angular.element('#costOptions').modal({
 
                 blurring: false,
-                closable: true
+                closable: true,
+                autofocus: true,
+                onHide: function () {
+
+                    vm.loadListCost();
+                }
 
             }).modal('show');
         }
@@ -308,6 +410,21 @@
         function openModalCategory() {
 
             angular.element('#editCategory').modal({
+
+                blurring: false,
+                closable: true,
+                autofocus: true,
+                onHide: function () {
+
+                    vm.openModalFixedCost();
+                }
+
+            }).modal('show');
+        }
+
+        function openModalFixedCost() {
+
+            angular.element('#modalFixedCost').modal({
 
                 blurring: false,
                 closable: true,

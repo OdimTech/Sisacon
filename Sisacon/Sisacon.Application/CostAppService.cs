@@ -6,6 +6,7 @@ using static Sisacon.Domain.Enuns.ErrorGravity;
 using static Sisacon.Domain.Enuns.OperationType;
 using static Sisacon.Domain.Enuns.Sex;
 using System.Collections.Generic;
+using System.Net;
 
 namespace Sisacon.Application
 {
@@ -122,5 +123,44 @@ namespace Sisacon.Application
 
             return response;
         }
+
+        public ResponseMessage<Cost> validateNewCost(int UserId)
+        {
+            var response = new ResponseMessage<Cost>();
+
+            try
+            {
+                var listCosts = _costService.getCostsByUserId(UserId);
+
+                response.LogicalTest = Cost.validateNewCost(listCosts);
+
+                if(!response.LogicalTest)
+                {
+                    response.Message = string.Format("Não é possível criar mais de um Custo por Mês. Clique em Editar para alterar o Custo Atual");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logAppService.createClientLog(ex, null, eErrorGravity.Grande);
+
+                return response.createErrorResponse();
+            }
+
+            return response;
+        }
+
+        //public ResponseMessage<Cost> getCostByCategory(int userId)
+        //{
+        //    try
+        //    {
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logAppService.createClientLog(ex, null, eErrorGravity.Grande);
+
+        //        return response.createErrorResponse();
+        //    }
+        //}
     }
 }

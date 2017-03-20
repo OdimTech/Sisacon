@@ -12,8 +12,6 @@ namespace Sisacon.UI.ViewModels
         [Required]
         public decimal MaxValue { get; set; }
         [Required]
-        public bool PreventCostOverLimit { get; set; }
-        [Required]
         public bool IncludDevaluationOfEquipment { get; set; }
         public int UserId { get; set; }
         [Required]

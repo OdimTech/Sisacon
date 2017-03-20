@@ -14,10 +14,13 @@ namespace Sisacon.Infra.Repositories
         {
             try
             {
-                fixedCost.CostCategory = null;
+                fixedCost.Cost.ListFixedCost = null;
+                fixedCost.CostCategory.User = null;
 
                 Context.User.Attach(fixedCost.Cost.User);
                 Context.Cost.Attach(fixedCost.Cost);
+                Context.CostCategory.Attach(fixedCost.CostCategory);
+
                 Context.FixedCost.Add(fixedCost);
             }
             catch (Exception ex)

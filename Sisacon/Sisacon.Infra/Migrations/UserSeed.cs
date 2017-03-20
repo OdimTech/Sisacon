@@ -1,4 +1,5 @@
-﻿using Sisacon.Domain.Entities;
+﻿using Helpers;
+using Sisacon.Domain.Entities;
 using Sisacon.Domain.ValueObjects;
 using Sisacon.Repositories.Context;
 using System;
@@ -24,7 +25,7 @@ namespace Sisacon.Infra.Migrations
                 user.Active = true;
                 user.Email = "horrander@outlook.com";
                 user.eUserType = eUserType.Admin;
-                user.Password = "bravo13";
+                user.Password = Security.encrypt("bravo13");
                 user.ShowWellcomeMessage = false;
 
                 if(user.isValid())

@@ -1,5 +1,7 @@
 ﻿using Sisacon.Domain.ValueObjects;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sisacon.Domain.Entities
 {
@@ -51,17 +53,44 @@ namespace Sisacon.Domain.Entities
         }
 
         /// <summary>
+        /// Valida se é permitido criar um novo custo, lembrando que só pode haver um custo por mes
+        /// </summary>
+        /// <param name="listCosts">Lista de custos do usuario</param>
+        /// <returns></returns>
+        public static bool validateNewCost(List<Cost> listCosts)
+        {
+            bool isValid = true;
+
+            if(listCosts != null && listCosts.Count > 0)
+            {
+                var currentCost = listCosts.Select(x => x.RegistrationDate).FirstOrDefault();
+
+                if(currentCost.Value.Month == DateTime.Now.Month)
+                {
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        /// <summary>
         /// Calcula o total dos gastos fixos.
         /// </summary>
         public void calcCosts()
         {
-            TotalCost = Salary + TotalDevaluationOfEquipment;
+            TotalFixedCost = 0;
 
+            //O TOTAL DE CUSTOS FIXOS É A SOMA DE TODOS OS GASTOS MENSAIS EX: AGUA, LUZ, CELULAR
             foreach (var item in ListFixedCost)
             {
-                TotalCost += item.Value;
+                TotalFixedCost += item.Value;
             }
 
+            //O TOTAL DO CUSTO É A SOMA DO SALARIO + TOTAL DA DESVALORIZAÇÃO + A SOMA DE TODOS OS CUSTOS FIXOS
+            TotalCost = Salary + TotalDevaluationOfEquipment + TotalFixedCost;
+
+            //O VALOR DA HORA TRABALHADA É SOMA DE TODOS OS GASTOS DIVIDIDO PELA QUANTIDADE DE HORAS TRABALHADAS
             if(WorkedHours > 0)
             {
                 CostPerHour = TotalCost / WorkedHours;

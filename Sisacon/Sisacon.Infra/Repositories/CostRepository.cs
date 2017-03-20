@@ -28,7 +28,10 @@ namespace Sisacon.Infra.Repositories
         {
             try
             {
-                cost.ListFixedCost = null;
+                foreach (var item in cost.ListFixedCost)
+                {
+                    item.CostCategory.User = null;
+                }
 
                 Context.Entry(cost).State = EntityState.Modified;
             }
@@ -70,6 +73,7 @@ namespace Sisacon.Infra.Repositories
                     Cost.
                     Include("User").
                     Include("ListFixedCost").
+                    Include("ListFixedCost.CostCategory").
                     Where(x => x.User.Id == userId && x.ExclusionDate == null).
                     ToList();
             }

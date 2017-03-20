@@ -119,93 +119,11 @@
                 </div>
 
                 <!--CUSTOS FIXOS MENSAIS-->
-                <div class="ui stackable raised fluid segment" ng-show="vm.cost.id > 0">
+                <!--<div class="ui stackable raised fluid segment" ng-show="vm.cost.id > 0">
 
-                    <form name="FixedCostForm" class="ui form" novalidate>
 
-                        <div class="ui blue ribbon large label" style="margin-bottom: 20px">
-                            Gasto Mensal
-                        </div>
 
-                        <div class="fields">
-
-                            <div class="nine wide field">
-
-                                <label for="descCost">Descrição</label>
-                                <input type="text" name="descCost" ng-model="vm.fixedCost.description" class="ui input" />
-                            </div>
-
-                            <div class="field">
-                                <label>&nbsp</label>
-                                <button type="button" class="ui square icon yellow button" data-content="Exemplo de Gasto Mensal: Água, Luz, Aluguel, Impostos"                                data-variation="inverted">
-                                    <i class="info icon"></i>
-                                </button>
-                            </div>
-
-                        </div>
-
-                        <div class="fields">
-
-                            <div class="four wide field">
-
-                                <label for="cost">Valor</label>
-                                <div class="ui right labeled input">
-
-                                    <input type="number" name="cost" ng-model="vm.fixedCost.value" class="ui input" />
-                                    <div class="ui basic label">
-                                        R$
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="five wide field">
-
-                                <label for="personType">Categoria</label>
-                                <select ng-model="vm.fixedCost.costCategory" ng-options="item as item.description for item in vm.categories track by item.id" ng-selected="vm.fixedCost.costCategory"
-                                    name="personType" required></select>
-
-                                <div class="ui pointing red basic label" ng-show="vm.fixedCost.costCategory.id == 0 && costsForm.$submitted">
-                                    <div>A Categoria do Custo é Obrigatória</div>
-                                </div>
-
-                            </div>
-
-                            <div class="field">
-                                <label>&nbsp</label>
-                                <button class="ui labeled primary icon button" ng-click="vm.openModalCategory()">
-                                    <i class="plus icon"></i>
-                                    Adicionar Categoria
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                        <div class="field" ng-show="vm.categories.length == 0">
-
-                            <div class="ui yellow message">
-
-                                <div class="header">
-                                    Você não possui Categorias cadastradas
-                                </div>
-                                Crie Categorias para organizar melhor os seus Custos
-                            </div>
-
-                        </div>
-
-                        <div >
-
-                            <button class="ui labeled positive icon button"  ng-click="vm.saveFixedCost()">
-                                <i class="plus icon"></i>
-                                Adicionar Gasto Mensal
-                            </button>
-
-                        </div>
-
-                    </form>
-
-                </div>
+                </div>-->
 
                 <!--LISTAGEM DE GASTOS-->
                 <div class="ui stackable raised fluid segment" style="padding: 0" ng-if="vm.cost.id > 0 && vm.cost.listFixedCost.length > 0">
@@ -227,8 +145,8 @@
                         <tbody>
                             <tr ng-repeat="item in vm.cost.listFixedCost">
                                 <td>{{item.description}}</td>
-                                <td>{{item.valor | currency:"R$ "}}</td>
-                                <td>{{item.category}}</td>
+                                <td>{{item.value | currency:"R$ "}}</td>
+                                <td>{{item.costCategory.description}}</td>
                                 <td>
                                     <button class="ui primary square icon button" ng-click="vm.editMaterial(item.id)" title="Editar Material">
                                     <i class="ui edit icon"></i>
@@ -242,6 +160,17 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="ui divider" style="margin: 0"></div>
+
+                    <div class="field">
+
+                        <button class="ui labeled positive icon button" ng-click="vm.openModalFixedCost()" style="margin: 14px 14px 14px">
+                                <i class="plus icon"></i>
+                                Adicionar Gasto Mensal
+                            </button>
+
+                    </div>
 
                 </div>
 
@@ -273,16 +202,6 @@
                         </tbody>
                     </table>
 
-                    <!--<div class="ui info message" style="margin: 14px 14px 14px">
-
-                            <div class="header">
-                                Máquinas e Equipamentos
-                            </div>
-                                A coluna "Depreciação Mensal" representa quanto o seu Equipamento se desvaloriza por mês, esse valor será somado no total de
-                                gastos mensais, dessa forma será possível recuperar o valor da Desvalorização, e usá-lo na compra de novos Equipamentos.
-                                Caso não deseje mais incluir a Depreciação de Máquinas e Equipamentos nos Custos Mensais, desmarque a opção "Incluir Desvalorização de Equipamentos nos Custos Mensais." nas Configurações de Custo.
-                        </div>-->
-
                     <div class="ui divider" style="margin: 0"></div>
 
                     <a class="ui positive labeled icon button" href="#/equipmentList" title="Visualizar Equipamentos" style="margin: 14px 14px 14px">
@@ -305,6 +224,24 @@
                     </div>
 
                     <div class="ui stackable two column grid">
+
+                        <div class="row">
+
+                            <div class="ui stackable column" style="padding: 0;margin-top: 10px">
+
+                                <h4>Valor da Hora Trabalhada</h4>
+
+                            </div>
+
+                            <div class="ui stackable column" style="padding: 0">
+
+                                <a class="ui big blue tag label">{{vm.cost.costPerHour | currency:"R$ "}}</a>
+
+                            </div>
+
+                        </div>
+
+                        <div class="ui divider" style="margin: 0"></div>
 
                         <div class="row">
 
@@ -332,7 +269,7 @@
 
                             <div class="ui stackable column" style="padding: 0">
 
-                                <a class="ui large tag label">R$ 853,00</a>
+                                <a class="ui large tag label">{{vm.calcTotalFixedCost() | currency:"R$ "}}</a>
 
                             </div>
 
@@ -366,6 +303,7 @@
 
                             <div class="ui stackable column" style="padding: 0">
 
+                                <!--Deixa o elemento azul se o custo for menor que o maximo permitido pela configuração de custo, ou vermelho caso ultrapasse.-->
                                 <a class="ui big tag label" ng-class="
                                     {'blue' : vm.cost.totalCost < vm.costConfiguration.maxValue,
                                     'red' : vm.cost.totalCost > vm.costConfiguration.maxValue}">
@@ -376,9 +314,9 @@
 
                         </div>
 
-                        <div class="ui divider" style="margin: 0" ng-if="vm.costConfiguration.preventCostOverLimit"></div>
+                        <div class="ui divider" style="margin: 0" ng-if="vm.cost.totalCost > vm.costConfiguration.maxValue"></div>
 
-                        <div class="row" ng-if="vm.costConfiguration.preventCostOverLimit">
+                        <div class="row">
 
                             <div class="ui stackable column" style="padding: 0">
 
@@ -388,21 +326,21 @@
 
                             <div class="ui stackable column" style="padding: 0">
 
-                                <a class="ui big tag green label">{{vm.costConfiguration.maxValue | currency:"R$ "}}</a>
+                                <a class="ui big tag blue label">{{vm.costConfiguration.maxValue | currency:"R$ "}}</a>
 
                             </div>
 
                         </div>
 
-                        <div class="row" ng-if="vm.costConfiguration.preventCostOverLimit &&
-                                                vm.costConfiguration.maxValue < vm.cost.totalCost">
+                        <div class="row" ng-if="vm.costConfiguration.maxValue < vm.cost.totalCost">
 
                             <div class="ui negative message">
 
                                 <div class="header">
                                     Limite de Gastos
                                 </div>
-                                Você ultrapassou o limite de gastos estabelecido em <strong>{{vm.cost.totalCost - vm.costConfiguration.maxValue | currency:"R$ "}}</strong>. 
+                                Você ultrapassou o limite de gastos estabelecido em <strong>{{vm.cost.totalCost - vm.costConfiguration.maxValue | currency:"R$ "}}</strong>.
+                                Reduza seus Gastos ou aumente o limite na Configuração de Custos.
                             </div>
 
                         </div>
@@ -421,6 +359,94 @@
 <!--GRID PAGE-->
 
 <!--MODALS-->
+
+<div id="modalFixedCost" class="ui small modal">
+
+    <i class="close icon"></i>
+
+    <div class="content">
+
+        <form name="FixedCostForm" class="ui form" novalidate>
+
+            <div class="fields">
+
+                <div class="nine wide field">
+
+                    <label for="descCost">Descrição</label>
+                    <input type="text" name="descCost" ng-model="vm.fixedCost.description" class="ui input" />
+                </div>
+
+                <div class="field">
+                    <label>&nbsp</label>
+                    <button type="button" class="ui square icon yellow button" data-content="Exemplo de Gasto Mensal: Água, Luz, Aluguel, Impostos"
+                        data-variation="inverted">
+                                    <i class="info icon"></i>
+                                </button>
+                </div>
+
+            </div>
+
+            <div class="fields">
+
+                <div class="four wide field">
+
+                    <label for="cost">Valor</label>
+                    <div class="ui right labeled input">
+
+                        <input type="number" name="cost" ng-model="vm.fixedCost.value" class="ui input" />
+                        <div class="ui basic label">
+                            R$
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="five wide field">
+
+                    <label for="personType">Categoria</label>
+                    <select ng-model="vm.fixedCost.costCategory" ng-options="item as item.description for item in vm.categories track by item.id"
+                        ng-selected="vm.fixedCost.costCategory" name="personType" required></select>
+
+                    <div class="ui pointing red basic label" ng-show="vm.fixedCost.costCategory.id == 0 && costsForm.$submitted">
+                        <div>A Categoria do Custo é Obrigatória</div>
+                    </div>
+
+                </div>
+
+                <div class="field">
+                    <label>&nbsp</label>
+                    <button class="ui labeled primary icon button" ng-click="vm.openModalCategory()">
+                                    <i class="plus icon"></i>
+                                    Gerenciar Categoria
+                                </button>
+
+                </div>
+
+            </div>
+
+            <div class="field" ng-show="vm.categories.length == 0">
+
+                <div class="ui yellow message">
+
+                    <div class="header">
+                        Você não possui Categorias cadastradas
+                    </div>
+                    Crie Categorias para organizar melhor os seus Custos
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="actions">
+        <button class="ui ok green button" ng-click="vm.saveFixedCost()">
+            <i class="checkmark icon"></i> Salvar
+        </button>
+    </div>
+
+</div>
 
 <!--MODAL CATEGORIAS-->
 <div id="editCategory" class="ui small modal" ng-controller="CostCategoryController as vm">

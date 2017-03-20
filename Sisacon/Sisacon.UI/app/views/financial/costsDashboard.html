@@ -34,6 +34,55 @@
     </div>
     <!--TOP MENU-->
 
+    <div class="ui eight wide stackable column" style="padding:0;padding-left: 14px" ng-if="vm.listCost.length > 0">
+
+        <div class="ui stackable grid" style="padding-top:0">
+
+            <div class="ui sixteen wide stackable column">
+
+                <div class="ui stackable raised segment" style="padding: 0">
+
+                    <div class="ui blue ribbon large label" style="margin: 14px 14px 14px">
+                        Gráfico por Período
+                    </div>
+
+                    <div class="ui field" style="padding: 14px">
+
+                        <canvas id="line" class="chart chart-bar" chart-data="vm.periodData" chart-labels="vm.periodLabels"></canvas>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="ui eight wide stackable column" style="padding:0;padding-left: 14px" ng-if="vm.listCost.length > 0">
+
+        <div class="ui stackable grid" style="padding-top:0">
+
+            <div class="ui sixteen wide stackable column">
+
+                <div class="ui stackable raised segment" style="padding: 0">
+
+                    <div class="ui blue ribbon large label" style="margin: 14px 14px 14px">
+                        Gráfico por Categoria
+                    </div>
+
+                    <div class="ui field" style="padding: 14px">
+
+                        <canvas id="line" class="chart chart-bar" chart-data="vm.categoryData" chart-labels="vm.categoryLabels"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
     <div class="ui sixteen wide stackable centered column" style="padding:0;padding-left: 14px">
 
         <div class="ui stackable grid" style="padding-top:0">
@@ -63,8 +112,8 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="item in vm.listCost" ng-class="{
-                                'positive' : vm.costConfiguration.preventCostOverLimit && item.totalCost < vm.costConfiguration.maxValue,   
-                                'negative' : vm.costConfiguration.preventCostOverLimit && item.totalCost > vm.costConfiguration.maxValue}">
+                                'positive' : item.totalCost < vm.costConfiguration.maxValue,   
+                                'negative' : item.totalCost > vm.costConfiguration.maxValue}">
 
                                 <td>{{item.referenceMonthText}}</td>
                                 <td ng-if="item.current">Sim</td>
@@ -92,25 +141,6 @@
                 </div>
 
             </div>
-
-            <!--<div class="ui six wide stackable column">
-
-                <div class="ui stackable raised segment">
-
-                    <div class="ui blue ribbon large label" style="margin-bottom: 20px">
-                        Gráfico de Custos por Mês
-                    </div>
-
-                </div>
-
-                <div class="ui stackable raised segment">
-
-                    <div class="ui blue ribbon large label" style="margin-bottom: 20px">
-                        Gráfico de Custos por Categoria
-                    </div>
-                </div>
-
-            </div>-->
 
         </div>
 
@@ -144,23 +174,13 @@
                 </p>
             </div>
 
-            <div class="field">
-
-                <div class="ui checkbox">
-                    <input type="checkbox" ng-model="vm.costConfiguration.preventCostOverLimit">
-                    <label>Impedir que um Custo seja criado se ultrapassar o limite.</label>
-                </div>
-
-            </div>
-
             <div class="four wide field">
 
                 <label for="maxValue">Valor máximo</label>
 
                 <div class="ui right labeled input">
 
-                    <input type="number" name="maxValue" ng-model="vm.costConfiguration.maxValue" class="ui input" ng-disabled="!vm.costConfiguration.preventCostOverLimit"
-                    />
+                    <input type="number" name="maxValue" ng-model="vm.costConfiguration.maxValue" class="ui input" />
                     <div class="ui basic label">
                         R$
                     </div>

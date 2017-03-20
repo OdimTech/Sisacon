@@ -11,7 +11,6 @@ namespace Sisacon.Domain.Entities
         #region Propeties
 
         public decimal MaxValue { get; set; }
-        public bool PreventCostOverLimit { get; set; }
         public bool IncludDevaluationOfEquipment { get; set; }
         public int UserId { get; set; }
         public virtual User User { get; set; }
@@ -25,7 +24,6 @@ namespace Sisacon.Domain.Entities
             try
             {
                 MaxValue = 0;
-                PreventCostOverLimit = false;
                 IncludDevaluationOfEquipment = true;
                 User = user;
             }

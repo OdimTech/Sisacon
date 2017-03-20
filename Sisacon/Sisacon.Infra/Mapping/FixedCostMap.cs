@@ -19,13 +19,13 @@ namespace Sisacon.Infra.Mapping
             Property(x => x.Value)
                 .IsRequired();
 
+            HasRequired(x => x.Cost)
+                .WithMany(x => x.ListFixedCost)
+                .HasForeignKey(x => x.CostId);
+
             HasRequired(x => x.CostCategory)
                 .WithMany()
                 .HasForeignKey(x => x.CostCategoryId);
-
-            HasRequired(x => x.Cost)
-                .WithMany()
-                .HasForeignKey(x => x.CostId);
         }
     }
 }

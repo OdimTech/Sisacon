@@ -12,5 +12,7 @@ namespace Sisacon.Application.Interfaces
         ResponseMessage<Cost> saveOrUpdate(Cost cost);
         ResponseMessage<Cost> deleteCost(int costId);
         ResponseMessage<Cost> getCostsByUserId(int userId);
+        ResponseMessage<Cost> validateNewCost(int userId);
+        //ResponseMessage<Cost> getCostByCategory(int userId);
     }
 }

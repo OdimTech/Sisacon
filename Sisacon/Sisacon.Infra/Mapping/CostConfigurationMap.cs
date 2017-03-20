@@ -14,9 +14,6 @@ namespace Sisacon.Infra.Mapping
             Property(x => x.MaxValue)
                 .IsRequired();
 
-            Property(x => x.PreventCostOverLimit)
-                .IsRequired();
-
             Property(x => x.IncludDevaluationOfEquipment)
                 .IsRequired();
 

@@ -11,12 +11,14 @@ namespace Sisacon.Application
     public class FixedCostAppService : AppServiceBase<FixedCost>, IFixedCostAppService
     {
         private readonly IFixedCostService _fixedCostService;
+        private readonly ICostAppService _costAppService;
         private readonly ILogAppService _logAppService;
         private readonly ICrudMsgFormater _crudMsgFormater;
 
-        public FixedCostAppService(IFixedCostService fixedCostService, ILogAppService logAppService, ICrudMsgFormater crudMsgFormater) : base(fixedCostService)
+        public FixedCostAppService(IFixedCostService fixedCostService, ICostAppService costAppService,ILogAppService logAppService, ICrudMsgFormater crudMsgFormater) : base(fixedCostService)
         {
             _fixedCostService = fixedCostService;
+            _costAppService = costAppService;
             _logAppService = logAppService;
             _crudMsgFormater = crudMsgFormater;
         }
@@ -61,7 +63,7 @@ namespace Sisacon.Application
                 {
                     _fixedCostService.update(fixedCost);
 
-                    response.Message = _crudMsgFormater.createClientCrudMessage(eOperationType.Update, eSex.Feminino, "Gasto Mensal");
+                    response.Message = _crudMsgFormater.createClientCrudMessage(eOperationType.Update, eSex.Masculino, "Gasto Mensal");
                 }
                 else
                 {
@@ -70,7 +72,7 @@ namespace Sisacon.Application
 
                     _fixedCostService.add(fixedCost);
 
-                    response.Message = _crudMsgFormater.createClientCrudMessage(eOperationType.Insert, eSex.Feminino, "Gasto Mensal");
+                    response.Message = _crudMsgFormater.createClientCrudMessage(eOperationType.Insert, eSex.Masculino, "Gasto Mensal");
                 }
 
                 if(_fixedCostService.commit() == 0)
@@ -80,11 +82,18 @@ namespace Sisacon.Application
                 else
                 {
                     response.Value = fixedCost;
+
+                    var cost = _costAppService.getById(fixedCost.Cost.Id).Value;
+
+                    if(cost != null)
+                    {
+                        _costAppService.saveOrUpdate(cost);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                _logAppService.createClientLog(ex, null, eErrorGravity.Grande);
+                _logAppService.createClientLog(ex, fixedCost.Cost.User, eErrorGravity.Grande);
 
                 return response.createErrorResponse();
             }

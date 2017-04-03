@@ -37,7 +37,9 @@
 
         function save() {
 
-            if ($scope.costConfigForm.$valid) {
+            $scope.costConfigForm.$setSubmitted();
+
+            if ($scope.costConfigForm.$valid && vm.costConfiguration.maxValue > 0) {
 
                 costConfigurationService.save(vm.costConfiguration).success(function (response) {
 

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sisacon.Domain.Entities
 {
@@ -23,7 +19,7 @@ namespace Sisacon.Domain.Entities
         {
             try
             {
-                MaxValue = 0;
+                MaxValue = 2000;
                 IncludDevaluationOfEquipment = true;
                 User = user;
             }

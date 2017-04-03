@@ -19,6 +19,7 @@
         vm.categories = [];
         vm.listEquipments = [];
         vm.btnSaveText = 'Salvar';
+        vm.btnSaveFixedCost = 'Salvar Gasto Mensal';
         vm.categoryLabels = [];
         vm.periodLabels = [];
         vm.categoryData = [];
@@ -29,7 +30,8 @@
         vm.initControls = initControls;
         vm.openModalOptions = openModalOptions;
         vm.openModalCategory = openModalCategory;
-        vm.openModalFixedCost = openModalFixedCost;
+        vm.editFixedCost = editFixedCost;
+        vm.openModalRemoveFixedCost = openModalRemoveFixedCost;
         vm.loadDataTables = loadDataTables;
         vm.loadCategories = loadCategories;
         vm.loadConfiguration = loadConfiguration;
@@ -46,13 +48,15 @@
         vm.calcTotalFixedCost = calcTotalFixedCost;
         vm.loadDataGraphic = loadDataGraphic;
         vm.loadLabelsGraphic = loadLabelsGraphic;
+        vm.removeFixedCost = removeFixedCost;
+        vm.cancelEditFixedCost = cancelEditFixedCost;
+
 
         vm.initialize();
 
         function initialize() {
 
             vm.initControls();
-            vm.loadDataTables();
             vm.loadConfiguration();
             vm.loadCategories();
 
@@ -76,6 +80,8 @@
         }
 
         function initObjects() {
+
+            vm.validateNewCost();
 
             vm.cost = {
 
@@ -102,8 +108,11 @@
 
                 description: '',
                 value: 0,
-                cost: vm.cost,
-                costCategory: {}
+                costId: vm.cost.id,
+                costCategory: {
+
+                    id: 0
+                }
             }
         }
 
@@ -166,7 +175,7 @@
 
                     cost.listFixedCost.forEach(function (fixedCost) {
 
-                        if (fixedCost.costCategoryId == category.id) {
+                        if (fixedCost.costCategoryId == category.id && !fixedCost.exclusionDate) {
 
                             totalPerCategory += fixedCost.value;
                         }
@@ -196,6 +205,8 @@
 
                 vm.periodLabels.push(cost.referenceMonthText);
             })
+
+            vm.loadDataTables();
         }
 
         function loadDataTables() {
@@ -240,35 +251,32 @@
 
         function validateNewCost() {
 
-            if (vm.listCost.length > 0) {
+            blockUI.start("Validando Novo Custo...");
 
-                blockUI.start("Validando Novo Custo...");
+            costService.validateNewCost(vm.userId).success(function (response) {
 
-                costService.validateNewCost(vm.userId).success(function (response) {
+                blockUI.stop();
 
-                    blockUI.stop();
-
-                    //False: Já existe um custo para o mes atual 
-                    if (!response.logicalTest) {
-
-                        toastr.error(response.message);
-                    }
-                    else {
-
-                        $window.location.href = '#/costs?id=0';
-                    }
-
-                }).error(function (response) {
-
-                    blockUI.stop();
+                //False: Já existe um custo para o mes atual 
+                if (!response.logicalTest) {
 
                     toastr.error(response.message);
-                })
-            }
-            else {
 
-                $window.location.href = '#/costs?id=0';
-            }
+                    if ($window.location.hash.indexOf('Dashboard') == -1) {
+
+                        $window.location.href = '#/costsDashboard';
+                    }
+                }
+                else {
+
+                    $window.location.href = '#/costs?id=0';
+                }
+
+            }).error(function (response) {
+
+                blockUI.stop();
+                toastr.error(response.message);
+            })
         }
 
         function calcTotalDevaluation() {
@@ -322,40 +330,32 @@
 
         function submitForm() {
 
-            if (!vm.cost.current) {
+            $scope.costsForm.$setSubmitted();
 
+            if ($scope.costsForm.$valid) {
 
-            }
-            else if (vm.costConfiguration.preventCostOverLimit && vm.cost.totalCost > vm.costConfiguration.maxValue) {
+                blockUI.start("Salvaldo Valores...");
 
-                alert('vc gastou muito');
+                vm.cost.totalDevaluationOfEquipment = vm.calcTotalDevaluation();
+
+                costService.save(vm.cost).success(function (response) {
+
+                    blockUI.stop();
+
+                    toastr.success(response.message);
+
+                    vm.loadCost(response.value.id);
+                    vm.initObjFixedCost();
+
+                }).error(function (response) {
+
+                    blockUI.stop();
+                    toastr.error(response.message);
+                })
             }
             else {
 
-                $scope.costsForm.$setSubmitted();
-
-                if ($scope.costsForm.$valid) {
-
-                    blockUI.start("Salvaldo Valores...");
-
-                    vm.cost.totalDevaluationOfEquipment = vm.calcTotalDevaluation();
-
-                    costService.save(vm.cost).success(function (response) {
-
-                        blockUI.stop();
-
-                        toastr.success(response.message);
-
-                        vm.cost = response.value;
-                        vm.initObjFixedCost();
-
-                    }).error(function (response) {
-
-                        blockUI.stop();
-
-                        toastr.error(response.message);
-                    })
-                }
+                toastr.error(valuesService.errorFieldMessage);
             }
         }
 
@@ -367,7 +367,7 @@
             }
         }
 
-        function saveFixedCost(params) {
+        function saveFixedCost() {
 
             $scope.FixedCostForm.$setSubmitted();
 
@@ -377,18 +377,37 @@
 
                 fixedCostService.save(vm.fixedCost).success(function (response) {
 
-                    blockUI.stop();
+                    // TIPO DE OPERAÇÃO = 1 SIGNIFICA INSERT, OU SEJA, O GASTO DEVE SER ADICIONADO NA PROPRIEDADE "listFixedCost" PARA A SOMA DOS GASTOS
+                    if (response.value && response.operationType == 1) {
+
+                        vm.cost.listFixedCost.push(response.value);
+                    }
+
+                    // SALVA O CUSTO PARA ATUALIZAR OS VALORES
+                    costService.save(vm.cost).success(function (response) {
+
+                        blockUI.stop();
+                        loadCost(vm.cost.id);
+
+                    }).error(function (response) {
+
+                        blockUI.stop();
+                        toastr.error(response.message);
+                    })
 
                     toastr.success(response.message);
-
-                    loadCost(vm.cost.id);
+                    $scope.FixedCostForm.$setPristine();
+                    vm.btnSaveFixedCost = "Salvar Gasto Mensal";
 
                 }).error(function (response) {
 
                     blockUI.stop();
-
                     toastr.error(response.message);
                 })
+            }
+            else {
+
+                toastr.error(valuesService.errorFieldMessage);
             }
         }
 
@@ -401,7 +420,7 @@
                 autofocus: true,
                 onHide: function () {
 
-                    vm.loadListCost();
+                    $window.location.reload();
                 }
 
             }).modal('show');
@@ -416,25 +435,80 @@
                 autofocus: true,
                 onHide: function () {
 
-                    vm.openModalFixedCost();
+                    vm.loadCategories();
                 }
 
             }).modal('show');
         }
 
-        function openModalFixedCost() {
+        function editFixedCost(fixedCost) {
 
-            angular.element('#modalFixedCost').modal({
+            if (fixedCost) {
 
-                blurring: false,
-                closable: true,
-                autofocus: true,
-                onHide: function () {
+                vm.fixedCost = fixedCost;
+                vm.btnSaveFixedCost = 'Atualizar Gasto Mensal';
+            }
 
-                    vm.loadCategories();
-                }
+            angular.element('#descCost').focus();
+        }
 
-            }).modal('show');
+        function openModalRemoveFixedCost(fixedCost) {
+
+            if (fixedCost) {
+
+                vm.idFixedCostToRemove = fixedCost.id;
+                vm.fixedCostDescription = fixedCost.description;
+
+                angular.element('#removeFixedCostModal').modal({
+
+                    blurring: false,
+                    closable: true,
+                    autofocus: true
+
+                }).modal('show');
+            }
+        }
+
+        function removeFixedCost() {
+
+            if (vm.idFixedCostToRemove) {
+
+                blockUI.start('Excluíndo Gasto Mensal...');
+
+                fixedCostService.deleteFixedCost(vm.idFixedCostToRemove).success(function (response) {
+
+                    // CASO A EXCLUSÃO DO GASTO MENSAL ACONTEÇA CORRETAMENTE, ELE É RETIRADO DA LISTA E O GASTO É RECALCULADO
+                    vm.cost.listFixedCost.forEach(function (item) {
+
+                        if (item.id == vm.idFixedCostToRemove) {
+
+                            vm.cost.listFixedCost.splice(item, 1);
+
+                            costService.save(vm.cost).success(function (response) {
+
+                                blockUI.stop();
+
+                                vm.idFixedCostToRemove = 0;
+                                vm.loadCost(vm.cost.id);
+                            })
+                        }
+                    })
+
+                    toastr.success(response.message);
+
+                }).error(function () {
+
+                    blockUI.stop();
+
+                    toastr.error(response.message);
+                })
+
+            }
+        }
+
+        function cancelEditFixedCost() {
+
+            vm.initObjFixedCost();
         }
     }
 

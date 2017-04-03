@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using static Sisacon.Domain.Enuns.FormatImg;
-using static Sisacon.Domain.Enuns.PersonType;
+﻿using static Sisacon.Domain.Enuns.PersonType;
 
 namespace Sisacon.UI.ViewModels
 {
@@ -15,8 +10,9 @@ namespace Sisacon.UI.ViewModels
         public string CompanyName { get; set; }
         public string FantasyName { get; set; }
         public string SocialReasonName { get; set; }
-        public string UrlPathLogo { get; set; }
-        public eFormatImg eFormatImg { get; set; }
+        public string Slogan { get; set; }
+        public string Description { get; set; }
+        public byte[] Logo { get; set; }
 
         //RELATIONSHIP
         public int? IdOccupationArea { get; set; }

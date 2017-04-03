@@ -1,5 +1,4 @@
-﻿using Sisacon.Domain.Entities;
-using Sisacon.Domain.ValueObjects;
+﻿using Sisacon.Domain.ValueObjects;
 using System.ComponentModel.DataAnnotations;
 
 namespace Sisacon.UI.ViewModels
@@ -15,7 +14,5 @@ namespace Sisacon.UI.ViewModels
         public int CostId { get; set; }
         [Required]
         public virtual CostCategory CostCategory { get; set; }
-        [Required]
-        public virtual Cost Cost { get; set; }
     }
 }

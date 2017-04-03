@@ -3,17 +3,16 @@
 
 namespace Sisacon.UI.App_Start
 {
-    using Application;
-    using Application.Interfaces;
-    using Domain.Interfaces;
-    using Domain.Interfaces.Repositories;
-    using Domain.Interfaces.Services;
-    using Domain.Services;
-    using Domain.ValueObjects;
-    using Infra.Repositories;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using Ninject;
     using Ninject.Web.Common;
+    using Sisacon.Application;
+    using Sisacon.Application.Interfaces;
+    using Sisacon.Domain.Interfaces;
+    using Sisacon.Domain.Interfaces.Repositories;
+    using Sisacon.Domain.Interfaces.Services;
+    using Sisacon.Domain.Services;
+    using Sisacon.Infra.Repositories;
     using System;
     using System.Web;
 

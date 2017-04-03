@@ -8,13 +8,11 @@ namespace Sisacon.UI
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery")
                 .Include("~/Scripts/jquery-3.1.1.js",
+                "~/Scripts/semantic.js",
                 "~/Scripts/moment.js",
                 "~/Scripts/moment-with-locales.js",
                 "~/Scripts/DataTables/jquery.dataTables.js",
-                "~/Scripts/DataTables/dataTables.semanticui.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/design")
-                .Include("~/Scripts/semantic.js", 
+                "~/Scripts/DataTables/dataTables.semanticui.js",
                 "~/node_modules/semantic-ui-calendar/dist/calendar.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include

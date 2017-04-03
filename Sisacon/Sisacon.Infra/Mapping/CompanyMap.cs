@@ -1,10 +1,4 @@
 ﻿using Sisacon.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sisacon.Infra.Mapping
 {
@@ -40,13 +34,18 @@ namespace Sisacon.Infra.Mapping
                 .HasMaxLength(100)
                 .IsOptional();
 
-            Property(x => x.UrlPathLogo)
+            Property(x => x.Slogan)
                 .HasColumnType("varchar")
-                .HasMaxLength(500)
+                .HasMaxLength(100)
                 .IsOptional();
 
-            Property(x => x.eFormatImg)
-                .HasColumnType("int")
+            Property(x => x.Description)
+                .HasColumnType("varchar")
+                .HasMaxLength(250)
+                .IsOptional();
+
+            Property(x => x.Logo)
+                .HasColumnType("varbinary")
                 .IsOptional();
 
             HasOptional(x => x.Address)

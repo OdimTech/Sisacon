@@ -11437,8 +11437,8 @@ $.fn.rating = function(parameters) {
             if(rating > 0) {
               module.verbose('Setting current rating to', rating);
               $activeIcon
-                .prevAll()
-                .andSelf()
+                  .prevAll()
+                  .addBack()
                   .addClass(className.active)
               ;
             }

@@ -46,6 +46,7 @@ namespace Sisacon.UI.Controllers
         }
 
         [HttpGet]
+        [Route("fixedCost")]
         public HttpResponseMessage getFixedCostById(int id)
         {
             var response = new ResponseMessage<FixedCost>();
@@ -56,6 +57,7 @@ namespace Sisacon.UI.Controllers
         }
 
         [HttpDelete]
+        [Route("fixedCost")]
         public HttpResponseMessage delete(int id)
         {
             var response = new ResponseMessage<FixedCost>();

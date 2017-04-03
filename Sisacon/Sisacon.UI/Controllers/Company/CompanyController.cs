@@ -3,10 +3,6 @@ using Sisacon.Application;
 using Sisacon.Application.Interfaces;
 using Sisacon.Domain.Entities;
 using Sisacon.UI.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
@@ -16,7 +12,7 @@ namespace Sisacon.UI.Controllers
     [RoutePrefix("api")]
     public class CompanyController : BaseController
     {
-        //private readonly string workingFolder = HttpRuntime.AppDomainAppPath + @"Content\UserImages";
+        private readonly string workingFolder = HttpRuntime.AppDomainAppPath + @"Content\UserImages";
 
         private readonly ICompanyAppService _companyAppService;
 
@@ -52,21 +48,28 @@ namespace Sisacon.UI.Controllers
             return Request.CreateResponse(response.StatusCode, response);
         }
 
-        //[HttpPost]
-        //[Route("company")]
-        //public HttpResponseMessage AddLogo(int idUser)
-        //{
-        //    //if (!Request.Content.IsMimeMultipartContent("form-data"))
-        //    //{
-        //    //    return Request.CreateResponse(HttpStatusCode.BadRequest);
-        //    //}
+        [HttpPost]
+        [Route("company/logo")]
+        public HttpResponseMessage AddLogo()
+        {
+            var response = new ResponseMessage<Company>();
 
-        //    //var provider = new MultipartFormDataStreamProvider(workingFolder);
+            if (Request.Content.IsMimeMultipartContent("form-data"))
+            {
+                //var provider = new MultipartFormDataStreamProvider(workingFolder);
 
-        //    //Request.Content.ReadAsMultipartAsync(provider);
+                //Request.Content.ReadAsMultipartAsync(provider);
 
-        //    //return Request.CreateResponse(HttpStatusCode.OK);
-        //}
+                var context = HttpContext.Current.Request;
+
+                if (context.Files.Count > 0)
+                {
+
+                }
+            }
+
+            return Request.CreateResponse(response.StatusCode, response);
+        }
 
         [HttpGet]
         [Route("company")]

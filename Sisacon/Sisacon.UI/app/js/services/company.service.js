@@ -39,14 +39,13 @@
             return $http.get(apiUrl + 'api/company');
         }
 
-        function addLogo(file, id) {
+        function addLogo(file) {
 
             return $http({
 
                 url: apiUrl + "api/company",
                 method: 'POST',
                 data: { file: file },
-                params: { idUser: id },
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
         }

@@ -1,5 +1,4 @@
 ﻿using Sisacon.Domain.ValueObjects;
-using static Sisacon.Domain.Enuns.FormatImg;
 using static Sisacon.Domain.Enuns.PersonType;
 
 namespace Sisacon.Domain.Entities
@@ -12,8 +11,9 @@ namespace Sisacon.Domain.Entities
         public string CompanyName { get; set; }
         public string FantasyName { get; set; }
         public string SocialReasonName { get; set; }
-        public string UrlPathLogo { get; set; }
-        public eFormatImg eFormatImg { get; set; }
+        public string Slogan { get; set; }
+        public string Description { get; set; }
+        public byte[] Logo { get; set; }
 
         //RELATIONSHIP
         public int? IdOccupationArea { get; set; }

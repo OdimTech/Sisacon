@@ -20,7 +20,7 @@ namespace Sisacon.Domain.Entities
         public bool Current { get; set; }
         public int UserId { get; set; }
         public virtual User User { get; set; }
-        public virtual List<FixedCost> ListFixedCost { get; set; }
+        public List<FixedCost> ListFixedCost { get; set; }
 
         #endregion
 
@@ -44,7 +44,7 @@ namespace Sisacon.Domain.Entities
             var isValid = true;
 
             //SÓ É POSSIVEL DELETEAR O CUSTO DO MES ATUAL, DURANTE O PERIODO EM QUE ELE ESTEJA VIGENTE, APÓS ESSE PERIODO, NÃO PODERÁ MAIS SER REMOVIDO, POR QUESTOES DE MANUTENÇÃO DE HISTORICO
-            if(!Current)
+            if (!Current)
             {
                 isValid = false;
             }
@@ -61,11 +61,11 @@ namespace Sisacon.Domain.Entities
         {
             bool isValid = true;
 
-            if(listCosts != null && listCosts.Count > 0)
+            if (listCosts != null && listCosts.Count > 0)
             {
                 var currentCost = listCosts.Select(x => x.RegistrationDate).FirstOrDefault();
 
-                if(currentCost.Value.Month == DateTime.Now.Month)
+                if (currentCost.Value.Month == DateTime.Now.Month)
                 {
                     isValid = false;
                 }
@@ -91,7 +91,7 @@ namespace Sisacon.Domain.Entities
             TotalCost = Salary + TotalDevaluationOfEquipment + TotalFixedCost;
 
             //O VALOR DA HORA TRABALHADA É SOMA DE TODOS OS GASTOS DIVIDIDO PELA QUANTIDADE DE HORAS TRABALHADAS
-            if(WorkedHours > 0)
+            if (WorkedHours > 0)
             {
                 CostPerHour = TotalCost / WorkedHours;
             }

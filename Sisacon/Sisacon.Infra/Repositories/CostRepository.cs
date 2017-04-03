@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sisacon.Infra.Repositories
 {
@@ -28,11 +26,8 @@ namespace Sisacon.Infra.Repositories
         {
             try
             {
-                foreach (var item in cost.ListFixedCost)
-                {
-                    item.CostCategory.User = null;
-                }
-
+                cost.ListFixedCost = null;
+                Context.User.Attach(cost.User);
                 Context.Entry(cost).State = EntityState.Modified;
             }
             catch (Exception ex)
@@ -51,11 +46,15 @@ namespace Sisacon.Infra.Repositories
                     Where(x => x.Id == id && x.ExclusionDate == null).
                     FirstOrDefault();
 
-                cost.ListFixedCost = Context.
+                if (cost != null)
+                {
+                    cost.ListFixedCost = Context.
                     FixedCost.
                     Include("CostCategory").
+                    Include("CostCategory.User").
                     Where(x => x.CostId == cost.Id && x.ExclusionDate == null).
                     ToList();
+                }
 
                 return cost;
             }

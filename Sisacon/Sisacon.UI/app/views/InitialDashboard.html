@@ -2,119 +2,162 @@
 
 	<div class="ui stackable grid">
 
-		<div class="ten wide stackable column">
+		<div class="three wide stackable column">
 
-			<div class="ui fluid stackable raised segment">
+			<div class="ui special cards">
 
-				<div class="ui floating icon message">
-
-					<i class="flag checkered icon"></i>
-					<div class="content">
-						<div class="header">
-							Configuração Inicial
+				<div class="ui raised card">
+					<div class="blurring dimmable image">
+						<div class="ui dimmer">
+							<div class="content">
+								<div class="center">
+									<a class="ui primary button" href="#/company">Minha Empresa</a>
+								</div>
+							</div>
 						</div>
-						<p>
-							Siga as etapas abaixo para deixar o BeloArt pronto para você. É simples e rápido.
-						</p>
+						<img src="/Content/odimtech.png">
 					</div>
-
+					<div class="content">
+						<div class="header">{{vm.company.companyName}}</div>
+						<div class="meta">
+							<a>{{vm.company.occupationArea.description}}</a>
+						</div>
+						<div class="description">
+							Fabricação de Moveis em madeira de alta qualidade
+						</div>
+					</div>
+					<div class="extra content">
+						<span class="right floated">Joined in 2013</span>
+						<span><i class="user icon"></i>75 Friends</span>
+					</div>
 				</div>
 
-				<div class="ui three column grid" style="padding: 0">
-
-					<div class="column">
-
-						<div class="ui vertical steps">
-							<div class="link active step">
-								<i class="flag icon"></i>
-								<div class="content">
-									<div class="title">Minha Empresa</div>
-									<div class="description">Crie sua Empresa</div>
-								</div>
-							</div>
-							<div class="link step">
-								<i class="users icon"></i>
-								<div class="content">
-									<div class="title">Clientes</div>
-									<div class="description">0 Cadastrados</div>
-								</div>
-							</div>
-							<div class="link step">
-								<i class="info icon"></i>
-								<div class="content">
-									<div class="title">Confirm Order</div>
-									<div class="description">Verify order details</div>
-								</div>
-							</div>
+				<div class="ui raised blue card">
+					<a class="ui blue right corner label" href="#/clientList">
+						<i class="search icon"></i>
+					</a>
+					<div class="content">
+						<div class="header">Clientes</div>
+						<div class="description">
+							Quantidade Cadastrada: 23
 						</div>
-
 					</div>
+				</div>
 
-
-					<div class="column">
-
-						<div class="ui vertical steps">
-							<div class="link step">
-								<i class="truck icon"></i>
-								<div class="content">
-									<div class="title">Shipping</div>
-									<div class="description">Choose your shipping options</div>
-								</div>
-							</div>
-							<div class="link step">
-								<i class="credit card icon"></i>
-								<div class="content">
-									<div class="title">Billing</div>
-									<div class="description">Enter billing information</div>
-								</div>
-							</div>
-							<div class="link step">
-								<i class="info icon"></i>
-								<div class="content">
-									<div class="title">Confirm Order</div>
-									<div class="description">Verify order details</div>
-								</div>
-							</div>
+				<div class="ui raised blue card">
+					<a class="ui blue right corner label" href="#/clientList">
+						<i class="search icon"></i>
+					</a>
+					<div class="content">
+						<div class="header">Clientes</div>
+						<div class="description">
+							Quantidade Cadastrada: 23
 						</div>
-
 					</div>
-
-
-					<div class="column">
-
-						<div class="ui vertical steps">
-							<div class="link step">
-								<i class="truck icon"></i>
-								<div class="content">
-									<div class="title">Shipping</div>
-									<div class="description">Choose your shipping options</div>
-								</div>
-							</div>
-							<div class="link step">
-								<i class="credit card icon"></i>
-								<div class="content">
-									<div class="title">Billing</div>
-									<div class="description">Enter billing information</div>
-								</div>
-							</div>
-							<div class="link step">
-								<i class="info icon"></i>
-								<div class="content">
-									<div class="title">Confirm Order</div>
-									<div class="description">Verify order details</div>
-								</div>
-							</div>
+				</div>
+				<div class="ui raised blue card">
+					<a class="ui blue right corner label" href="#/clientList">
+						<i class="search icon"></i>
+					</a>
+					<div class="content">
+						<div class="header">Clientes</div>
+						<div class="description">
+							Quantidade Cadastrada: 23
 						</div>
-
 					</div>
-
+				</div>
+				<div class="ui raised blue card">
+					<a class="ui blue right corner label" href="#/clientList">
+						<i class="search icon"></i>
+					</a>
+					<div class="content">
+						<div class="header">Clientes</div>
+						<div class="description">
+							Quantidade Cadastrada: 23
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="ui six wide stackable column">
-			<div class="ui segment">
+
+		<!--<div class="thirteen wide stackable column">
+
+			<div class="ui raised cards">
+
+				<div class="ui raised blue card">
+					<a class="ui blue right corner label" href="#/clientList">
+						<i class="search icon"></i>
+					</a>
+					<div class="content">
+						<div class="header">Clientes</div>
+						<div class="description">
+							Quantidade Cadastrada: 23
+						</div>
+					</div>
+				</div>
+
+				<div class="ui raised blue card">
+					<a class="ui blue right corner label" href="#/materialList">
+						<i class="search icon"></i>
+					</a>
+					<div class="content">
+						<div class="header">Materiais</div>
+						<div class="description">
+							Quantidade Cadastrada: 45
+						</div>
+					</div>
+
+				</div>
+
+				<div class="ui raised blue card">
+					<a class="ui blue right corner label" href="#/">
+						<i class="search icon"></i>
+					</a>
+					<div class="content">
+						<div class="header">Produtos</div>
+						<div class="description">
+							Quantidade Cadastrada: 12
+						</div>
+					</div>
+				</div>
+
+				<div class="ui raised blue card">
+					<a class="ui blue right corner label" href="#/">
+						<i class="search icon"></i>
+					</a>
+					<div class="content">
+						<div class="header">Produtos</div>
+						<div class="description">
+							Quantidade Cadastrada: 12
+						</div>
+					</div>
+				</div>
+
+				<div class="ui raised blue card">
+					<a class="ui blue right corner label" href="#/">
+						<i class="search icon"></i>
+					</a>
+					<div class="content">
+						<div class="header">Produtos</div>
+						<div class="description">
+							Quantidade Cadastrada: 12
+						</div>
+					</div>
+				</div>
 
 			</div>
+
+			<div class="ui stackable raised segment">
+
+			</div>
+
+		</div>-->
+
+		<div class="ten wide stackable column">
+
+		</div>
+		<div class="ui six wide stackable column">
+
 		</div>
 	</div>
 

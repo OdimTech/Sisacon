@@ -1,12 +1,11 @@
 ﻿using Sisacon.Application.Interfaces;
 using Sisacon.Domain.Entities;
-using System;
 using Sisacon.Domain.Interfaces.Services;
+using System;
+using System.Collections.Generic;
 using static Sisacon.Domain.Enuns.ErrorGravity;
 using static Sisacon.Domain.Enuns.OperationType;
 using static Sisacon.Domain.Enuns.Sex;
-using System.Collections.Generic;
-using System.Net;
 
 namespace Sisacon.Application
 {
@@ -31,13 +30,13 @@ namespace Sisacon.Application
             {
                 var cost = _costService.getById(costId);
 
-                if(cost != null)
+                if (cost != null)
                 {
-                    if(cost.validateBeforeDelete())
+                    if (cost.validateBeforeDelete())
                     {
                         _costService.delete(cost);
 
-                        if(_costService.commit() == 0)
+                        if (_costService.commit() == 0)
                         {
                             response.Message = _crudMsgFormater.createErrorCrudMessage();
                         }
@@ -71,7 +70,7 @@ namespace Sisacon.Application
             {
                 response.ValueList = _costService.getCostsByUserId(userId);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 _logAppService.createClientLog(ex, null, eErrorGravity.Grande);
 
@@ -87,11 +86,11 @@ namespace Sisacon.Application
 
             try
             {
-                if(cost.isValid())
+                if (cost.isValid())
                 {
                     cost.calcCosts();
 
-                    if(cost.Id > 0)
+                    if (cost.Id > 0)
                     {
                         _costService.update(cost);
 
@@ -105,7 +104,7 @@ namespace Sisacon.Application
                     }
                 }
 
-                if(_costService.commit() == 0)
+                if (_costService.commit() == 0)
                 {
                     response.Message = _crudMsgFormater.createErrorCrudMessage();
                 }
@@ -134,7 +133,7 @@ namespace Sisacon.Application
 
                 response.LogicalTest = Cost.validateNewCost(listCosts);
 
-                if(!response.LogicalTest)
+                if (!response.LogicalTest)
                 {
                     response.Message = string.Format("Não é possível criar mais de um Custo por Mês. Clique em Editar para alterar o Custo Atual");
                 }

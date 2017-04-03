@@ -12,17 +12,17 @@
     function ClientController($scope, $window, blockUI, $routeParams, toastr, viaCepService, utilityService, localStorageService, clientService, valuesService, configurationService, DTOptionsBuilder, DTColumnBuilder) {
 
         //INTIT CONTROLS
-        angular.element('#birthdayCalendar').calendar({
+        // angular.element('#birthdayCalendar').calendar({
 
-            type: 'date',
-            text: valuesService.calendarText,
-            today: true,
-            onChange: function (date, text) {
+        //     type: 'date',
+        //     text: valuesService.calendarText,
+        //     today: true,
+        //     onChange: function (date, text) {
 
-                $scope.client.birthday = $scope.clientForm.birthday;
-                console.log($scope.client.birthday);
-            },
-        });
+        //         $scope.client.birthday = $scope.clientForm.birthday;
+        //         console.log($scope.client.birthday);
+        //     },
+        // });
 
         angular.element('.ui.dropdown').dropdown();
 
@@ -32,6 +32,16 @@
         });
 
         angular.element('.menu .item').tab();
+
+        angular.element('.rating').rating({
+
+            initialRating: 3,
+            maxRating: 5,
+            onRate(value) {
+
+                //$scope.client.rate = value;
+            }
+        });
 
         //VARIABLES
         $scope.userId = localStorageService.get('id');
@@ -335,7 +345,18 @@
                 blockUI.stop();
                 console.log(response);
             });
-        };
+        }
+
+        $scope.showHelp = function () {
+
+            angular.element('#showHelpModal').modal({
+
+                blurring: false,
+                closable: true,
+                autofocus: true
+
+            }).modal('show');
+        }
     }
 
 })();

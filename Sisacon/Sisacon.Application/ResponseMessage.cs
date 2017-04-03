@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Net;
+using static Sisacon.Domain.Enuns.OperationType;
 
 namespace Sisacon.Application
 {
@@ -21,6 +22,7 @@ namespace Sisacon.Application
         public bool LogicalTest { get; set; }
         public bool UpdateNotifications { get; set; }
         public HttpStatusCode StatusCode { get; set; }
+        public eOperationType OperationType { get; set; }
 
         #endregion
 

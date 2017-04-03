@@ -4,9 +4,9 @@
         .module('app')
         .controller('CompanyController', CompanyController);
 
-    CompanyController.$inject = ['$scope', 'viaCepService', 'valuesService', 'companyService', 'toastr', 'blockUI', 'localStorageService', '$window'];
+    CompanyController.$inject = ['$scope','Upload', 'viaCepService', 'valuesService', 'companyService', 'toastr', 'blockUI', 'localStorageService', '$window'];
 
-    function CompanyController($scope, viaCepService, valuesService, companyService, toastr, blockUI, localStorageService, $window) {
+    function CompanyController($scope, Upload, viaCepService, valuesService, companyService, toastr, blockUI, localStorageService, $window) {
 
         //INIT CONTROLS
         angular.element('.ui.dropdown').dropdown();
@@ -165,18 +165,18 @@
             });
         };
 
-        $scope.addLogo = function () {
+        $scope.addLogo = function (file, fileError) {
 
-            if ($scope.company.urlPathLogo) {
+            if (file) {
 
-                companyService.addLogo($scope.company.urlPathLogo, $scope.userId).success(function (response) {
+                $scope.company.logo = file;
 
-                    debugger;
+                // companyService.addLogo(file)
 
-                }).error(function (response) {
-
-                    debugger;
-                });
+                Upload.upload({
+                    url: 'http://localhost:15910/api/company/logo',
+                    data: { file: file}
+                })
             }
         };
 

@@ -22,7 +22,8 @@
                 .when('/initialDashboard', {
 
                     templateUrl: '/app/views/InitialDashboard.html',
-                    controller: 'InitialDashboardController'
+                    controller: 'InitialDashboardController',
+                    controllerAs: 'vm'
                 })
                 //TOP MENU
                 .when('/calendar', {

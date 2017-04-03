@@ -1,9 +1,4 @@
 ﻿using Sisacon.Domain.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sisacon.Infra.Mapping
 {
@@ -18,10 +13,6 @@ namespace Sisacon.Infra.Mapping
 
             Property(x => x.Value)
                 .IsRequired();
-
-            HasRequired(x => x.Cost)
-                .WithMany(x => x.ListFixedCost)
-                .HasForeignKey(x => x.CostId);
 
             HasRequired(x => x.CostCategory)
                 .WithMany()

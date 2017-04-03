@@ -12,7 +12,7 @@ namespace Sisacon.UI.AutoMapper
             get { return "DomainToViewModelMapping"; }
         }
 
-        protected override void Configure()
+        public DomainToViewModelMappingProfile()
         {
             CreateMap<UserViewModel, User>();
             CreateMap<ConfigurationViewModel, Configuration>();

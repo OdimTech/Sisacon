@@ -64,7 +64,6 @@
     <Compile Include="ValueObjects\FixedCost.cs" />
     <Compile Include="ValueObjects\MaterialCategory.cs" />
     <Compile Include="Entities\Provider.cs" />
-    <Compile Include="Enuns\FormatImg.cs" />
     <Compile Include="Enuns\OperationType.cs" />
     <Compile Include="Enuns\PersonType.cs" />
     <Compile Include="Enuns\Sex.cs" />

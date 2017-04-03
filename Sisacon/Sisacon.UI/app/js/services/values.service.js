@@ -4,7 +4,11 @@
 
         getApiUrl: 'http://localhost:15910/',
 
+        //getApiUrl: 'http://beloartdesenvolvimento.azurewebsites.net/',
+
         getDefaultLogo: '../../../Content/UserImages/Default/CompanyLogo/default_logo.gif',
+
+        errorFieldMessage : 'Os Campos destacados em Vermelho não foram preenchidas corretamente',
 
         dataTableLanguage: {
             "lengthMenu": "Exibindo _MENU_ Itens por página",

@@ -1,10 +1,8 @@
 ﻿using Sisacon.Domain.Interfaces.Repositories;
 using Sisacon.Domain.ValueObjects;
 using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sisacon.Infra.Repositories
 {
@@ -14,17 +12,48 @@ namespace Sisacon.Infra.Repositories
         {
             try
             {
-                fixedCost.Cost.ListFixedCost = null;
-                fixedCost.CostCategory.User = null;
-
-                Context.User.Attach(fixedCost.Cost.User);
-                Context.Cost.Attach(fixedCost.Cost);
+                Context.User.Attach(fixedCost.CostCategory.User);
                 Context.CostCategory.Attach(fixedCost.CostCategory);
 
                 Context.FixedCost.Add(fixedCost);
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+        }
+
+        public override void update(FixedCost fixedCost)
+        {
+            try
+            {
+                fixedCost.CostCategoryId = fixedCost.CostCategory.Id;
+
+                Context.User.Attach(fixedCost.CostCategory.User);
+                Context.CostCategory.Attach(fixedCost.CostCategory);
+
+                Context.Entry(fixedCost).State = EntityState.Modified;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public override FixedCost getById(int id)
+        {
+            try
+            {
+                return Context.
+                    FixedCost.
+                    Include("CostCategory").
+                    Include("CostCategory.User").
+                    Where(x => x.Id == id && x.ExclusionDate == null).
+                    FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
         }

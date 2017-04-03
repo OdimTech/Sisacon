@@ -95,7 +95,7 @@
 
 
                             <!--CNPJ-->
-                            <div class="four wide required field" ng-show="client.ePersonType === 2" ng-class="{'error' : !clientForm.cnpj.$valid && (clientForm.$submitted || !clientForm.cnpj.$pristine)}">
+                            <div class="five wide required field" ng-show="client.ePersonType === 2" ng-class="{'error' : !clientForm.cnpj.$valid && (clientForm.$submitted || !clientForm.cnpj.$pristine)}">
 
                                 <label for="cnpj">CNPJ</label>
                                 <input type="text" name="cnpj" class="ui input" ui-mask="99.999.999/9999-99" ng-model="client.cnpj" ng-required="client.ePersonType === 2"
@@ -106,7 +106,7 @@
                                 </div>
                             </div>
                             <!--CPF-->
-                            <div class="three wide required field" ng-show="client.ePersonType === 1" ng-class="{'error' : !clientForm.cpf.$valid && (clientForm.$submitted || !clientForm.cpf.$pristine)}">
+                            <div class="four wide required field" ng-show="client.ePersonType === 1" ng-class="{'error' : !clientForm.cpf.$valid && (clientForm.$submitted || !clientForm.cpf.$pristine)}">
 
                                 <label for="cpf">CPF</label>
                                 <input type="text" name="cpf" class="ui input" ui-mask="999.999.999-99" ng-model="client.cpf" ng-required="client.ePersonType === 1"
@@ -432,7 +432,9 @@
 
                                 <div class="ui stackable column" style="padding: 0">
 
-                                    Orçamentos Solicitados
+                                    <div class="ui large label">
+                                        Orçamentos Solicitados
+                                    </div>
 
                                 </div>
 
@@ -447,7 +449,10 @@
 
                                 <div class="ui stackable column" style="padding: 0">
 
-                                    Pedidos Realizados
+                                    <div class="ui large label">
+                                        Pedidos Realizados
+                                    </div>
+
 
                                 </div>
 
@@ -465,7 +470,10 @@
 
                                 <div class="ui stackable column" style="padding: 0">
 
-                                    <h4>Taxa de Conversão</h4>
+                                    <div class="ui large label">
+                                        <h4>Taxa de Conversão</h4>
+                                    </div>
+
 
                                 </div>
 
@@ -558,13 +566,15 @@
 
                 <ul>
                     <li>
-                        <strong>Informações Comerciais:</strong> São dados que permitem identificar o cliente, as Informações necessárias são diferentes de acordo com o tipo do cliente (Pessoa física ou jurídica)
+                        <strong>Informações Comerciais:</strong> São dados que permitem identificar o cliente, as Informações
+                        necessárias são diferentes de acordo com o tipo do cliente (Pessoa física ou jurídica)
                     </li>
                     <li>
                         <strong>Endereço:</strong> Local da residência do cliente
                     </li>
                     <li>
-                        <strong>Contato</strong> Informações para entrar em contato com o cliente, é fundamental que estejam corretas, toda comunicação será feita através desses dados
+                        <strong>Contato</strong> Informações para entrar em contato com o cliente, é fundamental que estejam
+                        corretas, toda comunicação será feita através desses dados
                     </li>
                 </ul>
             </p>
@@ -575,10 +585,15 @@
 
                 <ul>
                     <li>
-                        <strong>Como você avalia o cliente:</strong> Escolha quantas estrelas este cliente merece, foi Educado? Te pagou de forma correta? Desistiu sem dar explicação? Considere tudo isso mas lembre-se, o cliente tem sempre razão.
+                        <strong>Como você avalia o cliente:</strong> Escolha quantas estrelas este cliente merece, foi Educado?
+                        Te pagou de forma correta? Desistiu sem dar explicação? Considere tudo isso mas lembre-se, o cliente
+                        tem sempre razão.
                     </li>
                     <li>
-                        <strong>Como o cliente te avalia</strong> Essa é a parte mais importante e demonstra o que seu cliente pensa a respeito do seu trabalho, poucas estrelas podem indicar que você deixou a desejar, mas não se preocupe, sempre que um cliente te avaliar mal iremos lhe informa para que você possa tentar entender o que aconteceu
+                        <strong>Como o cliente te avalia</strong> Essa é a parte mais importante e demonstra o que seu cliente
+                        pensa a respeito do seu trabalho, poucas estrelas podem indicar que você deixou a desejar, mas não
+                        se preocupe, sempre que um cliente te avaliar mal iremos lhe informa para que você possa tentar entender
+                        o que aconteceu
                     </li>
                 </ul>
 

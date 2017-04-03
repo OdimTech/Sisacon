@@ -2,88 +2,33 @@
     <div class="ui stackable grid">
         <div class="ui sixteen wide stackable column">
 
-            <div class="ui stackable segment">
-                <div class="ui stackable grid" style="padding: 0">
+            <div class="ui stackable borderless menu">
 
-                    <div class="ui four wide stackable column">
+                <div class="header item">
 
-                        <h3 class="ui header">
-                            <i class="bordered flag icon"></i>
-                            <div class="content">
-                                Minha Empresa
-                                <div class="inverted sub header">
-                                    Menu Superior - Minha Empresa
-                                </div>
+                    <h3 class="ui header">
+                        <i class="bordered flag icon"></i>
+                        <div class="content">
+                            Minha Empresa
+                            <div class="inverted sub header">
+                                Informações sobre a Minha Empresa
                             </div>
-                        </h3>
-
-                    </div>
-                    <div class="ui twelve wide stackable right aligned column">
-                        <a class="ui labeled primary icon button" ng-click="submitForm()">
-                            <i class="checkmark icon"></i> {{btnSaveText}}
-                        </a>
-                        <a class="ui icon primary button" ng-click="showHelp()">
-                            <i class="help icon"></i>
-                        </a>
-                    </div>
+                        </div>
+                    </h3>
 
                 </div>
+
+                <div class="right item">
+                    <a class="ui labeled primary icon button" ng-click="submitForm()">
+                        <i class="checkmark icon"></i> {{btnSaveText}}
+                    </a>
+                </div>
+
             </div>
+
         </div>
 
         <div class="ui ten wide stackable centered column" style="padding: 0">
-
-
-
-            <!--LOGOTIPO
-            <div class="ui small stackable attached icon teal message">
-                <i class="material-icons">&#xE3F4;</i>
-                <div class="header">
-                    Logotipo
-                </div>
-            </div>
-            <div class="ui attached stackable fluid segment">
-                <div class="ui stackable grid">
-                    <div class="ui four wide stackable column">
-
-                        <img ngf-src="company.urlPathLogo || defaultLogo" class="ui medium centered bordered image" ng-class="{'square': company.eFormatImg == 1}"
-                        />
-                        <br />
-
-                        <div class="ui buttons">
-
-                            <button ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="5MB" name="file" ng-model="company.urlPathLogo"
-                                class="ui left attached primary fluid button" ng-click="addLogo()">
-                            Escolher Imagem
-                        </button>
-
-                            <button class="ui right attached icon red button" ng-click="company.urlPathLogo = logoDefault" name="removeImg" data-content="Excluir imagem atual"
-                                data-variation="inverted">
-                            <i class="close icon"></i>
-                        </button>
-
-                        </div>
-                    </div>
-                    <div class="ui six wide stackable column">
-                        <div class="grouped fields">
-                            <label>Escolha o formato padrão para exibição</label>
-                            <div class="field">
-                                <div class="ui radio checkbox">
-                                    <input name="format" checked="checked" type="radio" ng-click="company.eFormatImg = 1">
-                                    <label>square</label>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <div class="ui radio checkbox">
-                                    <input name="format" type="radio" ng-click="company.eFormatImg = 2">
-                                    <label>Quadrado</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            <!--LOGOTIPO-->
 
             <div class="ui form stackable raised fluid segment">
 
@@ -203,8 +148,6 @@
 
                 <div class="ui stackable column grid" style="padding: 0">
 
-                    <!--<div class="row">-->
-
                     <div class="ui six wide stackable column">
 
                         <div class="ui fluid raised card">
@@ -219,8 +162,8 @@
                             </div>
                             <div class="extra content">
                                 <div class="ui two buttons">
-                                    <button ngf-select="addLogo($file, $invalidFiles)" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="2MB" name="logo" 
-                                        class="ui primary button" ng-model="company.logo">Adicionar Logo</button>
+                                    <button ngf-select="addLogo($file, $invalidFiles)" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="2MB" name="logo"
+                                        class="ui primary button" ng-model="company.logo">Adicionar</button>
                                     <div class="ui red button">
                                         Excluir
                                     </div>
@@ -273,133 +216,133 @@
                             data-variation="inverted">
                             <i class="info icon"></i>
                         </button>
-                                </div>
-                            </div>
-                            <div class="fields">
+                    </div>
+                </div>
+                <div class="fields">
 
-                                <!--RUA-->
-                                <div class="eight wide required field" ng-class="{'error' : !companyForm.street.$valid && (companyForm.$submitted || !companyForm.street.$pristine)}">
+                    <!--RUA-->
+                    <div class="eight wide required field" ng-class="{'error' : !companyForm.street.$valid && (companyForm.$submitted || !companyForm.street.$pristine)}">
 
-                                    <label for="street">Rua/Av</label>
-                                    <input type="text" name="street" ng-model="company.address.logradouro" class="ui input" required maxlength="50" />
+                        <label for="street">Rua/Av</label>
+                        <input type="text" name="street" ng-model="company.address.logradouro" class="ui input" required maxlength="50" />
 
-                                    <div class="ui pointing red basic label" ng-show="!companyForm.street.$valid && (companyForm.$submitted || !companyForm.street.$pristine)">
-                                        <div ng-show="!companyForm.street.$valid">A Rua é Obrigatória</div>
-                                    </div>
-
-                                </div>
-
-                                <!--NUMERO-->
-                                <div class="two wide required field" ng-class="{'error' : !companyForm.number.$valid && (companyForm.$submitted || !companyForm.number.$pristine)}">
-
-                                    <label for="number">Número</label>
-                                    <input type="number" name="number" ng-model="company.address.numero" class="ui input" required />
-
-                                    <div class="ui pointing red basic label" ng-show="!companyForm.number.$valid && (companyForm.$submitted || !companyForm.number.$pristine)">
-                                        <div ng-show="!companyForm.number.$valid">O Número é Obrigatória</div>
-                                    </div>
-
-                                </div>
-
-                                <!--COMPLEMENTO-->
-                                <div class="six wide field">
-                                    <label for="complement">Complemento</label>
-                                    <input type="text" name="complement" ng-model="company.address.complemento" class="ui input" maxlength="8" />
-                                </div>
-                            </div>
-
-                            <div class="fields">
-
-                                <!--BAIRRO-->
-                                <div class="eight wide required field" ng-class="{'error' : !companyForm.neighborhood.$valid && (companyForm.$submitted || !companyForm.neighborhood.$pristine)}">
-                                    <label for="bairro">Bairro</label>
-                                    <input type="text" name="neighborhood" ng-model="company.address.bairro" class="ui input" required maxlength="50" />
-
-                                    <div class="ui pointing red basic label" ng-show="!companyForm.neighborhood.$valid && (companyForm.$submitted || !companyForm.neighborhood.$pristine)">
-                                        <div ng-show="!companyForm.neighborhood.$valid">O Bairro é Obrigatória</div>
-                                    </div>
-
-                                </div>
-
-                                <!--CIDADE-->
-                                <div class="four wide required field" ng-class="{'error' : !companyForm.city.$valid && (companyForm.$submitted || !companyForm.city.$pristine)}">
-
-                                    <label for="city">Cidade</label>
-                                    <input type="text" name="city" ng-model="company.address.cidade" class="ui input" required maxlength="30" />
-
-                                    <div class="ui pointing red basic label" ng-show="!companyForm.city.$valid && (companyForm.$submitted || !companyForm.city.$pristine)">
-                                        <div ng-show="!companyForm.city.$valid">A Cidade é Obrigatória</div>
-                                    </div>
-
-                                </div>
-
-                                <!--ESTADO-->
-                                <div class="four wide required field" ng-class="{'error' : !companyForm.state.$valid && (companyForm.$submitted || !companyForm.state.$pristine)}">
-
-                                    <label for="state">Estado</label>
-                                    <input type="text" name="state" ng-model="company.address.estado" class="ui input" required maxlength="20" />
-
-                                    <div class="ui pointing red basic label" ng-show="!companyForm.state.$valid && (companyForm.$submitted || !companyForm.state.$pristine)">
-                                        <div ng-show="!companyForm.state.$valid">O Estado é Obrigatória</div>
-                                    </div>
-
-                                </div>
-                            </div>
+                        <div class="ui pointing red basic label" ng-show="!companyForm.street.$valid && (companyForm.$submitted || !companyForm.street.$pristine)">
+                            <div ng-show="!companyForm.street.$valid">A Rua é Obrigatória</div>
                         </div>
 
-                        <div class="ui form  stackable raised fluid segment">
+                    </div>
 
-                            <div class="ui blue ribbon large label" style="margin-bottom: 20px">
-                                Contato
-                            </div>
+                    <!--NUMERO-->
+                    <div class="two wide required field" ng-class="{'error' : !companyForm.number.$valid && (companyForm.$submitted || !companyForm.number.$pristine)}">
 
-                            <div class="fields">
+                        <label for="number">Número</label>
+                        <input type="number" name="number" ng-model="company.address.numero" class="ui input" required />
 
-                                <!--TELEFONE FIXO-->
-                                <div class="four wide field">
-                                    <label for="telFixo">Telefone Fixo</label>
-                                    <input name="telFixo" class="ui input" ui-mask="(99) 9999-9999" ng-model="company.contact.landLine" maxlength="15" />
-                                </div>
+                        <div class="ui pointing red basic label" ng-show="!companyForm.number.$valid && (companyForm.$submitted || !companyForm.number.$pristine)">
+                            <div ng-show="!companyForm.number.$valid">O Número é Obrigatória</div>
+                        </div>
 
-                                <!--CELULAR-->
-                                <div class="four wide field">
-                                    <label for="telCelular">Celular</label>
-                                    <input name="telCelular" class="ui input" ui-mask="(99) 99999-9999" ng-model="company.contact.cellPhone" maxlength="15" />
-                                </div>
-                            </div>
+                    </div>
 
-                            <div class="fields">
+                    <!--COMPLEMENTO-->
+                    <div class="six wide field">
+                        <label for="complement">Complemento</label>
+                        <input type="text" name="complement" ng-model="company.address.complemento" class="ui input" maxlength="8" />
+                    </div>
+                </div>
 
-                                <!--EMAIL-->
-                                <div class="eight wide field" ng-class="{'error' : !companyForm.email.$valid && (companyForm.$submitted || !companyForm.email.$pristine)}">
+                <div class="fields">
 
-                                    <label for="email">Email</label>
-                                    <input type="email" ng-model="company.contact.email" name="email" class="ui input" />
+                    <!--BAIRRO-->
+                    <div class="eight wide required field" ng-class="{'error' : !companyForm.neighborhood.$valid && (companyForm.$submitted || !companyForm.neighborhood.$pristine)}">
+                        <label for="bairro">Bairro</label>
+                        <input type="text" name="neighborhood" ng-model="company.address.bairro" class="ui input" required maxlength="50" />
 
-                                    <div class="ui pointing red basic label" ng-show="!companyForm.email.$valid && (companyForm.$submitted || !companyForm.email.$pristine)">
-                                        <div ng-show="!companyForm.email.$valid">O Email é Obrigatório</div>
-                                    </div>
-                                </div>
+                        <div class="ui pointing red basic label" ng-show="!companyForm.neighborhood.$valid && (companyForm.$submitted || !companyForm.neighborhood.$pristine)">
+                            <div ng-show="!companyForm.neighborhood.$valid">O Bairro é Obrigatória</div>
+                        </div>
 
-                                <!--SITE-->
+                    </div>
 
-                                <div class="eight wide field">
-                                    <label for="site">Site</label>
-                                    <input ng-model="company.contact.urlSite" name="site" class="ui input" maxlength="250" />
-                                </div>
+                    <!--CIDADE-->
+                    <div class="four wide required field" ng-class="{'error' : !companyForm.city.$valid && (companyForm.$submitted || !companyForm.city.$pristine)}">
 
-                                <div class="field">
-                                    <label>&nbsp</label>
-                                    <button type="button" class="ui square icon blue button" ng-click="goToSite()" title="Abrir Site">
-                            <i class="ui world icon"></i>
-                        </button>
-                                </div>
+                        <label for="city">Cidade</label>
+                        <input type="text" name="city" ng-model="company.address.cidade" class="ui input" required maxlength="30" />
 
-                            </div>
+                        <div class="ui pointing red basic label" ng-show="!companyForm.city.$valid && (companyForm.$submitted || !companyForm.city.$pristine)">
+                            <div ng-show="!companyForm.city.$valid">A Cidade é Obrigatória</div>
+                        </div>
+
+                    </div>
+
+                    <!--ESTADO-->
+                    <div class="four wide required field" ng-class="{'error' : !companyForm.state.$valid && (companyForm.$submitted || !companyForm.state.$pristine)}">
+
+                        <label for="state">Estado</label>
+                        <input type="text" name="state" ng-model="company.address.estado" class="ui input" required maxlength="20" />
+
+                        <div class="ui pointing red basic label" ng-show="!companyForm.state.$valid && (companyForm.$submitted || !companyForm.state.$pristine)">
+                            <div ng-show="!companyForm.state.$valid">O Estado é Obrigatória</div>
                         </div>
 
                     </div>
                 </div>
+            </div>
+
+            <div class="ui form  stackable raised fluid segment">
+
+                <div class="ui blue ribbon large label" style="margin-bottom: 20px">
+                    Contato
+                </div>
+
+                <div class="fields">
+
+                    <!--TELEFONE FIXO-->
+                    <div class="four wide field">
+                        <label for="telFixo">Telefone Fixo</label>
+                        <input name="telFixo" class="ui input" ui-mask="(99) 9999-9999" ng-model="company.contact.landLine" maxlength="15" />
+                    </div>
+
+                    <!--CELULAR-->
+                    <div class="four wide field">
+                        <label for="telCelular">Celular</label>
+                        <input name="telCelular" class="ui input" ui-mask="(99) 99999-9999" ng-model="company.contact.cellPhone" maxlength="15" />
+                    </div>
+                </div>
+
+                <div class="fields">
+
+                    <!--EMAIL-->
+                    <div class="eight wide field" ng-class="{'error' : !companyForm.email.$valid && (companyForm.$submitted || !companyForm.email.$pristine)}">
+
+                        <label for="email">Email</label>
+                        <input type="email" ng-model="company.contact.email" name="email" class="ui input" />
+
+                        <div class="ui pointing red basic label" ng-show="!companyForm.email.$valid && (companyForm.$submitted || !companyForm.email.$pristine)">
+                            <div ng-show="!companyForm.email.$valid">O Email é Obrigatório</div>
+                        </div>
+                    </div>
+
+                    <!--SITE-->
+
+                    <div class="eight wide field">
+                        <label for="site">Site</label>
+                        <input ng-model="company.contact.urlSite" name="site" class="ui input" maxlength="250" />
+                    </div>
+
+                    <div class="field">
+                        <label>&nbsp</label>
+                        <button type="button" class="ui square icon blue button" ng-click="goToSite()">
+                            <i class="ui world icon"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 </form>
 
 <!--MODALS-->

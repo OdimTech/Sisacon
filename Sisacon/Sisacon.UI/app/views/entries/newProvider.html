@@ -66,7 +66,7 @@
                 </div>
 
                 <!--CNPJ-->
-                <div class="three wide required field" ng-class="{'error' : !providerForm.cnpj.$valid && (providerForm.$submitted || !providerForm.cnpj.$pristine)}">
+                <div class="four wide required field" ng-class="{'error' : !providerForm.cnpj.$valid && (providerForm.$submitted || !providerForm.cnpj.$pristine)}">
 
                     <label for="cnpj">CNPJ</label>
                     <input type="text" name="cnpj" class="ui input" ui-mask="99.999.999/9999-99" ng-model="vm.provider.cnpj" required />

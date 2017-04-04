@@ -10,5 +10,6 @@ namespace Sisacon.Domain.Interfaces.Repositories
     public interface IClientRepository : IRepositoryBase<Client>
     {
         List<Client> getByUserId(int userId);
+        int GetCount(int userId);
     }
 }

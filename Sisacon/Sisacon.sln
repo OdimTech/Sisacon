@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.UI.WebApi", "Sisacon.UI\Sisacon.UI.WebApi.csproj", "{8122CC78-F9B2-460E-B277-6D73DF057EF5}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{61BFEAE2-EB48-4F14-B399-4C3173A35AA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.Domain.Tests", "Sisacon.Domain.Tests\Sisacon.Domain.Tests.csproj", "{41076BE8-E7D0-41EB-A9BF-4B142A7F3D3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sisacon.Repositories.Tests", "Sisacon.Repositories.Tests\Sisacon.Repositories.Tests.csproj", "{FAAD4B37-E962-41A0-887D-D5570E072342}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{41076BE8-E7D0-41EB-A9BF-4B142A7F3D3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41076BE8-E7D0-41EB-A9BF-4B142A7F3D3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41076BE8-E7D0-41EB-A9BF-4B142A7F3D3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAAD4B37-E962-41A0-887D-D5570E072342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAAD4B37-E962-41A0-887D-D5570E072342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAAD4B37-E962-41A0-887D-D5570E072342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAAD4B37-E962-41A0-887D-D5570E072342}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +70,6 @@ Global
 		{3A082EC3-F6B0-4A1D-BD59-9BEECF70C125} = {F1B8027B-7FCE-49B9-A978-42D0CA6B169B}
 		{61BFEAE2-EB48-4F14-B399-4C3173A35AA7} = {DC93613C-A116-43F1-A865-FD2910F034E6}
 		{41076BE8-E7D0-41EB-A9BF-4B142A7F3D3F} = {DC93613C-A116-43F1-A865-FD2910F034E6}
+		{FAAD4B37-E962-41A0-887D-D5570E072342} = {F1B8027B-7FCE-49B9-A978-42D0CA6B169B}
 	EndGlobalSection
 EndGlobal

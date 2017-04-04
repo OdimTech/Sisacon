@@ -76,5 +76,20 @@ namespace Sisacon.Infra.Repositories
                 throw ex;
             }
         }
+
+        public int GetCount(int userId)
+        {
+            try
+            {
+                return Context.
+                    Client.
+                    Where(x => x.User.Id == userId && x.ExclusionDate == null).
+                    Count();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

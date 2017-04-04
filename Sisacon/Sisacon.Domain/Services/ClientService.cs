@@ -34,5 +34,17 @@ namespace Sisacon.Domain.Services
 
             return clientList;
         }
+
+        public int GetCount(int userId)
+        {
+            try
+            {
+                return _repository.GetCount(userId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

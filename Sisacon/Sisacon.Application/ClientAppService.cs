@@ -124,5 +124,23 @@ namespace Sisacon.Application
 
             return response;
         }
+
+        public ResponseMessage<Client> GetCount(int userId)
+        {
+            var response = new ResponseMessage<Client>();
+
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                _logAppService.createClientLog(ex, null, eErrorGravity.Travamento);
+
+                return response.createErrorResponse();
+            }
+
+            return response;
+        }
     }
 }

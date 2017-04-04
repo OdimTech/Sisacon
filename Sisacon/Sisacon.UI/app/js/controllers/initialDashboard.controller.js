@@ -25,11 +25,11 @@
 
         function initialize() {
 
-            $('#progressBar')
+            $('.progress')
                 .progress({
                     text: {
-                        active: 'Adding {value} of {total} photos',
-                        success: '{total} Photos Uploaded!'
+                        active: 'Etapa {value} de {total} Concluída',
+                        success: 'Parabéns! Você está pronto(a) para o Sucesso!'
                     }
                 });
 
@@ -53,7 +53,7 @@
 
         function incrementBar() {
 
-            angular.element('#progressBar').progress('increment');
+            angular.element('.progress').progress('increment');
         }
     }
 

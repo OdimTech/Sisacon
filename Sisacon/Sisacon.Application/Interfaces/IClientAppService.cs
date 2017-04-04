@@ -12,5 +12,6 @@ namespace Sisacon.Application.Interfaces
         ResponseMessage<Client> saveOrUpdate(Client client);
         ResponseMessage<Client> deleteClient(int clientId);
         ResponseMessage<List<Client>> getClientByUserId(int userId);
+        ResponseMessage<Client> GetCount(int userId);
     }
 }

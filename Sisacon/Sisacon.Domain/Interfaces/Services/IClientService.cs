@@ -10,5 +10,6 @@ namespace Sisacon.Domain.Interfaces.Services
     public interface IClientService : IServiceBase<Client>
     {
         List<Client> getByUserId(int userId);
+        int GetCount(int userId);
     }
 }

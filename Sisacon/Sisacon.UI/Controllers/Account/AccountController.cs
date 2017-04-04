@@ -33,11 +33,6 @@ namespace Sisacon.UI.Controllers.account
 
             var response = _userAppService.createUser(user);
 
-            if (response.LogicalTest)
-            {
-                //await filesBLL.createUserPathAsync(user);
-            }
-
             return Request.CreateResponse(response.StatusCode, response);
         }
 
@@ -68,11 +63,11 @@ namespace Sisacon.UI.Controllers.account
             return Request.CreateResponse(response.StatusCode, response);
         }
 
-        //public HttpResponseMessage GetCountEntities(int userId)
-        //{
-        //    var response = new ResponseMessage()
+        public void GetCountEntities(int userId)
+        {
+            
 
 
-        //}
+        }
     }
 }

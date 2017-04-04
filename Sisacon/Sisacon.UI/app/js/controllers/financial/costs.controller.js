@@ -509,6 +509,8 @@
         function cancelEditFixedCost() {
 
             vm.initObjFixedCost();
+
+            $scope.FixedCostForm.$setPristine();
         }
     }
 

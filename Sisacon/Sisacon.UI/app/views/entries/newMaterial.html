@@ -3,50 +3,61 @@
     <div class="ui sixteen wide stackable column" id="top-menu">
         <!--TOP MENU-->
 
-        <div class="ui stackable segment">
+        <div class="ui stackable borderless menu">
 
-            <div class="ui stackable grid" style="padding: 0">
+            <div class="header item">
 
-                <div class="ui four wide stackable column">
-                    <h3 class="ui header">
-                        <i class="bordered lab icon"></i>
-                        <div class="content">
-                            Material
-                            <div class="inverted sub header">
-                                Menu - Cadastros - Materiais
-                            </div>
+                <h3 class="ui header">
+                    <i class="bordered lab icon"></i>
+                    <div class="content">
+                        Material
+                        <div class="inverted sub header">
+                            Edite ou Cadastre um novo Material
                         </div>
-                    </h3>
-                </div>
-                <div class="ui twelve wide stackable right aligned column">
-
-                    <a class="ui labeled primary icon button" href="#/materialList">
-                        <i class="long arrow left icon"></i> Voltar
-                    </a>
-                    <a class="ui labeled primary icon button" ng-click="vm.newMaterial()">
-                        <i class="edit icon"></i>Novo Material
-                    </a>
-                    <a class="ui labeled primary icon button" ng-click="vm.submitForm()">
-                        <i class="checkmark icon"></i> {{vm.btnSaveText}}
-                    </a>
-                    <a class="ui labeled primary icon button" ng-class="{'disabled': vm.material.id == 0}" ng-click="vm.showModalRemoveMaterial(vm.material)">
-                        <i class="remove icon"></i>Excluir
-                    </a>
-                    <a class="ui labeled primary icon button" ng-class="{'disabled': vm.material.listPriceResearch.length == 0}" ng-click="vm.showModalHistoryChart()"
-                        ng-show="vm.material.id > 0">
-                        <i class="history icon"></i>Historico de Preços
-                    </a>
-                    <a class="ui labeled primary icon button" ng-class="{'disabled': vm.material.listPriceResearch.length == 0}" ng-click="vm.showModalPriceChart()"
-                        ng-show="vm.material.id > 0">
-                        <i class="area chart icon"></i>Gráfico de Preços
-                    </a>
-                    <a class="ui icon orange button" ng-click="vm.showHelp()">
-                        <i class="help icon"></i>
-                    </a>
-                </div>
+                    </div>
+                </h3>
 
             </div>
+
+            <div class="right item">
+                <a class="ui labeled primary icon button" href="#/materialList">
+                    <i class="long arrow left icon"></i> Voltar
+                </a>
+            </div>
+            <div class="right item" style="margin-left: 0 !important; padding-left: 0">
+                <a class="ui labeled primary icon button" ng-click="vm.newMaterial()">
+                    <i class="edit icon"></i>Novo Material
+                </a>
+            </div>
+            <div class="right item" style="margin-left: 0 !important; padding-left: 0">
+                <a class="ui labeled primary icon button" ng-click="vm.submitForm()">
+                    <i class="checkmark icon"></i> {{vm.btnSaveText}}
+                </a>
+            </div>
+            <div class="right item" style="margin-left: 0 !important; padding-left: 0">
+                <a class="ui labeled primary icon button" ng-class="{'disabled': vm.material.id == 0}" ng-click="vm.showModalRemoveMaterial(vm.material)">
+                    <i class="remove icon"></i>Excluir
+                </a>
+            </div>
+            <div class="right item" style="margin-left: 0 !important; padding-left: 0">
+                <a class="ui labeled primary icon button" ng-class="{'disabled': vm.material.listPriceResearch.length == 0}" ng-click="vm.showModalHistoryChart()"
+                    ng-show="vm.material.id > 0">
+                    <i class="history icon"></i>Historico de Preços
+                </a>
+            </div>
+            <div class="right item" style="margin-left: 0 !important; padding-left: 0">
+                <a class="ui labeled primary icon button" ng-class="{'disabled': vm.material.listPriceResearch.length == 0}" ng-click="vm.showModalPriceChart()"
+                    ng-show="vm.material.id > 0">
+                    <i class="area chart icon"></i>Gráfico de Preços
+                </a>
+            </div>
+            <div class="right item" style="margin-left: 0 !important; padding-left: 0">
+                <a class="ui icon orange button" ng-click="vm.showHelp()">
+                    <i class="help icon"></i>
+                </a>
+            </div>
         </div>
+
     </div>
     <!--TOP MENU-->
 

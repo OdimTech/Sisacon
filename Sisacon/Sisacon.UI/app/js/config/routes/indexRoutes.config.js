@@ -157,8 +157,9 @@
                 })
                 .otherwise({
 
-                    templateUrl: '/app/views/InitialDashboard.html'
-                    //templateUrl: '/app/views/pageNotFound.html'
+                    templateUrl: '/app/views/InitialDashboard.html',
+                    controller: 'InitialDashboardController',
+                    controllerAs: 'vm'
                 });
 
         }]);

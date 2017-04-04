@@ -19,10 +19,19 @@
 
         // METHODS
         vm.loadCompany = loadCompany;
+        vm.incrementBar = incrementBar;
 
         initialize();
 
         function initialize() {
+
+            $('#progressBar')
+                .progress({
+                    text: {
+                        active: 'Adding {value} of {total} photos',
+                        success: '{total} Photos Uploaded!'
+                    }
+                });
 
             angular.element('.image').dimmer({
 
@@ -40,6 +49,11 @@
 
                 vm.company = response.value;
             })
+        }
+
+        function incrementBar() {
+
+            angular.element('#progressBar').progress('increment');
         }
     }
 

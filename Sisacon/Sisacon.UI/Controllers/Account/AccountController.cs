@@ -1,11 +1,8 @@
-﻿using AutoMapper;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Sisacon.Application.Interfaces;
 using Sisacon.Domain.Entities;
 using Sisacon.Domain.Enuns;
-using Sisacon.Domain.ValueObjects;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Sisacon.UI.Controllers.account
@@ -70,5 +67,12 @@ namespace Sisacon.UI.Controllers.account
 
             return Request.CreateResponse(response.StatusCode, response);
         }
+
+        //public HttpResponseMessage GetCountEntities(int userId)
+        //{
+        //    var response = new ResponseMessage()
+
+
+        //}
     }
 }

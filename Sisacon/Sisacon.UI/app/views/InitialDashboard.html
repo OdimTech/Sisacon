@@ -32,133 +32,106 @@
 					</div>
 				</div>
 
-				<!--<div class="ui raised blue card">
-					<a class="ui blue right corner label" href="#/clientList">
-						<i class="search icon"></i>
-					</a>
-					<div class="content">
-						<div class="header">Clientes</div>
-						<div class="description">
-							Quantidade Cadastrada: 23
-						</div>
-					</div>
-				</div>
-
-				<div class="ui raised blue card">
-					<a class="ui blue right corner label" href="#/clientList">
-						<i class="search icon"></i>
-					</a>
-					<div class="content">
-						<div class="header">Clientes</div>
-						<div class="description">
-							Quantidade Cadastrada: 23
-						</div>
-					</div>
-				</div>
-				<div class="ui raised blue card">
-					<a class="ui blue right corner label" href="#/clientList">
-						<i class="search icon"></i>
-					</a>
-					<div class="content">
-						<div class="header">Clientes</div>
-						<div class="description">
-							Quantidade Cadastrada: 23
-						</div>
-					</div>
-				</div>
-				<div class="ui raised blue card">
-					<a class="ui blue right corner label" href="#/clientList">
-						<i class="search icon"></i>
-					</a>
-					<div class="content">
-						<div class="header">Clientes</div>
-						<div class="description">
-							Quantidade Cadastrada: 23
-						</div>
-					</div>
-				</div>-->
 			</div>
 		</div>
 
-		<!--<div class="thirteen wide stackable column">
+		<div class="nine wide stackable column">
 
-			<div class="ui raised cards">
+			<div class="ui stackable raised segment">
 
-				<div class="ui raised blue card">
-					<a class="ui blue right corner label" href="#/clientList">
-						<i class="search icon"></i>
-					</a>
+				<div class="ui icon message">
+					<i class="settings icon"></i>
 					<div class="content">
-						<div class="header">Clientes</div>
-						<div class="description">
-							Quantidade Cadastrada: 23
+						<div class="header">
+							Configuração Inicial
+						</div>
+						<p>Siga os passos abaixo para deixar o <strong>BeloArt</strong> pronto para suas necessidades.</p>
+					</div>
+				</div>
+
+				<div class="ui two column grid">
+					<div class="column" style="padding: 0">
+						<div class="ui fluid vertical steps">
+							<!--CLIENTES-->
+							<div class="active step">
+								<i class="users icon"></i>
+								<div class="content">
+									<a class="title" href="#/newClient?id=0">Clientes</a>
+									<div class="description">Cadastrados: 0</div>
+								</div>
+							</div>
+							<!--EQUIPAMENTOS-->
+							<div class="step">
+								<i class="print icon"></i>
+								<div class="content">
+									<a class="title" href="#/newEquipment?id=0">Equipamentos</a>
+									<div class="description">Cadastrados: 0</div>
+								</div>
+							</div>
+							<!--FORNECEDORES-->
+							<div class="step">
+								<i class="truck icon"></i>
+								<div class="content">
+									<a class="title" href="#/newProvider?id=0">Fornecedores</a>
+									<div class="description">Cadastrados: 0</div>
+								</div>
+							</div>
+							<!--MATERIAIS-->
+							<div class="step">
+								<i class="lab icon"></i>
+								<div class="content">
+									<a class="title" href="#/newMaterial?id=0">Materiais</a>
+									<div class="description">Cadastrados: 0</div>
+								</div>
+							</div>
+							<!--PRODUTOS-->
+							<div class="step">
+								<i class="diamond icon"></i>
+								<div class="content">
+									<a class="title" href="#/newProduct?id=0">Produtos</a>
+									<div class="description">Cadastrados: 0</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="column">
+						<div class="ui cards">
+
+							<div class="ui fluid raised card" style="margin: 0; margin-left: 14px">
+
+								<div class="content">
+									<div class="header">Cliente</div>
+									<div class="meta">Friend</div>
+									<div class="description">
+										Elliot Fu is a film-maker from New York.
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="ui raised blue card">
-					<a class="ui blue right corner label" href="#/materialList">
-						<i class="search icon"></i>
-					</a>
-					<div class="content">
-						<div class="header">Materiais</div>
-						<div class="description">
-							Quantidade Cadastrada: 45
-						</div>
-					</div>
-
+				<div class="ui indicating progress" data-value="1" data-total="5" id="progressBar" style="margin-top: 14px">
+					<div class="bar"></div>
+					<div class="label" style="padding-bottom: 14px">Concluindo Configuração</div>
 				</div>
 
-				<div class="ui raised blue card">
-					<a class="ui blue right corner label" href="#/">
-						<i class="search icon"></i>
-					</a>
-					<div class="content">
-						<div class="header">Produtos</div>
-						<div class="description">
-							Quantidade Cadastrada: 12
-						</div>
-					</div>
-				</div>
-
-				<div class="ui raised blue card">
-					<a class="ui blue right corner label" href="#/">
-						<i class="search icon"></i>
-					</a>
-					<div class="content">
-						<div class="header">Produtos</div>
-						<div class="description">
-							Quantidade Cadastrada: 12
-						</div>
-					</div>
-				</div>
-
-				<div class="ui raised blue card">
-					<a class="ui blue right corner label" href="#/">
-						<i class="search icon"></i>
-					</a>
-					<div class="content">
-						<div class="header">Produtos</div>
-						<div class="description">
-							Quantidade Cadastrada: 12
-						</div>
-					</div>
-				</div>
+				<a class="ui primary button" ng-click="vm.incrementBar()">
+					add
+				</a>
 
 			</div>
+
+		</div>
+
+		<div class="four wide stackable column">
 
 			<div class="ui stackable raised segment">
 
 			</div>
 
-		</div>-->
-
-		<div class="ten wide stackable column">
-
 		</div>
-		<div class="ui six wide stackable column">
 
-		</div>
 	</div>
 
 </div>

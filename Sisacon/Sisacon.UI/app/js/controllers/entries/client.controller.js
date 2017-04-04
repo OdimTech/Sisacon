@@ -45,6 +45,7 @@
 
         //VARIABLES
         $scope.userId = localStorageService.get('id');
+        $scope.user = localStorageService.get('user');
         $scope.client = {};
         $scope.clientsF = [];
         $scope.clientsJ = [];
@@ -63,6 +64,11 @@
         if ($routeParams.id) {
 
             loadClient($routeParams.id);
+
+            if($scope.user.showWellcomeMessage){
+
+                showHelp();
+            }
         }
         else {
 

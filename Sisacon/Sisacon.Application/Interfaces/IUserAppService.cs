@@ -1,5 +1,5 @@
 ﻿using Sisacon.Domain.Entities;
-using System.Collections.Generic;
+using Sisacon.Domain.ValueObjects;
 
 namespace Sisacon.Application.Interfaces
 {
@@ -12,5 +12,6 @@ namespace Sisacon.Application.Interfaces
         void inactivateUser(int id);
         ResponseMessage<User> emailInUse(string email);
         void initConfigsUser(User user);
+        ResponseMessage<CountEntities> GetCountEntities(int userId);
     }
 }

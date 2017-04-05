@@ -15,7 +15,8 @@
             getUsedEmail: getUsedEmail,
             getUserById: getUserById,
             createUser: createUser,
-            loginUser: loginUser
+            loginUser: loginUser,
+            getCountEntities: getCountEntities
         };
 
         return service;
@@ -63,6 +64,17 @@
                     email: user.email
                 }
             });
+        }
+
+        function getCountEntities(userId) {
+            
+            return $http.get(apiUrl + "api/user/count", {
+
+                params: {
+
+                    userId: userId
+                }
+            })
         }
     }
 

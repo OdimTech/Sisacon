@@ -1,14 +1,10 @@
 ﻿using Sisacon.Application.Interfaces;
 using Sisacon.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Sisacon.Domain.Interfaces.Services;
+using System;
+using static Sisacon.Domain.Enuns.ErrorGravity;
 using static Sisacon.Domain.Enuns.OperationType;
 using static Sisacon.Domain.Enuns.Sex;
-using static Sisacon.Domain.Enuns.ErrorGravity;
 
 namespace Sisacon.Application
 {
@@ -33,17 +29,35 @@ namespace Sisacon.Application
             {
                 var equipment = _equipmentService.getById(equipmentId);
 
-                if(equipment != null && equipment.validatePendencesBeforeDelete())
+                if (equipment != null && equipment.validatePendencesBeforeDelete())
                 {
                     _equipmentService.delete(equipmentId);
 
                     response.Message = _crudMsgFormater.createClientCrudMessage(eOperationType.Delete, eSex.Masculino, "Equipamento");
                 }
 
-                if(_equipmentService.commit() == 0)
+                if (_equipmentService.commit() == 0)
                 {
                     response.Message = _crudMsgFormater.createErrorCrudMessage();
                 }
+            }
+            catch (Exception ex)
+            {
+                _logAppService.createClientLog(ex, null, eErrorGravity.Grande);
+
+                return response.createErrorResponse();
+            }
+
+            return response;
+        }
+
+        public ResponseMessage<Equipment> GetCount(int userId)
+        {
+            var response = new ResponseMessage<Equipment>();
+
+            try
+            {
+
             }
             catch (Exception ex)
             {
@@ -79,9 +93,9 @@ namespace Sisacon.Application
 
             try
             {
-                if(equipment.isValid())
+                if (equipment.isValid())
                 {
-                    if(equipment.Id > 0)
+                    if (equipment.Id > 0)
                     {
                         _equipmentService.update(equipment);
 
@@ -89,7 +103,7 @@ namespace Sisacon.Application
                     }
                     else
                     {
-                        if(string.IsNullOrEmpty(equipment.CodEquipment))
+                        if (string.IsNullOrEmpty(equipment.CodEquipment))
                         {
                             equipment.genereteCode();
                         }

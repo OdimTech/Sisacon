@@ -1,10 +1,8 @@
 ﻿using Sisacon.Application.Interfaces;
 using Sisacon.Domain.Entities;
-using Sisacon.Domain.Enuns;
 using Sisacon.Domain.Interfaces.Services;
 using Sisacon.Domain.ValueObjects;
 using System;
-using System.Collections.Generic;
 using static Sisacon.Domain.Enuns.ErrorGravity;
 using static Sisacon.Domain.Enuns.NotificationClass;
 using static Sisacon.Domain.Enuns.OperationType;
@@ -14,18 +12,31 @@ namespace Sisacon.Application
 {
     public class UserAppService : AppServiceBase<User>, IUserAppService
     {
+        #region Interfaces
+
         private readonly IUserService _userService;
         private readonly ICrudMsgFormater _crudMsgFormater;
         private readonly INotificationService _notificationService;
         private readonly ILogAppService _logAppService;
+        private readonly IClientService _clientService;
+        private readonly IEquipmentService _equipmentService;
+        private readonly IProviderService _provierService;
+        private readonly IMaterialService _materialService;
 
-        public UserAppService(IUserService userService, ICrudMsgFormater crudMsgFormater, INotificationService notificationService, ILogAppService logAppService)
+        #endregion
+
+
+        public UserAppService(IUserService userService, ICrudMsgFormater crudMsgFormater, INotificationService notificationService, ILogAppService logAppService, IClientService clientService, IEquipmentService equipmentService, IProviderService providerService, IMaterialService materialService)
             : base(userService)
         {
             _userService = userService;
             _crudMsgFormater = crudMsgFormater;
             _notificationService = notificationService;
             _logAppService = logAppService;
+            _clientService = clientService;
+            _equipmentService = equipmentService;
+            _provierService = providerService;
+            _materialService = materialService;
         }
 
         public ResponseMessage<User> createUser(User user)
@@ -132,7 +143,7 @@ namespace Sisacon.Application
             {
                 response.Value = _userService.logon(pass, email);
 
-                if(response.Value == null)
+                if (response.Value == null)
                 {
                     response.Message = "Usuário ou Senha incorretos, Caso tenha esquecido sua senha, clique em \"Esqueci Minha Senha\" para obter uma nova.";
                 }
@@ -159,10 +170,36 @@ namespace Sisacon.Application
                 //Cria notificação de cadastro de nova empresa
                 _notificationService.buildNotification(MsgNotification.CreateCompany, eNotificationClass.Green, "#/company", user);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 _logAppService.createClientLog(ex, user, eErrorGravity.Grande);
             }
+        }
+
+        public ResponseMessage<CountEntities> GetCountEntities(int userId)
+        {
+            var response = new ResponseMessage<CountEntities>();
+
+
+            try
+            {
+                var countEntities = new CountEntities();
+
+                countEntities.ClientQuantity = _clientService.GetCount(userId);
+                countEntities.EquipmentQuantity = _equipmentService.GetCount(userId);
+                countEntities.ProviderQuantity = _provierService.GetCount(userId);
+                countEntities.MaterialQuantity = _materialService.GetCount(userId);
+
+                response.Value = countEntities;
+            }
+            catch (Exception ex)
+            {
+                _logAppService.createClientLog(ex, null, eErrorGravity.Grande);
+
+                return response.createErrorResponse();
+            }
+
+            return response;
         }
     }
 }

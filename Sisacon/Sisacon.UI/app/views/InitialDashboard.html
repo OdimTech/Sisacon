@@ -53,11 +53,11 @@
 					<div class="column" style="padding: 0">
 						<div class="ui fluid vertical steps">
 							<!--CLIENTES-->
-							<div class="active step">
+							<div class="active step" ng-class="{'completed' : vm.countEntities.clientQuantity > 0}">
 								<i class="users icon"></i>
 								<div class="content">
 									<a class="title" href="#/newClient?id=0">Clientes</a>
-									<div class="description">Cadastrados: 0</div>
+									<div class="description">Cadastrados: {{vm.countEntities.clientQuantity}}</div>
 								</div>
 							</div>
 							<!--EQUIPAMENTOS-->

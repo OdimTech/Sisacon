@@ -61,6 +61,7 @@
     <Compile Include="Services\MaterialService.cs" />
     <Compile Include="Services\PriceResearchService.cs" />
     <Compile Include="ValueObjects\CostCategory.cs" />
+    <Compile Include="ValueObjects\CountEntities.cs" />
     <Compile Include="ValueObjects\FixedCost.cs" />
     <Compile Include="ValueObjects\MaterialCategory.cs" />
     <Compile Include="Entities\Provider.cs" />

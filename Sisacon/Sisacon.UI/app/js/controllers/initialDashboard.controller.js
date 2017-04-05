@@ -16,10 +16,12 @@
         vm.company = {};
         vm.loggedUser = localStorageService.get('user');
         vm.companyName = '';
+        vm.countEntities = {};
 
         // METHODS
         vm.loadCompany = loadCompany;
         vm.incrementBar = incrementBar;
+        vm.getCountEntities = getCountEntities;
 
         initialize();
 
@@ -41,6 +43,20 @@
             vm.loggedUser.lastLogin = utilityService.convertDateToString(vm.loggedUser.lastLogin);
 
             vm.loadCompany();
+            vm.getCountEntities();
+        }
+
+        function getCountEntities() {
+            
+            accountService.getCountEntities(vm.loggedUser.id).success(function (response) {  
+
+                vm.countEntities = response.value;
+            })
+            .error(function (response) {  
+
+                
+            })
+            
         }
 
         function loadCompany(params) {
@@ -55,6 +71,8 @@
 
             angular.element('.progress').progress('increment');
         }
+
+        
     }
 
 })();

@@ -63,11 +63,13 @@ namespace Sisacon.UI.Controllers.account
             return Request.CreateResponse(response.StatusCode, response);
         }
 
-        public void GetCountEntities(int userId)
+        [HttpGet]
+        [Route("user/count")]
+        public HttpResponseMessage GetCountEntities(int userId)
         {
-            
+            var response = _userAppService.GetCountEntities(userId);
 
-
+            return Request.CreateResponse(response.StatusCode, response);
         }
     }
 }

@@ -1,12 +1,8 @@
 ﻿using Sisacon.Domain.Entities;
+using Sisacon.Domain.Interfaces.Repositories;
 using Sisacon.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sisacon.Domain.Interfaces;
-using Sisacon.Domain.Interfaces.Repositories;
 
 namespace Sisacon.Domain.Services
 {
@@ -28,6 +24,18 @@ namespace Sisacon.Domain.Services
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+
+        public int GetCount(int userId)
+        {
+            try
+            {
+                return _providerRepository.GetCount(userId);
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }

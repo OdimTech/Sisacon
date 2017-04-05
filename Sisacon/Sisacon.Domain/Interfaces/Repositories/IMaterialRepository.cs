@@ -6,5 +6,6 @@ namespace Sisacon.Domain.Interfaces.Repositories
     public interface IMaterialRepository : IRepositoryBase<Material>
     {
         List<Material> getByUserId(int userId);
+        int GetCount(int userId);
     }
 }

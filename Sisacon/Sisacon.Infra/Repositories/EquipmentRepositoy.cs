@@ -3,8 +3,6 @@ using Sisacon.Domain.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sisacon.Infra.Repositories
 {
@@ -31,6 +29,21 @@ namespace Sisacon.Infra.Repositories
                     Include("User").
                     Where(x => x.IdUser == userId && x.ExclusionDate == null).
                     ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int GetCount(int userId)
+        {
+            try
+            {
+                return Context.
+                    Equipment.
+                    Where(x => x.User.Id == userId && x.ExclusionDate == null).
+                    Count();
             }
             catch (Exception ex)
             {

@@ -52,38 +52,45 @@
 				<div class="ui two column grid">
 					<div class="column" style="padding: 0">
 						<div class="ui fluid vertical steps">
+							
 							<!--CLIENTES-->
-							<div class="active step" ng-class="{'completed' : vm.countEntities.clientQuantity > 0}">
+							<div class="link step" ng-mouseover="vm.showClientCard = true" ng-class="{'completed' : vm.countEntities.clientQuantity > 0}">
 								<i class="users icon"></i>
 								<div class="content">
 									<a class="title" href="#/newClient?id=0">Clientes</a>
-									<div class="description">Cadastrados: {{vm.countEntities.clientQuantity}}</div>
+									<div class="description">
+										Cadastrados: {{vm.countEntities.clientQuantity}}
+									</div>
 								</div>
 							</div>
+
 							<!--EQUIPAMENTOS-->
-							<div class="step">
+							<div class="step" ng-class="{'completed' : vm.countEntities.equipmentQuantity > 0}">
 								<i class="print icon"></i>
 								<div class="content">
 									<a class="title" href="#/newEquipment?id=0">Equipamentos</a>
-									<div class="description">Cadastrados: 0</div>
+									<div class="description">Cadastrados: {{vm.countEntities.equipmentQuantity}}</div>
 								</div>
 							</div>
+							
 							<!--FORNECEDORES-->
-							<div class="step">
+							<div class="step" ng-class="{'completed' : vm.countEntities.providerQuantity > 0}">
 								<i class="truck icon"></i>
 								<div class="content">
 									<a class="title" href="#/newProvider?id=0">Fornecedores</a>
-									<div class="description">Cadastrados: 0</div>
+									<div class="description">Cadastrados: {{vm.countEntities.providerQuantity}}</div>
 								</div>
 							</div>
+							
 							<!--MATERIAIS-->
-							<div class="step">
+							<div class="step" ng-class="{'completed' : vm.countEntities.materialQuantity > 0}">
 								<i class="lab icon"></i>
 								<div class="content">
 									<a class="title" href="#/newMaterial?id=0">Materiais</a>
-									<div class="description">Cadastrados: 0</div>
+									<div class="description">Cadastrados: {{vm.countEntities.materialQuantity}}</div>
 								</div>
 							</div>
+
 							<!--PRODUTOS-->
 							<div class="step">
 								<i class="diamond icon"></i>
@@ -92,18 +99,18 @@
 									<div class="description">Cadastrados: 0</div>
 								</div>
 							</div>
+
 						</div>
 					</div>
 					<div class="column" style="padding-right: 7px">
-						
 						<div class="ui cards">
 
-							<div class="ui fluid raised card" style="margin: 0; margin-left: 14px">
+							<div class="ui fluid raised card" ng-show="vm.showClientCard" style="margin: 0; margin-left: 14px">
 
 								<div class="content">
 									<div class="header">Cliente</div>
 									<div class="description">
-										
+
 									</div>
 									<div class="extra content" style="margin-top: 14px">
 										<a class="ui fluid primary button" href="#/newClient?id=0">
@@ -116,7 +123,7 @@
 					</div>
 				</div>
 
-				<div class="ui indicating progress" data-value="1" data-total="5" style="margin-top: 14px">
+				<div class="ui indicating progress" data-value="0" data-total="5" style="margin-top: 14px">
 					<div class="bar"></div>
 					<div class="label" style="padding-bottom: 14px"></div>
 				</div>

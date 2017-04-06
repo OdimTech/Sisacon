@@ -47,16 +47,32 @@
         }
 
         function getCountEntities() {
-            
-            accountService.getCountEntities(vm.loggedUser.id).success(function (response) {  
+
+            accountService.getCountEntities(vm.loggedUser.id).success(function (response) {
 
                 vm.countEntities = response.value;
-            })
-            .error(function (response) {  
 
-                
+                if (vm.countEntities.clientQuantity > 0) {
+                    vm.incrementBar();
+                }
+                if (vm.countEntities.equipmentQuantity > 0) {
+                    vm.incrementBar();
+                }
+                if (vm.countEntities.providerQuantity > 0) {
+                    vm.incrementBar();
+                }
+                if (vm.countEntities.materialQuantity > 0) {
+                    vm.incrementBar();
+                }
+                if (vm.countEntities.productQuantity > 0) {
+                    vm.incrementBar();
+                }
             })
-            
+                .error(function (response) {
+
+
+                })
+
         }
 
         function loadCompany(params) {
@@ -72,7 +88,7 @@
             angular.element('.progress').progress('increment');
         }
 
-        
+
     }
 
 })();

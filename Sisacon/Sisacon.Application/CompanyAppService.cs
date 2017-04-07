@@ -1,11 +1,11 @@
 ﻿using Sisacon.Application.Interfaces;
 using Sisacon.Domain.Entities;
-using System;
 using Sisacon.Domain.Interfaces.Services;
-using static Sisacon.Domain.Enuns.ErrorGravity;
-using static Sisacon.Domain.Enuns.Sex;
-using static Sisacon.Domain.Enuns.OperationType;
 using Sisacon.Domain.ValueObjects;
+using System;
+using static Sisacon.Domain.Enuns.ErrorGravity;
+using static Sisacon.Domain.Enuns.OperationType;
+using static Sisacon.Domain.Enuns.Sex;
 
 namespace Sisacon.Application
 {
@@ -17,9 +17,9 @@ namespace Sisacon.Application
         private readonly ICrudMsgFormater _crudMsgFormater;
         private readonly IOccupationAreaService _occupationAreaService;
 
-        public CompanyAppService(ICompanyService companyService, 
-            ILogAppService logAppService, 
-            ICrudMsgFormater crudMsgFormater, 
+        public CompanyAppService(ICompanyService companyService,
+            ILogAppService logAppService,
+            ICrudMsgFormater crudMsgFormater,
             IOccupationAreaService occupationAreaService,
             IUserService userService) : base(companyService)
         {
@@ -36,7 +36,7 @@ namespace Sisacon.Application
 
             try
             {
-                if(company.Id > 0)
+                if (company.Id > 0)
                 {
                     _companyService.update(company);
 
@@ -50,9 +50,13 @@ namespace Sisacon.Application
                     response.Message = _crudMsgFormater.createClientCrudMessage(eOperationType.Insert, eSex.Feminino, "Empresa");
                 }
 
-                if(_companyService.commit() == 0)
+                if (_companyService.commit() == 0)
                 {
                     response.Message = _crudMsgFormater.createErrorCrudMessage();
+                }
+                else
+                {
+                    response.Value = company;
                 }
             }
             catch (Exception ex)
@@ -91,7 +95,7 @@ namespace Sisacon.Application
             {
                 response.ValueList = _occupationAreaService.getOccupationAreas();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 _logAppService.createClientLog(ex, null, eErrorGravity.Travamento);
 

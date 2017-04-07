@@ -140,6 +140,7 @@
                 </div>
             </div>
 
+            <!--IDENTIDADE VISUAL-->
             <div class="ui stackable raised segment">
 
                 <div class="ui blue ribbon large label" style="margin-bottom: 20px">
@@ -152,17 +153,17 @@
 
                         <div class="ui fluid raised card">
                             <div class="image">
-                                <img ngf-src="company.urlPathLogo">
+                                <img ng-src="data:image/JPEG;base64,{{company.logo}}">
                             </div>
                             <div class="content">
                                 <label class="header">Logotipo</label>
                                 <div class="meta">
-                                    <span class="date">Tamanho Máximo 2MB</span>
+                                    <span class="date">Tamanho Máximo 3MB</span>
                                 </div>
                             </div>
                             <div class="extra content">
                                 <div class="ui two buttons">
-                                    <button ngf-select="addLogo($file, $invalidFiles)" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="2MB" name="logo"
+                                    <button ngf-select="addLogo($file, $invalidFiles)" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="3MB" name="logo"
                                         class="ui primary button" ng-model="company.logo">Adicionar</button>
                                     <div class="ui red button">
                                         Excluir

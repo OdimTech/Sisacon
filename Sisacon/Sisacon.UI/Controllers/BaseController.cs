@@ -1,15 +1,20 @@
-﻿using System.Web.Http;
+﻿using System.IO;
+using System.Web.Http;
 
 namespace Sisacon.UI.Controllers
 {
     public class BaseController : ApiController
     {
-        private string _ApplicationPath;
-
-        public string ApplicationPath
+        public byte[] ConvertHttpContextToByte(Stream stream, int length)
         {
-            get { return System.Web.Hosting.HostingEnvironment.MapPath("~/Content/UserImages/"); }
-        }
+            byte[] fileData = null;
 
+            using (var binary = new BinaryReader(stream))
+            {
+                fileData = binary.ReadBytes(length);
+            }
+
+            return fileData;
+        }
     }
 }

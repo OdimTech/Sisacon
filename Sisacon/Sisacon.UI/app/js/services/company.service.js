@@ -39,15 +39,9 @@
             return $http.get(apiUrl + 'api/company');
         }
 
-        function addLogo(file) {
+        function addLogo(file, userId) {
 
-            return $http({
-
-                url: apiUrl + "api/company",
-                method: 'POST',
-                data: { file: file },
-                headers: { 'Content-Type': 'multipart/form-data' }
-            });
+            return $http.post(apiUrl + 'api/company/' + userId, file);
         }
     }
 

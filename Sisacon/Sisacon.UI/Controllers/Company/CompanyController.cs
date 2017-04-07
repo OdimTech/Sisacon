@@ -3,6 +3,7 @@ using Sisacon.Application;
 using Sisacon.Application.Interfaces;
 using Sisacon.Domain.Entities;
 using Sisacon.UI.ViewModels;
+using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
@@ -12,8 +13,6 @@ namespace Sisacon.UI.Controllers
     [RoutePrefix("api")]
     public class CompanyController : BaseController
     {
-        private readonly string workingFolder = HttpRuntime.AppDomainAppPath + @"Content\UserImages";
-
         private readonly ICompanyAppService _companyAppService;
 
         public CompanyController(ICompanyAppService companyAppService)
@@ -49,22 +48,29 @@ namespace Sisacon.UI.Controllers
         }
 
         [HttpPost]
-        [Route("company/logo")]
-        public HttpResponseMessage AddLogo()
+        [Route("company/{idUser:int}")]
+        public HttpResponseMessage AddLogo(int idUser)
         {
             var response = new ResponseMessage<Company>();
 
-            if (Request.Content.IsMimeMultipartContent("form-data"))
+            var company = _companyAppService.getCompanyByUserId(idUser);
+
+            if (company != null)
             {
-                //var provider = new MultipartFormDataStreamProvider(workingFolder);
+                var httpRequest = HttpContext.Current.Request;
 
-                //Request.Content.ReadAsMultipartAsync(provider);
-
-                var context = HttpContext.Current.Request;
-
-                if (context.Files.Count > 0)
+                if (httpRequest.Files.Count > 0)
                 {
+                    var stream = httpRequest.Files[0].InputStream;
+                    var length = httpRequest.Files[0].ContentLength;
 
+                    company.Value.Logo = ConvertHttpContextToByte(stream, length);
+
+                    response = _companyAppService.saveOrUpdate(company.Value);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.UnsupportedMediaType);
                 }
             }
 

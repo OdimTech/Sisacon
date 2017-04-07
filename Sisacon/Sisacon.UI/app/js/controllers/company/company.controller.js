@@ -4,7 +4,7 @@
         .module('app')
         .controller('CompanyController', CompanyController);
 
-    CompanyController.$inject = ['$scope','Upload', 'viaCepService', 'valuesService', 'companyService', 'toastr', 'blockUI', 'localStorageService', '$window'];
+    CompanyController.$inject = ['$scope', 'Upload', 'viaCepService', 'valuesService', 'companyService', 'toastr', 'blockUI', 'localStorageService', '$window'];
 
     function CompanyController($scope, Upload, viaCepService, valuesService, companyService, toastr, blockUI, localStorageService, $window) {
 
@@ -169,14 +169,37 @@
 
             if (file) {
 
-                $scope.company.logo = file;
+                var formData = new FormData();
+                formData.append("logo", file);
 
-                // companyService.addLogo(file)
+                blockUI.start('Atualizando Logotipo...');
 
-                Upload.upload({
-                    url: 'http://localhost:15910/api/company/logo',
-                    data: { file: file}
-                })
+                $.ajax({
+                    url: 'http://localhost:15910/api/company/' + $scope.userId,
+                    type: 'POST',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success:function (response) { 
+
+                        blockUI.stop();                        
+                        toastr.success(response.message);
+                        $scope.company = response.value;
+                     },
+                     error:function (response) {  
+
+                         blockUI.stop();                        
+                        toastr.error(response.message);
+                     }
+                });
+            }
+            else
+            {
+                if(fileError[0].$error == "maxSize"){
+
+                    toastr.error('Não é possivel adicionar um Logotipo com mais de 3MB de tamanho. Favor escolher outra imagem.')
+                }
             }
         };
 

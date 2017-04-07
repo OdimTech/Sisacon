@@ -46,6 +46,7 @@ namespace Sisacon.Infra.Mapping
 
             Property(x => x.Logo)
                 .HasColumnType("varbinary")
+                .HasMaxLength(null)
                 .IsOptional();
 
             HasOptional(x => x.Address)

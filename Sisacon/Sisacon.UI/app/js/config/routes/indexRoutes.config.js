@@ -127,6 +127,24 @@
                     controller: 'MaterialController',
                     controllerAs: 'vm'
                 })
+                .when('/productList', {
+
+                    templateUrl: '/app/views/entries/productList.html',
+                    controller : 'ProductController',
+                    controllerAs: 'vm'
+                })
+                .when('/newProduct', {
+
+                    templateUrl: '/app/views/entries/newProduct.html',
+                    controller : 'ProductController',
+                    controllerAs: 'vm'
+                })
+                .when('/newProduct/id', {
+
+                    templateUrl: '/app/views/entries/newProduct.html',
+                    controller : 'ProductController',
+                    controllerAs: 'vm'
+                })
                 //FINANCEIRO
                 .when('/costsDashboard', {
 

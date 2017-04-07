@@ -181,6 +181,7 @@
     <Content Include="app\js\controllers\entries\equipment.controller.js" />
     <Content Include="app\js\controllers\entries\material.controller.js" />
     <Content Include="app\js\controllers\entries\materialCategory.controller.js" />
+    <Content Include="app\js\controllers\entries\product.controller.js" />
     <Content Include="app\js\controllers\entries\provider.controller.js" />
     <Content Include="app\js\controllers\estimate\estimate.controller.js" />
     <Content Include="app\js\controllers\account\login.controller.js" />
@@ -212,6 +213,7 @@
     <Content Include="app\js\services\notification.service.js" />
     <Content Include="app\js\services\client.service.js" />
     <Content Include="app\js\services\priceResearch.service.js" />
+    <Content Include="app\js\services\product.service.js" />
     <Content Include="app\js\services\provider.service.js" />
     <Content Include="app\js\services\utility.service.js" />
     <Content Include="app\js\services\values.service.js" />
@@ -225,7 +227,9 @@
     <Content Include="app\views\entries\newClient.html" />
     <Content Include="app\views\entries\newEquipment.html" />
     <Content Include="app\views\entries\newMaterial.html" />
+    <Content Include="app\views\entries\newProduct.html" />
     <Content Include="app\views\entries\newProvider.html" />
+    <Content Include="app\views\entries\productList.html" />
     <Content Include="app\views\entries\providerList.html" />
     <Content Include="app\views\errorPage.html" />
     <Content Include="app\views\estimate\estimateDashboard.html" />

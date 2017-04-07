@@ -11,6 +11,11 @@
         //INIT CONTROLS
         angular.element('.ui.dropdown').dropdown();
 
+        angular.element('.image').dimmer({
+
+            on: 'hover'
+        });
+
         angular.element('button').popup({
             on: 'click',
             position: 'right center'
@@ -165,6 +170,17 @@
             });
         };
 
+        $scope.showZoom = function () {
+
+            angular.element('#modalZoomImage').modal({
+
+                blurring: false,
+                closable: true,
+                autofocus: true
+
+            }).modal('show');
+        }
+
         $scope.addLogo = function (file, fileError) {
 
             if (file) {
@@ -181,22 +197,22 @@
                     cache: false,
                     contentType: false,
                     processData: false,
-                    success:function (response) { 
+                    success: function (response) {
 
-                        blockUI.stop();                        
+                        blockUI.stop();
                         toastr.success(response.message);
                         $scope.company = response.value;
-                     },
-                     error:function (response) {  
+                    },
+                    error: function (response) {
 
-                         blockUI.stop();                        
+                        blockUI.stop();
                         toastr.error(response.message);
-                     }
+                    }
                 });
             }
-            else
-            {
-                if(fileError[0].$error == "maxSize"){
+            else{
+
+                if (fileError[0] && fileError[0].$error == "maxSize") {
 
                     toastr.error('Não é possivel adicionar um Logotipo com mais de 3MB de tamanho. Favor escolher outra imagem.')
                 }

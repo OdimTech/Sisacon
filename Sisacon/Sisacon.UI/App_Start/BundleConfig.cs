@@ -64,6 +64,7 @@ namespace Sisacon.UI
                 "~/app/js/services/costCategory.service.js",
                 "~/app/js/services/cost.service.js",
                 "~/app/js/services/fixedCost.service.js",
+                "~/app/js/services/product.service.js",
                 //CONTROLLERS
                 "~/app/js/controllers/log/log.controller.js",
                 "~/app/js/controllers/base/admin.controller.js",
@@ -76,6 +77,7 @@ namespace Sisacon.UI
                 "~/app/js/controllers/entries/equipment.controller.js",
                 "~/app/js/controllers/entries/material.controller.js",
                 "~/app/js/controllers/entries/materialCategory.controller.js",
+                "~/app/js/controllers/entries/product.controller.js",
                 "~/app/js/controllers/estimate/estimate.controller.js",
                 "~/app/js/controllers/initialDashboard.controller.js",
                 "~/app/js/controllers/company/company.controller.js",

@@ -50,7 +50,7 @@ namespace Sisacon.Domain.Entities
 
         #region Methods
 
-        public bool isValid()
+        public bool IsValid()
         {
             var valid = true;
 
@@ -67,12 +67,12 @@ namespace Sisacon.Domain.Entities
             return valid;
         }
 
-        public void genereteCode()
+        public void GenereteCode()
         {
             CodCliente = string.Format("CLT{0}", Utils.gereneteRandomCode());
         }
 
-        public bool validatePendencesBeforeDelete()
+        public bool ValidatePendencesBeforeDelete()
         {
             var valid = true;
 

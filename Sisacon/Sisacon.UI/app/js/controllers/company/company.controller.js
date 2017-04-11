@@ -140,6 +140,7 @@
 
                     toastr.success(response.message);
                     $scope.btnSaveText = 'Atualizar';
+                    loadCompany();
 
                 }).error(function (response) {
 

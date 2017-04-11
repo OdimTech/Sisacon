@@ -58,7 +58,7 @@ namespace Sisacon.Application
 
             try
             {
-                if(client.isValid())
+                if(client.IsValid())
                 {
                     if(client.Id > 0)
                     {
@@ -68,7 +68,7 @@ namespace Sisacon.Application
                     }
                     else
                     {
-                        client.genereteCode();
+                        client.GenereteCode();
 
                         _clientService.add(client);
 
@@ -103,7 +103,7 @@ namespace Sisacon.Application
             {
                 var client = _clientService.getById(clientId);
 
-                if(client != null && client.validatePendencesBeforeDelete())
+                if(client != null && client.ValidatePendencesBeforeDelete())
                 {
                     _clientService.delete(client);
 

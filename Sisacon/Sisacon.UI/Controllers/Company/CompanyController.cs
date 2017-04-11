@@ -55,7 +55,7 @@ namespace Sisacon.UI.Controllers
 
             var company = _companyAppService.getCompanyByUserId(idUser);
 
-            if (company != null)
+            if (company.Value != null)
             {
                 var httpRequest = HttpContext.Current.Request;
 
@@ -72,6 +72,10 @@ namespace Sisacon.UI.Controllers
                 {
                     return Request.CreateResponse(HttpStatusCode.UnsupportedMediaType);
                 }
+            }
+            else
+            {
+                response = response.createErrorResponse();
             }
 
             return Request.CreateResponse(response.StatusCode, response);

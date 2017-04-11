@@ -39,6 +39,7 @@
     <Compile Include="Entities\CostConfiguration.cs" />
     <Compile Include="Entities\Equipment.cs" />
     <Compile Include="Entities\Material.cs" />
+    <Compile Include="Entities\Product.cs" />
     <Compile Include="Interfaces\Repositories\ICostCategoryRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICostConfigurationRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICostRepository.cs" />
@@ -46,6 +47,7 @@
     <Compile Include="Interfaces\Repositories\IMaterialCategoryRepository.cs" />
     <Compile Include="Interfaces\Repositories\IMaterialRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPriceResearchRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IProductRepository.cs" />
     <Compile Include="Interfaces\Services\ICostCategoryService.cs" />
     <Compile Include="Interfaces\Services\ICostConfigurationService.cs" />
     <Compile Include="Interfaces\Services\ICostService.cs" />
@@ -53,6 +55,7 @@
     <Compile Include="Interfaces\Services\IMaterialCategoryService.cs" />
     <Compile Include="Interfaces\Services\IMaterialService.cs" />
     <Compile Include="Interfaces\Services\IPriceResearchService.cs" />
+    <Compile Include="Interfaces\Services\IProductService.cs" />
     <Compile Include="Services\CostCategoryService.cs" />
     <Compile Include="Services\CostConfigurationService.cs" />
     <Compile Include="Services\CostService.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="Services\MaterialCategoryService.cs" />
     <Compile Include="Services\MaterialService.cs" />
     <Compile Include="Services\PriceResearchService.cs" />
+    <Compile Include="Services\ProductService.cs" />
     <Compile Include="ValueObjects\CostCategory.cs" />
     <Compile Include="ValueObjects\CountEntities.cs" />
     <Compile Include="ValueObjects\FixedCost.cs" />
@@ -111,6 +115,7 @@
     <Compile Include="ValueObjects\BankDetails.cs" />
     <Compile Include="ValueObjects\OccuppationArea.cs" />
     <Compile Include="ValueObjects\PriceResearch.cs" />
+    <Compile Include="ValueObjects\ProductImages.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

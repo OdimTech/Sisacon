@@ -33,6 +33,9 @@ namespace Sisacon.Infra.Mapping
 
             HasMany(x => x.ListPriceResearch)
                 .WithOptional();
+
+            HasMany(x => x.ListProduct).
+                WithMany(x => x.ListMaterial);
         }
     }
 }

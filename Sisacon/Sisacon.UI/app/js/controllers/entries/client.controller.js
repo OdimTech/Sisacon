@@ -67,7 +67,6 @@
 
             if($scope.user.showWellcomeMessage){
 
-                showHelp();
             }
         }
         else {
@@ -351,17 +350,6 @@
                 blockUI.stop();
                 console.log(response);
             });
-        }
-
-        $scope.showHelp = function () {
-
-            angular.element('#showHelpModal').modal({
-
-                blurring: false,
-                closable: true,
-                autofocus: true
-
-            }).modal('show');
         }
     }
 

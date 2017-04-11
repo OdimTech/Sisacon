@@ -68,6 +68,8 @@
     <Compile Include="Mapping\NotificationMap.cs" />
     <Compile Include="Mapping\OcuppationAreaMap.cs" />
     <Compile Include="Mapping\PriceResearchMap.cs" />
+    <Compile Include="Mapping\ProductMap.cs" />
+    <Compile Include="Mapping\ProductImagesMap.cs" />
     <Compile Include="Mapping\ProviderMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Repositories\NotificationRepository.cs" />
     <Compile Include="Repositories\OccupationAreaRepository.cs" />
     <Compile Include="Repositories\PriceResearchRepository.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ProviderRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\UserRepository.cs" />

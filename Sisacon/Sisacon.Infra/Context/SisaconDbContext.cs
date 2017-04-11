@@ -38,6 +38,8 @@ namespace Sisacon.Repositories.Context
         public DbSet<CostConfiguration> CostConfiguration { get; set; }
         public DbSet<Cost> Cost { get; set; }
         public DbSet<FixedCost> FixedCost { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<ProductImages> ProductImages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -64,6 +66,8 @@ namespace Sisacon.Repositories.Context
             modelBuilder.Configurations.Add(new CostConfigurationMap());
             modelBuilder.Configurations.Add(new CostMap());
             modelBuilder.Configurations.Add(new FixedCostMap());
+            modelBuilder.Configurations.Add(new ProductMap());
+            modelBuilder.Configurations.Add(new ProductImagesMap());
 
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasColumnType("varchar"));

@@ -1,6 +1,7 @@
 ﻿using Helpers;
 using Sisacon.Domain.ValueObjects;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sisacon.Domain.Entities
 {
@@ -22,6 +23,7 @@ namespace Sisacon.Domain.Entities
         public int UserId { get; set; }
         public virtual MaterialCategory Category { get; set; }
         public virtual List<PriceResearch> ListPriceResearch { get; set; }
+        public virtual List<Product> ListProduct { get; set; }
         public virtual User User { get; set; }
         public decimal CurrentPrice
         {
@@ -29,9 +31,11 @@ namespace Sisacon.Domain.Entities
             {
                 decimal price = 0;
 
-                if(ListPriceResearch != null && ListPriceResearch.Count > 0)
+                if (ListPriceResearch != null && ListPriceResearch.Count > 0)
                 {
-                    price = ListPriceResearch[0].Price;
+                    int currentPriceIndex = ListPriceResearch.Count - 1;
+
+                    price = ListPriceResearch[currentPriceIndex].Price;
                 }
 
                 return price;
@@ -54,11 +58,14 @@ namespace Sisacon.Domain.Entities
             return valid;
         }
 
-        public bool validateBeforeDelete()
+        public bool ValidateBeforeDelete(List<Product> listProducts)
         {
             var isValid = true;
 
-            //implementar quando necessario
+            foreach (var product in ListProduct)
+            {
+                int quant = product.ListMaterial.Where(x => x.Id == Id).Count();
+            }
 
             return isValid;
         }

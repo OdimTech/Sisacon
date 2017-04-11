@@ -32,7 +32,7 @@ namespace Sisacon.Application
 
                 if (material != null)
                 {
-                    if (material.validateBeforeDelete())
+                    if (material.ValidateBeforeDelete())
                     {
                         _materialService.delete(material);
 

@@ -50,6 +50,7 @@
     <Compile Include="CrudMsgFormater.cs" />
     <Compile Include="EquipmentAppService.cs" />
     <Compile Include="FixedCostAppService.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Interfaces\ICostAppService.cs" />
     <Compile Include="Interfaces\ICostConfigurationAppService.cs" />
     <Compile Include="Interfaces\IAppServiceBase.cs" />

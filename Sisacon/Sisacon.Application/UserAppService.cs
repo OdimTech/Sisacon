@@ -22,11 +22,12 @@ namespace Sisacon.Application
         private readonly IEquipmentService _equipmentService;
         private readonly IProviderService _provierService;
         private readonly IMaterialService _materialService;
+        private readonly IProductService _productService;
 
         #endregion
 
 
-        public UserAppService(IUserService userService, ICrudMsgFormater crudMsgFormater, INotificationService notificationService, ILogAppService logAppService, IClientService clientService, IEquipmentService equipmentService, IProviderService providerService, IMaterialService materialService)
+        public UserAppService(IUserService userService, ICrudMsgFormater crudMsgFormater, INotificationService notificationService, ILogAppService logAppService, IClientService clientService, IEquipmentService equipmentService, IProviderService providerService, IMaterialService materialService, IProductService productService)
             : base(userService)
         {
             _userService = userService;
@@ -37,6 +38,7 @@ namespace Sisacon.Application
             _equipmentService = equipmentService;
             _provierService = providerService;
             _materialService = materialService;
+            _productService = productService;
         }
 
         public ResponseMessage<User> createUser(User user)
@@ -183,12 +185,14 @@ namespace Sisacon.Application
 
             try
             {
-                var countEntities = new CountEntities();
-
-                countEntities.ClientQuantity = _clientService.GetCount(userId);
-                countEntities.EquipmentQuantity = _equipmentService.GetCount(userId);
-                countEntities.ProviderQuantity = _provierService.GetCount(userId);
-                countEntities.MaterialQuantity = _materialService.GetCount(userId);
+                var countEntities = new CountEntities()
+                {
+                    ClientQuantity = _clientService.GetCount(userId),
+                    EquipmentQuantity = _equipmentService.GetCount(userId),
+                    ProviderQuantity = _provierService.GetCount(userId),
+                    MaterialQuantity = _materialService.GetCount(userId),
+                    ProductQuantity = _productService.GetCount(userId)
+                };
 
                 response.Value = countEntities;
             }

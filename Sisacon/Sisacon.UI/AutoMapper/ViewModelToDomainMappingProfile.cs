@@ -31,6 +31,7 @@ namespace Sisacon.UI.AutoMapper
             CreateMap<CostConfiguration, CostCategoryViewModel>();
             CreateMap<Cost, CostViewModel>();
             CreateMap<FixedCost, FixedCostViewModel>();
+            CreateMap<Product, ProductViewModel>();
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Helpers;
 using Sisacon.Domain.ValueObjects;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Sisacon.Domain.Entities
 {
@@ -58,14 +57,14 @@ namespace Sisacon.Domain.Entities
             return valid;
         }
 
-        public bool ValidateBeforeDelete(List<Product> listProducts)
+        public bool ValidateBeforeDelete(/*List<Product> listProducts*/)
         {
             var isValid = true;
 
-            foreach (var product in ListProduct)
-            {
-                int quant = product.ListMaterial.Where(x => x.Id == Id).Count();
-            }
+            //foreach (var product in ListProduct)
+            //{
+            //    int quant = product.ListMaterial.Where(x => x.Id == Id).Count();
+            //}
 
             return isValid;
         }

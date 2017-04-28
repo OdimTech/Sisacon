@@ -1,18 +1,14 @@
 ﻿using Sisacon.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sisacon.Application.Interfaces
 {
     public interface ICostAppService : IAppServiceBase<Cost>
     {
-        ResponseMessage<Cost> saveOrUpdate(Cost cost);
-        ResponseMessage<Cost> deleteCost(int costId);
-        ResponseMessage<Cost> getCostsByUserId(int userId);
-        ResponseMessage<Cost> validateNewCost(int userId);
+        ResponseMessage<Cost> SaveOrUpdate(Cost cost);
+        ResponseMessage<Cost> DeleteCost(int costId);
+        ResponseMessage<Cost> GetCostsByUserId(int userId);
+        ResponseMessage<Cost> ValidateNewCost(int userId);
+        ResponseMessage<Cost> GetCurrentCost(int userId);
         //ResponseMessage<Cost> getCostByCategory(int userId);
     }
 }

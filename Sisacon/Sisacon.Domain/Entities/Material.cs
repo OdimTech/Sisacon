@@ -71,7 +71,7 @@ namespace Sisacon.Domain.Entities
 
         public void genereteCode()
         {
-            CodMaterial = string.Format("MAT{0}", Utils.gereneteRandomCode());
+            CodMaterial = string.Format("MAT{0}", Utils.GereneteRandomCode());
         }
 
         #endregion

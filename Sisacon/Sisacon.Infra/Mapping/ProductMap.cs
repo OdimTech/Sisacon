@@ -29,6 +29,22 @@ namespace Sisacon.Infra.Mapping
                 .HasColumnType("decimal")
                 .IsRequired();
 
+            Property(x => x.HoursToProduce)
+                .HasColumnType("int")
+                .IsRequired();
+
+            Property(x => x.MinutesToProduce)
+                .HasColumnType("int")
+                .IsRequired();
+
+            Property(x => x.CostPerHour)
+                .HasColumnType("decimal")
+                .IsRequired();
+
+            Property(x => x.TotalCostMaterials)
+                .HasColumnType("decimal")
+                .IsRequired();
+
             HasMany(x => x.ListProductImages)
                 .WithRequired()
                 .HasForeignKey(x => x.IdProduct);

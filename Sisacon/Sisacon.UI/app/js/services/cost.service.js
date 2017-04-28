@@ -17,7 +17,8 @@
             getCostByUserId: getCostByUserId,
             getCostById: getCostById,
             deleteCost: deleteCost,
-            validateNewCost, validateNewCost
+            validateNewCost: validateNewCost,
+            getCurrentCost: getCurrentCost
         }
 
         return service;
@@ -61,12 +62,23 @@
         }
 
         function validateNewCost(userId) {
-            
+
             return $http.get(apiUrl + route + "/validateNewCost", {
 
-                params : {
+                params: {
 
-                    userId : userId
+                    userId: userId
+                }
+            })
+        }
+
+        function getCurrentCost(userId) {
+            
+            return $http.get(apiUrl + route + "/getCurrentCost", {
+
+                params: {
+
+                    userId: userId
                 }
             })
         }

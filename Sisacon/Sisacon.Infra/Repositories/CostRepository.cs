@@ -81,5 +81,23 @@ namespace Sisacon.Infra.Repositories
                 throw ex;
             }
         }
+
+        public Cost GetCurrentCost(int userId)
+        {
+            try
+            {
+                return Context.
+                    Cost.
+                    Include("User").
+                    Include("ListFixedCost").
+                    Include("ListFixedCost.CostCategory").
+                    Where(x => x.User.Id == userId && x.ExclusionDate == null && x.Current).
+                    FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

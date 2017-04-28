@@ -1,5 +1,6 @@
 ﻿using Sisacon.Application.Interfaces;
 using Sisacon.Domain.Entities;
+using Sisacon.Domain.Interfaces.Repositories;
 using Sisacon.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
@@ -12,17 +13,19 @@ namespace Sisacon.Application
     public class CostAppService : AppServiceBase<Cost>, ICostAppService
     {
         private readonly ICostService _costService;
+        private readonly ICostRepository _costRepository;
         private readonly ILogAppService _logAppService;
         private readonly ICrudMsgFormater _crudMsgFormater;
 
-        public CostAppService(ICostService costService, ILogAppService logAppService, ICrudMsgFormater crudMsgFormater) : base(costService)
+        public CostAppService(ICostService costService, ICostRepository costRepository, ILogAppService logAppService, ICrudMsgFormater crudMsgFormater) : base(costService)
         {
             _costService = costService;
+            _costRepository = costRepository;
             _logAppService = logAppService;
             _crudMsgFormater = crudMsgFormater;
         }
 
-        public ResponseMessage<Cost> deleteCost(int costId)
+        public ResponseMessage<Cost> DeleteCost(int costId)
         {
             var response = new ResponseMessage<Cost>();
 
@@ -61,14 +64,18 @@ namespace Sisacon.Application
             return response;
         }
 
-        public ResponseMessage<Cost> getCostsByUserId(int userId)
+        public ResponseMessage<Cost> GetCurrentCost(int userId)
         {
             var response = new ResponseMessage<Cost>();
-            response.ValueList = new List<Cost>();
 
             try
             {
-                response.ValueList = _costService.getCostsByUserId(userId);
+                var cost = _costRepository.GetCurrentCost(userId);
+
+                if (cost != null)
+                {
+                    response.Value = cost;
+                }
             }
             catch (Exception ex)
             {
@@ -80,7 +87,26 @@ namespace Sisacon.Application
             return response;
         }
 
-        public ResponseMessage<Cost> saveOrUpdate(Cost cost)
+        public ResponseMessage<Cost> GetCostsByUserId(int userId)
+        {
+            var response = new ResponseMessage<Cost>();
+            response.ValueList = new List<Cost>();
+
+            try
+            {
+                response.ValueList = _costService.GetCostsByUserId(userId);
+            }
+            catch (Exception ex)
+            {
+                _logAppService.createClientLog(ex, null, eErrorGravity.Grande);
+
+                return response.createErrorResponse();
+            }
+
+            return response;
+        }
+
+        public ResponseMessage<Cost> SaveOrUpdate(Cost cost)
         {
             var response = new ResponseMessage<Cost>();
 
@@ -123,13 +149,13 @@ namespace Sisacon.Application
             return response;
         }
 
-        public ResponseMessage<Cost> validateNewCost(int UserId)
+        public ResponseMessage<Cost> ValidateNewCost(int UserId)
         {
             var response = new ResponseMessage<Cost>();
 
             try
             {
-                var listCosts = _costService.getCostsByUserId(UserId);
+                var listCosts = _costService.GetCostsByUserId(UserId);
 
                 response.LogicalTest = Cost.validateNewCost(listCosts);
 

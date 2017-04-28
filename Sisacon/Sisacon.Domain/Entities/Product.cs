@@ -20,6 +20,10 @@ namespace Sisacon.Domain.Entities
         public string Info { get; set; }
         public decimal Value { get; set; }
         public decimal ProfitPercentage { get; set; }
+        public int HoursToProduce { get; set; }
+        public int MinutesToProduce { get; set; }
+        public decimal CostPerHour { get; set; }
+        public decimal TotalCostMaterials { get; set; }
         public int UserId { get; set; }
         public virtual User User { get; set; }
         public virtual List<Material> ListMaterial { get; set; }
@@ -31,7 +35,7 @@ namespace Sisacon.Domain.Entities
 
         public void GenereteCode()
         {
-            CodProduct = string.Format("PRD{0}", Utils.gereneteRandomCode());
+            CodProduct = string.Format("PRD{0}", Utils.GereneteRandomCode());
         }
 
         public bool ValidatePendencesBeforeDelete()

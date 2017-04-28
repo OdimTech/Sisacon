@@ -48,7 +48,7 @@ namespace Sisacon.Domain.Entities
 
         public void genereteCode()
         {
-            CodEquipment = string.Format("EQP{0}", Utils.gereneteRandomCode());
+            CodEquipment = string.Format("EQP{0}", Utils.GereneteRandomCode());
         }
 
         public bool validatePendencesBeforeDelete()

@@ -8,7 +8,7 @@
 
         getDefaultLogo: '../../../Content/UserImages/Default/CompanyLogo/default_logo.gif',
 
-        errorFieldMessage : 'Os Campos destacados em Vermelho não foram preenchidas corretamente',
+        errorFieldMessage : 'Os Campos destacados em Vermelho não foram preenchidos corretamente',
 
         dataTableLanguage: {
             "lengthMenu": "Exibindo _MENU_ Itens por página",

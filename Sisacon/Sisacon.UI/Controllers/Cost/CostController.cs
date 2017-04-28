@@ -3,10 +3,6 @@ using Sisacon.Application;
 using Sisacon.Application.Interfaces;
 using Sisacon.Domain.Entities;
 using Sisacon.UI.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -34,7 +30,7 @@ namespace Sisacon.UI.Controllers
                 {
                     var Cost = Mapper.Map<CostViewModel, Cost>(categoryViewModel);
 
-                    response = _costAppService.saveOrUpdate(Cost);
+                    response = _costAppService.SaveOrUpdate(Cost);
                 }
                 catch
                 {
@@ -55,7 +51,7 @@ namespace Sisacon.UI.Controllers
         {
             var response = new ResponseMessage<Cost>();
 
-            response = _costAppService.getCostsByUserId(userId);
+            response = _costAppService.GetCostsByUserId(userId);
 
             return Request.CreateResponse(response.StatusCode, response);
         }
@@ -77,7 +73,7 @@ namespace Sisacon.UI.Controllers
         {
             var response = new ResponseMessage<Cost>();
 
-            response = _costAppService.deleteCost(costId);
+            response = _costAppService.DeleteCost(costId);
 
             return Request.CreateResponse(response.StatusCode, response);
         }
@@ -88,7 +84,18 @@ namespace Sisacon.UI.Controllers
         {
             var response = new ResponseMessage<Cost>();
 
-            response = _costAppService.validateNewCost(userId);
+            response = _costAppService.ValidateNewCost(userId);
+
+            return Request.CreateResponse(response.StatusCode, response);
+        }
+
+        [HttpGet]
+        [Route("cost/getCurrentCost")]
+        public HttpResponseMessage GetCurrentCost(int userId)
+        {
+            var response = new ResponseMessage<Cost>();
+
+            response = _costAppService.GetCurrentCost(userId);
 
             return Request.CreateResponse(response.StatusCode, response);
         }

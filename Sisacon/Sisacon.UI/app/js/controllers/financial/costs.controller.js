@@ -155,6 +155,10 @@
                 vm.loadDataGraphic();
                 vm.loadLabelsGraphic();
 
+            }).error(function (response) {  
+
+                blockUI.stop();
+                toastr.error(response.message);
             })
         }
 

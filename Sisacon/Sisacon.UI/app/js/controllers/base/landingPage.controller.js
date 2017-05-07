@@ -12,7 +12,7 @@
 
         var vm = this;
 
-        angular.element('#carousel').carousel({ fullWidth: true });
+        //angular.element('#carousel').carousel({ fullWidth: true });
     }
 
 })();

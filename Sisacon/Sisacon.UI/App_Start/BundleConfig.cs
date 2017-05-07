@@ -33,8 +33,8 @@ namespace Sisacon.UI
                 "~/app/js/app.module.js",
                 //CONFIG-ROUTES
                 "~/app/js/config/routes/indexRoutes.config.js",
-                "~/app/js/config/routes/landingPageRoutes.config.js",
                 "~/app/js/config/routes/adminRoutes.config.js",
+                "~/app/js/config/routes/account.config.js",
                 //CONFIG
                 "~/app/js/config/toastr.config.js",
                 "~/app/js/config/blockUI.config.js",

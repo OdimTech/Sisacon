@@ -1,34 +1,34 @@
-(function () {
-    
-    'use strict';
+//(function () {
 
-    angular
-        .module('app')
-        
-        .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+//    'use strict';
 
-            $locationProvider.html5Mode({
-                enable:true,
-                requireBse: false
-            });
+//    angular
+//        .module('app')
 
-            $routeProvider
-            
-                .when('/landingPage', {
+//        .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
-                    templateUrl: '/app/views/landingPage.html'
-                })
+//            $locationProvider.html5Mode({
+//                enable: true,
+//                requireBse: false
+//            });
 
-                .when('/singup', {
+//            $routeProvider
 
-                    templateUrl: '/app/views/account/singup.html',
-                    controller: 'SingUpController'
-                })
-                .when('/login', {
+//                .when('/landingPage', {
 
-                    templateUrl: '/app/views/account/login.html',
-                    controller: 'LoginController'
-                });
-    }]);
+//                    templateUrl: '/app/views/landingPage.html'
+//                })
 
-})();
+//                .when('/singup', {
+
+//                    templateUrl: '/app/views/account/singup.html',
+//                    controller: 'SingUpController'
+//                })
+//                .when('/login', {
+
+//                    templateUrl: '/app/views/account/login.html',
+//                    controller: 'LoginController'
+//                });
+//        }]);
+
+//})();

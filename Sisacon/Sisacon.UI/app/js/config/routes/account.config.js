@@ -8,16 +8,11 @@
         .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
             $locationProvider.html5Mode({
-                enable: true,
-                requireBse: false
+                enable: false,
+                requireBase: false
             });
 
             $routeProvider
-
-                .when('/landingPage', {
-
-                    templateUrl: '/app/views/landingPage.html'
-                })
 
                 .when('/singup', {
 

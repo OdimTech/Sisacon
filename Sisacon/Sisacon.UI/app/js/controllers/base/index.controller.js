@@ -51,7 +51,7 @@
         $scope.logout = function () {
 
             localStorageService.remove('id');
-            $window.location.href = '/Home/LandingPage#/login';
+            $window.location.href = '/Home/LandingPage';
 
         }
 

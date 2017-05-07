@@ -130,19 +130,19 @@
                 .when('/productList', {
 
                     templateUrl: '/app/views/entries/productList.html',
-                    controller : 'ProductController',
+                    controller: 'ProductController',
                     controllerAs: 'vm'
                 })
                 .when('/newProduct', {
 
                     templateUrl: '/app/views/entries/newProduct.html',
-                    controller : 'ProductController',
+                    controller: 'ProductController',
                     controllerAs: 'vm'
                 })
                 .when('/newProduct/id', {
 
                     templateUrl: '/app/views/entries/newProduct.html',
-                    controller : 'ProductController',
+                    controller: 'ProductController',
                     controllerAs: 'vm'
                 })
                 //FINANCEIRO
@@ -172,13 +172,13 @@
                 .when('/errorPage', {
 
                     templateUrl: '/app/views/errorPage.html'
-                })
-                .otherwise({
-
-                    templateUrl: '/app/views/InitialDashboard.html',
-                    controller: 'InitialDashboardController',
-                    controllerAs: 'vm'
                 });
+                //.otherwise({
+
+                //    templateUrl: '/app/views/InitialDashboard.html',
+                //    controller: 'InitialDashboardController',
+                //    controllerAs: 'vm'
+                //});
 
         }]);
 
